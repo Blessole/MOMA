@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var a1 = document.getElementById("a1");
+		a1.onclick = function() {
+			alert("party? yes!!!");
+			a1.onclick = null;
+		};
+	};
+</script>
+</head>
+<body>
+	<h2 id="a1">클릭</h2>
+</body>
+</html>
