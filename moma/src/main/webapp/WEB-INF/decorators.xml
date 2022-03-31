@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorator">
+	<!-- hello폴더에 있는 모든 프로그램은 hello_decorator.jsp를 적용해라 -->
+	<decorator name="main" page="hello_decorator.jsp">
+		<pattern>/hello/*</pattern>
+	</decorator>
+	
+	<!-- news폴더에 있는 모든 프로그램은 news_decorator.jsp를 적용해라 -->
+	<decorator name="news" page="/decorator/news_decorator.jsp">
+		<pattern>/news/*</pattern>
+	</decorator>
+	
+	<!-- 아래 프로그램은 예외이므로 decorator를 적용하지 마라 -->
+	<excludes>
+		<pattern>/hello/exclude.jsp</pattern>
+		<pattern>/news/exclude.jsp</pattern>
+	</excludes>
+</decorators>

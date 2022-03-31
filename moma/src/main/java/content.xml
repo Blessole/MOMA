@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contentns">
+
+	<!-- 영화 상세 select -->
+	<select id="selectView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='영화' and del='n'
+	</select>
+	<!-- 드라마 상세 select -->
+	<select id="selectView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='드라마' and del='n'
+	</select>
+	
+</mapper>
