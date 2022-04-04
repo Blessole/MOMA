@@ -21,7 +21,7 @@
 					<ul>
 						<c:forEach var="content" items="${ctList}">
 							<li>
-								<a href="/moma/views/content/contentView.jm?cno=${content.cno }">
+								<a href="/moma/views/content/contentView.do?cno=${content.cno }">
 									<img style="background: url(/moma/img/poster/${content.poster}) no-repeat center; background-size: cover;"/>
 									<div class="ct_text_area">
 										<p class="ct_list_title">${content.cname}</p>

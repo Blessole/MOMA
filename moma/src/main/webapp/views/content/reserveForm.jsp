@@ -78,7 +78,7 @@
 	});
 </script>
 </head><body>
-<form action="reserveAction.so" method="post" name="frm">
+<form action="reserveAction.so?cno=${content.cno }&mno=${member.mno}" method="post" name="frm">
 	<div class="container">
 		<div class="title">예매하기</div>
 			<div class="section">
