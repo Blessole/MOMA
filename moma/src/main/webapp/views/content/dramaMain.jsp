@@ -47,10 +47,11 @@
 				</a>
 			</div>
 			<div class="content_list">
+			<p>${content.cname }</p>
 				<ul>
 					<c:if test="${empty listTag }">
 						<c:forEach var="content" items="${list }">
-							<c:if test="${content.sort == '드라마' }">
+							<c:if test="c">
 								<li>
 									<a href="contentView.do?cno=${content.cno }">
 										<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">

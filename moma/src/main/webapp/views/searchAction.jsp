@@ -33,7 +33,7 @@
 				</c:if>
 			</div>
 		</div>
-		<!-- board -->
+<%-- 		<!-- board -->
 		<div class="container_inner">
 			<h1 class="title">저널게시판</h1>
 			<div class="board_list" id="board_list1">
@@ -57,7 +57,7 @@
 						</c:forEach>
 					</ul>
 				</c:if>
-			</div> <!-- board_list -->
+			</div> <!-- board_list --> --%>
 		</div> <!-- container_inner -->
 	</div> <!-- container_wide -->
 	

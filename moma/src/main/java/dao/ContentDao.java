@@ -26,14 +26,15 @@ public class ContentDao {
 			Reader reader = Resources.getResourceAsReader("configuration.xml");
 			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
 			session = ssf.openSession(true);
+			System.out.println("왔냐?");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	// 컨텐츠 상세 select
 	public Content select(int cno) {
-		return (Content) session.selectOne("contentns.selectView", cno);
+		return (Content) session.selectOne("contentns.selectList", cno);
 	}
 	
 	// 검색
@@ -47,11 +48,8 @@ public class ContentDao {
 	}
 	
 	// 컨텐츠 리스트 통합 조회
-	public List<Content> list(int startRow, int endRow) {
-		HashMap<String, Integer> hm = new HashMap<>();
-		hm.put("startRow", startRow);
-		hm.put("endRow", endRow);
-		return (List<Content>)session.selectList("contentns.selectList", hm);
+	public List<Content> list() {
+		return (List<Content>)session.selectList("contentns.selectList");
 	}
 	
 	// tag total
@@ -66,6 +64,10 @@ public class ContentDao {
 		hm.put("endRow", endRow);
 		hm.put("tag", tag);
 		return session.selectList("contentns.selectTag", hm);
+	}
+	public Content select(String cname) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

@@ -17,7 +17,7 @@
 	 -->
 	<!-- 드라마 상세 select -->
 	<select id="selectView" parameterType="integer" resultType="content">
-		select * from content where cno = #{cno} and sort='드라마' and del='n'
+		select * from content where cno = #{cno} and del='n'
 	</select>
 	
 	<!-- content main total -->
