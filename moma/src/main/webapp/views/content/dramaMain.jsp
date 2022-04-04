@@ -47,7 +47,8 @@
 				</a>
 			</div>
 			<div class="content_list">
-			<p>${content.cname }</p>
+			<p>${content.cname }</p>   <!--  일부러 뭐든 찍어보라고 넣어놓은거! -->
+			<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 				<ul>
 					<c:if test="${empty listTag }">
 						<c:forEach var="content" items="${list }">

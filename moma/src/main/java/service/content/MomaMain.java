@@ -14,8 +14,6 @@ public class MomaMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		
-		HttpSession session = request.getSession();
 		ContentDao cd = ContentDao.getInstance();
 		String cno = request.getParameter("cno");
 		String cname = (String) request.getAttribute("cname");

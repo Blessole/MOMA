@@ -14,14 +14,19 @@ public class DramaMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
 		System.out.println("DramaMain 자바파일임");
 		// ct 리스트 조회
 		ContentDao cd = ContentDao.getInstance();
 		String tag[] = request.getParameterValues("genre"); // 태그별
+		String cno = request.getParameter("cno");
+		String cname = (String) request.getAttribute("cname");
+		Content content = cd.select(cname);
 		
 		List<Content> list = cd.list();
-		String cname = (String)session.getAttribute("cname");
+		System.out.println(list);
+		
+		request.setAttribute("content", content);
+		
 		
 		Content ct = (Content) cd.list();
 		request.setAttribute("content", ct);
