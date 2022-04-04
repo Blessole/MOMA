@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reservationns">
+	<!-- 예매완료 -->
 	<insert id="insert" parameterType="reservation">
 		<selectKey keyProperty="rs_no" order="BEFORE" resultType="integer">
 			select max(rs_no)+1 rs_no from reservation
@@ -10,4 +11,8 @@
 			#{rsnum}, #{cinema}, #{payment}, , #{price}, #{mno}, #{cno})
 	</insert>
 	
+	<!-- 예매취소 -->
+	<delete id="delete" parameterType="integer">
+		delete reservation where cno = #{cno}
+	</delete>
 </mapper>

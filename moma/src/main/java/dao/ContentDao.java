@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -31,5 +32,9 @@ public class ContentDao {
 	
 	public Content select(int cno) {
 		return (Content) session.selectOne("contentns.selectView", cno);
+	}
+	public List<Content> search(String srch) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

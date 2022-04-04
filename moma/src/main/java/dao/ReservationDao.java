@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import model.Reservation;
+
 public class ReservationDao {
 	// singleton
 	private static ReservationDao instance = new ReservationDao();
@@ -25,6 +27,13 @@ public class ReservationDao {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	public int insert(Reservation reserve) {
+		return session.insert("reservationns.insert", reserve);
+	}
+	
+	public int delete(int cno) {
+		return session.delete("reservationns.delete", cno);
 	}
 	
 }
