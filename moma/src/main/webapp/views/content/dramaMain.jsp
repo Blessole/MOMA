@@ -27,8 +27,8 @@
 			$('html body').css('overflow', 'auto');
 		})
 
-		// tag active : tag
-		$('input[name="tag"]').on('change', function() {
+		// genre tag active : genre tag
+		$('input[name="genre"]').on('change', function() {
 			if ($(this).is(":checked")) {
 				$(this).siblings("label").addClass('active');
 			} else {
@@ -51,7 +51,7 @@
 			<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 				<ul>
 					<!-- 전체 조회 -->
-					<c:if test="${empty listTag }">
+					<c:if test="${empty listGenre }">
 						<c:forEach var="content" items="${list }">
 							<c:if test="c">
 								<li>
@@ -66,8 +66,8 @@
 						</c:forEach>
 					</c:if>
 					<!-- 태그별 조회 -->
-					<c:if test="${not empty listTag }">
-						<c:forEach var="content" items="${listTag }">
+					<c:if test="${not empty listGenre }">
+						<c:forEach var="content" items="${listGenre }">
 							<c:if test="${content.sort == '드라마' }">
 								<li>
 									<a href="contentView.do?cno=${content.cno }"> 
@@ -83,7 +83,7 @@
 				</ul>
 			</div>
 
-			<!-- paging -->
+<%-- 			<!-- paging -->
 			<div class="paging">
 				<div class="items">
 					<div class="prev_btn">
@@ -114,7 +114,7 @@
 						</c:if>
 					</div> <!-- next_btn -->
 				</div> <!-- number -->
-			</div> <!-- paging -->
+			</div> <!-- paging --> --%>
 		</section>
 	</div>
 
@@ -128,42 +128,42 @@
 				<div class="block">
 					<p class="modal_title">태그</p>
 					<div class="tag_box">
-						<!-- tag -->
+						<!-- Genre tag -->
 						<div class="label_box">
 							<label class="tag" for="t1">로맨스</label>
-							<input type="checkbox" name="tag" id="t1" value="로맨스">
+							<input type="checkbox" name="genre" id="t1" value="로맨스">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t2">SF</label>
-							<input type="checkbox" name="tag" id="t2" value="SF">
+							<input type="checkbox" name="genre" id="t2" value="SF">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t3">범죄</label>
-							<input type="checkbox" name="tag" id="t3" value="범죄">
+							<input type="checkbox" name="genre" id="t3" value="범죄">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t4">공포</label>
-							<input type="checkbox" name="tag" id="t4" value="공포">
+							<input type="checkbox" name="genre" id="t4" value="공포">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t5">코미디</label>
-							<input type="checkbox" name="tag" id="t5" value="코미디">
+							<input type="checkbox" name="genre" id="t5" value="코미디">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t6">스릴러</label>
-							<input type="checkbox" name="tag" id="t6" value="스릴러">
+							<input type="checkbox" name="genre" id="t6" value="스릴러">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t7">액션</label>
-							<input type="checkbox" name="tag" id="t7" value="액션">
+							<input type="checkbox" name="genre" id="t7" value="액션">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t8">드라마</label>
-							<input type="checkbox" name="tag" id="t8" value="드라마">
+							<input type="checkbox" name="genre" id="t8" value="드라마">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t9">판타지</label>
-							<input type="checkbox" name="tag" id="t9" value="판타지">
+							<input type="checkbox" name="genre" id="t9" value="판타지">
 						</div>
 					</div>
 				</div>

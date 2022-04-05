@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-movieMain.jsp 비어있음
+movieMain.jsp 비어있는 상태랍니당~
 </body>
 </html>

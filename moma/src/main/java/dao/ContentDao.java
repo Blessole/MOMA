@@ -52,18 +52,18 @@ public class ContentDao {
 		return (List<Content>)session.selectList("contentns.selectList");
 	}
 	
-	// tag total
-	public int getTotalTag(String[] tag) {
-		return (int) session.selectOne("contentns.getTotalTag", tag);
+	// Genre total
+	public int getTotalGenre(String[] genre) {
+		return (int) session.selectOne("contentns.getTotalGenre", genre);
 	}
 	
-	// 태그로 리스트 조회
-	public List<Content> listTag(String[] tag, int startRow, int endRow) {
+	// 장르태그로 리스트 조회
+	public List<Content> listGenre(String[] genre, int startRow, int endRow) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("startRow", startRow);
 		hm.put("endRow", endRow);
-		hm.put("tag", tag);
-		return session.selectList("contentns.selectTag", hm);
+		hm.put("genre", genre);
+		return session.selectList("contentns.selectGenre", hm);
 	}
 	
 

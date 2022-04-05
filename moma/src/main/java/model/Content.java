@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Date;
-
 public class Content {
 	private int cno;
 	private String cname;
@@ -9,7 +7,7 @@ public class Content {
 	private int clevel;
 	private String genre;
 	private String hours;
-	private Date start_date;
+	private String start_date;
 	private int cviews;
 	private String netflix;
 	private String watcha;
@@ -56,10 +54,10 @@ public class Content {
 	public void setHours(String hours) {
 		this.hours = hours;
 	}
-	public Date getStart_date() {
+	public String getStart_date() {
 		return start_date;
 	}
-	public void setStart_date(Date start_date) {
+	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
 	public int getCviews() {

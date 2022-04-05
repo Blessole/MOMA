@@ -5,7 +5,7 @@
 
 	<!-- 컨텐츠 통합 리스트 -->
 	<select id="select" parameterType="string" resultType="content">
-		select * from content where del = 'n' order by cno desc
+		select * from content where cno = #{cno} and del = 'n' order by cno desc
 	</select>
 	<select id="selectList" resultType="content">
 		select * from (select rownum rn, a.* from (
@@ -29,18 +29,18 @@
 	</select>
 	
 	<!-- 태그로 리스트 조회 -->
-	<select id="selectTag" resultType="content" parameterType="hashmap">
+	<select id="selectGenre" resultType="content" parameterType="hashmap">
 		select * from (select rownum rn, e.* from (
 		select * from content where
-		<foreach collection="tag" item="item" open="(" close=")" separator="or">
+		<foreach collection="genre" item="item" open="(" close=")" separator="or">
 			genre like '%'||#{item}||'%'
 		</foreach>
 		and del = 'n' order by cno desc) e)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<!-- display tag 필터 total -->
-	<select id="getTotalTag" resultType="integer">
+	<!-- content genre 필터 total -->
+	<select id="getTotalGenre" resultType="integer">
 		select count(*) from content where
 		<foreach collection="array" item="item" open="(">
 			genre like '%'||#{item}||'%' or

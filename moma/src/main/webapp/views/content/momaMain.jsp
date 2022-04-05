@@ -103,9 +103,8 @@
 	<section class="content_main">
 		<!-- 영화 -->
 		<ul class="content_tab">
-			<li class="title" id="tab1" onclick="location.href='movieMain.so'">영화</li>
+			<li class="title" id="tab1" onclick="location.href='movieMain.so'">${content.cname } 영화</li>
 			<div class="content_list">
-			${content.cname }
 				<ul>
 					<c:forEach var="content" items="${list }">
 						<c:if test="${content.sort == '영화' }">

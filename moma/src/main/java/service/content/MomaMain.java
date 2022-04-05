@@ -21,7 +21,7 @@ public class MomaMain implements CommandProcess {
 		Content content = cd.select(cno);
 		
 		/*
-		 * String tag[] = request.getParameterValues("genre"); // 태그별
+		 * String genre[] = request.getParameterValues("genre"); // 태그별
 		 */		
 		System.out.println("MomaMain 자바파일 거쳤음");
 		

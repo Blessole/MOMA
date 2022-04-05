@@ -17,8 +17,8 @@ public class DramaMain implements CommandProcess {
 		System.out.println("DramaMain 자바파일임");
 		// ct 리스트 조회
 		ContentDao cd = ContentDao.getInstance();
-		String tag[] = request.getParameterValues("genre"); // 태그별
-		System.out.println(tag[1]);
+		String genre[] = request.getParameterValues("genre"); // 태그별
+		System.out.println(genre[1]);
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		String cname = request.getParameter("cname");
 		Content content = cd.select(cno);
@@ -32,7 +32,7 @@ public class DramaMain implements CommandProcess {
 		Content ct = (Content) cd.list();
 		request.setAttribute("content", ct);
 		
-		System.out.println("DramaMain 자바파일임");
+		System.out.println("DramaMain 자바파일임2");
 		System.out.println(list);
 		
 		request.setAttribute("cname", cname);
@@ -55,8 +55,8 @@ public class DramaMain implements CommandProcess {
 		 * // 페이징 리스트로 기존 리스트 수정(전체 리스트) 
 		 * List<Content> list = cd.list(startRow, endRow);
 		 * 
-		 * // 태그만 조회 List<Content> listTag = null; if (tag != null) { listTag =
-		 * cd.listTag(tag, startRow, endRow); total = cd.getTotalTag(tag); }
+		 * // 태그만 조회 List<Content> listGenre = null; if (genre != null) { listGenre =
+		 * cd.listGenre(genre, startRow, endRow); total = cd.getTotalGenre(genre); }
 		 * 
 		 * // Math.ceil : 현재 실수보다 큰 정수 int totalPage =
 		 * (int)Math.ceil((double)total/ROW_PER_PAGE); // 총 페이지 수 // 시작페이지 : 현재페이지 -
@@ -66,7 +66,7 @@ public class DramaMain implements CommandProcess {
 		 * endPage = totalPage; // paging : end
 		 * 
 		 * 
-		 * request.setAttribute("list", list); request.setAttribute("listTag", listTag);
+		 * request.setAttribute("list", list); request.setAttribute("listGenre", listGenre);
 		 * 
 		 * // paging param request.setAttribute("pageNum", pageNum);
 		 * request.setAttribute("currentPage", currentPage);

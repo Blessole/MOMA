@@ -6,9 +6,6 @@
 <configuration>
 	<!-- src/main/java폴더에 있는 db.properties의 정보를 여기로 가져와라▼ -->
 	<properties resource="db.properties"/>
- <settings>
-        <setting name="jdbcTypeForNull" value="NULL"/>
-</settings>
 	<typeAliases>
 		<typeAlias alias="content" type="model.Content" />
 		<typeAlias alias="reservation" type="model.Reservation" />
@@ -30,6 +27,5 @@
 		<mapper resource="content.xml" />
 		<mapper resource="reservation.xml" />
 	</mappers>
-	   
 </configuration>
 
