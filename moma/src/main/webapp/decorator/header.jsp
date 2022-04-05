@@ -25,15 +25,15 @@
 			<nav>
 				<ul class='nav_sub'>
 					<c:if test="${empty id }">
-						<li><a href="/moma/views/member/loginForm.hj">로그인</a></li>
-						<li><a href="/moma/views/member/joinForm.hj">회원가입</a></li>
+						<li><a href="/moma/views/member/loginForm.bb">로그인</a></li>
+						<li><a href="/moma/views/member/joinForm.bb">회원가입</a></li>
 					</c:if>
 					<c:if test="${not empty id }">
 						<c:if test="${id != 'admin'}">
-							<li><a href="/moma/views/member/logout.hj">로그아웃</a></li>
+							<li><a href="/moma/views/member/logout.bb">로그아웃</a></li>
 						</c:if>
 						<c:if test="${id == 'admin'}">
-							<li><a href="/moma/views/member/logout.hj">로그아웃</a></li>
+							<li><a href="/moma/views/member/logout.bb">로그아웃</a></li>
 							<li><a href="/moma/views/admin/adminMain.so">관리자페이지</a></li>
 						</c:if>
 					</c:if>

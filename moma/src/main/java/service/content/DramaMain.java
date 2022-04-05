@@ -14,28 +14,26 @@ public class DramaMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("DramaMain 자바파일임");
+		System.out.println("DramaMain 자바파일임1");
 		// ct 리스트 조회
 		ContentDao cd = ContentDao.getInstance();
-		String genre[] = request.getParameterValues("genre"); // 태그별
-		System.out.println(genre[1]);
-		int cno = Integer.parseInt(request.getParameter("cno"));
-		String cname = request.getParameter("cname");
-		Content content = cd.select(cno);
+		/*
+		 * String tag[] = request.getParameterValues("genre"); // 태그별 
+		 * String cno = request.getParameter("cno");
+		 */
+		String cname = (String) request.getAttribute("cname");
+		Content content = cd.select(cname);
 		
-		List<Content> list = cd.list();
-		System.out.println(list);
-		
+		List<Content> list = cd.Dlist();		
 		request.setAttribute("content", content);
+		request.setAttribute("list", list);
 		
+		/*
+		 * Content ct = (Content) cd.list();
+		 * request.setAttribute("content", ct);
+		 */
 		
-		Content ct = (Content) cd.list();
-		request.setAttribute("content", ct);
-		
-		System.out.println("DramaMain 자바파일임2");
-		System.out.println(list);
-		
-		request.setAttribute("cname", cname);
+//		request.setAttribute("cname", cname);
 		
 		/*
 		 * // paging : start final int ROW_PER_PAGE = 10; // 한 페이지에 10개씩 final int
@@ -55,8 +53,8 @@ public class DramaMain implements CommandProcess {
 		 * // 페이징 리스트로 기존 리스트 수정(전체 리스트) 
 		 * List<Content> list = cd.list(startRow, endRow);
 		 * 
-		 * // 태그만 조회 List<Content> listGenre = null; if (genre != null) { listGenre =
-		 * cd.listGenre(genre, startRow, endRow); total = cd.getTotalGenre(genre); }
+		 * // 태그만 조회 List<Content> listTag = null; if (tag != null) { listTag =
+		 * cd.listTag(tag, startRow, endRow); total = cd.getTotalTag(tag); }
 		 * 
 		 * // Math.ceil : 현재 실수보다 큰 정수 int totalPage =
 		 * (int)Math.ceil((double)total/ROW_PER_PAGE); // 총 페이지 수 // 시작페이지 : 현재페이지 -
@@ -66,7 +64,7 @@ public class DramaMain implements CommandProcess {
 		 * endPage = totalPage; // paging : end
 		 * 
 		 * 
-		 * request.setAttribute("list", list); request.setAttribute("listGenre", listGenre);
+		 * request.setAttribute("list", list); request.setAttribute("listTag", listTag);
 		 * 
 		 * // paging param request.setAttribute("pageNum", pageNum);
 		 * request.setAttribute("currentPage", currentPage);

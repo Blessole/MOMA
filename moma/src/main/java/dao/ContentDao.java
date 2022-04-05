@@ -46,12 +46,22 @@ public class ContentDao {
 	public int getTotalC() {
 		return (int) session.selectOne("contentns.getTotalC");
 	}
-	
+
 	// 컨텐츠 리스트 통합 조회
 	public List<Content> list() {
 		return (List<Content>)session.selectList("contentns.selectList");
 	}
-	
+
+	// 컨텐츠 드라마 리스트 통합 조회
+	public List<Content> Dlist() {
+		return (List<Content>)session.selectList("contentns.selectDList");
+	}
+
+	// 컨텐츠 영화 리스트 통합 조회
+	public List<Content> Mlist() {
+		return (List<Content>)session.selectList("contentns.selectMList");
+	}
+
 	// Genre total
 	public int getTotalGenre(String[] genre) {
 		return (int) session.selectOne("contentns.getTotalGenre", genre);
@@ -66,5 +76,7 @@ public class ContentDao {
 		return session.selectList("contentns.selectGenre", hm);
 	}
 	
-
+	public Content select(String cname) {
+		return null;
+	}
 }

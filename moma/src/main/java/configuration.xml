@@ -7,6 +7,7 @@
 	<!-- src/main/java폴더에 있는 db.properties의 정보를 여기로 가져와라▼ -->
 	<properties resource="db.properties"/>
 	<typeAliases>
+		<typeAlias alias="member" type="model.Member" />
 		<typeAlias alias="content" type="model.Content" />
 		<typeAlias alias="reservation" type="model.Reservation" />
 	</typeAliases>
@@ -24,6 +25,7 @@
 	</environments>
 	<!-- 연결된 DB의 테이블에 CRUD작업하는 sql이 들어있는 xml -->
 	<mappers>
+		<mapper resource="member.xml" />
 		<mapper resource="content.xml" />
 		<mapper resource="reservation.xml" />
 	</mappers>

@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.content_view_top {
+	margin-top: 44px;
+	overflow: hidden;
+}
+
+.content_view_top img {
+	width: 330px;
+	height: 440px;
+	object-fit: cover;
+}
+
+/* 별점 */
+
+.star_ratings {
+	  color: #aaa9a9; 
+	  position: relative;
+	  unicode-bidi: bidi-override;
+	  width: max-content;
+	  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+	  -webkit-text-stroke-width: 1.3px;
+	  -webkit-tsext-stroke-color: #2b2a29;
+}
+ 
+.star_ratings_fill {
+	  color: #fff58c;
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
+	  -webkit-text-fill-color: gold;
+}
+ 
+.star_ratings_base {
+	  z-index: 0;
+	  padding: 0;
+}

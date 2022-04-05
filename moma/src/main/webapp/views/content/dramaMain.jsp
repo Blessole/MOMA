@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <style type="text/css">@import url("../../css/content/momaMain.css");</style> -->
+<style type="text/css">@import url("../../css/content/momaMain.css");</style>
 <script type="text/javascript">
 	$(function() {
 		// 페이징 현재페이지 설정
@@ -19,56 +19,50 @@
 		$('.filter').on('click', function() {
 			$('.filter_modal').show();
 			$('html body').css('overflow', 'hidden');
-		})
+		});
 
 		// filter modal close
 		$('.close, .dim_box, .btn').on('click', function() {
 			$('.filter_modal').hide();
 			$('html body').css('overflow', 'auto');
-		})
+		});
 
-		// genre tag active : genre tag
-		$('input[name="genre"]').on('change', function() {
+		// tag active : tag
+		$('input[name="tag"]').on('change', function() {
 			if ($(this).is(":checked")) {
 				$(this).siblings("label").addClass('active');
 			} else {
 				$(this).siblings("label").removeClass('active');
 			}
-		})
+		});
 	})
 	
 </script>
 </head>
 <body>
 	<div class="container_wide">
-	<div class="title">드라마</div>
 		<section class="content_main">
 			<div class="button_box">
-				<a class="filter"><img alt="필터" src="../../img/icon/filter.png"><span>필터</span></a>
+				<a class="filter"><img alt="필터" src="../../img/icon/filter.png"> <span>필터</span>
+				</a>
 			</div>
 			<div class="content_list">
-			<p>${content.cname }</p>   <!--  일부러 뭐든 찍어보라고 넣어놓은거! -->
 			<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 				<ul>
-					<!-- 전체 조회 -->
-					<c:if test="${empty listGenre }">
-						<c:forEach var="content" items="${list }">
-							<c:if test="c">
-								<li>
-									<a href="contentView.do?cno=${content.cno }">
-										<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
-										<div class="text_area">
-											<p class="content_list_title">${content.cname }</p>
-										</div>
-									</a>
-								</li>
-							</c:if>
-						</c:forEach>
-					</c:if>
+					<c:forEach var="content" items="${list }">
+						<li>
+							<a href="contentView.do?cno=${content.cno }">
+								<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
+								<div class="text_area">
+									<p class="content_list_title">${content.cname }</p>
+								</div>
+							</a>
+						</li>
+					</c:forEach>
 					<!-- 태그별 조회 -->
-					<c:if test="${not empty listGenre }">
-						<c:forEach var="content" items="${listGenre }">
-							<c:if test="${content.sort == '드라마' }">
+					<c:if test="${not empty listTag }">
+						<c:forEach var="content" items="${listTag }">
+							<c:if test="${content.sort == 'D' }">
 								<li>
 									<a href="contentView.do?cno=${content.cno }"> 
 										<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
@@ -83,7 +77,7 @@
 				</ul>
 			</div>
 
-<%-- 			<!-- paging -->
+			<!-- paging -->
 			<div class="paging">
 				<div class="items">
 					<div class="prev_btn">
@@ -114,12 +108,12 @@
 						</c:if>
 					</div> <!-- next_btn -->
 				</div> <!-- number -->
-			</div> <!-- paging --> --%>
+			</div> <!-- paging -->
 		</section>
 	</div>
 
 	<!-- modal -->
-	<form class="filter_modal" action="dramaMain.so" method="post">
+	<form class="filter_modal" action="momaMain.so" method="post">
 		<div class="dim_box"></div>
 		<div class="modal_content">
 			<img class="close" src="../../img/icon/close.png"></img>
@@ -128,42 +122,42 @@
 				<div class="block">
 					<p class="modal_title">태그</p>
 					<div class="tag_box">
-						<!-- Genre tag -->
+						<!-- tag -->
 						<div class="label_box">
 							<label class="tag" for="t1">로맨스</label>
-							<input type="checkbox" name="genre" id="t1" value="로맨스">
+							<input type="checkbox" name="tag" id="t1" value="로맨스">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t2">SF</label>
-							<input type="checkbox" name="genre" id="t2" value="SF">
+							<input type="checkbox" name="tag" id="t2" value="SF">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t3">범죄</label>
-							<input type="checkbox" name="genre" id="t3" value="범죄">
+							<input type="checkbox" name="tag" id="t3" value="범죄">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t4">공포</label>
-							<input type="checkbox" name="genre" id="t4" value="공포">
+							<input type="checkbox" name="tag" id="t4" value="공포">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t5">코미디</label>
-							<input type="checkbox" name="genre" id="t5" value="코미디">
+							<input type="checkbox" name="tag" id="t5" value="코미디">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t6">스릴러</label>
-							<input type="checkbox" name="genre" id="t6" value="스릴러">
+							<input type="checkbox" name="tag" id="t6" value="스릴러">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t7">액션</label>
-							<input type="checkbox" name="genre" id="t7" value="액션">
+							<input type="checkbox" name="tag" id="t7" value="액션">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t8">드라마</label>
-							<input type="checkbox" name="genre" id="t8" value="드라마">
+							<input type="checkbox" name="tag" id="t8" value="드라마">
 						</div>
 						<div class="label_box">
 							<label class="tag" for="t9">판타지</label>
-							<input type="checkbox" name="genre" id="t9" value="판타지">
+							<input type="checkbox" name="tag" id="t9" value="판타지">
 						</div>
 					</div>
 				</div>

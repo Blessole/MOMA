@@ -1,4 +1,3 @@
-//MOMA
 package dao;
 
 import java.io.Reader;
@@ -42,7 +41,7 @@ public class MemberDao {
 			return (Member) session.selectOne("memberns.confirmNickname", nickname);
 		}
 		
-		// moma FindIdAction
+		// moma email로 회원정보 조회
 		public Member selectEmail(String email) {
 			return (Member) session.selectOne("memberns.selectEmail", email);
 		}
@@ -71,7 +70,7 @@ public class MemberDao {
 			return (Member) session.selectOne("memberns.findPassword", hm);
 		}
 		
-		// 세모전 UpdateResult
+		// moma update
 		public int update(Member member) {
 			return session.update("memberns.update", member);
 		}
