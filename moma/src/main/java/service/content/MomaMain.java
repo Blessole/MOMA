@@ -14,10 +14,11 @@ public class MomaMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		
 		ContentDao cd = ContentDao.getInstance();
-		String cno = request.getParameter("cno");
-		String cname = (String) request.getAttribute("cname");
-		Content content = cd.select(cname);
+		int cno = Integer.parseInt(request.getParameter("cno"));
+		String cname = (String) request.getParameter("cname");
+		Content content = cd.select(cno);
 		
 		/*
 		 * String tag[] = request.getParameterValues("genre"); // 태그별
@@ -29,7 +30,8 @@ public class MomaMain implements CommandProcess {
 		System.out.println(list);
 		
 		request.setAttribute("content", content);
-		
+		request.getAttribute("content");
+		request.setAttribute("list", list);
 		return "momaMain";
 		}
 	}

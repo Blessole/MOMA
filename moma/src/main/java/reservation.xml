@@ -5,7 +5,7 @@
 	<!-- 예매완료 -->
 	<insert id="insert" parameterType="reservation">
 		<selectKey keyProperty="rs_no" order="BEFORE" resultType="integer">
-			select max(rs_no)+1 rs_no from reservation
+			select nvl(max(rs_no)+1) rs_no from reservation
 		</selectKey>
 			insert into reservation values(#{rs_no}, #{rsdate}, #{rstime},
 			#{rsnum}, #{cinema}, #{payment}, , #{price}, #{mno}, #{cno})

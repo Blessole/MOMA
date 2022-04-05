@@ -34,7 +34,7 @@ public class ContentDao {
 
 	// 컨텐츠 상세 select
 	public Content select(int cno) {
-		return (Content) session.selectOne("contentns.selectList", cno);
+		return (Content) session.selectOne("contentns.select", cno);
 	}
 	
 	// 검색
@@ -65,10 +65,6 @@ public class ContentDao {
 		hm.put("tag", tag);
 		return session.selectList("contentns.selectTag", hm);
 	}
-	public Content select(String cname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
-	
+
 }

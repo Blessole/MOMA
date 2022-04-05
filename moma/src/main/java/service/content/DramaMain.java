@@ -18,9 +18,10 @@ public class DramaMain implements CommandProcess {
 		// ct 리스트 조회
 		ContentDao cd = ContentDao.getInstance();
 		String tag[] = request.getParameterValues("genre"); // 태그별
-		String cno = request.getParameter("cno");
-		String cname = (String) request.getAttribute("cname");
-		Content content = cd.select(cname);
+		System.out.println(tag[1]);
+		int cno = Integer.parseInt(request.getParameter("cno"));
+		String cname = request.getParameter("cname");
+		Content content = cd.select(cno);
 		
 		List<Content> list = cd.list();
 		System.out.println(list);
