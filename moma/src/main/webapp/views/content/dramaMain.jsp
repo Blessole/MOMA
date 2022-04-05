@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">@import url("../../css/content/momaMain.css");</style>
+<!-- <style type="text/css">@import url("../../css/content/momaMain.css");</style> -->
 <script type="text/javascript">
 	$(function() {
 		// 페이징 현재페이지 설정
@@ -41,15 +41,16 @@
 </head>
 <body>
 	<div class="container_wide">
+	<div class="title">드라마</div>
 		<section class="content_main">
 			<div class="button_box">
-				<a class="filter"><img alt="필터" src="../../img/icon/filter.png"> <span>필터</span>
-				</a>
+				<a class="filter"><img alt="필터" src="../../img/icon/filter.png"><span>필터</span></a>
 			</div>
 			<div class="content_list">
 			<p>${content.cname }</p>   <!--  일부러 뭐든 찍어보라고 넣어놓은거! -->
 			<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 				<ul>
+					<!-- 전체 조회 -->
 					<c:if test="${empty listTag }">
 						<c:forEach var="content" items="${list }">
 							<c:if test="c">
@@ -118,7 +119,7 @@
 	</div>
 
 	<!-- modal -->
-	<form class="filter_modal" action="momaMain.so" method="post">
+	<form class="filter_modal" action="dramaMain.so" method="post">
 		<div class="dim_box"></div>
 		<div class="modal_content">
 			<img class="close" src="../../img/icon/close.png"></img>

@@ -51,7 +51,8 @@ public class ControllerSo extends HttpServlet {
 			try {
 				Class<?> commandClass = Class.forName(className);
 				// commandClass : service.Message 클래스
-				Object commandInstance = commandClass.getDeclaredConstructor().newInstance();
+				//Object commandInstance = commandClass.getDeclaredConstructor().newInstance();
+				Object commandInstance = commandClass.newInstance(); //수정-하영
 				// commandInstance : service.Message객체
 				commandMap.put(command, commandInstance);
 				// commandMap에는
@@ -81,7 +82,8 @@ public class ControllerSo extends HttpServlet {
 			view = com.requestPro(request, response);
 			// view는 "message.jsp" 문자
 		} catch (Throwable e) {	throw new ServletException(e); }
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view+".jsp"); // 파일 경로 설정
+		//RequestDispatcher dispatcher = request.getRequestDispatcher(view+".jsp"); // 파일 경로 설정
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/content/"+view+".jsp"); // 파일 경로 재설정-하영
 		dispatcher.forward(request, response);
 	}
 
