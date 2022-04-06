@@ -89,7 +89,7 @@ public class ContentView implements CommandProcess {
 		request.setAttribute("totalPage", totalPage);
 		request.setAttribute("currentPage", currentPage);
 
-		return "ReviewUpdate";
+		return "contentView";
 	}
 
 }

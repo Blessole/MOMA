@@ -22,8 +22,10 @@
 			<div class='header_logo'>
 				<a href="/moma/views/content/momaMain.so"><img src='/moma/img/momalogo.jpg'></a>
 			</div>
+		
 			<nav>
 				<ul class='nav_sub'>
+		
 					<c:if test="${empty id }">
 						<li><a href="/moma/views/member/loginForm.bb">로그인</a></li>
 						<li><a href="/moma/views/member/joinForm.bb">회원가입</a></li>

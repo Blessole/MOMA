@@ -9,7 +9,13 @@
 <link rel="stylesheet" type="text/css" href="/moma/css/searchAction.css">
 </head>
 <body>
-	<div class="container_wide">
+<div class="container_wide">
+	<div class="search_box">
+		<form method="post" name="srch" action="searchAction.so">
+			<input class="search" type="text" name="srch" placeholder="검색어를 입력해주세요">
+			<button type="submit" style="border:none; background-color: transparent;"><img class="search" id="search" alt="검색" src="/moma/img/icon/search.png" width="30px"></img></button>
+		</form>
+	</div>
 		<!-- content -->
 		<div class="container_inner">
 			<h1 class="title">컨텐츠</h1>

@@ -26,7 +26,7 @@ public class ContentDao {
 			Reader reader = Resources.getResourceAsReader("configuration.xml");
 			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
 			session = ssf.openSession(true);
-			System.out.println("왔냐?");
+			System.out.println("ContentDao 지나간다~~ 왔냐?");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -53,13 +53,19 @@ public class ContentDao {
 	}
 
 	// 컨텐츠 드라마 리스트 통합 조회
-	public List<Content> Dlist() {
-		return (List<Content>)session.selectList("contentns.selectDList");
+	public List<Content> Dlist(int startRow, int endRow) {
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return (List<Content>)session.selectList("contentns.selectDList", hm);
 	}
 
 	// 컨텐츠 영화 리스트 통합 조회
-	public List<Content> Mlist() {
-		return (List<Content>)session.selectList("contentns.selectMList");
+	public List<Content> Mlist(int startRow, int endRow) {
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return (List<Content>)session.selectList("contentns.selectMList", hm);
 	}
 
 	// Genre total

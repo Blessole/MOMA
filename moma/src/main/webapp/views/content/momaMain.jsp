@@ -73,11 +73,7 @@
 <body>
 <!-- 검색바 -->
 <div class="container_wide">
-	<div class="search_container">
-		<input class="search" type="text" name="srch" placeholder="검색어를 입력해주세요">
-		<img class="search" id="search" alt="검색" src="/moma/img/icon/search.png" onclick="location.href='searchAction.so'" width="30px"></img>
-	</div>
-	
+
 	<div class="slider">
 		<div class="slides-container">
 			<div class="slide" onclick="location.href='boardMain.ha'">
@@ -100,10 +96,17 @@
 		</div>
 	</div>
 
+	<div class="search_box">
+		<form method="post" name="srch" action="searchAction.so">
+			<input class="search" type="text" name="srch" placeholder="검색어를 입력해주세요">
+			<button type="submit" style="border:none; background-color: transparent;"><img class="search" id="search" alt="검색" src="/moma/img/icon/search.png" width="30px"></img></button>
+		</form>
+	</div>
+	
 	<section class="content_main">
 		<!-- 영화 -->
 		<ul class="content_tab">
-			<li class="title" id="tab1" onclick="location.href='movieMain.so'">${content.cname } 영화</li>
+			<li class="title" id="tab1" onclick="location.href='movieMain.so'">영화</li>
 			<div class="content_list">
 				<ul>
 					<c:forEach var="content" items="${list }">
@@ -129,7 +132,7 @@
 					<c:forEach var="content" items="${list }">
 						<c:if test="${content.sort == 'D' }">
 							<li>
-								<a href="contentView.jm?cno=${content.cno }">
+								<a href="contentView.do?cno=${content.cno }">
 									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 									<div class="text_area">
 										<p class="content_list_title">${content.cname }</p>
