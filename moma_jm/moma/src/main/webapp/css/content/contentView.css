@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+.cname {
+	font-size: 24px;
+	/* font-weight: 600; */
+}
+
+.sort {
+	font-size: 14px;
+	line-height: 22px;
+	padding-top: 24px;
+	word-break: keep-all;
+	white-space: pre-wrap; /* width 설정 */
+	font-family: inherit;
+}
+
 .content_view_top {
 	margin-top: 44px;
 	overflow: hidden;
@@ -20,10 +34,11 @@
 	display: inline-block;
 }
 
-.bottom_box .btn img {
-	width: 50px;
-	height: 50px;
-	object-fit: cover;
+.bottom_box .btn2 img {
+	width: 55px;
+	height: 55px;
+	margin-right: 20px;
+  	display: inline;
 }
 
 .content_view_top .likes {
@@ -67,20 +82,6 @@
 	padding-bottom: 8px;
 	padding-top: 0;
 
-}
-
-.content_view_top .cname {
-	font-size: 24px;
-	/* font-weight: 600; */
-}
-
-.content_view_top .sort {
-	font-size: 14px;
-	line-height: 22px;
-	padding-top: 24px;
-	word-break: keep-all;
-	white-space: pre-wrap; /* width 설정 */
-	font-family: inherit;
 }
 
 .text_area .bottom {

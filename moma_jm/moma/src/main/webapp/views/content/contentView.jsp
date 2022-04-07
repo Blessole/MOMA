@@ -80,10 +80,10 @@
 </head>
 <body>
 	<div class="container_middle content_view_container">
+		<h3 class="cname">${content.cname }</h3>
+		<h5 class="sort">${content.sort }</h5>
 		<!-- 상단 정보 -->
 		<div class="content_view_top">
-			<h3 class="cname">${content.cname }</h3>
-			<h5 class="sort">${content.sort }</h5>
 			<img src="../../img/poster/${content.poster }" alt="포스터">
 			<div class="text_area">
 				<!-- 평균 별점 -->
@@ -91,7 +91,7 @@
 				<table class="bottom">
 					<tr>
 						<th>등급</th>
-						<td>${content.clevel }</td>
+						<td>${content.clevel }세 이상</td>
 					</tr>
 					<tr>
 						<th>관람 시간/회차 수</th>
@@ -115,14 +115,13 @@
 					</tr>
 				</table>
 					<div class="bottom_box">
-						<button class="btn" onclick="location.href='reserveForm.so'">예매하기</button>
-						<button class="btn" onclick="location.href='${content.netflix }'"><img alt="netflix" src="../../img/icon/netflix.png"></button>
-						<button class="btn" onclick="location.href='${content.watcha }'"><img alt="watcha" src="../../img/icon/watcha.png"></button>
-						<button class="btn" onclick="location.href='${content.tiving }'"><img alt="tiving" src="../../img/icon/tiving.png"></button>
-					</div>
+					<button class="btn" onclick="location.href='reserveForm.so'">예매하기</button>
+					<button class="btn2" onclick="location.href='${content.netflix }'"><img alt="netflix" src="../../img/icon/netflix.png"></button>
+					<button class="btn2" onclick="location.href='${content.watcha }'"><img alt="watcha" src="../../img/icon/watcha.png"></button>
+					<button class="btn2" onclick="location.href='${content.tving }'"><img alt="tving" src="../../img/icon/tving.png"></button>
+				</div>
 			</div>
 		</div>
-
 		<!-- 리뷰, 리뷰 등록 -->
 		<div class="content_view_bottom">	
 			<!-- 리뷰 리스트 : start -->
