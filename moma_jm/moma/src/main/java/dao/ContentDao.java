@@ -26,15 +26,20 @@ public class ContentDao {
 			Reader reader = Resources.getResourceAsReader("configuration.xml");
 			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
 			session = ssf.openSession(true);
-			System.out.println("왔냐?");
+			System.out.println("ContentDao 지나간다~~ 왔냐?");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
+	// cname 중복 체크
+	public Content select(String cname) {
+		return (Content) session.selectOne("contentns.select", cname);
+	}
+	
 	// 컨텐츠 상세 select
 	public Content select(int cno) {
-		return (Content) session.selectOne("contentns.select", cno);
+		return (Content) session.selectOne("contentns.selectView", cno);
 	}
 	
 	// 검색
@@ -47,19 +52,37 @@ public class ContentDao {
 		return (int) session.selectOne("contentns.getTotalC");
 	}
 
+/*
 	// 컨텐츠 리스트 통합 조회
 	public List<Content> list() {
 		return (List<Content>)session.selectList("contentns.selectList");
 	}
-
+*/
+	
+	// 컨텐츠 드라마 TOP10 리스트 통합 조회
+	public List<Content> topDlist() {
+		return (List<Content>)session.selectList("contentns.selectDTopList");
+	}
+	
+	// 컨텐츠 영화 TOP10 리스트 통합 조회 
+	public List<Content> topMlist() { 
+		return (List<Content>)session.selectList("contentns.selectMTopList"); 
+	}
+	
 	// 컨텐츠 드라마 리스트 통합 조회
-	public List<Content> Dlist() {
-		return (List<Content>)session.selectList("contentns.selectDList");
+	public List<Content> Dlist(int startRow, int endRow) {
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return (List<Content>)session.selectList("contentns.selectDList", hm);
 	}
 
 	// 컨텐츠 영화 리스트 통합 조회
-	public List<Content> Mlist() {
-		return (List<Content>)session.selectList("contentns.selectMList");
+	public List<Content> Mlist(int startRow, int endRow) {
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return (List<Content>)session.selectList("contentns.selectMList", hm);
 	}
 
 	// Genre total
@@ -76,7 +99,11 @@ public class ContentDao {
 		return session.selectList("contentns.selectGenre", hm);
 	}
 	
-	public Content select(String cname) {
+	/*
+	 * public Content select(String cname) { return null; }
+	 */
+	public List<Content> myMain(int mno) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

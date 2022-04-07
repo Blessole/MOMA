@@ -41,7 +41,7 @@ public class LikesDao {
 		HashMap<String, Integer> hm = new HashMap<String, Integer>();
 		hm.put("cno", cno);
 		hm.put("mno", mno);
-		return (Likes) session.selectOne("bookmarkns.select", hm);
+		return (Likes) session.selectOne("likesns.select", hm);
 	}
 
 	// 좋아요 하면 insert
@@ -49,7 +49,7 @@ public class LikesDao {
 		HashMap<String, Integer> hm = new HashMap<String, Integer>();
 		hm.put("cno", cno);
 		hm.put("mno", mno);
-		session.insert("bookmarkns.insert", hm);
+		session.insert("likesns.insert", hm);
 	}
 
 	// 좋아요 취소
@@ -57,7 +57,7 @@ public class LikesDao {
 		HashMap<String, Integer> hm = new HashMap<String, Integer>();
 		hm.put("cno", cno);
 		hm.put("mno", mno);
-		session.delete("bookmarkns.delete", hm);
+		session.delete("likesns.delete", hm);
 	}
 	
 	// 마이페이지 - 메인

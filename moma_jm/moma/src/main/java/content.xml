@@ -3,32 +3,54 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="contentns">
 
+	<!-- cname 중복 체크 -->
+	<select id="select" parameterType="string" resultType="content">
+		select *
+		from content where cname = #{cname,jdbcType=VARCHAR} and del='n'
+	</select>
+	
+	<!-- 컨텐츠 상세 select -->
+	<select id="selectView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and del='n'
+	</select>
+
 	<!-- 컨텐츠 통합 리스트 -->
 	<select id="selectList" resultType="content">
-<!--  		select * from (select rownum rn, e.* from (
-		select * from content where del = 'n' order by cno desc) e)
-		where rn between #{startRow} and #{endRow}  -->
-		select * from content where del = 'n' order by cno
+		select * from content where del = 'n' order by cviews desc
 	</select>
 	
 	<!-- 드라마 전체 리스트 -->
 	<select id="selectDList" resultType="content">
-		select * from content where del = 'n' and sort ='D' order by cno
+		select * from (select rownum rn, e.* from (
+		select * from content where del = 'n' and sort ='D' order by cno asc) e)
+		where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<!-- 영화 전체 리스트 -->
 	<select id="selectMList" resultType="content">
-		select * from content where del = 'n' and sort ='M' order by cno
+		select * from (select rownum rn, e.* from (
+		select * from content where del = 'n' and sort ='M' order by cno desc) e)
+		where rn between #{startRow} and #{endRow}
 	</select>
-
+	
+	<!-- 드라마 top 10 리스트 -->
+	<select id="selectDTopList" resultType="content">
+	<![CDATA[ 	select * from (select * from content where del = 'n' and sort = 'D' order by cviews desc) where rownum <= 10  ]]>
+	</select>
+	
+	<!-- 영화 top 10 리스트 -->
+	<select id="selectMTopList" resultType="content">
+	<![CDATA[ 		select * from (select * from content where del = 'n' and sort = 'M' order by cviews desc) where rownum <= 10 ]]>
+	</select>
+	
 	<!-- 영화 상세 select -->
-	<!-- <select id="selectView" parameterType="integer" resultType="content">
-		select * from content where cno = #{cno} and sort='영화' and del='n'
+	<select id="selectMView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='M' and del='n'
 	</select>
-	 -->
+	
 	<!-- 드라마 상세 select -->
-	<select id="selectView" parameterType="integer" resultType="content">
-		select * from content where cno = #{cno} and del='n'
+	<select id="selectDView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='D' and del='n'
 	</select>
 	
 	<!-- content main total -->
@@ -37,18 +59,18 @@
 	</select>
 	
 	<!-- 태그로 리스트 조회 -->
-	<select id="selectTag" resultType="content" parameterType="hashmap">
+	<select id="selectGenre" resultType="content" parameterType="hashmap">
 		select * from (select rownum rn, e.* from (
 		select * from content where
-		<foreach collection="tag" item="item" open="(" close=")" separator="or">
-			genre like '%'||#{item}||'%'
+		<foreach collection="genre" item="item" open="(" close=")" separator="or">
+			genre like '%'||#{item}||'%' 
 		</foreach>
 		and del = 'n' order by cno desc) e)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<!-- display tag 필터 total -->
-	<select id="getTotalTag" resultType="integer">
+	<!-- content tag 필터 total -->
+	<select id="getTotalGenre" resultType="integer">
 		select count(*) from content where
 		<foreach collection="array" item="item" open="(">
 			genre like '%'||#{item}||'%' or

@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -34,6 +35,11 @@ public class ReservationDao {
 	
 	public int delete(int cno) {
 		return session.delete("reservationns.delete", cno);
+	}
+	
+	public List<Reservation> myMain(int mno) {
+		/* return session.selectList("reservationns.list", mno); */
+		return null;
 	}
 	
 }

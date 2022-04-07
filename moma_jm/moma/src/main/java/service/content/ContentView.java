@@ -19,7 +19,7 @@ public class ContentView implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		int cno = Integer.parseInt(request.getParameter("cno"));
-		// test
+
 		ContentDao cd = ContentDao.getInstance();
 		Content content = cd.select(cno);
 		

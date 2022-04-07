@@ -14,28 +14,17 @@ public class MomaMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-
+		System.out.println("MomaMain 자바파일 거쳤음");
+		
 		ContentDao cd = ContentDao.getInstance();
 		
-		List<Content> list = cd.list();
-		request.setAttribute("list", list);
 		
-		/*
-		 * int cno = Integer.parseInt(request.getParameter("cno")); 
-		 * String cname = (String) request.getParameter("cname"); 
-		 * Content content = cd.select(cno);
-		 * 
-		 * 
-		 * String genre[] = request.getParameterValues("genre"); // 태그별
-		 * 
-		 * System.out.println("MomaMain 자바파일 거쳤음");
-		 * 
-		 * 
-		 * List<Content> list = cd.list(); System.out.println(list);
-		 * 
-		 * request.setAttribute("content", content); request.getAttribute("content");
-		 * request.setAttribute("list", list);
-		 */
+		List<Content> dlist = cd.topDlist();
+		request.setAttribute("dlist", dlist);
+		
+		List<Content> mlist = cd.topMlist();
+		request.setAttribute("mlist", mlist);
+		
 		return "momaMain";
 	}
 }

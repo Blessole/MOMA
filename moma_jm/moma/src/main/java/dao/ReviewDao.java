@@ -37,7 +37,7 @@ public class ReviewDao {
 		return session.insert("reviewns.insert", review);
 	}
 	
-	// 해당 전시의 review list
+	// 각 컨텐츠의 review list
 	public List<Review> select(int cno, int startRow, int endRow) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("cno", cno);
@@ -51,11 +51,6 @@ public class ReviewDao {
 		return (float) session.selectOne("reviewns.selectStar", cno);
 	}
 	
-	// 리뷰 수정
-	public int update(Review review) {
-		return session.update("reviewns.update", review);
-	}
-	
 	// 리뷰 삭제
 	public int delete(int cno, int mno) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -63,23 +58,8 @@ public class ReviewDao {
 		map.put("mno", mno);
 		return session.update("reviewns.delete", map);
 	}
-	
-	// 리뷰 좋아요 plus
-	public void likesPlus(int rvno) {
-		session.update("reviewns.updateLikes", rvno);
-	}
-	
-	// 리뷰 좋아요 minus
-	public void likesMinus(int rvno) {
-		session.update("reviewns.updateLikes2", rvno);
-	}
-	
-	// 리뷰 수정된 likes 가져오기
-	public int selectLikes(int rvno) {
-		return (int) session.selectOne("reviewns.selectLikes", rvno);
-	}
-	
-	// 해당 전시의 총 리뷰 갯수
+
+	// 각 컨텐츠의 총 리뷰 갯수
 	public int getTotal(int cno) {
 		return (int) session.selectOne("reviewns.selectTotal", cno);
 	}

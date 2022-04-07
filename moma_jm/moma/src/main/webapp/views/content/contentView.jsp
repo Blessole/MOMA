@@ -10,7 +10,6 @@
 <c:set var="id" value='${sessionScope.id}'></c:set>
 <c:set var="mno" value='${sessionScope.mno}'></c:set>
 <script type="text/javascript">
-
 	$(function() {
 		// input range rate 조절
 		$('input[type="range"]').on('change mousemove', function() {
@@ -22,6 +21,9 @@
 		                + 'color-stop(' + val + ', #e4e4e4)'
 		                + ')'
            	);
+		    // span에 등록한 별점(range value) 넣기
+		    $('#input_span').text($(this).val());
+		});
 		
 		// scroll top
 		$('.scroll_top').on('click', function(e) {
@@ -38,6 +40,7 @@
 			}
 		});
 		
+	
 	// session check
 	function sessionChk(name) {
 		if (${empty id}) {
@@ -48,16 +51,8 @@
 		} else {
 			// 예매 체크
 			if (name == 'reserve') {
-				location.href="reserveForm.do?cno=${content.cno}";
+				location.href="reserveForm.so?cno=${content.cno}";
 			}
-		}
-	}
-	
-	// 리뷰 삭제 confirm
-	function delReview() {
-		var con = confirm("리뷰를 삭제하시겠습니까?");
-		if (con) {
-			location.href="adReviewDelete.do?cno=${content.cno }&mno=${mno }";
 		}
 	}
 	
@@ -70,7 +65,7 @@
 			}
 		} else {
 			$.post("contentLikesUpdate.do", "cno=${content.cno}", function(data) {
-				$('.like svg g').css('fill', data);
+				$('.likes svg g').css('fill', data);
 			});
 		}
 	}
@@ -80,26 +75,19 @@
 		if (${pageNum} > 1) {			
 			window.scrollTo(0, $('.scrollTop').position().top);
 		}
-	})
-	
-	// 별점 제어
-	ratingToPercent() {
-      const score = +this.restaurant.averageScore * 20;
-      return score + 1.5;
- 	}
-	
+	});
 </script>
 </head>
 <body>
+	<div class="container_middle content_view_container">
 		<!-- 상단 정보 -->
 		<div class="content_view_top">
-		<img src="../../upload/${content.poster }" alt="포스터">
-		<div class="text_area">
+			<h3 class="cname">${content.cname }</h3>
+			<h5 class="sort">${content.sort }</h5>
+			<img src="../../img/poster/${content.poster }" alt="포스터">
+			<div class="text_area">
 				<!-- 평균 별점 -->
-				<div class="text_area">
-				<h4 class="sort">${content.sort }</h4>
 				<div class="star_avg">★★★★★︎ &nbsp;<span class="text">${star_rate }</span></div>
-				<h3 class="cname">${content.cname }</h3>
 				<table class="bottom">
 					<tr>
 						<th>등급</th>
@@ -126,16 +114,17 @@
 						<td>${content.actor }</td>
 					</tr>
 				</table>
-							
 					<div class="bottom_box">
 						<button class="btn" onclick="location.href='reserveForm.so'">예매하기</button>
-						<button class="btn" onclick="sessionChk('netflix')">넷플릭스</button>
-						<button class="btn" onclick="sessionChk('watcha')">왓챠</button>
-						<button class="btn" onclick="sessionChk('tiving')">티빙</button>
+						<button class="btn" onclick="location.href='${content.netflix }'"><img alt="netflix" src="../../img/icon/netflix.png"></button>
+						<button class="btn" onclick="location.href='${content.watcha }'"><img alt="watcha" src="../../img/icon/watcha.png"></button>
+						<button class="btn" onclick="location.href='${content.tiving }'"><img alt="tiving" src="../../img/icon/tiving.png"></button>
 					</div>
-				</div>
 			</div>
-			
+		</div>
+
+		<!-- 리뷰, 리뷰 등록 -->
+		<div class="content_view_bottom">	
 			<!-- 리뷰 리스트 : start -->
 			<h4 class="sub_title pd_bottom">리뷰 <span>${rv_content }</span></h4>
 			<!-- 평균 별점 -->
@@ -143,9 +132,9 @@
 			<ul class="review_list_box">
 				<c:forEach var="review" items="${list }">
 					<li>
-						<form action="reviewForm.do?cno=${content.cno }&rvno=${review.rvno }" method="post">
+						<form action="reviewAction.do?cno=${content.cno }&rv_no=${review.rvno }" method="post">
 							<div class="profile">
-								<p class="nickname">${member.nickname }</p>
+								<p class="nickname">${review.nickname }</p>
 							</div>
 							<p class="detail_txt review">
 								${review.rv_content }							
@@ -194,6 +183,7 @@
 				</div>
 			</form>
 		</div>
+	</div>
 	<div class="scroll_top"><div class="arrow"></div></div>
 </body>
 </html>

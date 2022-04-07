@@ -2,7 +2,12 @@
 SET DEFINE OFF;
 
 select * from content;
+
+-- del 소문자로 바꾸기 용
 update content set del = 'n';
+-- 조회수 늘리기 용
+update content set cviews='5' where cno in (5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110); 
+
 INSERT INTO CONTENT VALUES (1,'도깨비','D',15,'판타지/로맨스','16부작','2016',0,'https://www.netflix.com/search?q=%EB%8F%84%EA%B9%A8%EB%B9%84&jbv=81012510',NULL,'https://www.tving.com/contents/P000340362','1.jpg','N','이응복','공유,김고은','N');
 INSERT INTO CONTENT VALUES (2,'호텔델루나','D',15,'판타지/공포/로맨스/코미디','16부작','2019',0,'https://www.netflix.com/search?q=%ED%98%B8%ED%85%94%EB%8D%B8&jbv=81205849',NULL,'https://www.tving.com/contents/P000941062', '2.jpg','N','오충환','이지은,여진구','N');
 INSERT INTO CONTENT VALUES (3,'미생','D',15,'드라마','20부작','2014',0,'https://www.netflix.com/search?q=%EB%AF%B8%EC%83%9D&jbv=80165295',NULL,'https://www.tving.com/contents/P000151356','3.jpg','N','김원석','임시완,이성민','N');

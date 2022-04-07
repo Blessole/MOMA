@@ -34,30 +34,6 @@
 	padding: 0 8px 0 8px;
 }
 
-/* filter */
-
-.filter {
-	cursor: pointer;
-	flex: none;
-}
-
-.filter img {
-	width: 22px;
-	margin-right: 2px;
-	vertical-align: bottom;
-}
-
-.filter span {
-	display: inline-block;
-	font-size: 18px;
-	font-weight: 600;
-}
-
-.button_box {
-	display: flex;
-	align-items: center;
-}
-
 /* content list */
 
 .content_list {
@@ -108,7 +84,29 @@
 	padding-top: 12px;
 }
 
-/* modal : start */
+/* filter modal : start */
+
+.filter {
+	cursor: pointer;
+	flex: none;
+}
+
+.filter img {
+	width: 22px;
+	margin-right: 2px;
+	vertical-align: bottom;
+}
+
+.filter span {
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.button_box {
+	display: flex;
+	align-items: center;
+}
 
 .filter_modal {
 	display: none;

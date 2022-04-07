@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <style type="text/css">@import url("../../css/content/momaMain.css");</style>
 <script type="text/javascript">
+    /* 상단 배너 기능 */
 	$(function() {
 		var auto = true;
 		var pause = 7000;
@@ -68,16 +69,19 @@
 		});
 		AutoPlay();
 	});
+    
+    /* 영화 순위 배너 */
+	$(function() {
+		$('.content_list').hover(function(){
+			$(this).animate({ left: 500}, 2000);
+		})
+	});
 </script>
 </head>
 <body>
 <!-- 검색바 -->
 <div class="container_wide">
-	<div class="search_container">
-		<input class="search" type="text" name="srch" placeholder="검색어를 입력해주세요">
-		<img class="search" id="search" alt="검색" src="/moma/img/icon/search.png" onclick="location.href='searchAction.so'" width="30px"></img>
-	</div>
-	
+
 	<div class="slider">
 		<div class="slides-container">
 			<div class="slide" onclick="location.href='boardMain.ha'">
@@ -100,13 +104,24 @@
 		</div>
 	</div>
 
+	<div class="search_box">
+		<form method="post" name="srch" action="searchAction.so">
+			<input class="search" type="text" name="srch" placeholder="검색어를 입력해주세요">
+			<button type="submit" style="border:none; background-color: transparent;"><img class="search" id="search" alt="검색" src="/moma/img/icon/search.png" width="30px"></img></button>
+		</form>
+	</div>
+	
 	<section class="content_main">
 		<!-- 영화 -->
 		<ul class="content_tab">
-			<li class="title" id="tab1" onclick="location.href='movieMain.so'">${content.cname } 영화</li>
+			<li class="title" id="tab1" onclick="location.href='movieMain.so'">영화</li>
+			    <div class = "subtitle"> - 조회수 TOP 10
+			    <button><</button>
+			    <button>></button>
+			    </div>
 			<div class="content_list">
 				<ul>
-					<c:forEach var="content" items="${list }">
+					<c:forEach var="content" items="${mlist }">
 						<c:if test="${content.sort == 'M' }">
 							<li>
 								<a href="contentView.do?cno=${content.cno }">
@@ -124,9 +139,10 @@
 		<!-- 드라마 -->
 		<ul class="content_tab">
 			<li class="title" id="tab2" onclick="location.href='dramaMain.so'">드라마</li>
+			   <div class = "subtitle"> - 조회수 TOP 10</div>
 			<div class="content_list">
 				<ul>
-					<c:forEach var="content" items="${list }">
+					<c:forEach var="content" items="${dlist }">
 						<c:if test="${content.sort == 'D' }">
 							<li>
 								<a href="contentView.do?cno=${content.cno }">
