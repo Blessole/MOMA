@@ -68,6 +68,11 @@
 		});
 		AutoPlay();
 	});
+	$(function() {
+		$('.content_list').hover(function(){
+			$(this).animate({ left: 500}, 2000);
+		})
+	});
 </script>
 </head>
 <body>
@@ -106,10 +111,10 @@
 	<section class="content_main">
 		<!-- 영화 -->
 		<ul class="content_tab">
-			<li class="title" id="tab1" onclick="location.href='movieMain.so'">영화</li>
+			<li class="title" id="tab1" onclick="location.href='movieMain.so'">영화 - 조회수 TOP 10</li>
 			<div class="content_list">
 				<ul>
-					<c:forEach var="content" items="${list }">
+					<c:forEach var="content" items="${mlist }">
 						<c:if test="${content.sort == 'M' }">
 							<li>
 								<a href="contentView.do?cno=${content.cno }">
@@ -126,10 +131,10 @@
 		</ul>
 		<!-- 드라마 -->
 		<ul class="content_tab">
-			<li class="title" id="tab2" onclick="location.href='dramaMain.so'">드라마</li>
+			<li class="title" id="tab2" onclick="location.href='dramaMain.so'">드라마 - 조회수 TOP 10</li>
 			<div class="content_list">
 				<ul>
-					<c:forEach var="content" items="${list }">
+					<c:forEach var="content" items="${dlist }">
 						<c:if test="${content.sort == 'D' }">
 							<li>
 								<a href="contentView.do?cno=${content.cno }">

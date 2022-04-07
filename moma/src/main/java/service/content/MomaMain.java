@@ -19,8 +19,11 @@ public class MomaMain implements CommandProcess {
 		ContentDao cd = ContentDao.getInstance();
 		
 		
-		List<Content> list = cd.list();
-		request.setAttribute("list", list);
+		List<Content> dlist = cd.topDlist();
+		request.setAttribute("dlist", dlist);
+		
+		List<Content> mlist = cd.topMlist();
+		request.setAttribute("mlist", mlist);
 		
 		return "momaMain";
 	}

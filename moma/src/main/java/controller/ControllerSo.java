@@ -83,7 +83,7 @@ public class ControllerSo extends HttpServlet {
 			// view는 "message.jsp" 문자
 		} catch (Throwable e) {	throw new ServletException(e); }
 		//RequestDispatcher dispatcher = request.getRequestDispatcher(view+".jsp"); // 파일 경로 설정
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/content/"+view+".jsp"); // 파일 경로 재설정-하영
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view+".jsp"); // 파일 경로 재설정-하영
 		dispatcher.forward(request, response);
 	}
 

@@ -89,7 +89,7 @@ public class ControllerDo extends HttpServlet {
 		} catch (Throwable e) {
 			throw new ServletException(e);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/content/"+view+".jsp"); // 파일 경로 설정
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view+".jsp"); // 파일 경로 설정
 		dispatcher.forward(request, response);
 	}
 

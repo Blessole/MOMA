@@ -7,10 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">@import url("../../css/content/contentView.css");</style>
-<%-- <c:set var="id" value='${sessionScope.id}'></c:set>
-<c:set var="mno" value='${sessionScope.mno}'></c:set> --%>
+<c:set var="id" value='${sessionScope.id}'></c:set>
+<c:set var="mno" value='${sessionScope.mno}'></c:set>
 <script type="text/javascript">
-
 	$(function() {
 		// input range rate 조절
 		$('input[type="range"]').on('change mousemove', function() {
@@ -22,6 +21,9 @@
 		                + 'color-stop(' + val + ', #e4e4e4)'
 		                + ')'
            	);
+		    // span에 등록한 별점(range value) 넣기
+		    $('#input_span').text($(this).val());
+		});
 		
 		// scroll top
 		$('.scroll_top').on('click', function(e) {
@@ -38,6 +40,7 @@
 			}
 		});
 		
+	
 	// session check
 	function sessionChk(name) {
 		if (${empty id}) {
@@ -48,24 +51,8 @@
 		} else {
 			// 예매 체크
 			if (name == 'reserve') {
-				location.href="reserveForm.do?cno=${content.cno}";
+				location.href="reserveForm.so?cno=${content.cno}";
 			}
-		}
-	}
-	
-	// 컨텐츠 삭제 confirm
-	function del(name) {
-		var con = confirm("전시를 삭제하시겠습니까?");
-		if (con) {
-			location.href="adContentDelete.bb?cno=${content.cno }";
-		}
-	}
-	
-	// 리뷰 삭제 confirm
-	function delReview() {
-		var con = confirm("리뷰를 삭제하시겠습니까?");
-		if (con) {
-			location.href="adReviewDelete.do?cno=${content.cno }&mno=${mno }";
 		}
 	}
 	
@@ -78,7 +65,7 @@
 			}
 		} else {
 			$.post("contentLikesUpdate.do", "cno=${content.cno}", function(data) {
-				$('.like svg g').css('fill', data);
+				$('.likes svg g').css('fill', data);
 			});
 		}
 	}
@@ -88,26 +75,19 @@
 		if (${pageNum} > 1) {			
 			window.scrollTo(0, $('.scrollTop').position().top);
 		}
-	})
-	
-	// 별점 제어
-	ratingToPercent() {
-      const score = +this.restaurant.averageScore * 20;
-      return score + 1.5;
- 	}
-	
+	});
 </script>
 </head>
 <body>
+	<div class="container_middle content_view_container">
 		<!-- 상단 정보 -->
 		<div class="content_view_top">
-		<img src="../../upload/${content.poster }" alt="포스터">
-		<div class="text_area">
+			<h3 class="cname">${content.cname }</h3>
+			<h5 class="sort">${content.sort }</h5>
+			<img src="../../upload/${content.poster }" alt="포스터">
+			<div class="text_area">
 				<!-- 평균 별점 -->
-				<div class="text_area">
-				<h4 class="sort">${content.sort }</h4>
 				<div class="star_avg">★★★★★︎ &nbsp;<span class="text">${star_rate }</span></div>
-				<h3 class="cname">${content.cname }</h3>
 				<table class="bottom">
 					<tr>
 						<th>등급</th>
@@ -134,24 +114,17 @@
 						<td>${content.actor }</td>
 					</tr>
 				</table>
-							
 					<div class="bottom_box">
-						<button class="btn" onclick="location.href='reserveForm.so'">예매하기</button>
-						<button class="btn" onclick="sessionChk('netflix')">넷플릭스</button>
-						<button class="btn" onclick="sessionChk('watcha')">왓챠</button>
-						<button class="btn" onclick="sessionChk('tiving')">티빙</button>
+						<button class="btn1" onclick="location.href='reserveForm.so'">예매하기</button>
+						<button class="btn2" onclick="sessionChk('netflix')">넷플릭스</button>
+						<button class="btn3" onclick="sessionChk('watcha')">왓챠</button>
+						<button class="btn4" onclick="sessionChk('tiving')">티빙</button>
 					</div>
-				</div>
 			</div>
-			
-			<!-- 컨텐츠 수정, 삭제 버튼 -->
-			<c:if test="${mno == content.mno }">
-				<div class="container_bottom_right">
-					<a href="adContentUpdate.do?cno=${content.cno }" class="btn btn_stroke btn_small">수정</a>
-					<a onclick="del()" class="btn btn_stroke btn_small">삭제</a>
-				</div>
-			</c:if>
-			
+		</div>
+
+		<!-- 리뷰, 리뷰 등록 -->
+		<div class="content_view_bottom">	
 			<!-- 리뷰 리스트 : start -->
 			<h4 class="sub_title pd_bottom">리뷰 <span>${rv_content }</span></h4>
 			<!-- 평균 별점 -->
@@ -159,9 +132,9 @@
 			<ul class="review_list_box">
 				<c:forEach var="review" items="${list }">
 					<li>
-						<form action="reviewUpdate.do?cno=${content.cno }&rvno=${review.rvno }" method="post">
+						<form action="reviewAction.do?cno=${content.cno }&rv_no=${review.rvno }" method="post">
 							<div class="profile">
-								<p class="nickname">${member.nickname }</p>
+								<p class="nickname">${review.nickname }</p>
 							</div>
 							<p class="detail_txt review">
 								${review.rv_content }							
@@ -201,19 +174,16 @@
 				<textarea name="content" placeholder="감상평을 작성해 주세요." required onclick="sessionChk()"></textarea>
 				<p class="detail_txt pd_bottom">별점을 선택해 주세요.</p>
 				<!-- 별점 등록 -->
-				<div class="star_ratings">
-					<div class="star-ratings-fill space-x-2 text-lg":style="{ width: ratingToPercent + '%' }">
-						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-					</div>
-					<div class="star-ratings-base space-x-2 text-lg">
-						<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-					</div>
+				<div class="star_avg rate">
+					<input type="range" name="star_rate" min="0" max="10" step="1" value="0" required>
+					<span class="text" id="input_span">0</span>
 				</div>
 				<div class="submit_box">
 					<input type="submit" class="btn" value="등록하기">
 				</div>
 			</form>
 		</div>
+	</div>
 	<div class="scroll_top"><div class="arrow"></div></div>
 </body>
 </html>

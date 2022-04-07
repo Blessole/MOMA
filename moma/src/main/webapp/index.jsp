@@ -8,7 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-	location.href="momaMain.so";
+	location.href="/moma/views/content/momaMain.so";
 </script>
 </body>
 </html>

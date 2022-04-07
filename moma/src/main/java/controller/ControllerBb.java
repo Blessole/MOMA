@@ -96,7 +96,7 @@ public class ControllerBb extends HttpServlet {
 		    	  // view는 pgm article에 보여줄 프로그램
 		    RequestDispatcher dispatcher =
 		    		//아래 ()에서 view ===> "main.jsp?pgm="+view 로 변경함. 왜? 이미지 위에 nav를 보여주고 싶으니까.
-		      	request.getRequestDispatcher("/views/content/"+view+".jsp");
+		      	request.getRequestDispatcher(view+".jsp");
 		   dispatcher.forward(request, response);
 		}
 

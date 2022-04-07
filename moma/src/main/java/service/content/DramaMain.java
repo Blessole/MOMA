@@ -67,7 +67,9 @@ public class DramaMain implements CommandProcess {
 		request.setAttribute("startPage", startPage); 
 		request.setAttribute("endPage", endPage); 
 		request.setAttribute("totalPage", totalPage);
-
+		
+		System.out.println("dramaMain 자바파일 여기도 지나가니?");
+		
 		return "dramaMain";
 	}
 
