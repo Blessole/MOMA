@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.review {
+	display: none;
+}
+
+.review {
+	display: block;
+}

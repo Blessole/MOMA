@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+.content_view_top {
+	margin-top: 42px;
+	overflow: hidden;
+}
+
+.content_view_top img {
+	width: 330px;
+	height: 440px;
+	object-fit: cover;
+}
+
+.content_view_top .btn {
+	display: inline-block;
+	width: calc(100% - 56px);
+}
+
+.content_view_top .text_area {
+	float: right;
+	vertical-align: top;
+	padding-left: 6%;
+	width: calc(100% - 340px);
+}
+
+.content_view_top .star_avg {
+	padding-bottom: 8px;
+	padding-top: 0;
+}
+
+.text_area .cname {
+	font-size: 24px;
+	/* font-weight: 600; */
+}
+
+.text_area .sort {
+	font-size: 15px;
+}
+
+.text_area .intro {
+	font-size: 14px;
+	line-height: 22px;
+	padding-top: 24px;
+	word-break: keep-all;
+	white-space: pre-wrap; /* width 설정 */
+	font-family: inherit;
+}
+
+.text_area .bottom {
+	text-align: left;
+	margin: 24px 0 24px 0;
+	font-size: 14px;
+	line-height: 24px;
+	width: 100%;
+}
+
+.text_area .bottom th {
+	width: 40%;
+	font-weight: 600;
+}
+
+.text_area .bottom tr {
+	vertical-align: top;
+}
+
+.text_area .bottom td span {
+	font-weight: 600;
+}
+
+.bottom_box {
+	font-size: 0;
+	text-align: right;
+}
+
+
+/* 공통 요소 : start */
+.sub_title {
+	font-weight: 600;
+	font-size: 18px;
+	padding: 36px 0 24px 0;
+	font-weight: 700;
+}
+
+.detail_txt {
+	font-size: 14px;
+	line-height: 22px;
+	padding-bottom: 24px;
+	outline:none;
+}
+
+.pd_bottom {
+	padding-bottom: 8px;
+}
+
+/* 별점 */
+.star_rating {font-size:0; letter-spacing:-4px;}
+.star_rating a {
+    font-size:22px;
+    letter-spacing:0;
+    display:inline-block;
+    margin-left:5px;
+    color:#e0e0e0;
+    text-decoration:none;
+}
+.star_rating a:first-child {margin-left:0;}
+.star_rating a.on {color:#f5e9a0;}
+
+
+/* 공통 요소 : end */
+
+.sub_title span {
+	color: var(- -point-color);
+}
+
+/* 리뷰 리스트 */
+.review_list_box {
+	margin: 0 -20px 24px -20px;
+	font-size: 0;
+}
+
+.review_list_box li {
+	width: 50%;
+	padding: 0 20px 20px 20px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+.profile .nickname {
+	font-size: 14px;
+	font-weight: 600;
+	display: inline-block;
+	line-height: 34px;
+	margin-left: 7px;
+}
+
+.review {
+	padding-top: 16px;
+	padding-bottom: 8px;
+}
+
+
+.review_btn {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.review_btn .btn_small {
+	margin-bottom: 0;
+    border: 0;
+    color: #aaa;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0 0 0 8px;
+    height: inherit;
+    width: inherit;
+    text-align: right;
+    text-decoration: underline;
+}
