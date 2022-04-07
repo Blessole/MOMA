@@ -109,30 +109,7 @@
 	padding: 0 8px 0 8px;
 }
 
-/* filter */
-/*
-.filter {
-	cursor: pointer;
-	flex: none;
-}
 
-.filter img {
-	width: 22px;
-	margin-right: 2px;
-	vertical-align: bottom;
-}
-
-.filter span {
-	display: inline-block;
-	font-size: 18px;
-	font-weight: 600;
-}
-
-.button_box {
-	display: flex;
-	align-items: center;
-}
- */
 /* content list */
 
 .content_list {
@@ -177,55 +154,7 @@
 	word-wrap: break-word;
 }
 
-/* .content_list .text_area .location {
-	font-size: 14px;
-	color: #7b7b7b;
-	padding-top: 12px;
-} */
 
-/* modal : start */
-/*
-.filter_modal {
-	display: none;
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	z-index: 100;
-	top: 0;
-}
-
-.filter_modal .dim_box {
-	width: 100%;
-	height: 100%;
-	background-color: #000;
-	opacity: 0.5;
-}
-
-.filter_modal .search {
-	position: absolute;
-	width: 20px;
-	top: 24px;
-	right: 24px;
-	cursor: pointer;
-}
-
-.filter_modal .modal_content {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: #fff;
-	width: 34%;
-	min-height: 50vh;
-	padding: 60px;
-}
-
-.modal_content .content_inner {
-	width: 100%;
-	height: 100%;
-	font-size: 0;
-	padding-bottom: 56px;
-}
- */
+/* 영화,드라마 slick slide */
 
 

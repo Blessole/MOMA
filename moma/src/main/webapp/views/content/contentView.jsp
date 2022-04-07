@@ -84,7 +84,7 @@
 		<div class="content_view_top">
 			<h3 class="cname">${content.cname }</h3>
 			<h5 class="sort">${content.sort }</h5>
-			<img src="../../upload/${content.poster }" alt="포스터">
+			<img src="../../img/poster/${content.poster }" alt="포스터">
 			<div class="text_area">
 				<!-- 평균 별점 -->
 				<div class="star_avg">★★★★★︎ &nbsp;<span class="text">${star_rate }</span></div>

@@ -32,6 +32,11 @@ public class ContentDao {
 		}
 	}
 
+	// cname 중복 체크
+	public Content select(String cname) {
+		return (Content) session.selectOne("contentns.select", cname);
+	}
+	
 	// 컨텐츠 상세 select
 	public Content select(int cno) {
 		return (Content) session.selectOne("contentns.selectView", cno);

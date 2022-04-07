@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">@import url("../../css/content/momaMain.css");</style>
+<link rel="stylesheet" type="text/css" href="./slick-1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="./slick-1.8.1/slick/slick-theme.css"/>
 <script type="text/javascript">
+    /* 상단 배너 기능 */
 	$(function() {
 		var auto = true;
 		var pause = 7000;
@@ -68,11 +71,61 @@
 		});
 		AutoPlay();
 	});
-	$(function() {
-		$('.content_list').hover(function(){
-			$(this).animate({ left: 500}, 2000);
-		})
+    
+    /* 영화 순위 배너 */
+	$(document).ready(function(){
+	  $('.content_list').slick({
+		  slide: 'div',      //슬라이드 되어야 할 태그 ex) div, li
+          infinite : true,    //무한 반복 옵션   
+          slidesToShow : 4,      // 한 화면에 보여질 컨텐츠 개수
+          slidesToScroll : 1,      //스크롤 한번에 움직일 컨텐츠 개수
+          speed : 100,    // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+          arrows : true,       // 옆으로 이동하는 화살표 표시 여부
+          dots : true,       // 스크롤바 아래 점으로 페이지네이션 여부
+          autoplay : true,         // 자동 스크롤 사용 여부
+          autoplaySpeed : 10000,       // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+          pauseOnHover : true,      // 슬라이드 이동   시 마우스 호버하면 슬라이더 멈추게 설정
+          vertical : false,      // 세로 방향 슬라이드 옵션
+          prevArrow : "<button type='button' class='slick-prev'>Previous</button>",      // 이전 화살표 모양 설정
+          nextArrow : "<button type='button' class='slick-next'>Next</button>",      // 다음 화살표 모양 설정
+          dotsClass : "slick-dots",    //아래 나오는 페이지네이션(점) css class 지정
+	  });
 	});
+	$('.responsive').slick({
+		  dots: true,
+		  infinite: false,
+		  speed: 300,
+		  slidesToShow: 4,
+		  slidesToScroll: 4,
+		  responsive: [
+		    {
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 3,
+		        slidesToScroll: 3,
+		        infinite: true,
+		        dots: true
+		      }
+		    },
+		    {
+		      breakpoint: 600,
+		      settings: {
+		        slidesToShow: 2,
+		        slidesToScroll: 2
+		      }
+		    },
+		    {
+		      breakpoint: 480,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1
+		      }
+		    }
+		    // You can unslick at a given breakpoint now by adding:
+		    // settings: "unslick"
+		    // instead of a settings object
+		  ]
+		});
 </script>
 </head>
 <body>
@@ -111,11 +164,13 @@
 	<section class="content_main">
 		<!-- 영화 -->
 		<ul class="content_tab">
-			<li class="title" id="tab1" onclick="location.href='movieMain.so'">영화 - 조회수 TOP 10</li>
+			<li class="title" id="tab1" onclick="location.href='movieMain.so'">영화</li>
+			    <div class = "subtitle"> - 조회수 TOP 10</div>
 			<div class="content_list">
 				<ul>
 					<c:forEach var="content" items="${mlist }">
 						<c:if test="${content.sort == 'M' }">
+							<div class="ctslide">
 							<li>
 								<a href="contentView.do?cno=${content.cno }">
 									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
@@ -124,6 +179,7 @@
 									</div>
 								</a>
 							</li>
+							</div>
 						</c:if>
 					</c:forEach>
 				</ul>
@@ -131,7 +187,8 @@
 		</ul>
 		<!-- 드라마 -->
 		<ul class="content_tab">
-			<li class="title" id="tab2" onclick="location.href='dramaMain.so'">드라마 - 조회수 TOP 10</li>
+			<li class="title" id="tab2" onclick="location.href='dramaMain.so'">드라마</li>
+			   <div class = "subtitle"> - 조회수 TOP 10</div>
 			<div class="content_list">
 				<ul>
 					<c:forEach var="content" items="${dlist }">
@@ -151,5 +208,8 @@
 		</ul>
 	</section>
 </div>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="./slick-1.8.1/slick/slick.min.js"></script>
 </body>
 </html>
