@@ -13,15 +13,16 @@ public class ReserveAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("ReserveAction 자바파일 지나감");
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		int mno = Integer.parseInt(request.getParameter("mno"));
-		int rsnum = 0;
+		String rstime = request.getParameter("rstime");
+		int rsnum = Integer.parseInt(request.getParameter("rsnum"));
+		String rsdate = request.getParameter("rsdate");
+		String cinema = request.getParameter("cinema");
 		
 		ContentDao cd = ContentDao.getInstance();
 		Content ct = cd.select(cno);
-		if (request.getParameter("rsnum") != null) {
-			rsnum = Integer.parseInt(request.getParameter("rsnum"));
-		}
 		
 		Reservation reserve = new Reservation();
 		reserve.setCno(cno);
@@ -31,6 +32,7 @@ public class ReserveAction implements CommandProcess {
 		ReservationDao rv = ReservationDao.getInstance();
 		int result = rv.insert(reserve);
 		
+		System.out.println("ReserveAction 자바파일 지나감22");
 		request.setAttribute("result", result);
 		return "reserveAction";
 	}

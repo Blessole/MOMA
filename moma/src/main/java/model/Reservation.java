@@ -3,7 +3,7 @@ package model;
 import java.sql.Date;
 
 public class Reservation {
-	private int rs_no;
+	private int rsno;
 	private Date rsdate;
 	private String rstime;
 	private int rsnum;
@@ -14,11 +14,11 @@ public class Reservation {
 	private int mno;
 	private int cno;
 	
-	public int getRs_no() {
-		return rs_no;
+	public int getRsno() {
+		return rsno;
 	}
-	public void setRs_no(int rs_no) {
-		this.rs_no = rs_no;
+	public void setRsno(int rsno) {
+		this.rsno = rsno;
 	}
 	public Date getRsdate() {
 		return rsdate;

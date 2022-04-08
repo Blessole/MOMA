@@ -118,8 +118,10 @@
 				<div class="option_title">수량 선택
 					<div class="cnt_box">
 						<button class="button" type="button" id="minus">-</button>&nbsp;
-						<span class="cnt_num"> 1 </span>&nbsp;
+						<span class="rsnum"> 1 </span>&nbsp;
 						<button class="button" type="button" id="plus">+</button>
+						<input type="hidden" name="rsnum" class="input_hidden" >
+						<input type="hidden" name="price" class="input_hidden">
 					</div>
 				</div>
 				<div class="option_title">가격

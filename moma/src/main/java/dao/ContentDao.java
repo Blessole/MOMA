@@ -47,11 +47,16 @@ public class ContentDao {
 		return session.selectList("contentns.search", srch);
 	}
 	
-	// content paging total
-	public int getTotalC() {
-		return (int) session.selectOne("contentns.getTotalC");
+	// 드라마 paging total
+	public int getTotalD() {
+		return (int) session.selectOne("contentns.getTotalD");
 	}
-
+	
+	// 영화 paging total
+	public int getTotalM() {
+		return (int) session.selectOne("contentns.getTotalM");
+	}
+	
 /*
 	// 컨텐츠 리스트 통합 조회
 	public List<Content> list() {
@@ -85,23 +90,34 @@ public class ContentDao {
 		return (List<Content>)session.selectList("contentns.selectMList", hm);
 	}
 
-	// Genre total
-	public int getTotalGenre(String[] genre) {
-		return (int) session.selectOne("contentns.getTotalGenre", genre);
+	// Drama Genre total
+	public int getTotalDGenre(String[] genre) {
+		return (int) session.selectOne("contentns.getTotalDGenre", genre);
 	}
 	
-	// 장르태그로 리스트 조회
-	public List<Content> listGenre(String[] genre, int startRow, int endRow) {
+	// Movie Genre total
+	public int getTotalMGenre(String[] genre) {
+		return (int) session.selectOne("contentns.getTotalMGenre", genre);
+	}
+	
+	// 장르태그로 드라마 리스트 조회
+	public List<Content> listDGenre(String[] genre, int startRow, int endRow) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("startRow", startRow);
 		hm.put("endRow", endRow);
 		hm.put("genre", genre);
-		return session.selectList("contentns.selectGenre", hm);
+		return session.selectList("contentns.selectDGenre", hm);
 	}
 	
-	/*
-	 * public Content select(String cname) { return null; }
-	 */
+	// 장르태그로 영화 리스트 조회
+	public List<Content> listMGenre(String[] genre, int startRow, int endRow) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		hm.put("genre", genre);
+		return session.selectList("contentns.selectMGenre", hm);
+	}
+
 	public List<Content> myMain(int mno) {
 		// TODO Auto-generated method stub
 		return null;

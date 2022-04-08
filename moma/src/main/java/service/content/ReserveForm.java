@@ -16,17 +16,16 @@ public class ReserveForm implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("ReserveForm 자바파일 지나감!");
 		
-		int cno = Integer.parseInt(request.getParameter("cno"));
+		// session mno로 회원 정보 조회하기
 		HttpSession session = request.getSession();
 		int mno = (int) session.getAttribute("mno");
-		
-		ContentDao cd = ContentDao.getInstance();
-		Content content = cd.select(cno);
-		
-		// session mno로 회원 정보 조회하기
 		MemberDao md = MemberDao.getInstance();
 		Member member = md.select(mno);
 		
+		int cno = Integer.parseInt(request.getParameter("cno"));
+		ContentDao cd = ContentDao.getInstance();
+		Content content = cd.select(cno);
+
 		request.setAttribute("cno", cno);
 		request.setAttribute("content", content);
 		request.setAttribute("member", member);

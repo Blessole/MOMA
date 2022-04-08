@@ -115,7 +115,7 @@
 					</tr>
 				</table>
 					<div class="bottom_box">
-						<button class="btn1" onclick="location.href='reserveForm.so'">예매하기</button>
+						<button class="btn1" onclick="location.href='reserveForm.so?cno=${cno }'">예매하기</button>
 						<button class="btn2" onclick="sessionChk('netflix')">넷플릭스</button>
 						<button class="btn3" onclick="sessionChk('watcha')">왓챠</button>
 						<button class="btn4" onclick="sessionChk('tiving')">티빙</button>

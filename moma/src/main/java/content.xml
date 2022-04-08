@@ -40,7 +40,7 @@
 	
 	<!-- 영화 top 10 리스트 -->
 	<select id="selectMTopList" resultType="content">
-	<![CDATA[ 		select * from (select * from content where del = 'n' and sort = 'M' order by cviews desc) where rownum <= 10 ]]>
+	<![CDATA[ 	select * from (select * from content where del = 'n' and sort = 'M' order by cviews desc) where rownum <= 10 ]]>
 	</select>
 	
 	<!-- 영화 상세 select -->
@@ -53,29 +53,54 @@
 		select * from content where cno = #{cno} and sort='D' and del='n'
 	</select>
 	
-	<!-- content main total -->
-	<select id="getTotalC" resultType="integer">
-		select count(*) from content where del = 'n'
+	<!-- 드라마 main total -->
+	<select id="getTotalD" resultType="integer">
+		select count(*) from content where del = 'n'  and sort='D'
+	</select>
+	
+	<!-- 영화 main total -->
+	<select id="getTotalM" resultType="integer">
+		select count(*) from content where del = 'n'  and sort='M'
 	</select>
 	
 	<!-- 태그로 리스트 조회 -->
-	<select id="selectGenre" resultType="content" parameterType="hashmap">
+	<select id="selectDGenre" resultType="content" parameterType="hashmap">
+		select * from (select rownum rn, e.* from (
+		select * from content where 
+		<foreach collection="genre" item="item" open="(" close=")" separator="or">
+			genre like '%'||#{item}||'%' 
+		</foreach>
+		and sort='D' and del = 'n' order by cno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+
+	<!-- 태그로 리스트 조회 -->
+	<select id="selectMGenre" resultType="content" parameterType="hashmap">
 		select * from (select rownum rn, e.* from (
 		select * from content where
 		<foreach collection="genre" item="item" open="(" close=")" separator="or">
 			genre like '%'||#{item}||'%' 
 		</foreach>
-		and del = 'n' order by cno desc) e)
+		and sort='M' and del = 'n' order by cno desc) e)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<!-- content tag 필터 total -->
-	<select id="getTotalGenre" resultType="integer">
+	<!-- 드라마 genre 필터 total -->
+	<select id="getTotalDGenre" resultType="integer">
 		select count(*) from content where
 		<foreach collection="array" item="item" open="(">
 			genre like '%'||#{item}||'%' or
 		</foreach>
-		1 = 0) and del = 'n' order by cno desc
+		1 = 0) and sort='D' and del = 'n' order by cno desc
+	</select>
+	
+	<!-- 영화 genre 필터 total -->
+	<select id="getTotalMGenre" resultType="integer">
+		select count(*) from content where
+		<foreach collection="array" item="item" open="(">
+			genre like '%'||#{item}||'%' or
+		</foreach>
+		1 = 0) and sort='M' and del = 'n' order by cno desc
 	</select>
 	
 	<!-- 검색 -->

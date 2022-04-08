@@ -31,7 +31,7 @@ public class DramaMain implements CommandProcess {
 		int currentPage = Integer.parseInt(pageNum);
 		
 		// 페이지 총 개수
-		int total = cd.getTotalC();
+		int total = cd.getTotalD();
 		
 		// 시작번호 : (페이지번호-1)*페이지당 개수 +1
 		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
@@ -43,8 +43,8 @@ public class DramaMain implements CommandProcess {
 		// 태그만 조회하기
 		List<Content> listGenre = null;
 		if (genre != null) {
-			listGenre = cd.listGenre(genre, startRow, endRow);
-			total = cd.getTotalGenre(genre);
+			listGenre = cd.listDGenre(genre, startRow, endRow);
+			total = cd.getTotalDGenre(genre);
 		}
 		
 		
@@ -67,9 +67,7 @@ public class DramaMain implements CommandProcess {
 		request.setAttribute("startPage", startPage); 
 		request.setAttribute("endPage", endPage); 
 		request.setAttribute("totalPage", totalPage);
-		
-		System.out.println("dramaMain 자바파일 여기도 지나가니?");
-		
+
 		return "dramaMain";
 	}
 

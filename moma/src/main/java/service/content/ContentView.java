@@ -79,6 +79,7 @@ public class ContentView implements CommandProcess {
 			color = "none";
 		}
 		
+		request.setAttribute("cno", cno);
 		request.setAttribute("content", content);
 		request.setAttribute("list", list);
 		request.setAttribute("star_rate", star_rate);

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">@import url("../../css/content/momaMain.css");</style>
+<style type="text/css">@import url("../../css/content/contentMain.css");</style>
 <script type="text/javascript">
 	$(function() {
 		// 페이징 현재페이지 설정
@@ -22,7 +22,7 @@
 		});
 
 		// filter modal close
-		$('.close, .dim_box, .btn').on('click', function() {
+		$('.close, .dim_box .btn').on('click', function() {
 			$('.filter_modal').hide();
 			$('html body').css('overflow', 'auto');
 		});
@@ -46,15 +46,15 @@
 				<a class="filter"><img alt="필터" src="../../img/icon/filter.png"> <span>필터</span></a>
 			</div>
 			<div class="content_list">
-			<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 				<ul>
 					<c:if test="${empty listGenre }">
 						<c:forEach var="content" items="${list }">
 							<li>
 								<a href="contentView.do?cno=${content.cno }">
-									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
+									<img class="poster_img"  style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 									<div class="text_area">
 										<p class="content_list_title">${content.cname }</p>
+											<img alt="heart" src="../../img/icon/heart (1).png">
 									</div>
 								</a>
 							</li>
@@ -63,16 +63,14 @@
 					<!-- 태그별 조회 -->
 					<c:if test="${not empty listGenre }">
 						<c:forEach var="content" items="${listGenre }">
-							<c:if test="${content.sort == 'D' }">
 								<li>
 									<a href="contentView.do?cno=${content.cno }"> 
-										<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
+										<img class="poster_img" style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 										<div class="text_area">
 											<p class="content_list_title">${content.cname }</p>
 										</div>
 									</a>
 								</li>
-							</c:if>
 						</c:forEach>
 					</c:if>
 				</ul>
@@ -112,10 +110,10 @@
 			</div> <!-- paging -->
 		</section>
 	</div>
-
+	
 	<!-- modal -->
 	<form class="filter_modal" action="dramaMain.so" method="post">
-		<div class="dim_box"></div>
+	<div class="dim_box"></div>
 		<div class="modal_content">
 			<img class="close" src="../../img/icon/close.png"></img>
 			<div class="content_inner">
@@ -129,7 +127,7 @@
 							<label class="genre" for="t1">로맨스</label>
 						</div>
 						<div class="label_box">
-							<input type="checkbox" name="genre" id="t1" value="로맨스">
+							<input type="checkbox" name="genre" id="t2" value="SF">
 							<label class="genre" for="t2">SF</label>
 						</div>
 						<div class="label_box">
@@ -163,6 +161,22 @@
 						<div class="label_box">
 							<input type="checkbox" name="genre" id="t10" value="다큐멘터리">
 							<label class="genre" for="t10">다큐멘터리</label>
+						</div>
+						<div class="label_box">
+							<input type="checkbox" name="genre" id="t11" value="사회이슈">
+							<label class="genre" for="t11">사회이슈</label>
+						</div>
+						<div class="label_box">
+							<input type="checkbox" name="genre" id="t12" value="애니메이션">
+							<label class="genre" for="t12">애니메이션</label>
+						</div>
+						<div class="label_box">
+							<input type="checkbox" name="genre" id="t13" value="호러">
+							<label class="genre" for="t13">호러</label>
+						</div>
+						<div class="label_box">
+							<input type="checkbox" name="genre" id="t14" value="미스터리">
+							<label class="genre" for="t14">미스터리</label>
 						</div>
 					</div>
 				</div>

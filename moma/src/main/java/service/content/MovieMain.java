@@ -32,7 +32,7 @@ public class MovieMain implements CommandProcess {
 		int currentPage = Integer.parseInt(pageNum);
 				
 		// 페이지 총 개수
-		int total = cd.getTotalC();
+		int total = cd.getTotalM();
 			
 		// 시작번호 : (페이지번호-1)*페이지당 개수 +1
 		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
@@ -44,8 +44,8 @@ public class MovieMain implements CommandProcess {
 		// 태그만 조회하기
 		List<Content> listGenre = null;
 		if (genre != null) {
-			listGenre = cd.listGenre(genre, startRow, endRow);
-			total = cd.getTotalGenre(genre);
+			listGenre = cd.listMGenre(genre, startRow, endRow);
+			total = cd.getTotalMGenre(genre);
 		}
 		
 		 // Math.ceil : 현재 실수보다 큰 정수 
