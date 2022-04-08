@@ -5,8 +5,8 @@
 		<selectKey keyProperty="rvno" order="BEFORE" resultType="integer">
 			select nvl(max(rvno), 0) + 1 rvno from review
 		</selectKey>
-		insert into review values(#{rvno}, #{star_rate}, #{rv_content},
-		sysdate, 0, 'n', #{mno}, #{cno})
+		insert into review values#{rvno}, #{star_rate}, #{rv_content},
+		#{rv_date}, 'n', #{mno}, #{cno}
 	</insert>
 	
 	<!-- 각 컨텐츠의 review list -->
