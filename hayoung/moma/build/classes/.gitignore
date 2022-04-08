@@ -1,0 +1,13 @@
+/controller/
+/moma/
+/dao/
+/model/
+/service/
+/configuration.xml
+/db.properties
+/content.xml
+/board.xml
+/reply.xml
+/comment.xml
+/boardcmt.xml
+/member.xml
