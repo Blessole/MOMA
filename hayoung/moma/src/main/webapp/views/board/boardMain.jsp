@@ -30,7 +30,11 @@ function sessionChk() {
 <body>
 <main>
 <div class="container_wide">
+
 <h1 class="title">MOMA JOURNAL</h1>
+<div class="txt">모마가 추천하는 작품 모음</div>
+
+
 	<div class="board_grid">
 		<c:if test="${empty list }">
 			<div>게시글이 없습니다</div>
@@ -45,7 +49,7 @@ function sessionChk() {
 							<a class="board_title" href="boardView.do?bno=${board.bno }">${board.bname }</a>
 
 							<div class="board_image">
-								<a href="#"> <img width="300" height="300" alt="썸네일"
+								<a href="#"> <img alt="썸네일" width=100% height=100%
 									src="../../img/boardimg/${board.image}"></a>
 							</div>
 
