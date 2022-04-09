@@ -11,7 +11,7 @@
 <c:if test="${result>0 }">
 	<script type="text/javascript">
 		alert("예매가 완료되었습니다.");
-		location.href="momaMain";
+		location.href="momaMain.so";
 	</script>
 </c:if>
 <c:if test="${result<=0 }">

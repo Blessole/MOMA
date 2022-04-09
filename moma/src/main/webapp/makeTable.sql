@@ -68,6 +68,7 @@ create table reservation(
 );
 
 select * from reservation;
+delete from RESERVATION;
 
 -- 리뷰 테이블
 drop table review;

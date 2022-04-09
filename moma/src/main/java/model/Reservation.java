@@ -24,7 +24,7 @@ public class Reservation {
 		return rsdate;
 	}
 	public void setRsdate(Date rsdate) {
-		this.rsdate = rsdate;
+		this.rsdate = (Date) rsdate;
 	}
 	public String getRstime() {
 		return rstime;

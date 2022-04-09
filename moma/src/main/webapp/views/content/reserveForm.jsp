@@ -34,7 +34,9 @@
 			}
 			
 			$(this).siblings("span").text(sumCnt);
-			$(".price").text(sumPrice+"원");
+			$(this).siblings("input").val(sumCnt);
+			$(".price_sp").text(sumPrice+"원");
+			$(".price").val(sumPrice);
 			$('.member_info td .sum_count').text(sumCnt);
 			$.totalPrice();
 		});
@@ -58,15 +60,17 @@
 			}
 			
 			$(this).siblings("span").text(sumCnt);
-			$(".price").css("color", "var(--point-color)");
-			$(".price").text(sumPrice+"원");
+			$(this).siblings("input").val(sumCnt);
+			$(".price_sp").css("color", "var(--point-color)");
+			$(".price_sp").text(sumPrice+"원");
+			$(".price").val(sumPrice);
 			$('.member_info td .sum_count').text(num);
 			$.totalPrice();
 		});
  		
 		// 전체 가격 찾기
 		$.totalPrice = function() {
-			var price = $(".price").text().split("원")[0];
+			var price = $(".price_sp").text().split("원")[0];
 			var priceNum = Number(price);
 			
 			var totalPrice = price;
@@ -85,7 +89,7 @@
 			<div class="section_title">${content.cname }</div>
 				<div class="option_title">예매날짜
 					<div class="rsdate_box">
-						<input type="text" class="column" name="rsdate" placeholder="0000-00-00" onfocus="(this.type='date')" required>
+						<input type="date" class="column" name="rsdate" placeholder="0000-00-00" onfocus="(this.type='date')" required>
 					</div><p>	
 				<div class="option_title">예매시간 선택</div><p>
 				<div class="radio_box">
@@ -118,15 +122,15 @@
 				<div class="option_title">수량 선택
 					<div class="cnt_box">
 						<button class="button" type="button" id="minus">-</button>&nbsp;
-						<span class="rsnum"> 1 </span>&nbsp;
+						<span>1</span>&nbsp;
 						<button class="button" type="button" id="plus">+</button>
-						<input type="hidden" name="rsnum" class="input_hidden" >
-						<input type="hidden" name="price" class="input_hidden">
+						<input type="hidden" name="rsnum" class="input_hidden" value="0">
 					</div>
 				</div>
 				<div class="option_title">가격
 					<div class="price_box">
-						<span class="price" id="price">7000원</span>
+						<span class="price_sp">7000원</span>
+						<input type="hidden" name="price" class="price" value="0">
 					</div>
 				</div>
 			<div class="section">
@@ -142,19 +146,19 @@
 				<p class="section_title">결제 방식 선택</p>
 				<div class="radio_box">
 					<div>					
-						<input class="magic-radio" type="radio" name="pay" id="p1" checked="checked">
+						<input class="magic-radio" type="radio" name="payment" value="카드결제"  id="p1" checked="checked">
 						<label for="p1">카드결제</label>
 					</div>
 					<div>
-						<input class="magic-radio" type="radio" name="pay" id="p2">
+						<input class="magic-radio" type="radio" name="payment" value="카카오페이"  id="p2">
 						<label for="p2">카카오페이</label>
 					</div>
 					<div>
-						<input class="magic-radio" type="radio" name="pay" id="p3">
+						<input class="magic-radio" type="radio" name="payment"  value="네이버페이" id="p3">
 						<label for="p3">네이버페이</label>
 					</div>
 					<div>
-						<input class="magic-radio" type="radio" name="pay" id="p4">
+						<input class="magic-radio" type="radio" name="payment"  value="휴대폰결제"  id="p4">
 						<label for="p4">휴대폰결제</label>
 					</div>
 				</div>
