@@ -26,7 +26,7 @@ public class ContentDao {
 			Reader reader = Resources.getResourceAsReader("configuration.xml");
 			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
 			session = ssf.openSession(true);
-			System.out.println("ContentDao 지나간다~~ 왔냐?");
+			//System.out.println("ContentDao 지나간다~~ 왔냐?");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

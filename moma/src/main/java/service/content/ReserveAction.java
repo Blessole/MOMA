@@ -17,12 +17,12 @@ public class ReserveAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("ReserveAction 자바파일 지나감");
+		//System.out.println("ReserveAction 자바파일 지나감");
 		
 		String rsdate = request.getParameter("rsdate");
 		//System.out.println("rsdate="+rsdate);
 		int cno = Integer.parseInt(request.getParameter("cno"));
-		System.out.println("cno="+cno);
+		//System.out.println("cno="+cno);
 		int mno = Integer.parseInt(request.getParameter("mno"));
 		//System.out.println("mno="+mno);
 		String rstime = request.getParameter("rstime");

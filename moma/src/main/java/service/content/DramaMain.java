@@ -14,7 +14,7 @@ public class DramaMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("DramaMain 자바파일 지나간다~");
+		//System.out.println("DramaMain 자바파일 지나간다~");
 		// ct 리스트 조회
 		ContentDao cd = ContentDao.getInstance();
 		String genre[] = request.getParameterValues("genre"); // 태그별

@@ -7,7 +7,7 @@
 		<selectKey keyProperty="rs_no" order="BEFORE" resultType="integer">
 			select nvl(max(rsno), 0)+1 rsno from reservation
 		</selectKey>
-			insert into reservation values(#{rsno}+1, #{rsdate,jdbcType=DATE}, #{rstime,jdbcType=VARCHAR},
+			insert into reservation values(#{rsno}, #{rsdate,jdbcType=DATE}, #{rstime,jdbcType=VARCHAR},
 			 #{rsnum,jdbcType=INTEGER}, #{cinema,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, 'n', #{price,jdbcType=INTEGER}, #{mno}, #{cno})
 	</insert>
 	
