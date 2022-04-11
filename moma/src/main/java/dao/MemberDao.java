@@ -1,14 +1,5 @@
 package dao;
 
-<<<<<<< HEAD
-public class MemberDao {
-	private static MemberDao instance = new MemberDao();
-	private MemberDao() {
-	}
-	private static MemberDao getInstance() {
-		return instance;
-	}
-=======
 import java.io.Reader;
 import java.util.HashMap;
 
@@ -93,9 +84,13 @@ public class MemberDao {
 			return (Member) session.selectOne("memberns.selectByMno", mno);
 		}
 		
+		// moma mno로 회원 정보 조회
+		public Member selectReserve(int mno) {
+			return (Member) session.selectOne("memberns.selectReserve", mno);
+		}
+		
 		// moma delete
 		public int delete(int mno) {
 			return session.delete("memberns.delete", mno);
 		}
->>>>>>> refs/remotes/origin/hj
 }

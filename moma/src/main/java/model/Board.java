@@ -1,14 +1,12 @@
 package model;
 
 public class Board {
-	
 	private int bno;
 	private String bname;
 	private String bo_content;
 	private int bviews;
 	private String image;
 	private String del;
-	
 	
 	public int getBno() {
 		return bno;
@@ -46,7 +44,5 @@ public class Board {
 	public void setDel(String del) {
 		this.del = del;
 	}
-	
-	
-	
+
 }

@@ -3,7 +3,7 @@ package model;
 import java.sql.Date;
 
 public class Reservation {
-	private int rs_no;
+	private int rsno;
 	private Date rsdate;
 	private String rstime;
 	private int rsnum;
@@ -14,35 +14,17 @@ public class Reservation {
 	private int mno;
 	private int cno;
 	
-	// 컨텐츠꺼 불러올꺼라서. getter,setter필요함.
-	private String cname;
-	private String poster;
-	
-	public String getCname() {
-		return cname;
+	public int getRsno() {
+		return rsno;
 	}
-	public void setCname(String cname) {
-		this.cname = cname;
-	}
-	public String getPoster() {
-		return poster;
-	}
-	public void setPoster(String poster) {
-		this.poster = poster;
-	}
-	//
-	
-	public int getRs_no() {
-		return rs_no;
-	}
-	public void setRs_no(int rs_no) {
-		this.rs_no = rs_no;
+	public void setRsno(int rsno) {
+		this.rsno = rsno;
 	}
 	public Date getRsdate() {
 		return rsdate;
 	}
 	public void setRsdate(Date rsdate) {
-		this.rsdate = rsdate;
+		this.rsdate = (Date) rsdate;
 	}
 	public String getRstime() {
 		return rstime;

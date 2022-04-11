@@ -3,25 +3,23 @@ package dao;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import model.Member;
-import model.Reservation;
 import model.Review;
 
 public class ReviewDao {
-
-	// singleton
-		private static ReviewDao instance = new ReviewDao();
-		private ReviewDao() {}
-		public static ReviewDao getInstance() {
-			return instance;
-		}
-		
+	// singletone
+	private static ReviewDao instance = new ReviewDao ();
+	private ReviewDao() {}
+	public static ReviewDao getInstance() {
+		return instance;
+	}
+	
 	// mybatis
 	private static SqlSession session;
 	static {
@@ -34,6 +32,42 @@ public class ReviewDao {
 		}
 	}
 	
+	// 리뷰 등록
+	public int insert(Review review) { 
+		System.out.println("rv_content = " + review.getRv_content());
+		System.out.println("star_rate = " + review.getStar_rate());
+		System.out.println("rv_date = " + review.getRv_date());
+		System.out.println("mno = " + review.getMno());
+		System.out.println("cno = " + review.getCno());
+		return session.insert("reviewns.insert", review);
+	}
+	
+	// 각 컨텐츠의 review list
+	public List<Review> select(int cno, int startRow, int endRow) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("cno", cno);
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		return session.selectList("reviewns.select", map);
+	}
+	
+	// 평균 별점 가져오기
+	public float selectStar(int cno) {
+		return (float) session.selectOne("reviewns.selectStar", cno);
+	}
+	
+	// 리뷰 삭제
+	public int delete(int cno, int mno) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("cno", cno);
+		map.put("mno", mno);
+		return session.update("reviewns.delete", map);
+	}
+
+	// 각 컨텐츠의 총 리뷰 갯수
+	public int getTotal(int cno) {
+		return (int) session.selectOne("reviewns.selectTotal", cno);
+	}
 	// 마이페이지 : 리뷰내역 조회
 	public List<Review> myList(int mno, int startRow, int endRow) {
 		HashMap<String, Integer> hm = new HashMap<>();
@@ -62,6 +96,5 @@ public class ReviewDao {
 	public int update(Review review) {
 		return session.update("reviewns.update", review);
 	}
-	
 	
 }

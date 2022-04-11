@@ -3,65 +3,104 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="contentns">
 
-	<!-- 전시 통합 리스트 -->
-	<select id="selectList_my" resultType="content">
+	<!-- cname 중복 체크 -->
+	<select id="select" parameterType="string" resultType="content">
 		select *
-		from (select rownum rn, e.*
-			    from (select *
-			           from content
-			          where del = 'n' order by cno desc) e)
-		where rn between #{startRow} and #{endRow}
-	</select>
-
-	<!-- 컨텐츠 cname으로 검색 -->
-	<select id="selectCname" parameterType="string" resultType="content">
-		select * from content where cname=#{cname}
+		from content where cname = #{cname,jdbcType=VARCHAR} and del='n'
 	</select>
 	
-	<!-- 컨텐츠 cno로 검색 -->
-	<select id="selectCno" resultType="content">
-		select * from content where cno=#{cno} order by cno
-	</select>
-	
-	<!-- 컨텐츠 sort로 조회 -->
-	<select id="selectSort" resultType="content">
-		select * from content where sort=#{sort}
-	</select>
-	
-	<!-- 영화 상세 select -->
-	<!-- <select id="selectView" parameterType="integer" resultType="content">
-		select * from content where cno = #{cno} and sort='영화' and del='n'
-	</select>
-	 -->
-	 
-	<!-- 드라마 상세 select -->
+	<!-- 컨텐츠 상세 select -->
 	<select id="selectView" parameterType="integer" resultType="content">
 		select * from content where cno = #{cno} and del='n'
 	</select>
-	
-	<!-- content main total -->
-	<select id="getTotalC" resultType="integer">
-		select count(*) from content where del = 'n'
+
+	<!-- 컨텐츠 통합 리스트 -->
+	<select id="selectList" resultType="content">
+		select * from content where del = 'n' order by cviews desc
 	</select>
 	
-	<!-- 태그로 리스트 조회 -->
-	<select id="selectTag" resultType="content" parameterType="hashmap">
+	<!-- 드라마 전체 리스트 -->
+	<select id="selectDList" resultType="content">
 		select * from (select rownum rn, e.* from (
-		select * from content where
-		<foreach collection="tag" item="item" open="(" close=")" separator="or">
-			genre like '%'||#{item}||'%'
-		</foreach>
-		and del = 'n' order by cno desc) e)
+		select * from content where del = 'n' and sort ='D' order by cno asc) e)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<!-- display tag 필터 total -->
-	<select id="getTotalTag" resultType="integer">
+	<!-- 영화 전체 리스트 -->
+	<select id="selectMList" resultType="content">
+		select * from (select rownum rn, e.* from (
+		select * from content where del = 'n' and sort ='M' order by cno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 드라마 top 10 리스트 -->
+	<select id="selectDTopList" resultType="content">
+	<![CDATA[ 	select * from (select * from content where del = 'n' and sort = 'D' order by cviews desc) where rownum <= 10  ]]>
+	</select>
+	
+	<!-- 영화 top 10 리스트 -->
+	<select id="selectMTopList" resultType="content">
+	<![CDATA[ 	select * from (select * from content where del = 'n' and sort = 'M' order by cviews desc) where rownum <= 10 ]]>
+	</select>
+	
+	<!-- 영화 상세 select -->
+	<select id="selectMView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='M' and del='n'
+	</select>
+	
+	<!-- 드라마 상세 select -->
+	<select id="selectDView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='D' and del='n'
+	</select>
+	
+	<!-- 드라마 main total -->
+	<select id="getTotalD" resultType="integer">
+		select count(*) from content where del = 'n'  and sort='D'
+	</select>
+	
+	<!-- 영화 main total -->
+	<select id="getTotalM" resultType="integer">
+		select count(*) from content where del = 'n'  and sort='M'
+	</select>
+	
+	<!-- 태그로 리스트 조회 -->
+	<select id="selectDGenre" resultType="content" parameterType="hashmap">
+		select * from (select rownum rn, e.* from (
+		select * from content where 
+		<foreach collection="genre" item="item" open="(" close=")" separator="or">
+			genre like '%'||#{item}||'%' 
+		</foreach>
+		and sort='D' and del = 'n' order by cno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+
+	<!-- 태그로 리스트 조회 -->
+	<select id="selectMGenre" resultType="content" parameterType="hashmap">
+		select * from (select rownum rn, e.* from (
+		select * from content where
+		<foreach collection="genre" item="item" open="(" close=")" separator="or">
+			genre like '%'||#{item}||'%' 
+		</foreach>
+		and sort='M' and del = 'n' order by cno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 드라마 genre 필터 total -->
+	<select id="getTotalDGenre" resultType="integer">
 		select count(*) from content where
 		<foreach collection="array" item="item" open="(">
 			genre like '%'||#{item}||'%' or
 		</foreach>
-		1 = 0) and del = 'n' order by cno desc
+		1 = 0) and sort='D' and del = 'n' order by cno desc
+	</select>
+	
+	<!-- 영화 genre 필터 total -->
+	<select id="getTotalMGenre" resultType="integer">
+		select count(*) from content where
+		<foreach collection="array" item="item" open="(">
+			genre like '%'||#{item}||'%' or
+		</foreach>
+		1 = 0) and sort='M' and del = 'n' order by cno desc
 	</select>
 	
 	<!-- 검색 -->
@@ -69,11 +108,6 @@
 	   select * from content where cname like '%'||#{srch}||'%' or genre like '%'||#{srch}||'%'
 	   or director like '%'||#{srch}||'%' or actor like '%'||#{srch}||'%'
 	</select>
-	
-	<!-- 마이페이지 예약에서 쓸 cname
-	<select id="rs_cname" parameterType="integer" resultType="content">
-	   select cname from content where cno = (select rs.cno	from reservation rs	where rs.mno = #{mno})
-	</select> -->
 	
 	<!-- moma 마이페이지 리뷰수정에서 쓸 cname -->
 	<select id="selectRvno" parameterType="integer" resultType="content">

@@ -7,12 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
-
-=======
 <script type="text/javascript">
-	location.href="/moma/views/myPage/myMain.jsp";
+	location.href="/moma/views/content/momaMain.so";
 </script>
->>>>>>> refs/remotes/origin/hj
 </body>
 </html>

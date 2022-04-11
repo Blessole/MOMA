@@ -1,48 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reviewns">
+	<insert id="insert" parameterType="review">
+		<selectKey keyProperty="rvno" order="BEFORE" resultType="integer">
+			select nvl(max(rvno), 0) + 1 rvno from review
+		</selectKey>
+		insert into review values(#{rvno}, #{star_rate}, #{rv_content},
+		sysdate, 0, 'n', #{mno}, #{cno})
+	</insert>
 	
-	<!-- cno 별 별점 평균 ✔✔ required로 null이 없겠지만? null이 들어간다면 에러날 수 있음 주의 -->
-	<select id="star_rate_avg" parameterType="integer" resultType="float">
-		select avg(star_rate) from review where cno=#{cno}
-	   
-	   select *
-       from (select rowNum rn, e.* 
-       		   from ( select r.star_rate
-       		   			from review r, content c
-       		   			where r.cno = c.cno and r.mno = #{mno} and r.del = 'n' order by rvno desc) e)
-       where rn between #{startRow} and #{endRow}
+	<!-- 각 컨텐츠의 review list -->
+	<select id="select" resultType="review">
+		select * from (select rownum rn, a.* from
+		(select r.*, nickname from member m, review r
+		where m.mno = r.mno and cno = #{cno} and r.del = 'n' order by rvno desc) a)
+		where rn between #{startRow} and #{endRow}
 	</select>
 	
-	<!-- moma 마이페이지 - 리뷰내역 -->
-	<select id="myList" parameterType="hashmap" resultType="review">
-       select *
-       from (select rowNum rn, e.* 
-       		   from ( select r.*, c.cname
-       		   			from review r, content c
-       		   			where r.cno = c.cno and r.mno = #{mno} and r.del = 'n' order by rvno desc) e)
-       where rn between #{startRow} and #{endRow}
-    </select>
-    
-    <!-- // 마이페이지 : 나의 총 리뷰 수 -->
-	<select id="getTotalMy" parameterType="integer" resultType="integer">
-		select count(*) from review where mno=#{mno}
+	<!-- 평균 별점 -->
+	<select id="selectStar" parameterType="integer" resultType="float">
+		select round(avg(star_rate), 1) from review where cno = #{cno} and del = 'n'
 	</select>
 	
-	<!-- // 마이페이지 : 리뷰 삭제 -->
-	<update id="delete" parameterType="integer">
-		update review set del='y' where rvno=#{rvno}	
-	</update> 
-	
-	<!-- // 마이페이지 리뷰 수정 : 해당 rvno의 * 조회 -->
-	<select id="selectRvno" parameterType="integer" resultType="review">
-		select * from review where rvno=#{rvno}
-	</select>
-	
-	<!-- // 마이페이지 리뷰 수정 : star_rate update -->
-	<update id="update" parameterType="review">
-		update review set star_rate=#{star_rate}, rv_content=#{rv_content} where rvno=#{rvno}
+	<!-- 리뷰 삭제 -->
+	<update id="delete" parameterType="java.util.Map">
+		update review set del = 'y' where cno = #{cno} and mno = #{mno}
 	</update>
 	
+	<!-- 각 컨텐츠의 총 리뷰 갯수 -->
+	<select id="selectTotal" resultType="integer">
+		select count(*) from review where cno = #{cno} and del = 'n'
+	</select>
 </mapper>

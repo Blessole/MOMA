@@ -6,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/common.css">
+<link rel="stylesheet" type="text/css" href="/moma/css/common.css">
 </head>
 <body>
 	<footer>
 		<div class="footer_inner">
-			<img class="footer_logo" alt="" src="/img/momalogo.jpg" width="130px">
+			<img class="footer_logo" alt="" src="/moma/img/momalogo.jpg" width="130px">
 			<div class="footer_rights">© 2022, MOMA. All Rights Reserved.</div>
 		</div>
 	</footer>

@@ -51,7 +51,8 @@ public class ControllerSo extends HttpServlet {
 			try {
 				Class<?> commandClass = Class.forName(className);
 				// commandClass : service.Message 클래스
-				Object commandInstance = commandClass.getDeclaredConstructor().newInstance();
+				//Object commandInstance = commandClass.getDeclaredConstructor().newInstance();
+				Object commandInstance = commandClass.newInstance(); //수정-하영
 				// commandInstance : service.Message객체
 				commandMap.put(command, commandInstance);
 				// commandMap에는
@@ -73,15 +74,16 @@ public class ControllerSo extends HttpServlet {
 			// request.getContextPath().length()+1 : 6
 			command = command.substring(request.getContextPath().length() + 1);
 			// command : message.do
-//			System.out.println("command="+command);
+			System.out.println("command="+command);
 			com = (CommandProcess) commandMap.get(command);
 			// com : service.Message객체를 CommandProcess로 형변환
 			// 자식 즉 Message객체의 requestPro()메소드 실행
-//			System.out.println("com="+com);
+			System.out.println("com="+com);
 			view = com.requestPro(request, response);
 			// view는 "message.jsp" 문자
 		} catch (Throwable e) {	throw new ServletException(e); }
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view+".jsp"); // 파일 경로 설정
+		//RequestDispatcher dispatcher = request.getRequestDispatcher(view+".jsp"); // 파일 경로 설정
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view+".jsp"); // 파일 경로 재설정-하영
 		dispatcher.forward(request, response);
 	}
 

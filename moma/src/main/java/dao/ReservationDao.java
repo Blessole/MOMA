@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import model.Member;
 import model.Reservation;
 
 public class ReservationDao {
@@ -31,13 +30,11 @@ public class ReservationDao {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	// 예매하기
+	//예매하기
 	public int insert(Reservation reserve) {
 		return session.insert("reservationns.insert", reserve);
 	}
-	
-	// 예매취소
+	//예매취소
 	public int delete(int cno) {
 		return session.delete("reservationns.delete", cno);
 	}
@@ -60,5 +57,5 @@ public class ReservationDao {
 	public  List<Reservation> selectCno(int mno) {
 		return session.selectList("reservationns.selectCno", mno);
 	}
-	
+		
 }
