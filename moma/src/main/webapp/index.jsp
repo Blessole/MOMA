@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<script type="text/javascript">
+	location.href="/moma/views/content/momaMain.so";
+</script>
 </body>
 </html>

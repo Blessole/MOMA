@@ -68,6 +68,7 @@ create table reservation(
 );
 
 select * from reservation;
+delete from RESERVATION;
 
 -- 리뷰 테이블
 drop table review;
@@ -78,7 +79,6 @@ create table review(
         rv_content VARCHAR2(200) NOT NULL,
         rv_date DATE NOT NULL,
         del CHAR(1) default 'n' NOT NULL,
-        price NUMBER NOT NULL,
         mno NUMBER CONSTRAINT review_mno_fk references member NOT NULL,
         cno NUMBER CONSTRAINT review_cno_fk references content NOT NULL
 );
