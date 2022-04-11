@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="dbconnect.properties" />
+	<typeAliases>
+		<typeAlias alias="content" type="model.Content" />
+		<typeAlias alias="likes" type="model.Likes" />
+		<typeAlias alias="member" type="model.Member" />
+		<typeAlias alias="reservation" type="model.Reservation" />
+		<typeAlias alias="review" type="model.Review" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="content.xml" />
+		<mapper resource="likes.xml" />
+		<mapper resource="member.xml" />
+		<mapper resource="reservation.xml" />
+		<mapper resource="review.xml" />
+	</mappers>
+</configuration>
