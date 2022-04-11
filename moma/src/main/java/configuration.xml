@@ -38,4 +38,3 @@
 		<mapper resource="boardcmt.xml" />
 	</mappers>
 </configuration>
-

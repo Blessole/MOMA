@@ -49,8 +49,7 @@ public class Controller extends HttpServlet {
 	          String className = pr.getProperty(command); 
 	          try {
 	               Class<?> commandClass = Class.forName(className);
-	               Object commandInstance = 
-	            		  commandClass.newInstance();
+	               Object commandInstance = commandClass.getDeclaredConstructor().newInstance();
 	               commandMap.put(command, commandInstance);
 	          } catch (Exception e) {
 	               throw new ServletException(e);
@@ -79,8 +78,7 @@ public class Controller extends HttpServlet {
 	    } catch(Throwable e) { throw new ServletException(e); } 
 	    RequestDispatcher dispatcher =
 	    //request.getRequestDispatcher("/views/board/"+view);
-	    		request.getRequestDispatcher(view+".jsp");
-	
+	    request.getRequestDispatcher(view+".jsp");
 	   dispatcher.forward(request, response);
 	}
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
