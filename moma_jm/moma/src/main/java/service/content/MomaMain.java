@@ -14,7 +14,6 @@ public class MomaMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("MomaMain 자바파일 거쳤음");
 		
 		ContentDao cd = ContentDao.getInstance();
 		

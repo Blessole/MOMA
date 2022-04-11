@@ -14,7 +14,6 @@ public class ReserveForm implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("ReserveForm 자바파일 지나감!");
 		
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		HttpSession session = request.getSession();
@@ -30,8 +29,6 @@ public class ReserveForm implements CommandProcess {
 		request.setAttribute("cno", cno);
 		request.setAttribute("content", content);
 		request.setAttribute("member", member);
-		
-		System.out.println("ReserveForm 자바파일 지나감!2");
 		
 		return "reserveForm";
 	}

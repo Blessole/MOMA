@@ -15,7 +15,6 @@ public class SearchAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("searchAction 자바파일 지나간당~");
 		
 		String srch = request.getParameter("srch");
 		

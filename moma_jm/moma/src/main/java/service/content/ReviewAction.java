@@ -36,6 +36,7 @@ public class ReviewAction implements CommandProcess {
 		int result = rd.insert(review);
 		cno = review.getCno();
 		
+		request.setAttribute("review1", review);
 		request.setAttribute("result", result);
 		request.setAttribute("cno", cno);
 		
