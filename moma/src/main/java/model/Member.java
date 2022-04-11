@@ -3,6 +3,7 @@ package model;
 import java.sql.Date;
 
 public class Member {
+		
 	private int mno;
 	private String id;
 	private String password;
@@ -14,6 +15,8 @@ public class Member {
 	private String email_check;
 	private Date join_date;
 	private String del;
+	
+	
 	public int getMno() {
 		return mno;
 	}
@@ -80,6 +83,5 @@ public class Member {
 	public void setDel(String del) {
 		this.del = del;
 	}
-	
-	
+	 
 }
