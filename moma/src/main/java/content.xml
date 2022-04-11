@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contentns">
+
+	<!-- 전시 통합 리스트 -->
+	<select id="selectList_my" resultType="content">
+		select *
+		from (select rownum rn, e.*
+			    from (select *
+			           from content
+			          where del = 'n' order by cno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+
+	<!-- 컨텐츠 cname으로 검색 -->
+	<select id="selectCname" parameterType="string" resultType="content">
+		select * from content where cname=#{cname}
+	</select>
+	
+	<!-- 컨텐츠 cno로 검색 -->
+	<select id="selectCno" resultType="content">
+		select * from content where cno=#{cno} order by cno
+	</select>
+	
+	<!-- 컨텐츠 sort로 조회 -->
+	<select id="selectSort" resultType="content">
+		select * from content where sort=#{sort}
+	</select>
+	
+	<!-- 영화 상세 select -->
+	<!-- <select id="selectView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and sort='영화' and del='n'
+	</select>
+	 -->
+	 
+	<!-- 드라마 상세 select -->
+	<select id="selectView" parameterType="integer" resultType="content">
+		select * from content where cno = #{cno} and del='n'
+	</select>
+	
+	<!-- content main total -->
+	<select id="getTotalC" resultType="integer">
+		select count(*) from content where del = 'n'
+	</select>
+	
+	<!-- 태그로 리스트 조회 -->
+	<select id="selectTag" resultType="content" parameterType="hashmap">
+		select * from (select rownum rn, e.* from (
+		select * from content where
+		<foreach collection="tag" item="item" open="(" close=")" separator="or">
+			genre like '%'||#{item}||'%'
+		</foreach>
+		and del = 'n' order by cno desc) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- display tag 필터 total -->
+	<select id="getTotalTag" resultType="integer">
+		select count(*) from content where
+		<foreach collection="array" item="item" open="(">
+			genre like '%'||#{item}||'%' or
+		</foreach>
+		1 = 0) and del = 'n' order by cno desc
+	</select>
+	
+	<!-- 검색 -->
+	<select id="search" parameterType="string" resultType="content">
+	   select * from content where cname like '%'||#{srch}||'%' or genre like '%'||#{srch}||'%'
+	   or director like '%'||#{srch}||'%' or actor like '%'||#{srch}||'%'
+	</select>
+	
+	<!-- 마이페이지 예약에서 쓸 cname
+	<select id="rs_cname" parameterType="integer" resultType="content">
+	   select cname from content where cno = (select rs.cno	from reservation rs	where rs.mno = #{mno})
+	</select> -->
+	
+	<!-- moma 마이페이지 리뷰수정에서 쓸 cname -->
+	<select id="selectRvno" parameterType="integer" resultType="content">
+	   select cname
+	   from content c, review r
+	   where c.cno = r.cno and r.rvno=#{rvno} and r.del='n'
+	</select> 
+	
+</mapper>
