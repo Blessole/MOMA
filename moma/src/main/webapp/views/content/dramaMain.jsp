@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">@import url("../../css/content/contentMain.css");</style>
+<c:set var="id" value='${sessionScope.id}'></c:set>
+<c:set var="mno" value='${sessionScope.mno}'></c:set>
 <script type="text/javascript">
 	$(function() {
 		// 페이징 현재페이지 설정
@@ -35,6 +37,20 @@
 				$(this).siblings("label").removeClass('active');
 			}
 		});
+		
+		// 좋아요 제어
+		function likes() {
+			if (${empty id}) {
+				var con = confirm("로그인이 필요합니다.");
+				if (con) {				
+					location.href="loginForm.bb";
+				}
+			} else {
+				$.post("contentLikesUpdate.do", "cno=${content.cno}", function(data) {
+					$('.likes svg g').css('fill', data);
+				});
+			}
+		}
 	})
 	
 </script>
@@ -51,10 +67,11 @@
 						<c:forEach var="content" items="${list }">
 							<li>
 								<a href="contentView.do?cno=${content.cno }">
+										<img alt="heart" src="../../img/icon/heart.png">
 									<img class="poster_img"  style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 									<div class="text_area">
 										<p class="content_list_title">${content.cname }</p>
-											<img alt="heart" src="../../img/icon/heart (1).png">
+										<p class="content_list_likes"></p>
 									</div>
 								</a>
 							</li>

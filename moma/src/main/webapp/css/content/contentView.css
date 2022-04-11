@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+.cname {
+	font-size: 24px;
+	/* font-weight: 600; */
+}
+
+.sort {
+	font-size: 14px;
+	line-height: 22px;
+	padding-top: 20px;
+	font-family: inherit;
+}
+
 .content_view_top {
 	margin-top: 44px;
 	overflow: hidden;
@@ -11,15 +23,40 @@
 	object-fit: cover;
 }
 
+.content_view_top .btn {
+	display: inline-block;
+	width: calc(100% - 50px);
+}
+
+.content_view_top .text_area {
+	float: right;
+	vertical-align: top;
+	padding-left: 6%;
+	width: calc(100% - 340px);
+	overflow: visible;
+
+}
+
 .text_area .bottom_box {
 	width: 100%;
 	text-align: center;
+	padding-left: 0;
 }
 
-.bottom_box {
+.btn2 {
+	height: 55px;
+	background-color: none;
+	border: none;
+	color: #fff;
+	margin-right: 40px;
 	display: inline-block;
 }
 
+.btn2 img {
+	width: 55px;
+	height: 55px;
+  	display: inline-block;
+}
 
 .content_view_top .likes {
 	position: relative;
@@ -45,39 +82,13 @@
 	stroke-width: 2px;
 }
 
-.content_view_top .btn {
-	display: inline-block;
-	width: calc(100% - 56px);
-}
 
-.content_view_top .text_area {
-	float: right;
-	vertical-align: top;
-	padding-left: 6%;
-	width: calc(100% - 340px);
-
-}
 
 .content_view_top .star_avg {
 	padding-bottom: 8px;
 	padding-top: 0;
 
 }
-
-.content_view_top .cname {
-	font-size: 24px;
-	/* font-weight: 600; */
-}
-
-.content_view_top .sort {
-	font-size: 14px;
-	line-height: 22px;
-	padding-top: 24px;
-	word-break: keep-all;
-	white-space: pre-wrap; /* width 설정 */
-	font-family: inherit;
-}
-
 
 .text_area .bottom {
 	text-align: left;
@@ -120,17 +131,50 @@
 }
 
 /* 별점 */
-.star_rating {font-size:0; letter-spacing:-4px;}
-.star_rating a {
-    font-size:22px;
-    letter-spacing:0;
-    display:inline-block;
-    margin-left:5px;
-    color:#e0e0e0;
-    text-decoration:none;
+.star_avg {
+	padding: 8px 0 24px 0;
+	font-size: 20px;
+	color: var(--point-color);
 }
-.star_rating a:first-child {margin-left:0;}
-.star_rating a.on {color:#f5e9a0;}
+
+.star_avg input[type="range"] {
+	display: inline-block;
+	border: 0;
+	border-bottom: 0;
+	width: inherit;
+	-webkit-appearance: none;
+	height: 5px;
+	background-color: rgba(0, 0, 0, 0.1);
+	outline: 0;
+	border-radius: 18px;
+	transition: background .15s ease-in-out;
+	margin-bottom: 0;
+	margin-right: 6px;
+	vertical-align: middle;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: none;
+	outline: 0;
+	background: var(--point-color);
+	transition: background .15s ease-in-out;
+}
+
+.star_avg span.text {
+	font-size: 16px;
+	font-weight: 600;
+	vertical-align: middle;
+	
+}
+
+.star_avg.rate {
+	cursor: pointer;
+	padding-top: 0;
+}
 
 
 /* 공통 요소 : end */
@@ -153,6 +197,14 @@
 }
 
 .profile .nickname {
+	font-size: 14px;
+	font-weight: 600;
+	display: inline-block;
+	line-height: 34px;
+	margin-left: 7px;
+}
+
+.profile .rv_date {
 	font-size: 14px;
 	font-weight: 600;
 	display: inline-block;
@@ -192,6 +244,9 @@ input[type="submit"] {
 	margin-top: 24px;
 }
 
+.content_view_bottom {
+	padding-top: 30px;
+}
 
 /* dpView paging */
 .content_view_bottom .paging span {

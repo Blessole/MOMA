@@ -61,7 +61,8 @@ public class DramaMain implements CommandProcess {
 		request.setAttribute("list", list);
 		request.setAttribute("listGenre", listGenre);
 		
-		// paging param request.setAttribute("pageNum", pageNum);
+		// paging param 
+		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
 		request.setAttribute("startPage", startPage); 
