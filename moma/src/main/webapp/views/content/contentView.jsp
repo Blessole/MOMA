@@ -10,10 +10,12 @@
 <c:set var="id" value='${sessionScope.id}'></c:set>
 <c:set var="mno" value='${sessionScope.mno}'></c:set>
 <script type="text/javascript">
+
 	$(function() {
 		// input range rate 조절
 		$('input[type="range"]').on('change mousemove', function() {
 			var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+
 		    $(this).css('background-image',
 		                '-webkit-gradient(linear, left top, right top, '
 		                + 'color-stop(' + val + ', #ff5f06), '
@@ -122,7 +124,7 @@
 					</tr>
 				</table>
 					<div class="bottom_box">
-					<button class="btn" onclick="location.href='reserveForm.so'">예매하기</button>
+					<button class="btn" onclick="location.href='reserveForm.so?cno=${cno}'">예매하기</button>
 					<button class="btn2" onclick="location.href='${content.netflix }'"><img alt="netflix" src="../../img/icon/netflix.png"></button>
 					<button class="btn2" onclick="location.href='${content.watcha }'"><img alt="watcha" src="../../img/icon/watcha.png"></button>
 					<button class="btn2" onclick="location.href='${content.tving }'"><img alt="tving" src="../../img/icon/tving.png"></button>
@@ -176,8 +178,9 @@
 
         <!-- 리뷰 등록 -->
         <form action="reviewAction.do?cno=${content.cno }" method="post">
+        	<input type="hidden" name="rv_date" value="${review1.rv_date }">
             <h4 class="sub_title">리뷰와 별점 등록</h4>
-            <textarea name="content" placeholder="감상평을 작성해 주세요." required="required" onclick="sChk()"></textarea>
+            <textarea name="rv_content" placeholder="감상평을 작성해 주세요." required="required" onclick="sChk()"></textarea>
             <p class="detail_txt pd_bottom">별점을 선택해 주세요.</p>
             <!-- 별점 등록 -->
             <div class="star_avg rate">

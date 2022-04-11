@@ -15,10 +15,7 @@ public class UpdateAction implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 	
-		// member 생성
 		Member member = new Member();
-
-		// 이전 주소
 		String prevUrl = request.getParameter("prevUrl");
 		
 		// 수정하려는 값 불러오기
@@ -40,10 +37,6 @@ public class UpdateAction implements CommandProcess {
 		member.setPhone(phone);
 		member.setSms_check(sms_check);
 		member.setEmail_check(email_check);
-
-		// 세션에서 id 가져옴 -> 왜 굳이??? 
-		// HttpSession session = request.getSession();
-		// id = (String) session.getAttribute("id");
 
 		// memberDao 생성 및 update
 		MemberDao md = MemberDao.getInstance();

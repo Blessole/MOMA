@@ -12,7 +12,7 @@ public class FindPwAction implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 
-		int result = 0; // result는 기본 0. id는 있는데 email은 다를 때.
+		int result = 0; 
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
 		
@@ -20,7 +20,6 @@ public class FindPwAction implements CommandProcess {
 		Member member = md.select(id);
 		
 		if (member == null || member.getDel().equals("y")) result = -1;
-		// 얘는 없는 아이디이거나	del=y 삭제된 아이디일 때
 		
 		else {
 		if (member.getEmail().equals(email)) { 

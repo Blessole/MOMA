@@ -22,11 +22,11 @@ public class ReviewUpdate implements CommandProcess {
 		Content content = cd.select(cno);
 		
 		// session mno로 회원 정보 조회
-				MemberDao md = MemberDao.getInstance();
-				Member member = md.select(mno);
+		MemberDao md = MemberDao.getInstance();
+		Member member = md.selectByMno(mno);
 				
-				request.setAttribute("cno", cno);
-				request.setAttribute("mno", mno);
+		request.setAttribute("cno", cno);
+		request.setAttribute("mno", mno);
 		
 		return "reviewUpdate";
 	}

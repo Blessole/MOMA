@@ -2,7 +2,6 @@ package dao;
 
 import java.io.Reader;
 import java.util.HashMap;
-import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -12,14 +11,14 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import model.Member;
 
 public class MemberDao {
+    // singleton
 	private static MemberDao instance = new MemberDao();
-	private MemberDao() {
-	}
+	private MemberDao() {}
 	 
 	public static MemberDao getInstance() {
 		return instance;
 	}
-
+	// mybatis
 	private static SqlSession session;
 		static {
 			try {
@@ -39,6 +38,11 @@ public class MemberDao {
 		// moma confirmNickname
 		public Member confirmNickname(String nickname) {
 			return (Member) session.selectOne("memberns.confirmNickname", nickname);
+		}
+		
+		// moma id로 회원정보 조회
+		public int selectMno(String id) {
+			return (int) session.selectOne("memberns.selectMno", id);
 		}
 		
 		// moma email로 회원정보 조회
@@ -75,45 +79,18 @@ public class MemberDao {
 			return session.update("memberns.update", member);
 		}
 
-		// 세모전 Delete
-		public int delete(int mno) {
-			return session.update("memberns.delete", mno);
+		// moma mno로 회원정보 조회
+		public Member selectByMno(int mno) {
+			return (Member) session.selectOne("memberns.selectByMno", mno);
 		}
 		
-		// 세모전 AdminMember - 전체 회원정보 조회
-		public List<Member> list(int startRow, int endRow) {
-			HashMap<String, Integer> hm = new HashMap<>();
-			hm.put("startRow", startRow);
-			hm.put("endRow", endRow);
-			return (List<Member>)session.selectList("memberns.list",hm);
-		}
-		
-		// 세모전 AdminMember - 총 회원수
-		public int getTotal() {
-			return (int) session.selectOne("memberns.getTotal");
-		}
-		
-		// 세모전 다른 테이블에서 회원번호를 활용한 닉네임 찾기
-		public String selectNick(int mno) {
-			return (String) session.selectOne("memberns.selectNick", mno);
-		}
-		
-		// 세모전 다른 테이블에서 세션 아이디를 활용한 회원번호 찾기
-		public int selectMno(String id) {
-			return (int) session.selectOne("memberns.selectMno", id);
-		}
-		
-		// 세모전 mno로 회원 정보 조회
-		public Member select(int mno) {
+		// moma mno로 회원 정보 조회
+		public Member selectReserve(int mno) {
 			return (Member) session.selectOne("memberns.selectReserve", mno);
 		}
 		
-		// 세모전 adminFindMember 관리자계정으로 member 검색
-		public List<Member> searchMember(String searchKey, String searchValue) {
-			HashMap<String, String> hm = new HashMap<>();
-			hm.put("searchKey", searchKey);
-			hm.put("searchValue", searchValue);
-			return (List<Member>)session.selectList("memberns.searchMember",hm);
+		// moma delete
+		public int delete(int mno) {
+			return session.delete("memberns.delete", mno);
 		}
-		
 }

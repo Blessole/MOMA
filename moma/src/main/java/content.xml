@@ -109,4 +109,11 @@
 	   or director like '%'||#{srch}||'%' or actor like '%'||#{srch}||'%'
 	</select>
 	
+	<!-- moma 마이페이지 리뷰수정에서 쓸 cname -->
+	<select id="selectRvno" parameterType="integer" resultType="content">
+	   select cname
+	   from content c, review r
+	   where c.cno = r.cno and r.rvno=#{rvno} and r.del='n'
+	</select> 
+	
 </mapper>

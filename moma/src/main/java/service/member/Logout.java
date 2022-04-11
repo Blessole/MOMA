@@ -10,6 +10,7 @@ public class Logout implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+	
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "logout";

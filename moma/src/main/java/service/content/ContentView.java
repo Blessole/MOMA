@@ -38,11 +38,11 @@ public class ContentView implements CommandProcess {
 		// 끝번호
 		int endRow = startRow + ROW_PER_PAGE - 1;
 		
-		// 해당 전시 리뷰 리스트 셀렉
+		// 해당 전시 컨텐츠 리스트 셀렉
 		ReviewDao rd = ReviewDao.getInstance();
 		List<Review> list = rd.select(cno, startRow, endRow);
 		
-		// 해당 전시의 총 리뷰 수
+		// 해당 컨텐츠의 총 리뷰 수
 		int total = rd.getTotal(cno);
 		
 		// 총 페이지 수
@@ -61,7 +61,7 @@ public class ContentView implements CommandProcess {
 		// 리뷰 갯수
 		int reviewCnt = total; //list.size();
 		
-		// 회원이 북마크했는지 체크
+		// 회원이 좋아요 했는지 체크
 		LikesDao lkd = LikesDao.getInstance();
 		HttpSession session = request.getSession();
 		String color = "";
@@ -79,6 +79,7 @@ public class ContentView implements CommandProcess {
 			color = "none";
 		}
 		
+		request.setAttribute("cno", cno);
 		request.setAttribute("content", content);
 		request.setAttribute("list", list);
 		request.setAttribute("star_rate", star_rate);

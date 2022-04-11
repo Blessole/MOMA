@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import model.Content;
+import model.Reservation;
 
 public class ContentDao {
 	//singleton
@@ -121,5 +122,20 @@ public class ContentDao {
 	public List<Content> myMain(int mno) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	// 내가 예매한 컨텐츠의 정보 조회
+	public Content selectCno(List<Reservation> rs_cno) {
+		return (Content) session.selectOne("contentns.selectCno", rs_cno);
+	}
+	
+	// 마이페이지 - reservation에서 보여줄 cname 
+	public List<Content> rs_cname(int mno) {
+		return (List<Content>) session.selectList("contentns.rs_cname", mno);
+	}
+	
+	// 마이페이지 - review에서 보여줄 cname 
+	public Content selectRvno(int rvno) {
+		return (Content) session.selectOne("contentns.selectRvno", rvno);
 	}
 }

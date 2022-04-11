@@ -12,6 +12,8 @@
 		<typeAlias alias="reservation" type="model.Reservation" />
 		<typeAlias alias="review" type="model.Review" />
 		<typeAlias alias="likes" type="model.Likes" />
+		<typeAlias alias="board" type="model.Board" />
+		<typeAlias alias="boardcmt" type="model.Boardcmt" />
 	</typeAliases>
 	<!-- Database 연결에 대한 정보▼ -->
 	<environments default="development">
@@ -32,6 +34,8 @@
 		<mapper resource="reservation.xml" />
 		<mapper resource="review.xml" />
 		<mapper resource="likes.xml" />
+		<mapper resource="board.xml" />
+		<mapper resource="boardcmt.xml" />
 	</mappers>
 </configuration>
 

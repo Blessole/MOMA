@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css"> @import url("../../css/member/join.css"); </style>
+<style type="text/css">@import url("/css/member/join.css");</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 	
@@ -86,8 +86,8 @@
 		}
 	}
 	
-
 </script></head><body>
+
 	<div class="container">
 		<form action="joinAction.bb" method="post" name="frm" onsubmit="return chk()">
 			
@@ -97,9 +97,7 @@
 				<input type="text"/>
 			</div>
 			
-			<h1 class="title">M E M B E R</h1>
-			<h1 class="title">회원가입</h1>
-			<hr>
+			<h1 class="title">J O I N</h1>
 			<p>
 			
 			<!-- 아이디 -->
@@ -125,7 +123,9 @@
 			</div>
 			
 			<!-- 이름 -->
-			<input type="text" name="mname" required="required" placeholder="이름">
+			<div class="check">
+				<input type="text" name="mname" required="required" placeholder="이름">
+			</div>
 			
 			<!-- 별명 -->
 			<div class="check">
@@ -141,10 +141,15 @@
 			<p>
 			
 			<!-- 광고수신 -->
-			sms 광고수신<label><input type="radio" name="sms_check" value="y" checked="checked">동의</label><label><input type="radio" name="sms_check" value="n">거부</label><p>
-			email 광고수신<label><input type="radio" name="email_check" value="y" checked="checked">동의</label><label><input type="radio" name="email_check" value="n">거부</label><p>
-     	
-     		<input type = "submit" value="Join"> &nbsp; <input type = "reset" value="Reset">
+			<div class="checks">
+				<li>sms 광고수신 &nbsp &nbsp &nbsp<label id="chk1"><input type="radio" id="chk1" name="sms_check" value="y" checked="checked">수신동의</label> <label id="chk1"><input type="radio" id="chk1" name="sms_check" value="n">수신거부</label><p></li>
+				<li>email 광고수신 &nbsp &nbsp<label id="chk1"><input type="radio" id="chk1" name="email_check" value="y" checked="checked">수신동의</label> <label id="chk1"><input type="radio" id="chk1" name="email_check" value="n">수신거부</label><p></<li>
+     		</div>
+     		
+     		<div class="container_submit">
+			<input type="submit" class="btn_small2" value="가입하기"> <input type="reset" class="btn_small2" value="다시쓰기">
+			</div>
+			
      	</form>
    	</div>
 </body>

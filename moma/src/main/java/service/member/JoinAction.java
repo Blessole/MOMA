@@ -11,6 +11,7 @@ public class JoinAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
@@ -33,8 +34,7 @@ public class JoinAction implements CommandProcess {
 		MemberDao md = MemberDao.getInstance();
 		Member m1 = md.select(id);
 		int result = 0;
-		if(m1 == null) {result=md.insert(member);
-			/* System.out.println(result); */}
+		if(m1 == null) {result=md.insert(member);}
 		else result = -1;
 		request.setAttribute("result", result);
 		return "joinAction";

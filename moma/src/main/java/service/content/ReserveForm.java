@@ -20,7 +20,7 @@ public class ReserveForm implements CommandProcess {
 		HttpSession session = request.getSession();
 		int mno = (int) session.getAttribute("mno");
 		MemberDao md = MemberDao.getInstance();
-		Member member = md.select(mno);
+		Member member = md.selectReserve(mno);
 		
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		ContentDao cd = ContentDao.getInstance();
