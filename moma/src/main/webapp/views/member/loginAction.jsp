@@ -10,9 +10,14 @@
 <body>
 	<c:if test="${result>0 }">
 		<script>
-			alert("로그인 성공")
-			location.href="${prevUrl}";
+		
+		var preUrl = document.referrer.split("/")[6];
+		alert("로그인 성공");
 			
+		if(preUrl == "joinForm.bb") {
+			location.href="momaMain.so";
+		} else { history.back(); }
+		
 		</script>
 	</c:if>
 	

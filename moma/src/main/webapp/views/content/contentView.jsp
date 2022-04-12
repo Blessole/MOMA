@@ -44,7 +44,7 @@
 	});
 	
 	//session check
-	function sChk() {
+	function sChk(name) {
 		var chk = "${empty id}";
 		if (chk=="true") {
 			var con = confirm("로그인이 필요합니다.");
@@ -62,7 +62,7 @@
 	// 좋아요 제어
 	function likes() {
 		if (${empty id}) {
-			var con = confirm("로그인이 필요합니다..");
+			var con = confirm("로그인이 필요합니다.");
 			if (con) {				
 				location.href="/moma/views/member/loginForm.bb";
 			}
@@ -87,7 +87,7 @@
 		<h2 class="cname">${content.cname }</h2>
 		<h5 class="sort">
 			<c:choose> 
-			<c:when test="${content.sort eq 'M' }"> 영화 / 드라마 > 영화 </c:when> 
+			<c:when test="${content.sort eq 'm' }"> 영화 / 드라마 > 영화 </c:when> 
 			<c:otherwise> 영화 / 드라마 > 드라마 </c:otherwise> </c:choose>
 		</h5>
 		
@@ -124,7 +124,9 @@
 					</tr>
 				</table>
 					<div class="bottom_box">
-					<button class="btn" onclick="location.href='reserveForm.so?cno=${cno}'">예매하기</button>
+					<c:if test="${content.reserve=='Y' }">
+						<button class="btn" onclick="sChk('reserve')">예매하기</button>
+					</c:if>
 					<button class="btn2" onclick="location.href='${content.netflix }'"><img alt="netflix" src="../../img/icon/netflix.png"></button>
 					<button class="btn2" onclick="location.href='${content.watcha }'"><img alt="watcha" src="../../img/icon/watcha.png"></button>
 					<button class="btn2" onclick="location.href='${content.tving }'"><img alt="tving" src="../../img/icon/tving.png"></button>
