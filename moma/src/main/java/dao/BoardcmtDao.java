@@ -33,6 +33,11 @@ public class BoardcmtDao {
 		}
 	}
 
+	// BoardView.java 각 게시글의 댓글 수
+	public int count(int bno) {
+		return (int) session.selectOne("boardcmtns.count", bno);
+	}
+	
 	//BoardCmtWrite.java 댓글 입력
 	public int insertComment(Boardcmt cmt) {
 		return session.insert("boardcmtns.insert",cmt);
@@ -40,7 +45,6 @@ public class BoardcmtDao {
 
 	//BoardView.java 게시글 댓글 목록
 	public List<Boardcmt> list(int bno) {
-	//	return (List<Boardcmt>)session.selectList("commentns.selectList",bno);
 		return (List<Boardcmt>)session.selectList("boardcmtns.cmtlist",bno);
 	}
 	

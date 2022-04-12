@@ -14,16 +14,17 @@ public class BoardCmtWrite implements CommandProcess {
 		BoardcmtDao bd = BoardcmtDao.getInstance();
 		Boardcmt cmt = new Boardcmt();
 		
-		/*로그인 부분 나중에 결합하기
+		// 세션으로 mno 가져오기
 		HttpSession session = request.getSession();
-		int mno = (int)session.getAttribute("mno");*/
+		int mno = (int) session.getAttribute("mno");
 		
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		String bc_content = request.getParameter("bc_content");
 		
+		//cmt 세팅
 		cmt.setBno(bno);
 		cmt.setBc_content(bc_content);
-		//cmt.setMno(mno);
+		cmt.setMno(mno);
 		
 		int result = bd.insertComment(cmt); //댓글 저장하기
 		

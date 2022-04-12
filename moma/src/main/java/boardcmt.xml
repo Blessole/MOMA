@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardcmtns">
-	<!-- 댓글 입력 시작 -->
+	<!-- 댓글 입력 시작 -->	
 	<insert id="insert" parameterType="boardcmt">	
  		<selectKey keyProperty="boardcmtseq" order="BEFORE" resultType="integer">
 			select boardcmt_seq.nextval from dual
-		</selectKey>	 <!-- 일단 mno를 null로 세팅 -->
-insert into boardcmt values(#{boardcmtseq},#{bc_content},sysdate,'n',#{bno},null)
+		</selectKey>
+insert into boardcmt values(#{boardcmtseq},#{bc_content},sysdate,'n',#{bno},#{mno})
 	</insert>
 
 	<!-- 댓글 조회 -->
 	<select id="cmtlist" parameterType="integer" resultType="boardcmt">
-		select * from boardcmt where bno=#{bno} and del ='n'
+		select * from (select e.* from (
+		select cmt.*, nickname from boardcmt cmt, member m where cmt.mno=m.mno
+		and cmt.bno = #{bno} and cmt.del='n') e)
 	</select>
 
 	<!-- 댓글 삭제 -->
 	<update id="delete" parameterType="integer">
 	update boardcmt set del='y' where bcno=#{bcno}
 	</update>
+
 
 </mapper>
