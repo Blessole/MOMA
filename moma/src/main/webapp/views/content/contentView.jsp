@@ -87,7 +87,7 @@
 		<h2 class="cname">${content.cname }</h2>
 		<h5 class="sort">
 			<c:choose> 
-			<c:when test="${content.sort eq 'M' }"> 영화 / 드라마 > 영화 </c:when> 
+			<c:when test="${content.sort eq 'm' }"> 영화 / 드라마 > 영화 </c:when> 
 			<c:otherwise> 영화 / 드라마 > 드라마 </c:otherwise> </c:choose>
 		</h5>
 		

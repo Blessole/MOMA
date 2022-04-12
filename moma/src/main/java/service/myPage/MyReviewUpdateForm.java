@@ -30,7 +30,6 @@ public class MyReviewUpdateForm implements CommandProcess {
 		request.setAttribute("content", content);
 		request.setAttribute("prevUrl", prevUrl);
 		
-		
 	return "myReviewUpdateForm";
 
 	}

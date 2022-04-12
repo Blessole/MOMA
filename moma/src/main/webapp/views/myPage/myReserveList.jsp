@@ -42,7 +42,7 @@
 							</a>
 							<div class="txt_area">
 								<a href="/moma/views/content/contentView.do?cno=${reservation.cno}" class="cursor">
-									<span class="txt_title">${content.cname }</span>
+									<span class="txt_title">${reservation.cname }</span>
 									<span class="txt">${reservation.rsdate}</span>
 									<span class="txt">${reservation.rstime}</span>
 									<span class="txt">${reservation.cinema}</span>
@@ -73,7 +73,7 @@
 					</c:if>
 					<c:if test="${pageNum > 1}">
 						<button class="prev" onclick="location.href='myReserveList.bb?pageNum=${currentPage - 1}'">
-							<img alt="이전" src="/moma/icons/left.png">
+							<img alt="이전" src="/moma/icon/left.png">
 						</button>
 					</c:if>
 				</div>
@@ -83,13 +83,13 @@
 				<div class="next_btn">
 					<c:if test="${currentPage < totalPage}">
 						<button class="next" onclick="location.href='myReserveList.bb?pageNum=${currentPage + 1}'">
-							<img alt="다음" src="/moma/icons/right.png">
+							<img alt="다음" src="/moma/icon/right.png">
 						</button>
 					</c:if>
 					<c:if test="${endPage < totalPage}">
 						<button class=last onclick="location.href='myReserveList.bb?pageNum=${endPage + 1}'">
-							<img alt="다음" src="/moma/icons/right.png">
-							<img alt="다음" src="/moma/icons/right.png">
+							<img alt="다음" src="/moma/icon/right.png">
+							<img alt="다음" src="/moma/icon/right.png">
 						</button> 
 					</c:if>
 				</div> <!-- next_btn -->

@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/moma/css/common.css">
 <script type="text/javascript">
-	function sessionChk(name) {
+
+function sessionChk(name) {
 		if (${empty id}) {
 			var con = confirm("로그인 후 이용해 주시기 바랍니다.");
 			location.href = "/moma/views/member/loginForm.bb";
@@ -17,6 +18,7 @@
 			location.href = "/moma/views/myPage/myMain.bb"
 		}
 	}
+	
 </script>
 </head>
 <body>   
@@ -39,7 +41,6 @@
 						</c:if>
 						<c:if test="${id == 'admin'}">
 							<li><a href="/moma/views/member/logout.bb">로그아웃</a></li>
-							<li><a href="/moma/views/admin/adminMain.so">관리자페이지</a></li>
 						</c:if>
 					</c:if>
 				</ul>
@@ -47,7 +48,14 @@
 					<li><a href="/moma/views/content/movieMain.so" id="movie">영화</a></li>
 					<li><a href="/moma/views/content/dramaMain.so" id="drama">드라마</a></li>
 					<li><a href="/moma/views/board/boardMain.ha?pageNum=1" id="board">저널게시판</a></li>
-					<li><a id="myPage" onclick="return sessionChk('main')">마이페이지</a></li>
+				
+					<c:if test="${id != 'admin'}">
+						<li><a id="myPage" href="/moma/views/myPage/myMain.bb?pageNum=1">마이페이지</a></li> 
+					</c:if>
+					<c:if test="${id == 'admin'}">
+							<li><a id="adPage" href="/moma/views/admin/adMain.bb">관리자페이지</a></li>
+					</c:if>
+				
 				</ul>
 			</nav>
 		</div>

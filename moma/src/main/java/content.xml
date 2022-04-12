@@ -45,22 +45,22 @@
 	
 	<!-- 영화 상세 select -->
 	<select id="selectMView" parameterType="integer" resultType="content">
-		select * from content where cno = #{cno} and sort='M' and del='n'
+		select * from content where cno = #{cno} and sort='m' and del='n'
 	</select>
 	
 	<!-- 드라마 상세 select -->
 	<select id="selectDView" parameterType="integer" resultType="content">
-		select * from content where cno = #{cno} and sort='D' and del='n'
+		select * from content where cno = #{cno} and sort='d' and del='n'
 	</select>
 	
 	<!-- 드라마 main total -->
 	<select id="getTotalD" resultType="integer">
-		select count(*) from content where del = 'n'  and sort='D'
+		select count(*) from content where del = 'n'  and sort='d'
 	</select>
 	
 	<!-- 영화 main total -->
 	<select id="getTotalM" resultType="integer">
-		select count(*) from content where del = 'n'  and sort='M'
+		select count(*) from content where del = 'n'  and sort='m'
 	</select>
 	
 	<!-- 태그로 리스트 조회 -->
@@ -70,7 +70,7 @@
 		<foreach collection="genre" item="item" open="(" close=")" separator="or">
 			genre like '%'||#{item}||'%' 
 		</foreach>
-		and sort='D' and del = 'n' order by cno desc) e)
+		and sort='d' and del = 'n' order by cno desc) e)
 		where rn between #{startRow} and #{endRow}
 	</select>
 
@@ -81,7 +81,7 @@
 		<foreach collection="genre" item="item" open="(" close=")" separator="or">
 			genre like '%'||#{item}||'%' 
 		</foreach>
-		and sort='M' and del = 'n' order by cno desc) e)
+		and sort='m' and del = 'n' order by cno desc) e)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
@@ -91,7 +91,7 @@
 		<foreach collection="array" item="item" open="(">
 			genre like '%'||#{item}||'%' or
 		</foreach>
-		1 = 0) and sort='D' and del = 'n' order by cno desc
+		1 = 0) and sort='d' and del = 'n' order by cno desc
 	</select>
 	
 	<!-- 영화 genre 필터 total -->
@@ -100,7 +100,7 @@
 		<foreach collection="array" item="item" open="(">
 			genre like '%'||#{item}||'%' or
 		</foreach>
-		1 = 0) and sort='M' and del = 'n' order by cno desc
+		1 = 0) and sort='m' and del = 'n' order by cno desc
 	</select>
 	
 	<!-- 검색 -->

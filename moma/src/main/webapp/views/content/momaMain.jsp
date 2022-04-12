@@ -160,7 +160,7 @@
 			    <div class = "subtitle"> - 조회수 TOP 10</div>
 				<ul class="content_list">
 					<c:forEach var="content" items="${mlist }">
-						<c:if test="${content.sort == 'M' }">
+						<c:if test="${content.sort == 'm' }">
 							<li class="ctslide">
 								<a href="contentView.do?cno=${content.cno }">
 									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
@@ -179,7 +179,7 @@
 			   <div class = "subtitle"> - 조회수 TOP 10</div>
 				<ul class="content_list">
 					<c:forEach var="content" items="${dlist }">
-						<c:if test="${content.sort == 'D' }">
+						<c:if test="${content.sort == 'd' }">
 							<li class="ctslide">
 								<a href="contentView.do?cno=${content.cno }">
 									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">

@@ -89,7 +89,7 @@
 </script></head><body>
 
 	<div class="container">
-		<form action="joinAction.bb" method="post" name="frm" onsubmit="return chk()" class="textline">
+		<form action="joinAction.bb" method="post" name="frm" onsubmit="return chk()">
 			
 			<!-- 엔터키 전송 막기 -->
 			<div style="display:none">
@@ -98,11 +98,11 @@
 			</div>
 			
 			<h1 class="title">J O I N</h1>
-			<p>
 			
+			<div class="join">
 			<!-- 아이디 -->
 			<div class="check">
-				<input type="text" name="id" required="required" autofocus="autofocus" placeholder="아이디" onchange="chkId()"> 
+				<input type="text" class="check_mem" name="id" required="required"  autofocus="autofocus" placeholder="아이디" onchange="chkId()" > 
 				<div class="chk-msg" id="err_id"></div>
 			</div> 
 			
@@ -142,14 +142,14 @@
 			
 			<!-- 광고수신 -->
 			<div class="checks">
-				<li>sms 광고수신 &nbsp &nbsp &nbsp<label id="chk1"><input type="radio" id="chk1" name="sms_check" value="y" checked="checked">수신동의</label> <label id="chk1"><input type="radio" id="chk1" name="sms_check" value="n">수신거부</label><p></li>
-				<li>email 광고수신 &nbsp &nbsp<label id="chk1"><input type="radio" id="chk1" name="email_check" value="y" checked="checked">수신동의</label> <label id="chk1"><input type="radio" id="chk1" name="email_check" value="n">수신거부</label><p></<li>
+				<li>sms 광고수신 &nbsp &nbsp &nbsp <label id="chk1"><input type="radio" id="chk1" name="sms_check" value="y" checked="checked">수신동의</label> <label id="chk1"><input type="radio" id="chk1" name="sms_check" value="n">수신거부</label><p></li>
+				<li>email 광고수신 &nbsp &nbsp <label id="chk1"><input type="radio" id="chk1" name="email_check" value="y" checked="checked">수신동의</label> <label id="chk1"><input type="radio" id="chk1" name="email_check" value="n">수신거부</label><p></<li>
      		</div>
      		
-     		<div class="container_submit">
-			<input type="submit" class="btn_small2" value="가입하기"> <input type="reset" class="btn_small2" value="다시쓰기">
+     		<div class="container_submit2">
+			<input type="submit" class="btn_small_j" value="가입하기"> <input type="reset" class="btn_small_j" value="다시쓰기">
 			</div>
-			
+		</div>	
      	</form>
    	</div>
 </body>
