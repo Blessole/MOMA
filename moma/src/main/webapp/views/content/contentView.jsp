@@ -62,7 +62,7 @@
 	// 좋아요 제어
 	function likes() {
 		if (${empty id}) {
-			var con = confirm("로그인이 필요합니다.");
+			var con = confirm("로그인이 필요합니다..");
 			if (con) {				
 				location.href="/moma/views/member/loginForm.bb";
 			}
