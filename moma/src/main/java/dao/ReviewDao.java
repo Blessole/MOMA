@@ -55,14 +55,6 @@ public class ReviewDao {
 	public float selectStar(int cno) {
 		return (float) session.selectOne("reviewns.selectStar", cno);
 	}
-	
-	// 리뷰 삭제
-	public int delete(int cno, int mno) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("cno", cno);
-		map.put("mno", mno);
-		return session.update("reviewns.delete", map);
-	}
 
 	// 각 컨텐츠의 총 리뷰 갯수
 	public int getTotal(int cno) {
@@ -84,7 +76,7 @@ public class ReviewDao {
 	
 	// 마이페이지 : 리뷰 삭제
 	public int delete(int rvno) {
-		return  session.delete("reviewns.delete", rvno);
+		return  session.update("reviewns.delete", rvno);
 	}
 	
 	// 마이페이지 리뷰 수정 : review.* 와 content.cname 조회

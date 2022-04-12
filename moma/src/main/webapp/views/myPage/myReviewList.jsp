@@ -29,12 +29,12 @@
 				<ul>
 					<c:forEach var="myReview" items="${list}">
 						<li class="rv">
-							<a href="/content/ContentView.do?cno=${myReview.cno}">
-								<img style="background: url(/img/poster/${myReview.cno}.jpg) no-repeat center; background-size: cover;">
+							<a href="/moma/views/content/ContentView.do?cno=${myReview.cno}">
+								<img style="background: url(/moma/img/poster/${myReview.cno}.jpg) no-repeat center; background-size: cover;">
 							</a>
 							<div class="txt_area_rv">
 								<p class="txt_small">작성일 ${myReview.rv_date }</p>
-								<a href="/views/content/ContentView.do?cno=${myReview.cno}" class="cursor">
+								<a href="/moma/views/content/ContentView.do?cno=${myReview.cno}" class="cursor">
 									<span class="txt_title">${myReview.cname}</span>
 									<span class="txt">${myReview.rv_content}</span>
 									★별점★ ${myReview.star_rate } / 10
@@ -51,14 +51,14 @@
 									function del() {
 										var con = confirm("삭제 하시겠습니까?");
 										if(con) {
-											location.href="/views/myPage/myReviewDelete.bb?rvno=${myReview.rvno}";
+											location.href="/moma/views/myPage/myReviewDelete.bb?rvno=${myReview.rvno}";
 										}
 									}
 								</script>
 								
 								<div class="txt_bottom">
 									<div class="btn_area_rv">
-										<a href="/views/myPage/myReviewUpdateForm.bb?rvno=${myReview.rvno}"  class="btn_rv">수정</a>
+										<a href="/moma/views/myPage/myReviewUpdateForm.bb?rvno=${myReview.rvno}"  class="btn_rv">수정</a>
 										<a onclick="del()" class="btn_rv">삭제</a>
 									</div>
 								</div>
@@ -75,8 +75,7 @@
 				<div class="prev_btn">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<button class="first" onclick="location.href='myReviewList.bb?pageNum=${startPage - 1}'">
-							<img alt="이전" src="/moma/icons/left.png">
-							<img alt="이전" src="/moma/icons/left.png">
+							<img alt="이전" src="../../img/icon/left (1).png">
 						</button> 
 					</c:if>
 					<c:if test="${pageNum > 1}">
@@ -91,13 +90,12 @@
 				<div class="next_btn">
 					<c:if test="${currentPage < totalPage}">
 						<button class="next" onclick="location.href='myReviewList.bb?pageNum=${currentPage + 1}'">
-							<img alt="다음" src="/moma/icons/right.png">
+							<img alt="다음" src="../../img/icon/right (1).png">
 						</button>
 					</c:if>
 					<c:if test="${endPage < totalPage}">
 						<button class=last onclick="location.href='myReviewList.bb?pageNum=${endPage + 1}'">
-							<img alt="다음" src="/moma/icons/right.png">
-							<img alt="다음" src="/moma/icons/right.png">
+							<img alt="다음" src="../../img/icon/right.png">
 						</button> 
 					</c:if>
 				</div> <!-- next_btn -->

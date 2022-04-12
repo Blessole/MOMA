@@ -28,7 +28,7 @@
 				<ul>
 					<c:forEach var="likes" items="${list}">
 						<li class=likes>
-							<a href="/views/content/contentView.do?cno=${likes.cno}" class="cursor">
+							<a href="/moma/views/content/contentView.do?cno=${likes.cno}" class="cursor">
 								<img src ="/img/poster/${likes.cno}.jpg" style =" no-repeat center; background-size: cover;">
 								<div class="txt_likes">${likes.cname }</div>
 							</a>

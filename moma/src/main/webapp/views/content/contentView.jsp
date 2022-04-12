@@ -143,7 +143,7 @@
 		        <li>
 		            <form action="reviewAction.do?cno=${content.cno }&rvno=${review.rvno }" method="post">
 		                <div class="profile">
-		                    <p class="nickname">${member.nickname }</p>
+		                    <p class="nickname">${nickname }</p>
 		                    <p class="rv_date">${review.rv_date }</p>
 		                </div>
 		                <p class="detail_txt review">
@@ -180,13 +180,13 @@
 
         <!-- 리뷰 등록 -->
         <form action="reviewAction.do?cno=${content.cno }" method="post">
-        	<input type="hidden" name="rv_date" value="${review1.rv_date }">
+        	<input type="hidden" name="rv_date" value="${review.rv_date }">
             <h4 class="sub_title">리뷰와 별점 등록</h4>
             <textarea name="rv_content" placeholder="감상평을 작성해 주세요." required="required" onclick="sChk()"></textarea>
             <p class="detail_txt pd_bottom">별점을 선택해 주세요.</p>
             <!-- 별점 등록 -->
             <div class="star_avg rate">
-                <input type="range" name="star_rate" min="0" max="10" step="1" value="0" required>
+                <input type="range" name="star_rate" min="0" max="10" step="1" value="0" required="required">
                 <span class="text" id="input_span">0</span>
             </div>
             <div class="submit_box">
