@@ -37,12 +37,12 @@
 				<ul>
 					<c:forEach var="reservation" items="${list}">
 						<li class= "rsv">
-							<a href="/views/content/contentView.do?cno=${reservation.cno}">
-								<img alt="포스터" src="/img/poster/${reservation.cno}.jpg">
+							<a href="/moma/views/content/contentView.do?cno=${reservation.cno}">
+								<img alt="포스터" src="../../img/poster/${reservation.cno}.jpg">
 							</a>
 							<div class="txt_area">
 								<a href="/views/content/contentView.do?cno=${reservation.cno}" class="cursor">
-									<span class="txt_title">${reservation.cname}</span>
+									<span class="txt_title">${content.cname }</span>
 									<span class="txt">${reservation.rsdate}</span>
 									<span class="txt">${reservation.rstime}</span>
 									<span class="txt">${reservation.cinema}</span>
@@ -50,7 +50,7 @@
 								</a>
 								<div class="txt_bottom">
 									<div class="btn_area">
-										<a href="../content/reserveDelete.so?cno=${reservation.cno}" class="btn_rsv">예매 취소</a>
+										<a href="/views/content/reserveDelete.so?cno=${reservation.cno}" class="btn_rsv">예매 취소</a>
 									</div>
 								</div>
 							</div>

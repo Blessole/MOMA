@@ -18,7 +18,7 @@ public class BoardCmtDelete implements CommandProcess{
 		request.setAttribute("result", result);
 		request.setAttribute("bno", bno);
 		
-		return "boardCmtDelete.jsp";
+		return "boardCmtDelete";
 
 	}
 }

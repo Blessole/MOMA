@@ -57,7 +57,7 @@ $(document).ready(function () {
 	function delComment(bcno){
 		var con = confirm("삭제 하시겠습니까?");
 		if(con){
-			location.href="boardCmtDelete.do?bno=${board.bno}&bcno=" + bcno;
+			location.href="boardCmtDelete.ha?bno=${board.bno}&bcno=" + bcno;
 		}
 	}
 
@@ -90,12 +90,7 @@ $(document).ready(function () {
 <div class="container_bottom">
 	<div class="container_bottom_left">
 		<div class="return_box">
-<<<<<<< Updated upstream
-			<button onclick="location.href='boardMain.do'">돌아가기</button>
-			<%-- <span>${cmt_cnt }</span> --%>
-=======
 			<button onclick="location.href='boardMain.ha'">돌아가기</button>
->>>>>>> Stashed changes
 </div></div></div>
 
 
@@ -133,7 +128,7 @@ $(document).ready(function () {
 	</c:if>
 
 	<!-- 댓글작성 -->
-<form action="boardCmtWrite.do?bno=${board.bno }" method="post" class="cmt_insert_frm">
+<form action="boardCmtWrite.ha?bno=${board.bno }" method="post" class="cmt_insert_frm">
 	<pre><textarea name="bc_content" 
 	placeholder="댓글을 작성하세요" required onclick="sessionChk()"></textarea></pre>
 			<div class="submit_box">
