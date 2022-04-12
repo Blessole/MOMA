@@ -4,7 +4,7 @@
 <!DOCTYPE html><html><head>
 <%@ include file="../sessionChk.jsp" %>
 <meta charset="UTF-8"><title>Insert title here</title>
-<style type="text/css">@import url("/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("../../css/myPage/common_my.css");</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 

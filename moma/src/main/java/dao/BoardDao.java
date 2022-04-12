@@ -24,7 +24,7 @@ public class BoardDao {
 			Reader reader = Resources.getResourceAsReader("configuration.xml");
 			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader);
 			session = ssf.openSession(true);
-			System.out.println("왔냐?");
+			//System.out.println("왔냐?");
 			reader.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

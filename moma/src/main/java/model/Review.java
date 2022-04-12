@@ -11,6 +11,17 @@ public class Review {
 	private int mno;
 	private int cno;
 	
+	// content에서 받아올 예정
+	private String cname;
+				
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	//
+				
 	public int getRvno() {
 		return rvno;
 	}

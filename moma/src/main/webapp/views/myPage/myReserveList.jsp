@@ -42,7 +42,7 @@
 							</a>
 							<div class="txt_area">
 								<a href="/views/content/contentView.do?cno=${reservation.cno}" class="cursor">
-									<span class="txt_title">${content.cname }</span>
+									<span class="txt_title">${reservation.cname }</span>
 									<span class="txt">${reservation.rsdate}</span>
 									<span class="txt">${reservation.rstime}</span>
 									<span class="txt">${reservation.cinema}</span>

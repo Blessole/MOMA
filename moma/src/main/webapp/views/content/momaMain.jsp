@@ -45,7 +45,7 @@
 		}
 		function fadePrev(){
 			currentSlide.removeClass('active').fadeOut(700);
-			if (curentSlideIndex ==1){
+			if (currentSlideIndex ==1){
 				currentSlide=slides.last();
 				currentSlide.delay(500).addClass('active').fadeIn();
 				currentSlideIndex=slidesCount;
@@ -126,15 +126,15 @@
 
 	<div class="slider">
 		<div class="slides-container">
-			<div class="slide" onclick="location.href='boardMain.ha'">
+			<div class="slide" onclick="location.href='/moma/views/board/boardView.ha?bno=1'">
 				<img alt="Slider img 1" src="/moma/img/board_image/1.JPG">
 				<div class="centered">열대야에 어울리는 시원한 여름 힐링 영화<br>'맘마미아'</div>
 			</div>
-			<div class="slide" onclick="location.href='boardMain.ha'">
+			<div class="slide" onclick="location.href='/moma/views/board/boardView.ha?bno=2'">
 				<img alt="Slider img 2" src="/moma/img/board_image/2.jpg">
 				<div class="centered">'요노스케 이야기'<br>평범했지만 웃음이 나오는 이야기</div>
 			</div>
-			<div class="slide" onclick="location.href='boardMain.ha'">
+			<div class="slide" onclick="location.href='/moma/views/board/boardView.ha?bno=3'">
 			<img alt="Slider img 3" src="/moma/img/board_image/3.jpg">
 				<div class="centered">8살 소녀가 받아들인 이별이야기<br>'역으로 가는 길을 알려줘'</div>
 			</div>
@@ -160,7 +160,7 @@
 			    <div class = "subtitle"> - 조회수 TOP 10</div>
 				<ul class="content_list">
 					<c:forEach var="content" items="${mlist }">
-						<c:if test="${content.sort == 'M' }">
+						<c:if test="${content.sort == 'm' }">
 							<li class="ctslide">
 								<a href="contentView.do?cno=${content.cno }">
 									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
@@ -179,7 +179,7 @@
 			   <div class = "subtitle"> - 조회수 TOP 10</div>
 				<ul class="content_list">
 					<c:forEach var="content" items="${dlist }">
-						<c:if test="${content.sort == 'D' }">
+						<c:if test="${content.sort == 'd' }">
 							<li class="ctslide">
 								<a href="contentView.do?cno=${content.cno }">
 									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
