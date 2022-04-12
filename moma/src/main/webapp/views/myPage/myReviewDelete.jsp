@@ -10,7 +10,7 @@
 <c:if test="${result>0 }">
 	<script type="text/javascript">
 		alert("리뷰가 삭제 되었습니다");
-		location.href="/views/myPage/myReviewList.bb";
+		location.href="/moma/views/myPage/myReviewList.bb";
 	</script>
 </c:if>
 

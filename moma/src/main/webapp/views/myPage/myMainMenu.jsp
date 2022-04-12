@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <%@ include file="../sessionChk.jsp" %>  --%>
 
-<style type="text/css">@import url("/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("../../css/myPage/common_my.css");</style>
 <style>
 .category>ul>li {
 	float: left;
@@ -17,7 +17,7 @@
 </style>
 <script type="text/javascript">
 	function showCon(id) {
-		location.href = "/views/myPage/" + id + ".bb";
+		location.href = "/moma/views/myPage/" + id + ".bb";
 	}
 </script>
 <!-- 프로필, 메뉴 -->
@@ -27,17 +27,17 @@
 		<li class="category">
 			<ul>
 				<li id="myLikesList" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/img/myPage_image/myLikes.png" >My Likes
+					<span class="dot"></span><img src="../../img/myPage_image/myLikes.png" >My Likes
 					<%-- <span class="point-color">${bmTotal}</span> 좋아요총갯수 보여줄까말까~~ --%>
 				</li>
 				<li id="myReserveList" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/img/myPage_image/reservation.png" >Reservation
+					<span class="dot"></span><img src="../../img/myPage_image/reservation.png" >Reservation
 				</li>
 				<li id="myReviewList" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/img/myPage_image/myReview.png" >My Reviews
+					<span class="dot"></span><img src="../../img/myPage_image/myReview.png" >My Reviews
 				</li>
 				<li id="../member/updateForm" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/img/myPage_image/myInfo.png" >My Info
+					<span class="dot"></span><img src="../../img/myPage_image/myInfo.png" >My Info
 				</li>
 			</ul>
 		</li>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">@import url("/css/member/join.css");</style>
+<style type="text/css">@import url("/moma/css/member/join.css");</style>
 </head><body>
 <div class="container">
 	<div class="find find-password">

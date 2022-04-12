@@ -91,4 +91,5 @@
 	<update id="delete" parameterType="integer">
 		update member set del='y' where mno=#{mno}	
 	</update> 
+
 </mapper>

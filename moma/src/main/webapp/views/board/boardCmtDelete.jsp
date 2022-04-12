@@ -10,7 +10,7 @@
 <body>
 <c:if test="${result>0 }">
 	<script type="text/javascript">
-		location.href="boardView.do?bno=${bno}"
+		location.href="boardView.ha?bno=${bno}"
 	</script>
 </c:if>
 

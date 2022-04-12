@@ -4,7 +4,7 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/views/sessionChk.jsp"%>
-<style type="text/css">@import url("/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 	// 페이징 현재페이지 설정
@@ -29,12 +29,12 @@
 				<ul>
 					<c:forEach var="myReview" items="${list}">
 						<li class="rv">
-							<a href="/content/ContentView.do?cno=${myReview.cno}">
+							<a href="/moma/views/content/ContentView.do?cno=${myReview.cno}">
 								<img style="background: url(/img/poster/${myReview.cno}.jpg) no-repeat center; background-size: cover;">
 							</a>
 							<div class="txt_area_rv">
 								<p class="txt_small">작성일 ${myReview.rv_date }</p>
-								<a href="/views/content/ContentView.do?cno=${myReview.cno}" class="cursor">
+								<a href="/moma/views/content/ContentView.do?cno=${myReview.cno}" class="cursor">
 									<span class="txt_title">${myReview.cname}</span>
 									<span class="txt">${myReview.rv_content}</span>
 									★별점★ ${myReview.star_rate } / 10
@@ -51,14 +51,14 @@
 									function del() {
 										var con = confirm("삭제 하시겠습니까?");
 										if(con) {
-											location.href="/views/myPage/myReviewDelete.bb?rvno=${myReview.rvno}";
+											location.href="/moma/views/myPage/myReviewDelete.bb?rvno=${myReview.rvno}";
 										}
 									}
 								</script>
 								
 								<div class="txt_bottom">
 									<div class="btn_area_rv">
-										<a href="/views/myPage/myReviewUpdateForm.bb?rvno=${myReview.rvno}"  class="btn_rv">수정</a>
+										<a href="/moma/views/myPage/myReviewUpdateForm.bb?rvno=${myReview.rvno}"  class="btn_rv">수정</a>
 										<a onclick="del()" class="btn_rv">삭제</a>
 									</div>
 								</div>

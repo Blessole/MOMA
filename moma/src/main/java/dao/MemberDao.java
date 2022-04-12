@@ -13,7 +13,8 @@ import model.Member;
 public class MemberDao {
     // singleton
 	private static MemberDao instance = new MemberDao();
-	private MemberDao() {}
+	private MemberDao() {
+	}
 	 
 	public static MemberDao getInstance() {
 		return instance;
@@ -93,4 +94,5 @@ public class MemberDao {
 		public int delete(int mno) {
 			return session.delete("memberns.delete", mno);
 		}
+
 }

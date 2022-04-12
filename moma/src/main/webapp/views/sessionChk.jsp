@@ -10,4 +10,3 @@
 		location.href="/views/member/loginForm.bb";
 	</script>
 </c:if>
-

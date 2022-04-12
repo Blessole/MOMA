@@ -30,6 +30,6 @@ public class BoardCmtWrite implements CommandProcess {
 		request.setAttribute("result", result);
 		request.setAttribute("bno",bno);
 		
-		return "boardComment.jsp";
+		return "boardComment";
 	}
 }

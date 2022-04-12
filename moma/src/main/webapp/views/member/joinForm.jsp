@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">@import url("/css/member/join.css");</style>
+<style type="text/css">@import url("/moma/css/member/join.css");</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 	
@@ -89,7 +89,7 @@
 </script></head><body>
 
 	<div class="container">
-		<form action="joinAction.bb" method="post" name="frm" onsubmit="return chk()">
+		<form action="joinAction.bb" method="post" name="frm" onsubmit="return chk()" class="textline">
 			
 			<!-- 엔터키 전송 막기 -->
 			<div style="display:none">

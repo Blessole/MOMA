@@ -19,10 +19,10 @@ function sessionChk() {
 	if (${empty id}) {
 		var con = confirm("로그인 후 이용해 주시기 바랍니다.");
 		if (con) {
-			location.href = "/moma/views/board/boardWriteForm.do?action=insert";
+			location.href = "/moma/views/board/boardWriteForm.ha?action=insert";
 		}
 	} else {
-		location.href = "/moma/views/board/boardWriteForm.do?action=insert";
+		location.href = "/moma/views/board/boardWriteForm.ha?action=insert";
 	}
 }
 </script>
@@ -46,7 +46,7 @@ function sessionChk() {
 				</c:if>
 				<c:if test="${board.del != 'y' }">
 						<article class="board_listing">
-							<a class="board_title" href="boardView.do?bno=${board.bno }">${board.bname }</a>
+							<a class="board_title" href="boardView.ha?bno=${board.bno }">${board.bname }</a>
 
 							<div class="board_image">
 								<a href="#"> <img alt="썸네일" width=100% height=100%
@@ -65,30 +65,30 @@ function sessionChk() {
 			<div class="items">
 				<div class="prev_btn">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
-						<button class="first" onclick="location.href='boardMain.do?pageNum=${startPage - 1}'">
+						<button class="first" onclick="location.href='boardMain.ha?pageNum=${startPage - 1}'">
 							<img alt="이전" src="../../img/icon/left.png">
 							<img alt="이전" src="../../img/icon/left.png">
 						</button> 
 					</c:if>
 					<c:if test="${pageNum > 1}">
-						<button class="prev" onclick="location.href='boardMain.do?pageNum=${currentPage - 1}'">
+						<button class="prev" onclick="location.href='boardMain.ha?pageNum=${currentPage - 1}'">
 							<img alt="이전" src="../../img/icon/left.png">
 						</button>
 					</c:if>
 				</div>
 				
 				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-					<span id="page${i}" class="page_num" onclick="location.href='boardMain.do?pageNum=${i}'">${i}</span>
+					<span id="page${i}" class="page_num" onclick="location.href='boardMain.ha?pageNum=${i}'">${i}</span>
 				</c:forEach>
 				
 				<div class="next_btn">
 					<c:if test="${currentPage < totalPage}">
-						<button class="next" onclick="location.href='boardMain.do?pageNum=${currentPage + 1}'">
+						<button class="next" onclick="location.href='boardMain.ha?pageNum=${currentPage + 1}'">
 							<img alt="다음" src="../../img/icon/right (1).png">
 						</button>
 					</c:if>
 					<c:if test="${endPage < totalPage}">
-						<button class="last" onclick="location.href='boardMain.do?pageNum=${endPage + 1}'">
+						<button class="last" onclick="location.href='boardMain.ha?pageNum=${endPage + 1}'">
 							<img alt="다음" src="../../img/icon/right (1).png">
 							<img alt="다음" src="../../img/icon/right (1).png">
 						</button> 

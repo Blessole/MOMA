@@ -16,8 +16,24 @@
 		delete reservation where cno = #{cno}
 	</delete>
 	
-	<!-- 마이페이지 예매내역 리스트 -->
-	<!-- <select id="list" parameterType="hashmap">
-		select * from reservation where mno = #{mno}
-	</select> -->
+<!-- moma 마이페이지 - 예매내역 -->
+	<!-- 예약모든정보 그리고 컨텐츠이름 컨텐츠포스터 조회. // del을 c.del도 'n'일때로 조회해야 하나?-->
+    <select id="myList" parameterType="hashmap" resultType="reservation">
+       select *
+       from (select rowNum rn, e.* 
+       		   from ( select r.*, c.cname, c.poster
+       		   			from reservation r, content c
+       		   			where r.cno = c.cno and r.mno = #{mno} and r.del = 'n' order by rsno desc) e)
+       where rn between #{startRow} and #{endRow}
+    </select>
+    
+	<!-- moma 마이페이지 - 전체 게시글 수 -->
+	<select id="getTotalMy" parameterType="integer" resultType="integer">
+		select count(*) from reservation where mno=#{mno}
+	</select>
+	
+	<!-- moma 마이페이지 - 내가 예약한 컨텐츠의 cno  -->
+	<select id="selectCno" parameterType="integer" resultType="reservation">
+		select cno from reservation where mno = #{mno} order by cno
+	</select>
 </mapper>

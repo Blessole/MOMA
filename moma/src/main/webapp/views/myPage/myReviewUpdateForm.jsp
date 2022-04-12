@@ -3,7 +3,7 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/views/sessionChk.jsp"%>
-<style type="text/css">@import url("/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script type="text/javascript">
 	
 </script></head><body>
@@ -19,7 +19,7 @@
             <div class="content">
 				<ul>
 					<li class=likes>
-						<a href="/views/content/contentView.do?cno=${review.cno}" class="cursor">
+						<a href="/moma/views/content/contentView.do?cno=${review.cno}" class="cursor">
 							<img src ="/img/poster/${review.cno}.jpg" style =" no-repeat center; background-size: cover;">
 							<div class="txt_likes">
 								 ${content.cname }

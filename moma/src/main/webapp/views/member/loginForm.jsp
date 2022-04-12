@@ -5,9 +5,7 @@
 <style type="text/css">@import url("/css/member/join.css");</style>
 </head><body>
 	<div class="container">
-		<!-- prevUrl 로그인누르기 전 이전페이지로 이동. javascript:history.go(-1)도 가능한가? -->
-		<!-- <form action="loginAction.bb" method="post"> -->
-		<!-- <div class="container_form"> -->
+		
 		<form action="loginAction.bb?prevUrl=${prevUrl}" method="post">
 			<h1 class="title">L O G I N</h1>
 			<!-- input -->

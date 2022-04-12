@@ -40,7 +40,7 @@ public class BoardView implements CommandProcess {
 		request.setAttribute("list",list);
 	//	request.setAttribute("cmt_cnt", cmt_cnt);
 	
-		return "boardView.jsp";
+		return "boardView";
 	}
 
 }
