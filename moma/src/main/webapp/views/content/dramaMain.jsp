@@ -67,7 +67,7 @@
 						<c:forEach var="content" items="${list }">
 							<li>
 								<a href="contentView.do?cno=${content.cno }">
-										<img alt="heart" src="../../img/icon/heart.png">
+										<!-- <img alt="heart" src="../../img/icon/heart.png"> -->
 									<img class="poster_img"  style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 									<div class="text_area">
 										<p class="content_list_title">${content.cname }</p>

@@ -84,10 +84,12 @@ public class ControllerBb extends HttpServlet {
 		    	  // command : /ch13/message.do
 		    	  // request.getContextPath() : /ch13
 		    	  // request.getContextPath().length()+1 : 6
-			      command = command.substring(
+		    	  System.out.println("command="+command);
+		    	  command = command.substring(
 			    		 request.getContextPath().length()+1);
-			      // command : message.do
+		    	  // command : message.do
 		          com = (CommandProcess)commandMap.get(command);
+		          System.out.println("com="+com);
 		          // com : service.Message객체를 CommandProcess로 형변환
 		          // 자식 즉 Message객체의 requestPro()메소드 실행
 		          view = com.requestPro(request, response);

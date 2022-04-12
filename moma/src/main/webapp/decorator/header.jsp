@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<%-- <c:set var="id" value='${sessionScope.id}'></c:set> --%>
+<c:set var="id" value='${sessionScope.id}'></c:set>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -12,7 +12,9 @@
 	function sessionChk(name) {
 		if (${empty id}) {
 			var con = confirm("로그인 후 이용해 주시기 바랍니다.");
-			location.href = "loginForm.bb";
+			location.href = "/moma/views/member/loginForm.bb";
+		} else {
+			location.href = "/moma/views/myPage/myMain.bb"
 		}
 	}
 </script>
