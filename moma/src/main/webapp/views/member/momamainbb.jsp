@@ -9,7 +9,7 @@
 	margin-top:30%
 }
 </style>
-<style type="text/css">@import url("/css/content/momaMain.css");</style>
+<style type="text/css">@import url("../../css/content/momaMain.css");</style>
 </head>
 <body>
 <div class=mainbb>

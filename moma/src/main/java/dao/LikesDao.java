@@ -59,11 +59,6 @@ public class LikesDao {
 		hm.put("mno", mno);
 		session.delete("likesns.delete", hm);
 	}
-	
-	// 마이페이지 - 메인
-	public List<Likes> myMain(int mno) {
-		return session.selectList("likesns.myMainMenu", mno);
-	}
 
 	// 마이페이지 좋아요 조회
 	public List<Likes> myList(int mno, int startRow, int endRow) {
@@ -71,7 +66,7 @@ public class LikesDao {
 		hm.put("mno", mno);
 		hm.put("startRow", startRow);
 		hm.put("endRow", endRow);
-		return session.selectList("likesns.myLikeList", hm);
+		return session.selectList("likesns.myList", hm);
 	}
 	
 	// 마이페이지 - 좋아요 한 수

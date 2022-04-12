@@ -6,7 +6,7 @@
 			select nvl(max(rvno), 0) + 1 rvno from review
 		</selectKey>
 		insert into review values(#{rvno}, #{star_rate}, #{rv_content},
-		sysdate, 0, 'n', #{mno}, #{cno})
+		sysdate, 'n', #{mno}, #{cno})
 	</insert>
 	
 	<!-- 각 컨텐츠의 review list -->
@@ -43,13 +43,8 @@
 	</select>
 	
 	<!-- // 마이페이지 : 리뷰 삭제 -->
-<!-- 	<update id="delete" parameterType="integer">
+	<update id="delete" parameterType="integer">
 		update review set del='y' where rvno=#{rvno}	
-	</update>  -->
-	
-		<!-- 리뷰 삭제 -->
-	<update id="delete" parameterType="java.util.Map">
-		update review set del = 'y' where cno = #{cno} and mno = #{mno}
 	</update>
 	
 	<!-- // 마이페이지 리뷰 수정 : 해당 rvno의 * 조회 -->
