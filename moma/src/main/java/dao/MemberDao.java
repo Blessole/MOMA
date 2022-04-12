@@ -95,4 +95,8 @@ public class MemberDao {
 			return session.delete("memberns.delete", mno);
 		}
 
+
+		// 다른 테이블에서 회원번호를 활용한 닉네임 찾기
+		public String selectNick(int mno) {
+			return (String) session.selectOne("memberns.selectNick", mno);}
 }
