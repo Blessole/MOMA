@@ -39,7 +39,7 @@
 						</c:if>
 						<c:if test="${id == 'admin'}">
 							<li><a href="/moma/views/member/logout.bb">로그아웃</a></li>
-							<li><a href="/moma/views/admin/adminMain.so">관리자페이지</a></li>
+							<li><a href="/moma/views/admin/adMain.bb">관리자페이지</a></li>
 						</c:if>
 					</c:if>
 				</ul>

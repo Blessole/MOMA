@@ -22,7 +22,7 @@
 		<jsp:include page="adMainMenu.jsp"></jsp:include>
 	<!-- 내용 -->
 		<div class="content_myMain">
-		<b>${member.nickname }</b> 님 환영합니다.
+		<b> 관리자님 환영합니다.</b>
 		</div>
 	</div>
 </body>

@@ -15,7 +15,7 @@
 			alert("로그인 성공");
 				
 			if(preUrl == "joinForm.bb") {
-				location.href="momaMain.so";
+				location.href="/moma/views/content/momaMain.so";
 			} else { history.back(); }	
 			
 		</script>

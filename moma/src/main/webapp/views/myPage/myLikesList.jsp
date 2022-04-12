@@ -44,13 +44,12 @@
 				<div class="prev_btn">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<button class="first" onclick="location.href='myLikesList.bb?pageNum=${startPage - 1}'">
-							<img alt="이전" src="/moma/icons/left.png">
-							<img alt="이전" src="/moma/icons/left.png">
+							<img alt="이전" src="../../img/icon/left (1).png">
 						</button> 
 					</c:if>
 					<c:if test="${pageNum > 1}">
 						<button class="prev" onclick="location.href='myLikesList.bb?pageNum=${currentPage - 1}'">
-							<img alt="이전" src="/moma/icons/left.png">
+							<img alt="이전" src="../../img/icon/left.png">
 						</button>
 					</c:if>
 				</div>
@@ -60,13 +59,12 @@
 				<div class="next_btn">
 					<c:if test="${currentPage < totalPage}">
 						<button class="next" onclick="location.href='myLikesList.bb?pageNum=${currentPage + 1}'">
-							<img alt="다음" src="/moma/icons/right.png">
+							<img alt="다음" src="../../img/icon/right (1).png">
 						</button>
 					</c:if>
 					<c:if test="${endPage < totalPage}">
 						<button class=last onclick="location.href='myLikesList.bb?pageNum=${endPage + 1}'">
-							<img alt="다음" src="/moma/icons/right.png">
-							<img alt="다음" src="/moma/icons/right.png">
+							<img alt="다음" src="../../img/icon/right.png">
 						</button> 
 					</c:if>
 				</div> <!-- next_btn -->

@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import dao.ContentDao;
 import dao.LikesDao;
+import dao.MemberDao;
 import dao.ReviewDao;
 import model.Content;
 import model.Likes;
+import model.Member;
 import model.Review;
 import service.CommandProcess;
 
@@ -18,10 +20,17 @@ public class ContentView implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();
 		int cno = Integer.parseInt(request.getParameter("cno"));
-
+		int mno = (int) session.getAttribute("mno"); // session mno
+		
 		ContentDao cd = ContentDao.getInstance();
 		Content content = cd.select(cno);
+		
+		MemberDao md = MemberDao.getInstance();
+		String nickname = md.selectNick(mno);
+		//System.out.println("nickname=" + nickname);
 		
 		// 리뷰 페이징 : start
 		final int ROW_PER_PAGE = 4; // 한 페이지에 10개씩
@@ -63,11 +72,9 @@ public class ContentView implements CommandProcess {
 		
 		// 회원이 좋아요 했는지 체크
 		LikesDao lkd = LikesDao.getInstance();
-		HttpSession session = request.getSession();
 		String color = "";
 		
 		if (session.getAttribute("mno") != null) {
-			int mno = (int) session.getAttribute("mno");
 			Likes lk = lkd.select(cno, mno);
 			
 			if (lk == null) {
@@ -79,6 +86,7 @@ public class ContentView implements CommandProcess {
 			color = "none";
 		}
 		
+		request.setAttribute("nickname", nickname);
 		request.setAttribute("cno", cno);
 		request.setAttribute("content", content);
 		request.setAttribute("list", list);

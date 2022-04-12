@@ -192,6 +192,24 @@
 					</c:forEach>
 				</ul>
 		</ul>
+				<!-- 예매 가능한 영화 -->
+		<ul class="content_tab">
+			<li class="title" id="tab3">예매 가능한 영화</li>
+				<ul class="content_list">
+					<c:forEach var="content" items="${list }">
+						<c:if test="${content.reserve == 'Y' }">
+							<li class="ctslide">
+								<a href="contentView.do?cno=${content.cno }">
+									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
+									<div class="text_area">
+										<p class="content_list_title">${content.cname }</p>
+									</div>
+								</a>
+							</li>
+						</c:if>
+					</c:forEach>
+				</ul>
+		</ul>
 	</section>
 </div>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>

@@ -12,7 +12,7 @@ import service.CommandProcess;
 public class BoardMain implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("BoardMain 자바파일 지나감");
+		//System.out.println("BoardMain 자바파일 지나감");
 		BoardDao bd = BoardDao.getInstance();
 		
 		final int ROW_PER_PAGE = 4; // 한 페이지에 게시글 4개 씩
@@ -45,7 +45,7 @@ public class BoardMain implements CommandProcess {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
 		
-		System.out.println("BoardMain 자바파일 지나감2");
+		//System.out.println("BoardMain 자바파일 지나감2");
 		
 		return "boardMain";
 	}

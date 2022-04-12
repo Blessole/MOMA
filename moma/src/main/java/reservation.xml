@@ -13,7 +13,7 @@
 	
 	<!-- 예매취소 -->
 	<delete id="delete" parameterType="integer">
-		delete reservation where cno = #{cno}
+		delete reservation where rsno = #{rsno}
 	</delete>
 	
 <!-- moma 마이페이지 - 예매내역 -->
