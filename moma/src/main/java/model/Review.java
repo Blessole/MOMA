@@ -12,16 +12,27 @@ public class Review {
 	private int cno;
 	
 	// content에서 받아올 예정
-	private String cname;
-				
-	public String getCname() {
-		return cname;
-	}
-	public void setCname(String cname) {
-		this.cname = cname;
-	}
+			private String cname;
+			
+			public String getCname() {
+				return cname;
+			}
+			public void setCname(String cname) {
+				this.cname = cname;
+			}
+		//
+	
+	// member에서 받아올 예정		
+			private String nickname;
+			
+			public String getNickname() {
+				return nickname;
+			}
+			public void setNickname(String nickname) {
+				this.nickname = nickname;
+			}
 	//
-				
+	
 	public int getRvno() {
 		return rvno;
 	}

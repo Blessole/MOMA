@@ -14,7 +14,7 @@
 	font-size:  15px;
 </style>
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
-<%@ include file="/views/sessionChk.jsp"%>
+<%@ include file="../sessionChk.jsp"%>
 </head><body>
 
 		<div class="container_middle">

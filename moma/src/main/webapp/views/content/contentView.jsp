@@ -143,7 +143,7 @@
 		        <li>
 		            <form action="reviewAction.do?cno=${content.cno }&rvno=${review.rvno }" method="post">
 		                <div class="profile">
-		                    <p class="nickname">${nickname }</p>
+		                    <p class="nickname">${review.nickname }</p>
 		                    <p class="rv_date">${review.rv_date }</p>
 		                </div>
 		                <p class="detail_txt review">
