@@ -2,6 +2,7 @@ package dao;
 
 import java.io.Reader;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -51,6 +52,11 @@ public class MemberDao {
 			return (Member) session.selectOne("memberns.selectEmail", email);
 		}
 		
+		// moma mno로 닉네임 조회
+		public String selectNick(int mno) {
+			return (String) session.selectOne("memberns.selectNick", mno);
+		}
+				
 		// moma joinAction(insert)
 		public int insert(Member member) {			
 			return session.insert("memberns.insert", member);
@@ -95,8 +101,16 @@ public class MemberDao {
 			return session.delete("memberns.delete", mno);
 		}
 
+		// admin - 총 회원수
+		public int getTotal() {
+			return (int) session.selectOne("memberns.getTotal");
+		}
 
-		// 다른 테이블에서 회원번호를 활용한 닉네임 찾기
-		public String selectNick(int mno) {
-			return (String) session.selectOne("memberns.selectNick", mno);}
+		// admin - 전체 회원정보 조회
+		public List<Member> list(int startRow, int endRow) {
+			HashMap<String, Integer> hm = new HashMap<>();
+			hm.put("startRow", startRow);
+			hm.put("endRow", endRow);
+			return (List<Member>)session.selectList("memberns.list",hm);
+		}
 }

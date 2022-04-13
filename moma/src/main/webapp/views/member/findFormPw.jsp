@@ -2,14 +2,18 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">@import url("../../css/member/join.css");</style>
+<style type="text/css">@import url("/moma/css/member/join.css");</style>
 </head><body>
 <div class="container">
-	<div class="find find-password">
+	<div class="join">
 		<h2 class="title">비밀번호 찾기</h2>
 		<form action="findPwAction.bb" method="post">
+		<div class="check_l">
 			<input type="text" name="id" placeholder="아이디를 입력해주세요" required="required"><p>
+		</div>
+		<div class="check_l">
 			<input type="text" name="email" placeholder="이메일 주소를 입력해주세요." required="required"><p>
+		</div>
 		<div class="container_submit">
 			<input type="submit" class="btn" value="확인하기">
 		</div>
