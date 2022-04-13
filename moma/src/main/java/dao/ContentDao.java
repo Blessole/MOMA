@@ -58,12 +58,10 @@ public class ContentDao {
 		return (int) session.selectOne("contentns.getTotalM");
 	}
 	
-/*
 	// 컨텐츠 리스트 통합 조회
 	public List<Content> list() {
 		return (List<Content>)session.selectList("contentns.selectList");
 	}
-*/
 	
 	// 컨텐츠 드라마 TOP10 리스트 통합 조회
 	public List<Content> topDlist() {

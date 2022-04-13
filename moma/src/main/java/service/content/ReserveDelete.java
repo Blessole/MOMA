@@ -10,10 +10,10 @@ public class ReserveDelete implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		int cno = Integer.parseInt(request.getParameter("cno"));
+		int rsno = Integer.parseInt(request.getParameter("rsno"));
 		
 		ReservationDao rd = ReservationDao.getInstance();
-		int result = rd.delete(cno);
+		int result = rd.delete(rsno);
 		
 		request.setAttribute("result", result);
 		

@@ -59,30 +59,29 @@
   	display: inline-block;
 }
 
-.content_view_top .likes {
-	position: relative;
+.like_box {
+	height: 20px;
+	background-color: #fff;
+	border: none;
 	display: inline-block;
-	width: 56px;
-	height: 56px;
-	vertical-align: top;
-	border: 1px solid var(--point-color);
 	cursor: pointer;
-}
-
-.content_view_top .likes svg {
-	position: absolute;
-	top: 50%;
+	position: relative;
+	margin-right: 40px;
 	left: 50%;
-	transform: translate(-50%,-50%);
-	width: 26px;
-	height: auto;
 }
 
-.content_view_top .likes svg g {
-	stroke: var(--point-color);
-	stroke-width: 2px;
+
+.like_box img {
+	width: 25px;
+	height: 25px;
+  	display: inline-block;
 }
 
+.like_box .count {
+	font-size: 10px;
+	vertical-align: right;
+	margin-left: 4px;
+}
 
 
 .content_view_top .star_avg {
@@ -130,6 +129,7 @@
 .pd_bottom {
 	padding-bottom: 8px;
 }
+
 
 /* 별점 */
 .star_avg {

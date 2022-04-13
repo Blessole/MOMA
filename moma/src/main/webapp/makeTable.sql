@@ -24,6 +24,9 @@ select * from content order by cno;
 
 -- 회원 테이블
 drop table member;
+
+alter table member modify nickname varchar2(20);
+
 create table member(
         mno NUMBER CONSTRAINT member_mno_pk PRIMARY KEY NOT NULL,
         id VARCHAR2(30) NOT NULL,

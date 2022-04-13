@@ -20,17 +20,13 @@ public class ContentView implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();    //솔 수정
 		int cno = Integer.parseInt(request.getParameter("cno"));
-		int mno = (int) session.getAttribute("mno"); // session mno
 		
 		ContentDao cd = ContentDao.getInstance();
 		Content content = cd.select(cno);
 		
 		MemberDao md = MemberDao.getInstance();
-		String nickname = md.selectNick(mno);
-		System.out.println("nickname=" + nickname);
 		
 		// 리뷰 페이징 : start
 		final int ROW_PER_PAGE = 4; // 한 페이지에 10개씩
@@ -75,8 +71,11 @@ public class ContentView implements CommandProcess {
 		String color = "";
 		
 		if (session.getAttribute("mno") != null) {
+			int mno = (int) session.getAttribute("mno"); // session mno      //솔 수정
 			Likes lk = lkd.select(cno, mno);
-			
+			String nickname = md.selectNick(mno);         //솔 수정
+			//System.out.println("nickname=" + nickname);
+			request.setAttribute("nickname", nickname);       // 솔 수정
 			if (lk == null) {
 				color = "none";
 			} else {
@@ -85,8 +84,7 @@ public class ContentView implements CommandProcess {
 		} else {
 			color = "none";
 		}
-		
-		request.setAttribute("nickname", nickname);
+				
 		request.setAttribute("cno", cno);
 		request.setAttribute("content", content);
 		request.setAttribute("list", list);

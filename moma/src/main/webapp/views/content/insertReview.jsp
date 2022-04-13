@@ -8,16 +8,17 @@
 </head>
 <body>
 <%
+
 	ReviewDao rd = ReviewDao.getInstance();
 	
 	for (int i = 0; i < 50; i++) {
 		Review review = new Review();
 		
 		review.setStar_rate(8);
-		review.setRv_content("커밋 백 번째 "+i);
+		review.setRv_content("리뷰 인서트 "+i);
 		review.setMno(1);
-		review.setCno(210);
-		// review.setNickname("도도");
+		review.setCno(60);
+		review.setNickname("젤리");
 		
 		rd.insert(review);
 	}

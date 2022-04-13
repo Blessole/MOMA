@@ -45,7 +45,7 @@
 		}
 		function fadePrev(){
 			currentSlide.removeClass('active').fadeOut(700);
-			if (curentSlideIndex ==1){
+			if (currentSlideIndex ==1){
 				currentSlide=slides.last();
 				currentSlide.delay(500).addClass('active').fadeIn();
 				currentSlideIndex=slidesCount;
@@ -180,6 +180,24 @@
 				<ul class="content_list">
 					<c:forEach var="content" items="${dlist }">
 						<c:if test="${content.sort == 'd' }">
+							<li class="ctslide">
+								<a href="contentView.do?cno=${content.cno }">
+									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
+									<div class="text_area">
+										<p class="content_list_title">${content.cname }</p>
+									</div>
+								</a>
+							</li>
+						</c:if>
+					</c:forEach>
+				</ul>
+		</ul>
+				<!-- 예매 가능한 영화 -->
+		<ul class="content_tab">
+			<li class="title" id="tab3">예매 가능한 영화</li>
+				<ul class="content_list">
+					<c:forEach var="content" items="${list }">
+						<c:if test="${content.reserve == 'Y' }">
 							<li class="ctslide">
 								<a href="contentView.do?cno=${content.cno }">
 									<img style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">

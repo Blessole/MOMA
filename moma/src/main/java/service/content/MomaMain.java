@@ -14,7 +14,7 @@ public class MomaMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("MomaMain 자바파일 거쳤음");
+		// System.out.println("MomaMain 자바파일 거쳤음");
 		
 		ContentDao cd = ContentDao.getInstance();
 		
@@ -24,6 +24,9 @@ public class MomaMain implements CommandProcess {
 		
 		List<Content> mlist = cd.topMlist();
 		request.setAttribute("mlist", mlist);
+		
+		List<Content> list = cd.list();
+		request.setAttribute("list", list);
 		
 		return "momaMain";
 	}
