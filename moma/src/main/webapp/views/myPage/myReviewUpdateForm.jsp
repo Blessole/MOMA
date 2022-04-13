@@ -7,6 +7,7 @@
 <script type="text/javascript">
 
 $(function() {
+	
 	// input range rate 조절
 	$('input[type="range"]').on('change mousemove', function() {
 		var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
@@ -46,51 +47,46 @@ $(function() {
 		
  	 <form action="myReviewUpdateAction.bb?rvno=${review.rvno}" method="post">
   
-            <h4 class="sub_title">리뷰 수정</h4>
-            
             <div class="content">
+			 <h3 class="sub_title">리뷰 수정</h3>
 				<ul>
 					<li class=likes>
 						<a href="/moma/views/content/contentView.do?cno=${review.cno}" class="cursor">
 							<img src ="/moma/img/poster/${review.cno}.jpg" style =" no-repeat center; background-size: cover;">
-							<div class="txt_likes">
-								 ${content.cname }
-							</div>
+							<div class="up_title"> ${content.cname }	</div>
 						</a>
 					</li>
 				</ul>
 			</div>
 			
-		  <!-- 리뷰 수정 수정중!!!  -->	
-		
-		  <!-- 리뷰 등록 -->
-      	  <form action="reviewAction.do?cno=${content.cno }" method="post">
+			<!-- 엔터키 전송 막기 -->
+			<div style="display:none">
+				<input type="submit" onclick="return false"/>
+				<input type="text"/>
+			</div>
+	      	
+	      	<!-- 리뷰 수정 -->
         	<input type="hidden" name="rv_date" value="${review1.rv_date }">
-            <h4 class="sub_title">리뷰와 별점 등록</h4>
-            <textarea name="rv_content" placeholder="감상평을 작성해 주세요." required="required" onclick="sChk()"></textarea>
-            <p class="detail_txt pd_bottom">별점을 선택해 주세요.</p>
+            <h4 class="sub_title">감상평을 작성해 주세요.</h4>
+            <div class = rvup_content>
+            	<textarea name="rvup" placeholder=${review.rv_content } required="required"></textarea>
+            </div>
+            <p class="txt_star">별점을 선택해 주세요.</p>
             <!-- 별점 등록 -->
-            <div class="star_avg rate">
+            <div class="star_rate_up">
                 <input type="range" name="star_rate" min="0" max="10" step="1" value="0" required="required">
+                <div class="star_rate_num">
                 <span class="text" id="input_span">0</span>
+            	</div>
             </div>
             <div class="submit_box">
-                <input type="submit" class="btn" value="등록하기">
+                 <input type="submit" class="btn_small_up" value="수정하기">
+            	 <input type="button" class="btn_small_up" onclick="history.go(-1)" value="취소">
             </div>
       	   </form>
 			
             
-            <textarea name="rv_content" placeholder=${review.rv_content } required="required"></textarea>
-            <p class="detail_txt pd_bottom">별점을 선택해 주세요.</p>
-            <!-- 별점 등록 -->
-            <div class="star_rate">
-               <input type="range" name="star_rate" min="0" max="10" step="1" value="0" required="required">  <!-- oninput="amount.value=rangeInput.value" -->
-               <span class="text" id="input_span">0</span>
-            </div>
-            <div class="submit_box">
-               <input type="submit" class="btn" value="수정하기">
-               <input type="button" class="btn btn_stroke reset" onclick="history.go(-1)" value="취소">
-            </div>
+        
   		</form>
 	</div>
 

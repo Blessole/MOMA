@@ -32,11 +32,11 @@
 							<a href="/moma/views/content/contentView.do?cno=${myReview.cno}">
 								<img style="background: url(/moma/img/poster/${myReview.cno}.jpg) no-repeat center; background-size: cover;">
 							</a>
-							<div class="txt_area">
+							<div class="txt_area2">
 								<p class="txt_date">작성일 ${myReview.rv_date }</p>
 								<a href="/moma/views/content/contentView.do?cno=${myReview.cno}" class="cursor">
-									<span class="txt_title">${myReview.cname}</span>
-									<span class="txt">${myReview.rv_content}</span>
+									<span class="txt_title2">${myReview.cname}</span>
+									<span class="txt2">${myReview.rv_content}</span>
 								</a>
 					
 								<!-- pre 태그 안에 있는 css 요소 삭제 -->

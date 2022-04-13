@@ -87,6 +87,7 @@ create table review(
 
 select * from review;
 
+
 -- 저널게시판 테이블
 drop table board;
 create table board(
