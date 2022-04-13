@@ -120,7 +120,7 @@ $(document).ready(function () {
 		</div>
 		
 		<!-- 댓내용, 날짜 -->
-				<p class="cmt_date">${member.nickname}</p><!--  /*닉네임 부분 안보여서 수정 해야함*/ -->
+				<p class="cmt_date">${boardcmt.nickname}</p><!--  /*닉네임 부분 안보여서 수정 해야함*/ -->
 				<p class="cmt_date">${boardcmt.bc_date }</p>
 				<pre class="cmt_con">${boardcmt.bc_content }</pre>
 		</div>
@@ -129,8 +129,7 @@ $(document).ready(function () {
 
 	<!-- 댓글작성 -->
 <form action="boardCmtWrite.ha?bno=${board.bno }" method="post" class="cmt_insert_frm">
-	<pre><textarea name="bc_content" 
-	placeholder="댓글을 작성하세요" required onclick="sessionChk()"></textarea></pre>
+	<pre><textarea name="bc_content"></textarea></pre>
 			<div class="submit_box">
 				<input type="submit" class="btn" value="등록하기">
 			</div>

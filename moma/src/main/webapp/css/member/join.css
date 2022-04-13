@@ -116,12 +116,6 @@
 	margin:0 7% 0 7%;
 }
 
-input[type=radio] {
-    border: 0px;
-    width: 10%;
-    height: 1em;
-}
-
 /* 조인폼 */
 #join{
 	width: 100%;
@@ -136,20 +130,33 @@ input[type=radio] {
 }
 
 .check {
+	margin:auto;
 	font-size: 0;
 	position:relative;
-	margin:5px;
+}
+
+.check>input, .check>.chk-msg {
+	display:block;
+	position:relative;
+	margin: auto;
+	text-align : center;
 }
 
 #chk1 {
 	border: 0px;
 	width: 10%;
 	height: 1em;
-	padding-left: 65px;
+	padding-left: 0px;
 }
 
+.checks input[type=radio] {
+    border: 0px;
+    width: 10%;
+    height: 1em;
+}
 .checks>li {
 	margin: 30px 10px 30px 5px;
+	text-align:center;
 }
 
 /* 에러메세지 */

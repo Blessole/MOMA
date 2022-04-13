@@ -15,7 +15,7 @@ public class BoardMain implements CommandProcess {
 		//System.out.println("BoardMain 자바파일 지나감");
 		BoardDao bd = BoardDao.getInstance();
 		
-		final int ROW_PER_PAGE = 4; // 한 페이지에 게시글 4개 씩
+		final int ROW_PER_PAGE = 6; // 한 페이지에 게시글 4개 씩
 		final int PAGE_PER_BLOCK = 5; // 한 블럭에 5페이지 씩
 		
 		String pageNum = request.getParameter("pageNum"); // 페이지 번호

@@ -30,10 +30,6 @@ public class BoardView implements CommandProcess {
 		List<Boardcmt> list = cmtdao.list(bno); //댓글 목록 불러오기
 		int cmt_cnt = list.size();
 		
-		/*
-		 * //*****************추가 닉네임****************** int mno=cmt.getMno(); MemberDao
-		 * md= MemberDao.getInstance(); String nickname = md.selectNick(mno);
-		 */
 		
 		request.setAttribute("board", board);
 		request.setAttribute("bno", bno);

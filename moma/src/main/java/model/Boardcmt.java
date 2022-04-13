@@ -10,7 +10,14 @@ public class Boardcmt {
 	private int bno;
 	private int mno;
 	private int boardcmtseq;
+	private String nickname;
 	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getBcno() {
 		return bcno;
 	}
