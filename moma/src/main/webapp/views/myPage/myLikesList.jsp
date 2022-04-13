@@ -4,7 +4,7 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/views/sessionChk.jsp"%>
-<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/css/myPage/common_my.css");</style>
 <script type="text/javascript">
 	// 페이징 현재페이지 설정
 	$('#page'+${currentPage}).css({
@@ -28,8 +28,8 @@
 				<ul>
 					<c:forEach var="likes" items="${list}">
 						<li class=likes>
-							<a href="/moma/views/content/contentView.do?cno=${likes.cno}" class="cursor">
-								<img src ="/moma/img/poster/${likes.cno}.jpg" style =" no-repeat center; background-size: cover;">
+							<a href="/views/content/contentView.do?cno=${likes.cno}" class="cursor">
+								<img src ="/img/poster/${likes.cno}.jpg" style =" no-repeat center; background-size: cover;">
 								<div class="txt_likes">${likes.cname }</div>
 							</a>
 						</li>
@@ -44,13 +44,12 @@
 				<div class="prev_btn">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<button class="first" onclick="location.href='myLikesList.bb?pageNum=${startPage - 1}'">
-							<img alt="이전" src="/moma/icon/left.png">
-							<img alt="이전" src="/moma/icon/left.png">
+							<img alt="이전" src="../../img/icon/left (1).png">
 						</button> 
 					</c:if>
 					<c:if test="${pageNum > 1}">
 						<button class="prev" onclick="location.href='myLikesList.bb?pageNum=${currentPage - 1}'">
-							<img alt="이전" src="/moma/icon/left.png">
+							<img alt="이전" src="../../img/icon/left.png">
 						</button>
 					</c:if>
 				</div>
@@ -60,13 +59,12 @@
 				<div class="next_btn">
 					<c:if test="${currentPage < totalPage}">
 						<button class="next" onclick="location.href='myLikesList.bb?pageNum=${currentPage + 1}'">
-							<img alt="다음" src="/moma/icon/right.png">
+							<img alt="다음" src="../../img/icon/right (1).png">
 						</button>
 					</c:if>
 					<c:if test="${endPage < totalPage}">
 						<button class=last onclick="location.href='myLikesList.bb?pageNum=${endPage + 1}'">
-							<img alt="다음" src="/moma/icon/right.png">
-							<img alt="다음" src="/moma/icons/right.png">
+							<img alt="다음" src="../../img/icon/right.png">
 						</button> 
 					</c:if>
 				</div> <!-- next_btn -->

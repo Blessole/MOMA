@@ -35,8 +35,8 @@ public class ReservationDao {
 		return session.insert("reservationns.insert", reserve);
 	}
 	//예매취소
-	public int delete(int cno) {
-		return session.delete("reservationns.delete", cno);
+	public int delete(int rsno) {
+		return session.delete("reservationns.delete", rsno);
 	}
 	
 	// 마이페이지 예매내역 조회

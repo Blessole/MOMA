@@ -14,7 +14,7 @@
 	font-size:  15px;
 </style>
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
-<%@ include file="/views/sessionChk.jsp"%>
+<%@ include file="../sessionChk.jsp"%>
 </head><body>
 
 		<div class="container_middle">
@@ -22,7 +22,7 @@
 		<jsp:include page="adMainMenu.jsp"></jsp:include>
 	<!-- 내용 -->
 		<div class="content_myMain">
-		<b>${member.nickname }</b> 님 환영합니다.
+		<b> 관리자님 환영합니다.</b>
 		</div>
 	</div>
 </body>

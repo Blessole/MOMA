@@ -22,6 +22,17 @@ public class Review {
 			}
 		//
 	
+	// member에서 받아올 예정		
+			private String nickname;
+			
+			public String getNickname() {
+				return nickname;
+			}
+			public void setNickname(String nickname) {
+				this.nickname = nickname;
+			}
+	//
+	
 	public int getRvno() {
 		return rvno;
 	}

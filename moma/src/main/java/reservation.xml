@@ -4,7 +4,7 @@
 <mapper namespace="reservationns">
 	<!-- 예매완료 -->
 	<insert id="insert" parameterType="reservation">
-		<selectKey keyProperty="rs_no" order="BEFORE" resultType="integer">
+		<selectKey keyProperty="rsno" order="BEFORE" resultType="integer">
 			select nvl(max(rsno), 0)+1 rsno from reservation
 		</selectKey>
 			insert into reservation values(#{rsno}, #{rsdate,jdbcType=DATE}, #{rstime,jdbcType=VARCHAR},
@@ -13,7 +13,7 @@
 	
 	<!-- 예매취소 -->
 	<delete id="delete" parameterType="integer">
-		delete reservation where cno = #{cno}
+		delete reservation where rsno = #{rsno}
 	</delete>
 	
 <!-- moma 마이페이지 - 예매내역 -->

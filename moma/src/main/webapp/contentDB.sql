@@ -3,12 +3,10 @@ SET DEFINE OFF;
 
 select * from content;
 
--- del 소문자로 바꾸기 용
+-- del, D, M 소문자로 바꾸기 용
 update content set del = 'n';
-
--- 테이블 내용 모두 지우기 
-delete from content;
-
+update content set sort = 'd' where sort='D';
+update content set sort = 'm' where sort='M';
 -- 조회수 늘리기 용
 update content set cviews='5' where cno in (5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110); 
 

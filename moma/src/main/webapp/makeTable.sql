@@ -38,8 +38,7 @@ create table member(
         del CHAR(1) default 'n' NOT NULL
 );
 
-alter table member modify (nickname varchar2(20));
-
+alter table member modify (nickname varchar2(20)); 
 select * from member;
 
 -- 컨텐츠 좋아요 테이블
@@ -86,7 +85,6 @@ create table review(
 );
 
 select * from review;
-
 
 -- 저널게시판 테이블
 drop table board;

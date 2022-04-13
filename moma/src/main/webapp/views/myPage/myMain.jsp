@@ -13,7 +13,7 @@
 	text-align: center;
 	font-size:  15px;
 </style>
-<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/css/myPage/common_my.css");</style>
 <%@ include file="/views/sessionChk.jsp"%>
 </head><body>
 

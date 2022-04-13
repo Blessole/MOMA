@@ -20,7 +20,7 @@
 	
 	<!-- 메인페이지 - 게시글 수 -->
 	<select id="getTotalB" resultType="integer">
-		select count(*) from board where del='n'
+		select count(*) from board where del='N'
 	</select>
 	
 	<!-- 게시글 입력 -->

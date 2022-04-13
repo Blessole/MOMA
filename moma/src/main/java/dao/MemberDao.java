@@ -52,6 +52,11 @@ public class MemberDao {
 			return (Member) session.selectOne("memberns.selectEmail", email);
 		}
 		
+		// moma mno로 닉네임 조회
+		public String selectNick(int mno) {
+			return (String) session.selectOne("memberns.selectNick", mno);
+		}
+				
 		// moma joinAction(insert)
 		public int insert(Member member) {			
 			return session.insert("memberns.insert", member);

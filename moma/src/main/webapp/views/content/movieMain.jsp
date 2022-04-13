@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">@import url("../../css/content/contentMain.css");</style>
+<c:set var="id" value='${sessionScope.id}'></c:set>
+<c:set var="mno" value='${sessionScope.mno}'></c:set>
 <script type="text/javascript">
 		$(function() {
 		// 페이징 현재페이지 설정

@@ -19,7 +19,7 @@ public class MyMain implements CommandProcess {
 		String id = (String)session.getAttribute("id");
 		
 		// 확인용
-		System.out.println(id);
+		//System.out.println(id);
 		
 		MemberDao md = MemberDao.getInstance();
 		
