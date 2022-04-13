@@ -19,7 +19,7 @@
             <div class="content">
 				<ul>
 					<li class=likes>
-						<a href="moma/views/content/contentView.do?cno=${review.cno}" class="cursor">
+						<a href="/moma/views/content/contentView.do?cno=${review.cno}" class="cursor">
 							<img src ="/img/poster/${review.cno}.jpg" style =" no-repeat center; background-size: cover;">
 							<div class="txt_likes">
 								 ${content.cname }

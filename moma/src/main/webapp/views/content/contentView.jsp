@@ -59,7 +59,7 @@
 		}
 	}
 	
-/*  	// 좋아요 제어
+	// 좋아요 제어
 	function likes() {
 		if (${empty id}) {
 			var con = confirm("로그인이 필요합니다.");
@@ -68,25 +68,11 @@
 			}
 		} else {
 			$.post("contentLikesUpdate.do", "cno=${content.cno}", function(data) {
-				$('.like_box').css('fill', data);
+				$('.likes svg g').css('fill', data);
 			});
 		}
-	} */
- 	
- 	// 좋아요 제어
-	function likes() {
-		if (${empty id}) {
-			var con = confirm("로그인이 필요합니다.");
-			if (con) {				
-				location.href="/moma/views/member/loginForm.bb";
-			}
-		} else {
-			 $(".heart").on("click", function() {
-				    $(this).toggleClass("is-active");
-				  });
-		}
 	}
-
+	
 	// 리뷰 페이징 스크롤 높이
 	document.addEventListener("DOMContentLoaded", function() { // html load 이후
 		if ("${pageNum}" > 1) {			
@@ -104,20 +90,7 @@
 			<c:when test="${content.sort eq 'm' }"> 영화 / 드라마 > 영화 </c:when> 
 			<c:otherwise> 영화 / 드라마 > 드라마 </c:otherwise> </c:choose>
 		</h5>
-		<div class="placement">
-  			<div class="heart"></div>
-		</div>
-			<button class="like_box ${likes.lno }" onclick="sChk('likes')"><img alt="likes" src="../../img/icon/heart.png"></button>
-			<!-- 좋아요 한 회원일때 빨간하트로 세팅 -->
-			<c:forEach var="myList" items="${myList }">
-				<c:if test="${myList.cno == content.cno }">
-					<c:if test="${myList.mno == mno }">
-						<script type="text/javascript">$('.likes'+${likes.lno }).attr('src', '../../img/icon/heart (1).png');</script>
-					</c:if>
-				</c:if>
-			</c:forEach>
-			<p class="count">${content.likes }</p>
-			
+		
 		<!-- 상단 정보 -->
 		<div class="content_view_top">
 			<img src="../../img/poster/${content.poster }" alt="포스터">
@@ -186,14 +159,9 @@
 		<div class="paging">
 		    <div class="items">
 		        <div class="prev_btn">
-		        	<c:if test="${startPage > PAGE_PER_BLOCK}">
-						<button class="first" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${startPage - 1}'">
-							<img alt="이전" src="../../img/icon/left (1).png">
-						</button> 
-					</c:if>
 		            <c:if test="${pageNum > 1}">
 		                <button class="prev" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${currentPage - 1}'">
-		                    <img alt="이전" src="../../img/icon/left.png">
+		                    <img alt="이전" src="../../img/icon/left (1).png">
 		                </button>
 		            </c:if>
 		        </div>
@@ -203,14 +171,9 @@
 		        <div class="next_btn">
 		            <c:if test="${currentPage < totalPage}">
 		                <button class="next" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${currentPage + 1}'">
-		                    <img alt="다음" src="../../img/icon/right (1).png">
+		                    <img alt="다음" src="../../img/icon/right.png">
 		                </button>
 		            </c:if>
-		            <c:if test="${endPage < totalPage}">
-							<button class=last onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${endPage + 1}'">
-								<img alt="다음" src="../../img/icon/right.png">
-							</button> 
-						</c:if>
 		        </div> <!-- next_btn -->
 		    </div> <!-- number -->
 		</div> <!-- paging -->
@@ -231,7 +194,7 @@
             </div>
         </form>
     </div>
-</div>
+   </div>
 <div class="scroll_top"><div class="arrow"></div></div>
 </body>
 </html>

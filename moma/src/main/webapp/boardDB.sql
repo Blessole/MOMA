@@ -1,6 +1,7 @@
 
 -- 저널게시판 board DB
 select * from board;
+update board set del = 'n';
 
 update board set del = 'n';
 

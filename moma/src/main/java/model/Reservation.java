@@ -30,7 +30,7 @@ public class Reservation {
 			public void setPoster(String poster) {
 				this.poster = poster;
 			}
-			//
+	//
 	
 	public int getRsno() {
 		return rsno;

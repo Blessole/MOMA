@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/moma/css/common.css">
 <script type="text/javascript">
-	function sessionChk(name) {
+	function sessionChk() {
 		if (${empty id}) {
 			var con = confirm("로그인 후 이용해 주시기 바랍니다.");
 			location.href = "/moma/views/member/loginForm.bb";
@@ -28,26 +28,24 @@
 		
 			<nav>
 				<ul class='nav_sub'>
-		
 					<c:if test="${empty id }">
 						<li><a href="/moma/views/member/loginForm.bb">로그인</a></li>
 						<li><a href="/moma/views/member/joinForm.bb">회원가입</a></li>
 					</c:if>
 					<c:if test="${not empty id }">
-						<c:if test="${id != 'admin'}">
-							<li><a href="/moma/views/member/logout.bb">로그아웃</a></li>
-						</c:if>
-						<c:if test="${id == 'admin'}">
-							<li><a href="/moma/views/member/logout.bb">로그아웃</a></li>
-							<li><a href="/moma/views/admin/adminMain.so">관리자페이지</a></li>
-						</c:if>
+						<li><a href="/moma/views/member/logout.bb">로그아웃</a></li>
 					</c:if>
 				</ul>
 				<ul class='nav_main'>
 					<li><a href="/moma/views/content/movieMain.so" id="movie">영화</a></li>
 					<li><a href="/moma/views/content/dramaMain.so" id="drama">드라마</a></li>
 					<li><a href="/moma/views/board/boardMain.ha?pageNum=1" id="board">저널게시판</a></li>
-					<li><a id="myPage" onclick="return sessionChk('main')">마이페이지</a></li>
+					<c:if test="${id == 'admin'}">
+						<li><a href="/moma/views/admin/adMain.bb">관리자페이지</a></li>
+					</c:if>
+					<c:if test="${id != 'admin' }">
+						<li><a id="myPage" onclick="return sessionChk()">마이페이지</a></li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>

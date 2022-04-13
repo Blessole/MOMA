@@ -14,8 +14,7 @@ public class Likes {
 		public void setCname(String cname) {
 			this.cname = cname;
 		}
-	//
-	
+		
 	public int getLno() {
 		return lno;
 	}

@@ -1,14 +1,9 @@
 package service.myPage;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import dao.MemberDao;
 import dao.ReviewDao;
-import model.Member;
 import model.Review;
 import service.CommandProcess;
 

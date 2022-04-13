@@ -30,7 +30,7 @@
 					<c:forEach var="myReview" items="${list}">
 						<li class="rv">
 							<a href="/moma/views/content/contentView.do?cno=${myReview.cno}">
-								<img style="background: url(/moma/img/poster/${myReview.cno}.jpg) no-repeat center; background-size: cover;">
+								<img style="background: url(../../img/poster/${myReview.cno}.jpg) no-repeat center; background-size: cover;">
 							</a>
 							<div class="txt_area_rv">
 								<p class="txt_small">작성일 ${myReview.rv_date }</p>

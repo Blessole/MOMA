@@ -27,7 +27,7 @@
 		<li class="category">
 			<ul>
 				<li id="adContent.so" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/moma/img/myPage_image/reservation.png" >adContent
+					<span class="dot"></span><img src="/moma/img/icon/multimedia.png" >adContent
 				</li>
 				<li id="adReview.do" onclick="showCon(this.id)">
 					<span class="dot"></span><img src="/moma/img/myPage_image/myReview.png" >adReview

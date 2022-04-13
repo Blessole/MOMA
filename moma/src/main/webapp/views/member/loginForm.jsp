@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">@import url("/css/member/join.css");</style>
+<style type="text/css">@import url("../../css/member/join.css");</style>
 </head><body>
 	<div class="container">
 		<!-- prevUrl 로그인누르기 전 이전페이지로 이동. javascript:history.go(-1)도 가능한가? -->

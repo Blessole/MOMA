@@ -27,9 +27,8 @@ public class Content {
 		public void setRvno(int rvno) {
 			this.rvno = rvno;
 		}
-	//
-	
-	
+	//	
+
 	public int getCno() {
 		return cno;
 	}
@@ -125,7 +124,5 @@ public class Content {
 	}
 	public void setReserve(String reserve) {
 		this.reserve = reserve;
-	}
-	
-	
+	}	
 }

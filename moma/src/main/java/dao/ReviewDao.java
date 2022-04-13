@@ -34,11 +34,11 @@ public class ReviewDao {
 	
 	// 리뷰 등록
 	public int insert(Review review) { 
-		System.out.println("rv_content = " + review.getRv_content());
-		System.out.println("star_rate = " + review.getStar_rate());
-		System.out.println("rv_date = " + review.getRv_date());
-		System.out.println("mno = " + review.getMno());
-		System.out.println("cno = " + review.getCno());
+//		System.out.println("rv_content = " + review.getRv_content());
+//		System.out.println("star_rate = " + review.getStar_rate());
+//		System.out.println("rv_date = " + review.getRv_date());
+//		System.out.println("mno = " + review.getMno());
+//		System.out.println("cno = " + review.getCno());
 		return session.insert("reviewns.insert", review);
 	}
 	
@@ -55,7 +55,7 @@ public class ReviewDao {
 	public float selectStar(int cno) {
 		return (float) session.selectOne("reviewns.selectStar", cno);
 	}
-
+	
 	// 각 컨텐츠의 총 리뷰 갯수
 	public int getTotal(int cno) {
 		return (int) session.selectOne("reviewns.selectTotal", cno);
