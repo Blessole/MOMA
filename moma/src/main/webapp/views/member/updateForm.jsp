@@ -4,7 +4,7 @@
 <!DOCTYPE html><html><head>
 <%@ include file="../sessionChk.jsp" %>
 <meta charset="UTF-8"><title>Insert title here</title>
-<style type="text/css">@import url("../../css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 
@@ -96,10 +96,11 @@ function del() {
 		<jsp:include page="/views/myPage/myMainMenu.jsp"></jsp:include>
 	
 		
-		<div class="content">
+		<div class="content_update">
 		<p>
 		<h3>내 정보 수정</h3>
 
+	<div class="updateform">
 	<form action="updateAction.bb" method="post" name="frm" onsubmit="return chk()">
 		<!-- 엔터키 전송 막기 -->
 		<div style="display:none">
@@ -109,7 +110,7 @@ function del() {
 			
 			<!-- 아이디 -->
 			<div class="check">
-				<input type="text" name="id" readonly="readonly" value="아이디 : ${member.id }">
+				<input type="text" id=check_mem" name="id" readonly="readonly" value="아이디 : ${member.id }">
 			</div>
 			
 			<!-- 비밀번호 -->
@@ -149,14 +150,17 @@ function del() {
 			
 			<!-- 광고수신 -->
 			<div class="checks">
-				<li>sms 광고수신 &nbsp &nbsp &nbsp<label><input type="radio" name="sms_check" value="y" id="chk1" checked="checked">수신동의</label><label><input type="radio" id="chk1" name="sms_check" value="n">수신거부</label><p>
-				<li>email 광고수신 &nbsp &nbsp<label><input type="radio" name="email_check" value="y" id="chk1" checked="checked">수신동의</label><label><input type="radio" id="chk1" name="email_check" value="n">수신거부</label><p>
+				<li>sms 광고수신 &nbsp &nbsp &nbsp <label id="radio1"><input type="radio" name="sms_check" value="y" id="chk1" checked="checked">수신동의</label><label id="radio1"><input type="radio" id="chk1" name="sms_check" value="n">수신거부</label>
+				<li>email 광고수신 &nbsp &nbsp <label id="radio1"><input type="radio" name="email_check" value="y" id="chk1" checked="checked">수신동의</label><label id="radio1"><input type="radio" id="chk1" name="email_check" value="n">수신거부</label><p>
     	 	</div>
 
 			<!-- button -->
-			<input type="submit" class="btn_small2" value="수정하기">
-			<input type="submit" id="del-btn" class="btn_small2" value="탈퇴하기" onclick="del()">
+			<div class="container_submit2">
+				<input type="submit" class="btn_small_up1" value="수정하기">
+				<input type="submit"class="btn_small_up2" value="탈퇴하기" onclick="del()">
+			</div>
 		</form>
+		</div>
 	</div>
 </div>
 </body>
