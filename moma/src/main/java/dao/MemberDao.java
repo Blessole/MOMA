@@ -2,6 +2,7 @@ package dao;
 
 import java.io.Reader;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -95,4 +96,16 @@ public class MemberDao {
 			return session.delete("memberns.delete", mno);
 		}
 
+		// admin - 총 회원수
+		public int getTotal() {
+			return (int) session.selectOne("memberns.getTotal");
+		}
+
+		// admin - 전체 회원정보 조회
+		public List<Member> list(int startRow, int endRow) {
+			HashMap<String, Integer> hm = new HashMap<>();
+			hm.put("startRow", startRow);
+			hm.put("endRow", endRow);
+			return (List<Member>)session.selectList("memberns.list",hm);
+		}
 }

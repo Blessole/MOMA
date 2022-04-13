@@ -413,27 +413,31 @@ p.detail_txt pd_bottom {
 .check {
 	font-size: 0;
 	position:relative;
-	margin:5px;
+	margin-top: 5px;
+    padding-left: 15%;
 }
 
 #chk1 {
 	border: 0px;
-	width: 10%;
+	width: 12%;
 	height: 1em;
 	padding-left: 65px;
 }
 
+
+
 .checks>li {
 	margin: 30px 10px 30px 5px;
+	padding-left: 20%;
 }
 
 .check>input, .check>.chk-msg {
 	display:block;
 	position:relative;
-	width: 70%;
+	width: 80%;
 }
 
-.btn_small_up {
+.btn_small_up1 {
 	display: inline-block;
     width: 33%;
     height: 50px;
@@ -445,7 +449,24 @@ p.detail_txt pd_bottom {
     color: #fff;
     cursor: pointer;
     padding: 14px 0;
-    margin: 0 4% 0 0;
+	margin: 0px 0% 0 90px;
+    float: left;
+}
+
+.btn_small_up2 {
+	display: inline-block;
+    width: 33%;
+    height: 50px;
+    text-align: center;
+    background-color: var(--point-color);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    padding: 14px 0;
+    float:right;
+    margin: 0 16% 0 0%;
 }
 
 .container_submit {

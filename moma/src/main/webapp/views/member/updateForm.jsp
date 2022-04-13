@@ -150,14 +150,14 @@ function del() {
 			
 			<!-- 광고수신 -->
 			<div class="checks">
-				<li>sms 광고수신 &nbsp &nbsp &nbsp <label><input type="radio" name="sms_check" value="y" id="chk1" checked="checked">수신동의</label><label><input type="radio" id="chk1" name="sms_check" value="n">수신거부</label>
-				<li>email 광고수신 &nbsp &nbsp <label><input type="radio" name="email_check" value="y" id="chk1" checked="checked">수신동의</label><label><input type="radio" id="chk1" name="email_check" value="n">수신거부</label><p>
+				<li>sms 광고수신 &nbsp &nbsp &nbsp <label id="radio1"><input type="radio" name="sms_check" value="y" id="chk1" checked="checked">수신동의</label><label id="radio1"><input type="radio" id="chk1" name="sms_check" value="n">수신거부</label>
+				<li>email 광고수신 &nbsp &nbsp <label id="radio1"><input type="radio" name="email_check" value="y" id="chk1" checked="checked">수신동의</label><label id="radio1"><input type="radio" id="chk1" name="email_check" value="n">수신거부</label><p>
     	 	</div>
 
 			<!-- button -->
 			<div class="container_submit2">
-				<input type="submit" class="btn_small_up" value="수정하기">
-				<input type="submit"class="btn_small_up" value="탈퇴하기" onclick="del()">
+				<input type="submit" class="btn_small_up1" value="수정하기">
+				<input type="submit"class="btn_small_up2" value="탈퇴하기" onclick="del()">
 			</div>
 		</form>
 		</div>
