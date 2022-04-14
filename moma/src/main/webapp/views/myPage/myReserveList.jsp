@@ -5,7 +5,7 @@
 <head><meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<style type="text/css">@import url("/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script type="text/javascript">
 	/* $(document).ready(function() {
 		$("#myReserveList .dot").css("display", "block");
@@ -20,6 +20,7 @@
 		"font-weight" : "600"
 	});
 </script></head><body>
+
 	<div class="container_middle">
 		<!-- myMainMenu -->
 		<jsp:include page="myMainMenu.jsp"></jsp:include>
