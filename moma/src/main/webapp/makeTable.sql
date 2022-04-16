@@ -23,6 +23,8 @@ create table content (
         reserve CHAR(1) default 'n' NOT NULL
 );
 
+alter table content modify reserve  CHAR(1)  NULL;
+update CONTENT set reserve='' where reserve='N';
 select * from content order by cno;
 
 -- 회원 테이블

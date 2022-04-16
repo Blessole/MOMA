@@ -83,12 +83,10 @@
   height: 80px;
   float: right;
 }
-
 .likes {
   background: url('https://i.ibb.co/vw78mf3/heart.png') no-repeat 0% 50%;
   background-size: 2900%;
 }
-
 .like-active {
   animation-name: animate;
   animation-duration: .8s;
@@ -96,7 +94,6 @@
   animation-fill-mode: forwards;
   animation-timing-function: steps(28);
 }
-
 @keyframes animate {
   0%   { background-position: left;  }
   50%  { background-position: right; }

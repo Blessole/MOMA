@@ -16,7 +16,11 @@ public class MomaMain implements CommandProcess {
 		
 		//System.out.println("MomaMain 자바파일 거쳤음");
 		
-		ContentDao cd = ContentDao.getInstance();	
+		ContentDao cd = ContentDao.getInstance();
+		
+		String metaPath = request.getSession().getServletContext().getRealPath("/img/poster");
+		System.out.println("metaPath="+metaPath);
+		request.setAttribute("metaPath", metaPath);
 		
 		List<Content> dlist = cd.topDlist();
 		request.setAttribute("dlist", dlist);

@@ -66,7 +66,7 @@
 	<div class="ad_content_top"></div>
 		<div class="ad_title">컨텐츠 관리</div>
 			<div class="top_box">
-				<a class="adbtn" href="/moma/views/admin/adContentRegist.so">컨텐츠 등록</a>
+				<a class="adbtn" href="/moma/views/admin/adContentRegistForm.so">컨텐츠 등록</a>
 			</div>
 	</div>
 	<div class="container-table">	
@@ -92,7 +92,7 @@
 					<td><c:if test="${adcontent.tving != null }">Y</c:if></td>					
 					<td><c:if test="${adcontent.reserve =='Y' }"><font color="red"> ${adcontent.reserve }</font></c:if><c:if test="${adcontent.reserve =='N'}"> ${adcontent.reserve }</c:if></td>
 					<td><c:if test="${adcontent.del !='n' }"><font color="red"> ${adcontent.del }</font></c:if><c:if test="${adcontent.del =='n'}"> ${adcontent.del }</c:if></td>
-					<td><a href="./adContentUpdateForm.so?cno=${adcontent.cno }" class="ct_btn">수정</a></td>
+					<td><c:if test="${adcontent.del =='n' }"><a href="./adContentUpdateForm.so?cno=${adcontent.cno }" class="ct_btn">수정</a></c:if></td>
 					<td><c:if test="${adcontent.del == 'n' }"><a href="./adContentDelete.so?cno=${adcontent.cno }" class="ct_btn">삭제</a></c:if></td>
 					<td><c:if test="${adcontent.del != 'n' }"><a href="./adContentDelCancel.so?cno=${adcontent.cno }" class="ct_btn">삭제취소</a></c:if></td>
 				</tr>

@@ -141,7 +141,7 @@ public class ContentDao {
 	public int getTotal() {
 		return (int) session.selectOne("contentns.getTotal");
 	}
-		
+	
 	// 관리자페이지 - 컨텐츠 리스트 통합 조회
 	public List<Content> getTotalList(int startRow, int endRow) {
 		HashMap<String, Object> hm = new HashMap<>();
@@ -168,5 +168,15 @@ public class ContentDao {
 	// 관리자페이지 - 컨텐츠 삭제 철회
 	public int delCancel(int cno) {
 		return session.update("contentns.delCancel", cno);
+	}
+	
+	// 관리자페이지 - 컨텐츠 수정용 정보 불러오기
+	public Content adSelectView(int cno) {
+		return (Content) session.selectOne("contentns.adSelectView", cno);
+	}
+	
+	// 관리자페이지 - 컨텐츠 수정 업데이트 action
+	public int update(Content ct) {
+		return session.update("contentns.update", ct);
 	}
 }

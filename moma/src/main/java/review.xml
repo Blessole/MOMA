@@ -68,7 +68,7 @@
 	
 	<!-- 총 리뷰 수 조회 -->
 	<select id="getTotal" resultType="integer">
-		select count(*) from review where del='n'
+		select count(*) from review
 	</select>
 	
 		<!-- cno 별 별점 평균 ✔✔ required로 null이 없겠지만? null이 들어간다면 에러날 수 있음 주의 -->

@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="id" value='${sessionScope.id}'/>
 <head><meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/views/sessionChk.jsp"%>
-<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <style type="text/css">@import url("/moma/css/admin/adReview.css");</style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -27,12 +25,9 @@
 		<!-- adMainMenu -->
 		<jsp:include page="adMainMenu.jsp"></jsp:include>
 			<div class="content">
-			<h3 class="title">리뷰 목록</h3>
+			<h3>리뷰 목록</h3>
 			<table>
-				<tr class="content_table">
-					<th>NO</th><th>제목</th><th>닉네임</th><th>별점</th>
-					<th>내용</th><th>작성 날짜</th><th>삭제</th>
-				</tr>
+				<tr><th>NO</th><th>제목</th><th>닉네임</th><th>별점</th><th>내용</th><th>작성 날짜</th><th>삭제</th></tr>
 				<c:if test="${empty list}">
 					<ul class="noItems">
 						<li><span class="txt_title">작성한 리뷰가 없습니다.</span></li>
@@ -46,7 +41,7 @@
 							<td>${review.star_rate }</td>
 							<td>${review.rv_content }</td>
 							<td>${review.rv_date }</td>
-							<td><a href="/moma/views/admin/adReviewDelete.do?rvno=${review.rvno}" class="btn_dt">삭제</a></td>
+							<td><a href="/moma/views/admin/adReviewDelete.do?rvno=${review.rvno}" class="btn_rsv">삭제</a></td>
 					</c:forEach>
 				</c:if>
 			</table>
@@ -55,31 +50,31 @@
 		<div class="paging">
 			<div class="items">
 				<div class="prev_btn">
-				<c:if test="${startPage > PAGE_PER_BLOCK}">
-					<button class="first" onclick="location.href='adReview.do?pageNum=${startPage - 1}'">
-						<img alt="이전" src="../../img/icon/left (1).png">
-					</button> 
-				</c:if>
-				<c:if test="${pageNum > 1}">
-					<button class="prev" onclick="location.href='adReview.do?pageNum=${currentPage - 1}'">
-						<img alt="이전" src="../../img/icon/left.png">
-					</button>
-				</c:if>
-			</div>
-			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<span id="page${i}" class="page_num" onclick="location.href='adReview.do?pageNum=${i}'">${i}</span>
-			</c:forEach>
-			<div class="next_btn">
-				<c:if test="${currentPage < totalPage}">
-					<button class="next" onclick="location.href='adReview.do?pageNum=${currentPage + 1}'">
-						<img alt="다음" src="../../img/icon/right (1).png">
-					</button>
-				</c:if>
-				<c:if test="${endPage < totalPage}">
-					<button class=last onclick="location.href='adReview.do?pageNum=${endPage + 1}'">
-						<img alt="다음" src="../../img/icon/right.png">
-					</button> 
-				</c:if>
+					<c:if test="${startPage > PAGE_PER_BLOCK}">
+						<button class="first" onclick="location.href='adReview.do?pageNum=${startPage - 1}'">
+							<img alt="이전" src="../../img/icon/left (1).png">
+						</button> 
+					</c:if>
+					<c:if test="${pageNum > 1}">
+						<button class="prev" onclick="location.href='adReview.do?pageNum=${currentPage - 1}'">
+							<img alt="이전" src="../../img/icon/left.png">
+						</button>
+					</c:if>
+				</div>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+					<span id="page${i}" class="page_num" onclick="location.href='adReview.do?pageNum=${i}'">${i}</span>
+				</c:forEach>
+				<div class="next_btn">
+					<c:if test="${currentPage < totalPage}">
+						<button class="next" onclick="location.href='adReview.do?pageNum=${currentPage + 1}'">
+							<img alt="다음" src="../../img/icon/right (1).png">
+						</button>
+					</c:if>
+					<c:if test="${endPage < totalPage}">
+						<button class=last onclick="location.href='adReview.do?pageNum=${endPage + 1}'">
+							<img alt="다음" src="../../img/icon/right.png">
+						</button> 
+					</c:if>
 				</div> <!-- next_btn -->
 			</div> <!-- number -->
 		</div> <!-- paging -->	

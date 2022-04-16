@@ -10,13 +10,13 @@
 <body>
 <c:if test="${result > 0 }">
 	<script type="text/javascript">
-		alert("컨텐츠 등록 완료");
-		location.href="adContent.so?pageNum=${totalPage}";
+		alert("컨텐츠 수정 완료");
+		location.href="adContent.so?pageNum=1";
 	</script>
 </c:if>
 <c:if test="${result <= 0 }">
 	<script type="text/javascript">
-		alert("등록 실패");
+		alert("수정 실패");
 		history.go(-1);
 	</script>
 </c:if>

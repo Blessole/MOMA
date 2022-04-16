@@ -18,8 +18,6 @@
 		review.setRv_content("리뷰 인서트 "+i);
 		review.setMno(1);
 		review.setCno(60);
-		review.setNickname("젤리");
-		
 		rd.insert(review);
 	}
 %>

@@ -14,22 +14,15 @@ import dao.ContentDao;
 import model.Content;
 import service.CommandProcess;
 
-public class AdContentRegistAction implements CommandProcess {
+public class AdContentUpdateAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("updateAction 자바파일 지나간당");
+		int cno = Integer.parseInt(request.getParameter("cno"));
 		ContentDao cd = ContentDao.getInstance();
 		Content ct = new Content();
 		
-		//paging : start
-		final int ROW_PER_PAGE = 10;  //한 페이지 10개씩
-		// 페이지 총 개수
-		int total = cd.getTotal();
-		// Math.ceil : 현재 실수보다 큰 정수 
-		int totalPage = (int)Math.ceil((double)total/ROW_PER_PAGE); // 총 페이지 수
-		request.setAttribute("totalPage", totalPage);
-		
-		String nextCno = cd.selectNextCno();
 		// file upload
 		String savePath = request.getSession().getServletContext().getRealPath("/img/poster");   //업로드한 파일을 저장할 폴더
 		int maxSize = 1024 * 1024 * 20; // 20MB 이미지 사이즈를 설정해줘야 함!
@@ -46,12 +39,23 @@ public class AdContentRegistAction implements CommandProcess {
 			String ext = fileName.substring(dot);
 			
 			// 파일명 변경하기
-			String newFileName = nextCno+ext;
+			String newFileName = cno+ext;
+			//System.out.println("newFileName="+newFileName);
 			
 			//업로드 후 파일명 수정
 			File oldFile = new File(savePath+'/'+fileName);
 			File newFile = new File(savePath+'/'+newFileName);
-						
+			
+			if (newFile.exists()) {
+				if (newFile.delete()) {
+					System.out.println("기존 파일 삭제 성공");
+				} else {
+					System.out.println("기존 파일 삭제 실패");
+				}
+			} else {
+				System.out.println("기존 파일이 존재하지 않습니다.");
+			}
+			
 			oldFile.renameTo(newFile);
 			
 			//System.out.println("rename oldFile="+oldFile);
@@ -81,29 +85,46 @@ public class AdContentRegistAction implements CommandProcess {
 				}
 			}
 			ct.setGenre(genres);
+			//System.out.println("genres="+genres);
 			
 			// 입력받은 데이터 세팅
 			ct.setCname(cname);
+			//System.out.println("cname="+cname);
 			ct.setSort(sort);
+			//System.out.println("sort="+sort);
 			ct.setClevel(clevel);
+			//System.out.println("clevel="+clevel);
 			ct.setHours(hours);
+			//System.out.println("hours="+hours);
 			ct.setStart_date(start_date);
+			//System.out.println("start_date="+start_date);
 			ct.setNetflix(netflix);
+			//System.out.println("netflix="+netflix);
 			ct.setWatcha(watcha);
+			//System.out.println("watcha="+watcha);
 			ct.setTving(tving);
+			//System.out.println("tving="+tving);
 			ct.setDirector(director);
+			//System.out.println("director="+director);
 			ct.setActor(actor);
+			//System.out.println("actor="+actor);
 			ct.setReserve(reserve);
+			//System.out.println("reserve="+reserve);
 			ct.setPoster(newFileName);
+			//System.out.println("newFileName="+newFileName);
+
 		
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 		
-		int result = cd.insert(ct);
+		ct.setCno(cno);
+		int result = cd.update(ct);
+		
+		System.out.println("updateAction 자바파일 지나간당");
 		request.setAttribute("result", result);
 		
-		return "adContentRegistAction";
+		return "adContentUpdateAction";
 	}
 
 }

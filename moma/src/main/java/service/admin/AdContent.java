@@ -46,8 +46,7 @@ public class AdContent implements CommandProcess {
 		int endPage = startPage + PAGE_PER_BLOCK - 1; 
 		// 총 페이지보다 큰 endPage는 나올 수 없다. 
 		if (endPage > totalPage) endPage = totalPage; 
-		// paging : end
-				
+		// paging : end		
 		
 		request.setAttribute("list", list);
 		

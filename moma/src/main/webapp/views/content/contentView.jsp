@@ -90,8 +90,7 @@
 					$('.like_img').attr(imgSrc);
 				});
 			}
-		}
-	
+		
 	// 리뷰 페이징 스크롤 높이
 	document.addEventListener("DOMContentLoaded", function() { // html load 이후
 		if ("${pageNum}" > 1) {			
@@ -135,7 +134,6 @@
 					</c:forEach>
 				</div>
 				</div>
-
 				<table class="bottom">
 					<tr>
 						<th>등급</th>

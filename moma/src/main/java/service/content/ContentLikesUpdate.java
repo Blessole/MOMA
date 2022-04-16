@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.LikesDao;
-import dao.ReviewDao;
 import model.Likes;
 import service.CommandProcess;
 
@@ -25,15 +24,15 @@ public class ContentLikesUpdate implements CommandProcess {
 				
 		if (lk == null) { // 좋아요
 			ld.insert(cno, mno);
-			imgSrc = "../../img/icon/heart (1).png";
+			imgSrc = "/moma/img/icon/heart (1).png";
 		} else { // 좋아요 취소
 			ld.delete(cno, mno);
-			imgSrc = "../../img/icon/heart.png";
-		}
-		
+			imgSrc = "/moma/img/icon/heart.png";
+
+		System.out.println("contentlikeupdate 자바 파일 지나감");
 		request.setAttribute("imgSrc", imgSrc);
 		
+		}
 		return "contentLikesUpdate";
 	}
-
 }

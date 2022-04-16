@@ -83,7 +83,7 @@ $(function() {
                  <input type="submit" class="btn_small_rv1" value="수정하기">
             	 <input type="button" class="btn_small_rv2" onclick="history.go(-1)" value="취소">
             </div>
-      	   </form>
+      	</form>
 	</div>
 </body>
 </html>
