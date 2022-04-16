@@ -24,7 +24,7 @@
 	
 	<!-- mno로 별명 조회 -->
 	<select id="selectNick" parameterType="integer" resultType="string">
-		select nick_nm from member where mno=#{mno}
+		select nickname from member where mno=#{mno}
 	</select>
 	
 	<!-- mno로 회원 정보 조회 -->
@@ -84,7 +84,7 @@
 	
 	<!-- moma 회원정보 수정 -->
 	<update id="update" parameterType="integer">
-		update member set password=#{password}, email=#{email}, mname=#{mname}, nickname=#{nickname}, phone=#{phone}, sms_check=#{sms_check}, email_check=#{email_check} where id=#{id}
+		update member set password=#{password}, email=#{email}, mname=#{mname}, nickname=#{nickname}, phone=#{phone}, sms_check=#{sms_check}, email_check=#{email_check} where mno=#{mno}
 	</update>
 	
 	<!-- 회원 탈퇴 -->

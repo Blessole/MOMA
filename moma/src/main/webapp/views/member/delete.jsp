@@ -10,12 +10,15 @@
 <body>
 <c:if test="${result>0 }">
 	<script type="text/javascript">
-		var preUrl = document.referrer.split("/")[6];
+		
 		alert("탈퇴처리 되었습니다");
 		
-		if (preUrl == "updateForm.bb") {
-			location.href="momaMain.jsp";
+		var preUrl = document.referrer.split("/")[6];
+		if (preUrl == "adMember.bb") {
+			location.href="/moma/views/admin/adMember.bb";
 		}
+		else location.href="/moma/views/content/momaMain.so";
+		
 	</script>
 </c:if>
 

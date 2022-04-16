@@ -16,7 +16,7 @@
 		delete reservation where rsno = #{rsno}
 	</delete>
 	
-<!-- moma 마이페이지 - 예매내역 -->
+	<!-- moma 마이페이지 - 예매내역 -->
 	<!-- 예약모든정보 그리고 컨텐츠이름 컨텐츠포스터 조회. // del을 c.del도 'n'일때로 조회해야 하나?-->
     <select id="myList" parameterType="hashmap" resultType="reservation">
        select *

@@ -40,6 +40,7 @@ create table member(
 
 alter table member modify (nickname varchar2(20)); 
 select * from member;
+update member set del='n' where mno=1;
 
 -- 컨텐츠 좋아요 테이블
 drop table likes cascade constraints;

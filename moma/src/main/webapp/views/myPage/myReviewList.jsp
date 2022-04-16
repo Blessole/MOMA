@@ -7,11 +7,13 @@
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-	// 페이징 현재페이지 설정
-	$('#page'+${currentPage}).css({
-		"color" : "var(--point-color)",
-		"font-weight" : "600"
-	});
+//페이징 현재페이지 설정
+$(function() {
+   $('#page'+${currentPage}).css({
+   "color" : "var(--point-color)",
+   "font-weight" : "600"
+   });
+});
 </script></head><body>
 	<div class="container_middle">
 		<!-- myMainMenu -->
@@ -46,20 +48,14 @@
 										"color" : "#000"
 									});
 									$(".txt_pre").find("img").css("display","none");
-									// 게시글 삭제
-									function del() {
-										var con = confirm("삭제 하시겠습니까?");
-										if(con) {
-											location.href="/moma/views/myPage/myReviewDelete.bb?rvno=${myReview.rvno}";
-										}
-									}
+									
 								</script>
 								
 								<div class="txt_bottom2">
 									<div class="btn_area_rv">
 										<span class="star_avg">★★★★★ ${myReview.star_rate }</span>
 										<a href="/moma/views/myPage/myReviewUpdateForm.bb?rvno=${myReview.rvno}"  class="btn_rv">수정</a>
-										<a onclick="del()" class="btn_rv">삭제</a>
+										<a href="/moma/views/myPage/myReviewDelete.bb?rvno=${myReview.rvno}" class="btn_rv">삭제</a>
 									</div>
 								</div>
 							</div>
@@ -75,13 +71,12 @@
 				<div class="prev_btn">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<button class="first" onclick="location.href='myReviewList.bb?pageNum=${startPage - 1}'">
-							<img alt="이전" src="/moma/icon/left.png">
-							<img alt="이전" src="/moma/icon/left.png">
+							<img alt="이전" src="../../img/icon/left (1).png">
 						</button> 
 					</c:if>
 					<c:if test="${pageNum > 1}">
 						<button class="prev" onclick="location.href='myReviewList.bb?pageNum=${currentPage - 1}'">
-							<img alt="이전" src="/moma/icon/left.png">
+								<img alt="이전" src="../../img/icon/left.png">
 						</button>
 					</c:if>
 				</div>
@@ -91,13 +86,12 @@
 				<div class="next_btn">
 					<c:if test="${currentPage < totalPage}">
 						<button class="next" onclick="location.href='myReviewList.bb?pageNum=${currentPage + 1}'">
-							<img alt="다음" src="/moma/icon/right.png">
+						<img alt="다음" src="../../img/icon/right (1).png">
 						</button>
 					</c:if>
 					<c:if test="${endPage < totalPage}">
 						<button class=last onclick="location.href='myReviewList.bb?pageNum=${endPage + 1}'">
-							<img alt="다음" src="/moma/icon/right.png">
-							<img alt="다음" src="/moma/icon/right.png">
+							<img alt="다음" src="../../img/icon/right.png">
 						</button> 
 					</c:if>
 				</div> <!-- next_btn -->

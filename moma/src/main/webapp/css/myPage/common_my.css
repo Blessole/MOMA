@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+.content_update {
+	width: 100%;
+	margin-top: 50px;
+	border-top: 1px solid #e4e4e4;
+	padding-top: 40px;
+}
+
 .container_middle {
 	width: 50%;
 	margin: 0 auto;
@@ -14,6 +21,8 @@
 	margin-top: 20%;
 	float: left;
 }
+
+
 
 .point-color {
 	color: var(--point-color);
@@ -34,17 +43,6 @@
 	display: table-cell;
 	vertical-align: middle;
 }
-
-/* /* 프로필 */
-.menu>ul>li:first-child {
-	width: 130px;
-}
-
-.menu>ul>li:first-child img {
-	height: 55px;
-}
-
- */
 
 /* nav */
 
@@ -83,7 +81,6 @@
 	margin-top: 50px;
 	border-top: 1px solid #e4e4e4;
 	padding-top: 40px;
-	text-align: center;
 }
 
 .content_list {
@@ -112,16 +109,17 @@
 	margin-bottom: 50px;
 }
 
-.content_list ul li a {
-	
-}
-
 .content_list ul .rv {
 	
-	/* display: inline-block;
-	float: left;
-	width: 70%;
-	margin-bottom: 50px; */
+	display: inline-block;
+    float: left;
+    width: 48%;
+    margin: 0 2% 0 0;
+    margin-bottom: 40px;
+}
+
+
+.content_list ul .rv {
 	
 	display: inline-block;
     float: left;
@@ -153,13 +151,23 @@
 
 .content>ul>li>a {
 	display: inline-block;
-	width: 73%;
+	width: 80%;
+	border:none;
 }
 
 /* 썸네일or포스터 */
 .content>ul>li>a>img {
 	width: 109%;
 	height: 12vw;
+	object-fit: cover;
+	vertical-align: middle;
+	cursor: pointer;
+	border:none;
+}
+
+.content>ul>.likes>a>img {
+	width: 117%;
+    height: 0%;
 	object-fit: cover;
 	vertical-align: middle;
 	cursor: pointer;
@@ -172,7 +180,18 @@
 	width: 60%;
 	height: 11vw;
 	vertical-align: middle;
-	margin-left: 5%;
+	margin-left: 6%;
+}
+
+.txt_area2 {
+	position: relative;
+	display: inline-block;
+	width: 60%;
+	height: 12vw;
+	vertical-align: middle;
+	margin-left: 6%;
+	padding-top:1%;
+	
 }
 
 .txt_area_rv {
@@ -190,11 +209,42 @@
 	padding-bottom:2%;
 }
 
-
-
 .cursor {
 	cursor: pointer;	
 }
+
+.rvup_content textarea {
+	resize: none;
+    width: 70%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    height: 78px;
+}
+
+p.detail_txt pd_bottom {
+    width: 100%;
+    margin-top: 1%;
+}
+
+.star_rate_up input {
+    width: 60%;
+}
+
+
+.rvup_content p {
+	padding : 5% 5%;
+}
+
+.star_rate_num {
+    display: inline-block;
+    position: absolute;
+    width: 5%;
+    height: 3%;
+    padding: 14px;
+    margin-left: 1%;
+    font-weight: 600;
+}
+
 
 /* 타이틀 */
 .txt_title {
@@ -207,6 +257,16 @@
 	margin: 0;
 }
 
+.txt_title2 {
+	display: block;
+	font-size: 16px;
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-top:-1%
+}
+
 .txt {
 	display: block;
 	font-size: 14px;
@@ -215,6 +275,39 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	margin: 3% 0;
+}
+
+.txt2 {
+	display: block;
+	font-size: 14px;
+	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 0;
+    height: 59px;
+    margin-right: 5%;
+}
+
+.txt_star {
+	display: block;
+	font-size: 14px;
+	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-top: 5px;
+}
+
+
+.txt_date {
+	display: block;
+	font-size: 13px;
+	font-weight: 400;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: -1% 0% 5% 0%;
 }
 
 .txt_pre {
@@ -247,6 +340,14 @@
     width: 100%;
 }
 
+.txt_bottom2 {
+	position: absolute;
+    /* bottom: 20px; */
+    right: -4px;
+    width: 100%;
+    bottom: 0%;
+}
+
 .btn_area {
 	position: absolute;
     right: 3px;
@@ -254,10 +355,10 @@
 }
 
 .btn_area_rv {
-	position: absolute;
-    right: 3px;
-    bottom: 0;
-    top: 0px;
+	position: relative;
+    left: -4%;
+    top: 10%;
+   /*  bottom: 0; */
     width: 350px;
 }
 
@@ -292,33 +393,143 @@
 
 .btn_rv {
     display: inline-block;
-    width: 12%;
-    height: 18px;
-    text-align: center;
-    background-color: var(--point-color);
-    border: none;
-    font-size: 12px;
-    font-weight: 400;
-    color: #fff;
-    cursor: pointer;
+	width: initial;
+	height: initial;
+	font-size: 15px;
+	text-align: right;
+	/* padding: 0 10px 0 0; */
+	margin: 0 2% 0 0;
+	border: 0;
+	color: #aaa;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+.star_avg {
+	padding: 8px 15px 24px 0;
+	font-size: 15px;
+	color: var(--point-color);
+    padding-left: 1%;
 }
 
 /* updateForm */
 .check {
 	font-size: 0;
 	position:relative;
-	margin:5px;
+	margin-top: 5px;
+    padding-left: 15%;
 }
 
 #chk1 {
 	border: 0px;
-	width: 10%;
+	width: 12%;
 	height: 1em;
 	padding-left: 65px;
 }
 
+
+
 .checks>li {
 	margin: 30px 10px 30px 5px;
+	padding-left: 20%;
+}
+
+.check>input, .check>.chk-msg {
+	display:block;
+	position:relative;
+	width: 80%;
+}
+
+.btn_small_rv1 {
+	display: inline-block;
+    width: 33%;
+    height: 50px;
+    text-align: center;
+    background-color: var(--point-color);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    padding: 14px 0;
+	margin: 0 0 0 0;
+    float: left;
+}
+
+.btn_small_rv2 {
+	display: inline-block;
+    width: 33%;
+    height: 50px;
+    text-align: center;
+    background-color: var(--point-color);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    padding: 14px 0;
+    float:right;
+    margin: 0 5% 0 0%;
+}
+
+
+.btn_small_up1 {
+	display: inline-block;
+    width: 33%;
+    height: 50px;
+    text-align: center;
+    background-color: var(--point-color);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    padding: 14px 0;
+	margin: 0px 0% 0 90px;
+    float: left;
+}
+
+.btn_small_up2 {
+	display: inline-block;
+    width: 33%;
+    height: 50px;
+    text-align: center;
+    background-color: var(--point-color);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    padding: 14px 0;
+    float:right;
+    margin: 0 16% 0 0%;
+}
+
+.container_submit {
+	width: 566px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+.container_submit2 {
+    margin-top: 5%;
+}
+
+.updateform {
+	margin-top:7%
+}
+
+.up_title {
+	margin-top:5%
+}
+
+.checks .input {
+	align : right;
+}
+
+table {
+	width : 130%
 }
 
 /* 에러메세지 */
@@ -328,6 +539,23 @@
 	margin:0;
 	color: red;
 	font-size: 10px;
+}
+
+.chk-msg1 { 
+	margin-top: 0px;
+    margin-left: 27%;
+    color: red;
+    font-size: 10px;
+    text-align: left;
+}
+
+.chk-msg2 { 
+	margin-top: 0px;
+    margin-left: 27%;
+    font-weight: bold;
+    color: black;
+    font-size: 10px;
+    text-align: left;
 }
 
 /* 내용(각 페이지 공통) 끝 ****************************** */

@@ -9,10 +9,18 @@
 <style type="text/css">@import url("/moma/css/admin/admin.css");</style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-	function del(delMno) {
-		var con = confirm("탈퇴처리 하시겠습니까?");
+	
+	function del(delBno) {
+		var con = confirm("삭제 하시겠습니까?");
 		if(con) {
-			location.href="../member/delete.bb?mno="+delMno;
+			location.href="/moma/views/admin/boardDelete.ha?bno="+delBno;
+		}
+	}
+	
+	function up(upBno) {
+		var con = confirm("수정 하시겠습니까?");
+		if(con) {
+			location.href="/moma/views/admin/boardUpdate.ha?bno="+upBno;
 		}
 	}
 	
@@ -29,65 +37,61 @@
 	<jsp:include page="adMainMenu.jsp"></jsp:include>
 	
 	<div class="content">	
-	<h3>회원관리</h3>
+	<h3>저널관리</h3>
 	<ul>
-	<table id= adMember>
-		<tr><th>회원번호</th><th>아이디</th><th>이름</th><th>이메일</th><th>별명</th><th>연락처</th><th>sms광고</th><th>이메일광고</th><th>가입일</th><th>탈퇴여부</th><th>탈퇴</th></tr>
-		<c:if test="${empty list}">
-			<ul class="noItems">
-						<li><span class="txt_title">가입한 회원이 없습니다.</span></li>
-			</ul>
-		</c:if>
-		<c:if test="${not empty list}">
-			<c:forEach var="member" items="${list }">
-				<tr><td>${member.mno }</td>
-					<td>${member.id }</td>
-					<td>${member.mname }</td>
-					<td>${member.email }</td>
-					<td>${member.nickname }</td>
-					<td>${member.phone }</td>
-					<td>${member.sms_check }</td>
-					<td>${member.email_check }</td>
-					<td>${member.join_date }</td>
-					<td>${member.del }</td>
-					<td><a onclick="del(${member.mno})" class="btn_rv" style="cursor:pointer">탈퇴</a></td>
-			</c:forEach>
-		</c:if>
-	</table>
+	<table id="adMember">
+	<tr><th>저널번호</th><th>제목</th><th>조회수</th><th>삭제여부</th><th>수정</th><th>삭제</th></tr>
+	<c:if test="${empty list}">
+		<ul class="noItems">
+					<li><span class="txt_title">작성한 저널이 없습니다.</span></li>
+		</ul>
+	</c:if>
+	<c:if test="${not empty list}">
+		<c:forEach var="board" items="${list }">
+			<tr><td>${board.bno }</td>
+				<td><a href="/moma/views/board/boardView.ha?bno=${board.bno}" style="cursor:pointer">${board.bname }</a></td>
+				<td>${board.bviews }</td>
+				<td>${board.del }</td>
+				<td><a onclick="up(${board.bno})" class="btn_rv" style="cursor:pointer">수정</a></td>
+				<td><a onclick="del(${board.bno})" class="btn_rv" style="cursor:pointer">삭제</a></td>
+		</c:forEach>
+	</c:if>
 	</div>
-			<!-- paging -->
+	</table>
+	
+		<!-- paging -->
 			<div class="paging">
 				<div class="items">
 					<div class="prev_btn">
 						<c:if test="${startPage > PAGE_PER_BLOCK}">
-							<button class="first" onclick="location.href='adMember.bb?pageNum=${startPage - 1}'">
+							<button class="first" onclick="location.href='adBoard.bb?pageNum=${startPage - 1}'">
 								<img alt="이전" src="../../img/icon/left (1).png">
 							</button> 
 						</c:if>
 						<c:if test="${pageNum > 1}">
-							<button class="prev" onclick="location.href='adMember.bb?pageNum=${currentPage - 1}'">
+							<button class="prev" onclick="location.href='adBoard.bb?pageNum=${currentPage - 1}'">
 								<img alt="이전" src="../../img/icon/left.png">
 							</button>
 						</c:if>
 					</div>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<span id="page${i}" class="page_num" onclick="location.href='adMember.bb?pageNum=${i}'">${i}</span>
+						<span id="page${i}" class="page_num" onclick="location.href='adBoard.bb?pageNum=${i}'">${i}</span>
 					</c:forEach>
 					<div class="next_btn">
 						<c:if test="${currentPage < totalPage}">
-							<button class="next" onclick="location.href='adMember.bb?pageNum=${currentPage + 1}'">
+							<button class="next" onclick="location.href='adBoard.bb?pageNum=${currentPage + 1}'">
 								<img alt="다음" src="../../img/icon/right (1).png">
 							</button>
 						</c:if>
 						<c:if test="${endPage < totalPage}">
-							<button class=last onclick="location.href='adMember.bb?pageNum=${endPage + 1}'">
+							<button class=last onclick="location.href='adBoard.bb?pageNum=${endPage + 1}'">
 								<img alt="다음" src="../../img/icon/right.png">
 							</button> 
 						</c:if>
 					</div> <!-- next_btn -->
 				</div> <!-- number -->
 			</div> <!-- paging -->
-	
+	</div>
 
 </body>
 </html>

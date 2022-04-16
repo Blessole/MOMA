@@ -52,9 +52,9 @@
 		select * from review where rvno=#{rvno}
 	</select>
 	
-	<!-- // 마이페이지 리뷰 수정 : star_rate update -->
+	<!-- // 마이페이지 리뷰 수정 -->
 	<update id="update" parameterType="review">
-		update review set star_rate=#{star_rate}, rv_content=#{rv_content} where rvno=#{rvno}
+		update review set star_rate=#{star_rate}, rv_date=sysdate, rv_content=#{rv_content} where rvno=#{rvno}
 	</update>
 	
 		<!-- cno 별 별점 평균 ✔✔ required로 null이 없겠지만? null이 들어간다면 에러날 수 있음 주의 -->

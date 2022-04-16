@@ -14,7 +14,7 @@
 	</script>
 </c:if>
 
-<c:if test="${result==0 }">
+<c:if test="${result<=0 }">
 	<script type="text/javascript">
 		alert("리뷰 삭제 실패\n다시 시도해주세요");
 		history.go(-1);

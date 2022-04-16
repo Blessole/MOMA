@@ -5,21 +5,17 @@
 <head><meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<style type="text/css">@import url("/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script type="text/javascript">
-	/* $(document).ready(function() {
-		$("#myReserveList .dot").css("display", "block");
-		$('#page'+${currentPage}).css({
-			"color" : "var(--point-color)",
-			"font-weight" : "600"
-		});
-	}); */
-	// 페이징 현재페이지 설정
-	$('#page'+${currentPage}).css({
-		"color" : "var(--point-color)",
-		"font-weight" : "600"
-	});
+	 //페이징 현재페이지 설정
+	   $(function() {
+	      $('#page'+${currentPage}).css({
+	      "color" : "var(--point-color)",
+	      "font-weight" : "600"
+	      });
+	   });
 </script></head><body>
+
 	<div class="container_middle">
 		<!-- myMainMenu -->
 		<jsp:include page="myMainMenu.jsp"></jsp:include>
@@ -50,7 +46,7 @@
 								</a>
 								<div class="txt_bottom">
 									<div class="btn_area">
-										<a href="/moma/views/content/reserveDelete.so?cno=${reservation.cno}" class="btn_rsv">예매 취소</a>
+										<a href="/moma/views/content/reserveDelete.so?rsno=${reservation.rsno}" class="btn_rsv">예매 취소</a>
 									</div>
 								</div>
 							</div>
@@ -67,13 +63,12 @@
 				<div class="prev_btn">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<button class="first" onclick="location.href='myReserveList.bb?pageNum=${startPage - 1}'">
-							<img alt="이전" src="/moma/icon/left.png">
-							<img alt="이전" src="/moma/icon/left.png">
+							<img alt="이전" src="../../img/icon/left (1).png">
 						</button> 
 					</c:if>
 					<c:if test="${pageNum > 1}">
 						<button class="prev" onclick="location.href='myReserveList.bb?pageNum=${currentPage - 1}'">
-							<img alt="이전" src="/moma/icon/left.png">
+							<img alt="이전" src="../../img/icon/left.png">
 						</button>
 					</c:if>
 				</div>
@@ -83,13 +78,12 @@
 				<div class="next_btn">
 					<c:if test="${currentPage < totalPage}">
 						<button class="next" onclick="location.href='myReserveList.bb?pageNum=${currentPage + 1}'">
-							<img alt="다음" src="/moma/icon/right.png">
+						<img alt="다음" src="../../img/icon/right (1).png">
 						</button>
 					</c:if>
 					<c:if test="${endPage < totalPage}">
 						<button class=last onclick="location.href='myReserveList.bb?pageNum=${endPage + 1}'">
-							<img alt="다음" src="/moma/icon/right.png">
-							<img alt="다음" src="/moma/icon/right.png">
+							<img alt="다음" src="../../img/icon/right.png">
 						</button> 
 					</c:if>
 				</div> <!-- next_btn -->
