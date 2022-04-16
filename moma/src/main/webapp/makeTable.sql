@@ -1,6 +1,9 @@
 -- 컨텐츠 테이블
 drop table content cascade constraints;
 
+
+alter table content modify reserve  CHAR(1) NOT NULL;
+
 create table content (
        	cno NUMBER CONSTRAINT content_cno_pk PRIMARY KEY NOT NULL,
         cname VARCHAR2(100) NOT NULL,
@@ -24,9 +27,6 @@ select * from content order by cno;
 
 -- 회원 테이블
 drop table member;
-
-alter table member modify nickname varchar2(20);
-
 create table member(
         mno NUMBER CONSTRAINT member_mno_pk PRIMARY KEY NOT NULL,
         id VARCHAR2(30) NOT NULL,
@@ -43,6 +43,7 @@ create table member(
 
 alter table member modify (nickname varchar2(20)); 
 select * from member;
+update MEMBER set del='n' where mno=4;
 
 -- 컨텐츠 좋아요 테이블
 drop table likes cascade constraints;

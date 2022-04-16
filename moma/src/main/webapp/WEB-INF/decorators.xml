@@ -10,8 +10,6 @@
 		<pattern>/views/member/updateForm.bb</pattern>
 		<pattern>/views/myPage/*</pattern>
 		<pattern>/views/searchResult.so</pattern>
-	</decorator>
-		<decorator name="decorator_admin" page="view_admin.jsp">
 		<pattern>/views/admin/*</pattern>
 	</decorator>
 	<!-- 아래 프로그램은 예외이므로 decorator를 적용하지 마라 -->

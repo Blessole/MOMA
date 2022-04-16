@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <%@ include file="../sessionChk.jsp" %>  --%>
 
-<style type="text/css">@import url("../../css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <style>
 .category>ul>li {
 	float: left;

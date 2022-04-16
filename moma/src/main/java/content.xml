@@ -116,4 +116,48 @@
 	   where c.cno = r.cno and r.rvno=#{rvno} and r.del='n'
 	</select> 
 	
+	<!-- 컨텐츠 조회수 증가 -->
+	<update id="countUpdate" parameterType="integer">
+		update content set cviews = cviews + 1 where cno = #{cno}
+	</update>
+	
+	<!-- 관리자페이지 content total -->
+	<select id="getTotal" resultType="integer">
+		select count(*) from content
+	</select>
+	
+	<!-- 관리자페이지 컨텐츠 total 리스트 -->
+	<select id="selectTotalList" resultType="content">
+		select * from (select rownum rn, e.* from (
+		select * from content order by cno) e)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 관리자페이지 컨텐츠 total 리스트 -->
+	<insert id="insert" parameterType="content">
+		<selectKey keyProperty="cno" order="BEFORE" resultType="integer">
+			 select nvl(max(cno),0)+1 cno from content
+		</selectKey>
+		insert into content values(#{cno,jdbcType=INTEGER}, #{cname,,jdbcType=VARCHAR}, #{sort,jdbcType=CHAR}, 
+		#{clevel,jdbcType=INTEGER}, #{genre,jdbcType=VARCHAR}, #{hours,jdbcType=VARCHAR}, 
+		#{start_date,jdbcType=VARCHAR}, 0, #{netflix,jdbcType=VARCHAR}, #{watcha,jdbcType=VARCHAR}, #{tving,jdbcType=VARCHAR}, 
+		#{poster,jdbcType=VARCHAR}, 'n', 
+		#{director,jdbcType=VARCHAR}, #{actor,jdbcType=VARCHAR}, #{reserve,jdbcType=CHAR})
+	</insert>
+	
+	<!-- 관리자페이지 컨텐츠 등록에서 사용할 next cno -->
+	<select id="selectNextCno" resultType="string">
+		select nvl(max(cno),0)+1 cno from content
+	</select>
+	
+	<!-- 관리자페이지 컨텐츠 삭제용 -->
+	<update id="delete" parameterType="integer">
+		update content set del='y' where cno=#{cno}
+	</update>
+	
+	<!-- 관리자페이지 컨텐츠 삭제취소용 -->
+	<update id="delCancel" parameterType="integer">
+		update content set del='n' where cno=#{cno}
+	</update>
+	
 </mapper>

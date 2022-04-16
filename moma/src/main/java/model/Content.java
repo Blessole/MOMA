@@ -28,7 +28,18 @@ public class Content {
 			this.rvno = rvno;
 		}
 	//	
-
+		
+	// likes에서 받아올 예정
+		private int lno;
+		
+		public int getLno() {
+			return lno;
+		}
+		public void setLno(int lno) {
+			this.lno = lno;
+		}
+	//	
+	
 	public int getCno() {
 		return cno;
 	}

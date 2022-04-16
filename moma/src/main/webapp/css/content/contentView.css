@@ -20,7 +20,7 @@
 .content_view_top img {
 	width: 330px;
 	height: 440px;
-	object-fit: cover;
+	object-fit: fill;
 }
 
 .content_view_top .btn {
@@ -59,35 +59,61 @@
   	display: inline-block;
 }
 
-.like_box {
-	height: 20px;
-	background-color: #fff;
-	border: none;
-	display: inline-block;
-	cursor: pointer;
-	position: relative;
-	margin-right: 40px;
-	left: 50%;
+.rate {
+	display: inline-block;	
 }
 
+/* 좋아요 */
+
+.like_box {
+	position: relative;
+}
 
 .like_box img {
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+/* .likes {
+  display: inline-block;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  float: right;
+}
+
+.likes {
+  background: url('https://i.ibb.co/vw78mf3/heart.png') no-repeat 0% 50%;
+  background-size: 2900%;
+}
+
+.like-active {
+  animation-name: animate;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: steps(28);
+}
+
+@keyframes animate {
+  0%   { background-position: left;  }
+  50%  { background-position: right; }
+  100% { background-position: right; }
+} */
+
+/* 좋아요 끝 */
+
+.rate>img {
 	width: 25px;
 	height: 25px;
   	display: inline-block;
 }
 
-.like_box .count {
-	font-size: 10px;
-	vertical-align: right;
-	margin-left: 4px;
-}
-
-
 .content_view_top .star_avg {
 	padding-bottom: 8px;
 	padding-top: 0;
-
 }
 
 .text_area .bottom {
@@ -248,7 +274,7 @@ input[type="submit"] {
 	padding-top: 30px;
 }
 
-/* dpView paging */
+/* contentView paging */
 .content_view_bottom .paging span {
 	cursor: default;
 }

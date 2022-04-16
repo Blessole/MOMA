@@ -18,7 +18,7 @@ public class MyLikesList implements CommandProcess {
 		if (session.getAttribute("mno") != null) {
 			int mno = (int) session.getAttribute("mno"); // session mno
 		
-		System.out.println(mno);
+		//System.out.println(mno);
 		LikesDao ld = LikesDao.getInstance();
 		
 		//페이징

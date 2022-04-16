@@ -4,12 +4,14 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/views/sessionChk.jsp"%>
-<style type="text/css">@import url("/css/myPage/common_my.css");</style>
+<style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script type="text/javascript">
-	// 페이징 현재페이지 설정
-	$('#page'+${currentPage}).css({
+	//페이징 현재페이지 설정
+	$(function() {
+		$('#page'+${currentPage}).css({
 		"color" : "var(--point-color)",
 		"font-weight" : "600"
+		});
 	});
 </script></head><body>
 	<div class="container_middle">
@@ -29,7 +31,7 @@
 					<c:forEach var="likes" items="${list}">
 						<li class=likes>
 							<a href="/moma/views/content/contentView.do?cno=${likes.cno}" class="cursor">
-								<img src ="/img/poster/${likes.cno}.jpg" style =" no-repeat center; background-size: cover;">
+								<img src ="/moma/img/poster/${likes.cno}.jpg" style =" no-repeat center; background-size: cover;">
 								<div class="txt_likes">${likes.cname }</div>
 							</a>
 						</li>
