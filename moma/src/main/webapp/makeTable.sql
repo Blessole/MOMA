@@ -1,6 +1,9 @@
 -- 컨텐츠 테이블
 drop table content cascade constraints;
 
+
+alter table content modify reserve  CHAR(1) NOT NULL;
+
 create table content (
        	cno NUMBER CONSTRAINT content_cno_pk PRIMARY KEY NOT NULL,
         cname VARCHAR2(100) NOT NULL,

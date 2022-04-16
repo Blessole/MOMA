@@ -30,7 +30,7 @@ public class MyReviewList implements CommandProcess {
 				pageNum = "1";
 			int currentPage = Integer.parseInt(pageNum); // 현재 페이지
 
-			int total = rd.getTotalMy(mno); // 총 게시글 수
+			int total = rd.getTotalMy(mno); // 총 리뷰 수
 
 			int totalPage = (int) Math.ceil((double) total / ROW_PER_PAGE); // 총 페이지 수
 
@@ -38,7 +38,7 @@ public class MyReviewList implements CommandProcess {
 			int endRow = startRow + ROW_PER_PAGE - 1; // 게시글의 마지막 번호(변수 num = 1)
 
 			int startPage = currentPage - (currentPage - 1) % PAGE_PER_BLOCK; // 한 블럭 당 시작 페이지(1, 11, 21, ...)
-			int endPage = startPage + PAGE_PER_BLOCK - 1; // 한 블럭 당 마지막 페이지
+			int endPage = startPage + PAGE_PER_BLOCK - 1; // 한 블럭당 마지막 페이지
 
 			if (endPage > totalPage)
 				endPage = totalPage; // 마지막 페이지가 총 페이지 수 보다 클 경우

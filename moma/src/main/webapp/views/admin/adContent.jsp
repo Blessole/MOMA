@@ -24,6 +24,7 @@
 	function showCon(id) {
 		location.href = "/moma/views/admin/" + id ;
 	}
+
 	$(function() {
 		// 페이징 현재페이지 설정
 		$('#page'+${currentPage}).css({

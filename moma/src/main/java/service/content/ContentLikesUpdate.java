@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.LikesDao;
-import dao.ReviewDao;
 import model.Likes;
 import service.CommandProcess;
 
@@ -29,11 +28,11 @@ public class ContentLikesUpdate implements CommandProcess {
 		} else { // 좋아요 취소
 			ld.delete(cno, mno);
 			imgSrc = "/moma/img/icon/heart.png";
-		}
+
 		System.out.println("contentlikeupdate 자바 파일 지나감");
 		request.setAttribute("imgSrc", imgSrc);
 		
+		}
 		return "contentLikesUpdate";
 	}
-
 }

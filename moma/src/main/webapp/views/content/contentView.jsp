@@ -45,8 +45,7 @@
 			} else {
 				$('.scroll_top').fadeOut('slow');
 			}
-		});
-		
+		});	
 	});
 	
 	//session check
@@ -64,34 +63,34 @@
 			}
 		}
 	}
- 	
-  	// 좋아요 제어
-   	function likeUnlike(cno) {
- 		$.post("/moma/views/content/contentLikesUpdate.do", function(data) {
- 			var imgSrc = data;
- 			$('.like_img'+cno).attr('src', imgSrc);
- 		});
-	}
-/*  	function likes() {
-		$.post("contentLikesUpdate.do", "cno="+ cno, function(data) {
-			var imgSrc = data.split(',');      imgsrc, likes
-			$('.like_img'+cno).attr('src', imgSrc);
-		});
-	} */
-
-/* 	function likes(rv_no) {
-
-			$.post("reviewLikes.do", "rv_no="+rv_no, function(data) {
-				var imgSrc = data.split(',')[0];
-				var likes = data.split(',')[1];
-				
-				$('.like_img'+rv_no).attr('src', imgSrc);
-				$('.like_img'+rv_no).siblings('.count').text(likes);
-			});
-		}
-	} */
 	
-	
+ 	// 좋아요 제어
+/* 	function likes() {
+		if (${empty id}) {
+			var con = confirm("로그인이 필요합니다.");
+			if (con) {				
+				location.href="/moma/views/member/loginForm.bb";
+			}
+		} else {
+			$('.likes').on('click', function() {
+				   $(this).toggleClass('like-active');
+				   
+				});
+			}
+		} */
+		
+		function likes() {
+			if (${empty id}) {
+				var con = confirm("로그인이 필요합니다.");
+				if (con) {				
+					location.href="/moma/views/member/loginForm.bb";
+				}
+			} else {
+				$.post("contentLikesUpdate.do", "cno=${content.cno}", function(data) {
+					$('.like_img').attr(imgSrc);
+				});
+			}
+		
 	// 리뷰 페이징 스크롤 높이
 	document.addEventListener("DOMContentLoaded", function() { // html load 이후
 		if ("${pageNum}" > 1) {			
@@ -116,28 +115,25 @@
 			<div class="text_area">
 			<div class="rate">
 				<!-- 평균 별점 -->
-				<div class="star_avg">★★★★★︎ &nbsp;<span class="text">${star_rate }</span></div>
-				<!-- 좋아요 -->
-				<img class="like_img${content.cno }" onclick="likeUnlike(${content.cno})" src="${imgSrc }">
-<%-- 				      <c:choose>
-				         <c:when test = "${nickname != null}">
-				        	<a href="/moma/views/content/contentLikesUpdate.do" ></a>
-				         </c:when>
-				         <c:when test = "${nickname == null}">
-				            <a href="/moma/views/member/loginForm.bb" ></a>
-				         </c:when>
-				      </c:choose> --%>
+				<div class="star_avg">★★★★★︎ &nbsp;
+					<span class="text">${star_rate }</span>
+				</div>
+				<!-- 좋아요 구현 -->					
+				<!-- <div>
+				  <span class="likes" onclick="likes()"></span>
+				</div> -->
+				<div class="like_box">
+				<img class="like_img${likes.mno }" alt="좋아요" src="../../img/icon/heart.png" onclick="likes(${likes.mno })">
 					<!-- 좋아요 한 회원일때 빨간하트로 세팅 -->
-<%-- 					<c:forEach var="lk" items="${lk }">
-						<c:if test="${lk.cno == content.cno }">
-							<c:if test="${lk.mno == mno }">
-								<script type="text/javascript">
-									$('.like_img'+${content.cno}).attr('src', '../../img/icon/heart (1).png');
-								</script>
+					<c:forEach var="myList" items="${myList }">
+						<c:if test="${myList.cno == likes.cno }">
+							<c:if test="${myList.mno == mno }">
+								<script type="text/javascript">$('.like_img'+${likes.mno}).attr('src', '../../img/icon/heart (1).png');</script>
 							</c:if>
 						</c:if>
-					</c:forEach> --%>
-			</div>
+					</c:forEach>
+				</div>
+				</div>
 				<table class="bottom">
 					<tr>
 						<th>등급</th>

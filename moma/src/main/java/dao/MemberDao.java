@@ -56,7 +56,7 @@ public class MemberDao {
 		public String selectNick(int mno) {
 			return (String) session.selectOne("memberns.selectNick", mno);
 		}
-				
+
 		// moma joinAction(insert)
 		public int insert(Member member) {			
 			return session.insert("memberns.insert", member);

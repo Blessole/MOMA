@@ -15,21 +15,21 @@ public class Reservation {
 	private int cno;
 	
 	// 컨텐츠꺼
-	private String cname;
-	private String poster;
-				
-	public String getCname() {
-		return cname;
-	}
-	public void setCname(String cname) {
-		this.cname = cname;
-	}
-	public String getPoster() {
-		return poster;
-	}
-	public void setPoster(String poster) {
-		this.poster = poster;
-	}
+			private String cname;
+			private String poster;
+			
+			public String getCname() {
+				return cname;
+			}
+			public void setCname(String cname) {
+				this.cname = cname;
+			}
+			public String getPoster() {
+				return poster;
+			}
+			public void setPoster(String poster) {
+				this.poster = poster;
+			}
 	//
 	
 	public int getRsno() {
@@ -92,6 +92,5 @@ public class Reservation {
 	public void setCno(int cno) {
 		this.cno = cno;
 	}
-	
 	
 }
