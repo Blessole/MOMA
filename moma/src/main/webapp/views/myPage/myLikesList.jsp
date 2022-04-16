@@ -6,10 +6,12 @@
 <%@ include file="/views/sessionChk.jsp"%>
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script type="text/javascript">
-	// 페이징 현재페이지 설정
-	$('#page'+${currentPage}).css({
+	//페이징 현재페이지 설정
+	$(function() {
+		$('#page'+${currentPage}).css({
 		"color" : "var(--point-color)",
 		"font-weight" : "600"
+		});
 	});
 </script></head><body>
 	<div class="container_middle">

@@ -20,6 +20,8 @@ create table content (
         reserve CHAR(1) default 'n' NOT NULL
 );
 
+alter table content modify reserve  CHAR(1)  NULL;
+update CONTENT set reserve='' where reserve='N';
 select * from content order by cno;
 
 -- 회원 테이블
@@ -40,6 +42,7 @@ create table member(
 
 alter table member modify (nickname varchar2(20)); 
 select * from member;
+update MEMBER set del='n' where mno=4;
 
 -- 컨텐츠 좋아요 테이블
 drop table likes cascade constraints;

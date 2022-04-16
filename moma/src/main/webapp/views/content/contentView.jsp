@@ -12,6 +12,12 @@
 <script type="text/javascript">
 
 	$(function() {
+		// 페이징 현재페이지 설정
+		$('#page'+${currentPage}).css({
+			"color" : "var(--point-color)",
+			"font-weight" : "600"
+		});
+		
 		// input range rate 조절
 		$('input[type="range"]').on('change mousemove', function() {
 			var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
@@ -58,20 +64,33 @@
 			}
 		}
 	}
-	
-	// 좋아요 제어
-	function likes() {
-		if (${empty id}) {
-			var con = confirm("로그인이 필요합니다.");
-			if (con) {				
-				location.href="/moma/views/member/loginForm.bb";
-			}
-		} else {
-			$.post("contentLikesUpdate.do", "cno=${content.cno}", function(data) {
-				$('.likes svg g').css('fill', data);
+ 	
+  	// 좋아요 제어
+   	function likeUnlike(cno) {
+ 		$.post("/moma/views/content/contentLikesUpdate.do", function(data) {
+ 			var imgSrc = data;
+ 			$('.like_img'+cno).attr('src', imgSrc);
+ 		});
+	}
+/*  	function likes() {
+		$.post("contentLikesUpdate.do", "cno="+ cno, function(data) {
+			var imgSrc = data.split(',');      imgsrc, likes
+			$('.like_img'+cno).attr('src', imgSrc);
+		});
+	} */
+
+/* 	function likes(rv_no) {
+
+			$.post("reviewLikes.do", "rv_no="+rv_no, function(data) {
+				var imgSrc = data.split(',')[0];
+				var likes = data.split(',')[1];
+				
+				$('.like_img'+rv_no).attr('src', imgSrc);
+				$('.like_img'+rv_no).siblings('.count').text(likes);
 			});
 		}
-	}
+	} */
+	
 	
 	// 리뷰 페이징 스크롤 높이
 	document.addEventListener("DOMContentLoaded", function() { // html load 이후
@@ -95,8 +114,30 @@
 		<div class="content_view_top">
 			<img src="../../img/poster/${content.poster }" alt="포스터">
 			<div class="text_area">
+			<div class="rate">
 				<!-- 평균 별점 -->
 				<div class="star_avg">★★★★★︎ &nbsp;<span class="text">${star_rate }</span></div>
+				<!-- 좋아요 -->
+				<img class="like_img${content.cno }" onclick="likeUnlike(${content.cno})" src="${imgSrc }">
+<%-- 				      <c:choose>
+				         <c:when test = "${nickname != null}">
+				        	<a href="/moma/views/content/contentLikesUpdate.do" ></a>
+				         </c:when>
+				         <c:when test = "${nickname == null}">
+				            <a href="/moma/views/member/loginForm.bb" ></a>
+				         </c:when>
+				      </c:choose> --%>
+					<!-- 좋아요 한 회원일때 빨간하트로 세팅 -->
+<%-- 					<c:forEach var="lk" items="${lk }">
+						<c:if test="${lk.cno == content.cno }">
+							<c:if test="${lk.mno == mno }">
+								<script type="text/javascript">
+									$('.like_img'+${content.cno}).attr('src', '../../img/icon/heart (1).png');
+								</script>
+							</c:if>
+						</c:if>
+					</c:forEach> --%>
+			</div>
 				<table class="bottom">
 					<tr>
 						<th>등급</th>
@@ -124,7 +165,7 @@
 					</tr>
 				</table>
 					<div class="bottom_box">
-					<c:if test="${content.reserve=='Y' }">
+					<c:if test="${content.reserve == 'Y' }">
 						<button class="btn" onclick="sChk('reserve')">예매하기</button>
 					</c:if>
 					<button class="btn2" onclick="location.href='${content.netflix }'"><img alt="netflix" src="../../img/icon/netflix.png"></button>
@@ -155,29 +196,37 @@
 		</ul>
 		<!-- 리뷰 리스트 : end -->
 		
-		<!-- paging -->
 		<div class="paging">
-		    <div class="items">
-		        <div class="prev_btn">
-		            <c:if test="${pageNum > 1}">
-		                <button class="prev" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${currentPage - 1}'">
-		                    <img alt="이전" src="../../img/icon/left (1).png">
-		                </button>
-		            </c:if>
-		        </div>
-		        <span class="page_num">${pageNum}</span>
-		        <span>/</span>
-		        <span class="page_num">${totalPage}</span>
-		        <div class="next_btn">
-		            <c:if test="${currentPage < totalPage}">
-		                <button class="next" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${currentPage + 1}'">
-		                    <img alt="다음" src="../../img/icon/right.png">
-		                </button>
-		            </c:if>
-		        </div> <!-- next_btn -->
-		    </div> <!-- number -->
-		</div> <!-- paging -->
-
+				<div class="items">
+					<div class="prev_btn">
+						<c:if test="${startPage > PAGE_PER_BLOCK}">
+							<button class="first" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${startPage - 1}'">
+								<img alt="이전" src="../../img/icon/left (1).png">
+							</button> 
+						</c:if>
+						<c:if test="${pageNum > 1}">
+							<button class="prev" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${currentPage - 1}'">
+								<img alt="이전" src="../../img/icon/left.png">
+							</button>
+						</c:if>
+					</div>
+					 <c:forEach var="i" begin="${startPage}" end="${endPage}">
+						<span id="page${i}" class="page_num" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${i}'">${i}</span>
+					</c:forEach>
+					<div class="next_btn">
+						<c:if test="${currentPage < totalPage}">
+							<button class="next" onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${currentPage + 1}'">
+								<img alt="다음" src="../../img/icon/right (1).png">
+							</button>
+						</c:if>
+						<c:if test="${endPage < totalPage}">
+							<button class=last onclick="location.href='contentView.do?cno=${content.cno }&pageNum=${endPage + 1}'">
+								<img alt="다음" src="../../img/icon/right.png">
+							</button> 
+						</c:if>
+					</div> <!-- next_btn -->
+				</div> <!-- number -->
+			</div> <!-- paging -->
         <!-- 리뷰 등록 -->
         <form action="reviewAction.do?cno=${content.cno }" method="post">
         	<input type="hidden" name="rv_date" value="${review.rv_date }">

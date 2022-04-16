@@ -116,11 +116,6 @@ public class ContentDao {
 		hm.put("genre", genre);
 		return session.selectList("contentns.selectMGenre", hm);
 	}
-
-	public List<Content> myMain(int mno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	// 내가 예매한 컨텐츠의 정보 조회
 	public Content selectCno(List<Reservation> rs_cno) {
@@ -135,5 +130,53 @@ public class ContentDao {
 	// 마이페이지 - review에서 보여줄 cname 
 	public Content selectRvno(int rvno) {
 		return (Content) session.selectOne("contentns.selectRvno", rvno);
+	}
+	
+	// 조회수 증가
+	public void countUpdate(int cno) {
+		session.update("contentns.countUpdate", cno);
+	}
+	
+	// 관리자페이지 - 전체 paging total
+	public int getTotal() {
+		return (int) session.selectOne("contentns.getTotal");
+	}
+	
+	// 관리자페이지 - 컨텐츠 리스트 통합 조회
+	public List<Content> getTotalList(int startRow, int endRow) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return (List<Content>)session.selectList("contentns.selectTotalList", hm);
+	}
+	
+	// 관리자페이지 - 컨텐츠 등록
+	public int insert(Content ct) {
+		return session.insert("contentns.insert", ct);
+	}
+	
+	// 관리자페이지 - 컨텐츠 등록 ( 이미지파일 이름 명명하기 위한 cno)
+	public String selectNextCno() {
+		return (String) session.selectOne("contentns.selectNextCno");
+	}
+	
+	// 관리자페이지 - 컨텐츠 삭제
+	public int delete(int cno) {
+		return session.update("contentns.delete", cno);
+	}
+	
+	// 관리자페이지 - 컨텐츠 삭제 철회
+	public int delCancel(int cno) {
+		return session.update("contentns.delCancel", cno);
+	}
+	
+	// 관리자페이지 - 컨텐츠 수정용 정보 불러오기
+	public Content adSelectView(int cno) {
+		return (Content) session.selectOne("contentns.adSelectView", cno);
+	}
+	
+	// 관리자페이지 - 컨텐츠 수정 업데이트 action
+	public int update(Content ct) {
+		return session.update("contentns.update", ct);
 	}
 }

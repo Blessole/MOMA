@@ -10,18 +10,13 @@
 <body>
 <c:if test="${result>0 }">
 	<script type="text/javascript">
-		var preUrl = document.referrer.split("/")[6];
-		alert("탈퇴처리 되었습니다");
-		
-		if (preUrl == "updateForm.bb") {
-			location.href="../content/momaMain.so";
-		}
+		alert("컨텐츠 삭제가 철회되었습니다.");		
+		location.href="adContent.so";
 	</script>
 </c:if>
-
 <c:if test="${result==0 }">
 	<script type="text/javascript">
-		alert("탈퇴 실패\n다시 시도해주세요");
+		alert("삭제 철회 실패했습니다.");
 		history.go(-1);
 	</script>
 </c:if>

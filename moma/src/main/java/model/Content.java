@@ -19,15 +19,27 @@ public class Content {
 	private String reserve;
 	
 	// review에서 받아올 예정
-	private int rvno;
+		private int rvno;
+		
+		public int getRvno() {
+			return rvno;
+		}
+		public void setRvno(int rvno) {
+			this.rvno = rvno;
+		}
+	//
 	
-	public int getRvno() {
-		return rvno;
-	}
-	public void setRvno(int rvno) {
-		this.rvno = rvno;
-	}
-//
+	// likes에서 받아올 예정
+		private int lno;
+		
+		public int getLno() {
+			return lno;
+		}
+		public void setLno(int lno) {
+			this.lno = lno;
+		}
+	//	
+		
 	public int getCno() {
 		return cno;
 	}
