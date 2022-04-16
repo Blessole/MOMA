@@ -119,7 +119,7 @@
 				<div class="star_avg">★★★★★︎ &nbsp;
 					<span class="text">${star_rate }</span>
 				</div>
-				<!-- 좋아요 -->					
+				<!-- 좋아요 구현 -->					
 				<!-- <div>
 				  <span class="likes" onclick="likes()"></span>
 				</div> -->
