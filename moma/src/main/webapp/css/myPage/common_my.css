@@ -189,9 +189,8 @@
 	width: 60%;
 	height: 12vw;
 	vertical-align: middle;
-	margin-left: 6%;
+	margin-left: 5%;
 	padding-top:1%;
-	
 }
 
 .txt_area_rv {
@@ -263,8 +262,9 @@ p.detail_txt pd_bottom {
 	font-weight: 600;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
-	margin-top:-1%
+	/* white-space: nowrap; */
+	margin-top:-1%;
+	white-space:normal;
 }
 
 .txt {
@@ -283,10 +283,11 @@ p.detail_txt pd_bottom {
 	font-weight: 400;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
+	/* white-space: nowrap; */
 	margin: 0;
     height: 59px;
-    margin-right: 5%;
+    /* margin-right: 5%; */
+    word-break: break-all;
 }
 
 .txt_star {

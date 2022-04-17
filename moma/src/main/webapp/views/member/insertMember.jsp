@@ -14,11 +14,11 @@
 	for (int i = 0; i < 50; i++) {
 		Member member = new Member();
 		
-		member.setId("hjhjhj");
+		member.setId("a"+i);
 		member.setPassword("1111");
-		member.setEmail("@@@");
-		member.setMname("현정"+i);
-		member.setNickname("현정"+i);
+		member.setEmail("a@a.com");
+		member.setMname("a"+i);
+		member.setNickname("a"+i);
 		member.setPhone("010-0000-0000");
 		member.setSms_check("y");
 		member.setEmail_check("y");
