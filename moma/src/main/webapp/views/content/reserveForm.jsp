@@ -89,11 +89,7 @@
 			<div class="section_title">${content.cname }</div>
 				<div class="option_title">예매날짜
 					<div class="rsdate_box">
-<<<<<<< HEAD
-						<input type="date" class="column" name="rsdate" placeholder="0000-00-00" onfocus="(this.type='date')" required>
-=======
 						<input type="date" class="column" name="rsdate" placeholder="0000-00-00" onfocus="(this.type='date')" required="required">
->>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 					</div><p>	
 				<div class="option_title">예매시간 선택</div><p>
 				<div class="radio_box">

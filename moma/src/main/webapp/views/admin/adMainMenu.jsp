@@ -26,7 +26,6 @@
 		<!-- 메뉴 영역 -->
 		<li class="category">
 			<ul>
-<<<<<<< HEAD
 				<li id="adContent.so" onclick="showCon(this.id)">
 					<span class="dot"></span><img src="/moma/img/icon/multimedia.png" >adContent
 				</li>
@@ -38,19 +37,7 @@
 				</li>
 				<li id="adBoard.bb" onclick="showCon(this.id)">
 					<span class="dot"></span><img src="/moma/img/adPage_image/board.png" >adBoard
-=======
-				<li id="adContent.so" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/moma/img/icon/multimedia.png" >adContent
-				</li>
-				<li id="adReview.do" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/moma/img/myPage_image/myReview.png" >adReview
-				</li>
-				<li id="adMember.bb" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/moma/img/myPage_image/myInfo.png" >adMember
-				</li>
-				<li id="adBoard.hy" onclick="showCon(this.id)">
-					<span class="dot"></span><img src="/moma/img/myPage_image/myInfo.png" >adBoard
->>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
+
 				</li>
 			</ul>
 		</li>

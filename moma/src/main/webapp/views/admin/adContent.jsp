@@ -8,18 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
-<<<<<<< HEAD
-<%@ include file="../sessionChk.jsp"%>
-</head>
-<body>
-	<div class="container_middle">
-		<!-- adMainMenu -->
-		<jsp:include page="adMain.jsp"></jsp:include>
-		
-		<div class="title">컨텐츠 관리</div>
-		
-	</div>
-=======
 <style type="text/css">@import url("/moma/css/admin/adContent.css");</style>
 <style>
 .category>ul>li {
@@ -144,6 +132,5 @@
 		</div> <!-- number -->
 	</div> <!-- paging -->
 </section>
->>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 </body>
 </html>

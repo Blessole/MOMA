@@ -10,8 +10,6 @@
 <body>
 <c:if test="${result>0 }">
 	<script type="text/javascript">
-<<<<<<< HEAD
-		
 		alert("탈퇴처리 되었습니다");
 		
 		var preUrl = document.referrer.split("/")[6];
@@ -19,15 +17,6 @@
 			location.href="/moma/views/admin/adMember.bb";
 		}
 		else location.href="/moma/views/content/momaMain.so";
-		
-=======
-		var preUrl = document.referrer.split("/")[6];
-		alert("탈퇴처리 되었습니다");
-		
-		if (preUrl == "updateForm.bb") {
-			location.href="../content/momaMain.so";
-		}
->>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 	</script>
 </c:if>
 

@@ -69,7 +69,6 @@ $(function() {
         	<input type="hidden" name="rv_date" value="${review1.rv_date }">
             <h4 class="sub_title">감상평을 작성해 주세요.</h4>
             <div class = rvup_content>
-<<<<<<< HEAD
             	<textarea name="rv_content" placeholder="클릭 후 새로운 내용을 작성해주세요. (이전 감상평 : ${review.rv_content})" style="color:gray;"  required="required"></textarea>
             </div>
             <p class="txt_star">별점을 선택해 주세요.</p>
@@ -90,24 +89,5 @@ $(function() {
         
   		</form>
 	</div>
-
-=======
-            	<textarea name="rvup" placeholder=${review.rv_content } required="required"></textarea>
-            </div>
-            <p class="txt_star">별점을 선택해 주세요.</p>
-            <!-- 별점 등록 -->
-            <div class="star_rate_up">
-                <input type="range" name="star_rate" min="0" max="10" step="1" value="0" required="required">
-                <div class="star_rate_num">
-                <span class="text" id="input_span">0</span>
-            	</div>
-            </div>
-            <div class="submit_box">
-                 <input type="submit" class="btn_small_rv1" value="수정하기">
-            	 <input type="button" class="btn_small_rv2" onclick="history.go(-1)" value="취소">
-            </div>
-      	</form>
-	</div>
->>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 </body>
 </html>
