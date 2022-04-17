@@ -2,23 +2,21 @@
 
 #adMember {
 	margin-top:8%;
-	width: 120%;
+	width: 160%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
-    margin-left: -10%;
+    margin-left: -27%;
     margin-bottom:10%;
     text-align:center;
     padding: 10px;
+    text-size:12px;
 }
 
-/* #adMember > tr {
-    padding: 2%;
-} */
 
 #adMember, th, td {
 	border-top: 1px solid #444444;
 	border-bottom: 1px solid #444444;
-    padding: 10px;
+    padding: 9px;
 }
 
 .content_ad{

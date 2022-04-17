@@ -179,7 +179,7 @@ textarea::placeholder {
 .updatebtn_area .more_area {
 	/* display: none; */
     position: absolute;
-    top: 18px;
+    top: 38px;
     right: 7px;
     width: 50px;
     font-size: 14px;

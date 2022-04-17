@@ -13,14 +13,14 @@
 	function del(delBno) {
 		var con = confirm("삭제 하시겠습니까?");
 		if(con) {
-			location.href="/moma/views/admin/boardDelete.ha?bno="+delBno;
+			location.href="/moma/views/board/boardDelete.ha?bno="+delBno;
 		}
 	}
 	
 	function up(upBno) {
 		var con = confirm("수정 하시겠습니까?");
 		if(con) {
-			location.href="/moma/views/admin/boardUpdate.ha?bno="+upBno;
+			location.href="/moma/views/board/boardUpdateForm.ha?bno="+upBno;
 		}
 	}
 	

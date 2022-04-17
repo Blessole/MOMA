@@ -54,6 +54,12 @@
 	position: relative;
 }
 
+.write_pencil{
+      display: block;
+   width: 50px;
+   margin: 0 auto;
+}
+
 .dot {
 	display: none;
 	width: 5px;

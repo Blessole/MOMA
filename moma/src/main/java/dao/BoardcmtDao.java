@@ -2,6 +2,7 @@ package dao;
 
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -51,6 +52,19 @@ public class BoardcmtDao {
 	//BoardCmtDelete.java 댓글 삭제
 	public int delete(int bcno) {
 		return session.update("boardcmtns.delete",bcno);
+	}
+	
+	//AdBoardCmt.java 총 댓글 갯수
+	public int getTotalB() {
+		return (int) session.selectOne("boardcmtns.getTotalB");
+	}
+	
+	//AdBoardCmt.java 총 댓글 전체 목록
+	public List<Board> list(int startRow, int endRow) {
+		HashMap<String, Integer> hm = new HashMap<>();
+	    hm.put("startRow", startRow);
+	    hm.put("endRow", endRow);
+		return session.selectList("boardcmtns.cmtTotallist", hm);
 	}
 	
 }

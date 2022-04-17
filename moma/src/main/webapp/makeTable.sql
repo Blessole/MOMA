@@ -1,7 +1,6 @@
 -- 컨텐츠 테이블
 drop table content cascade constraints;
 
-
 alter table content modify reserve  CHAR(1) NOT NULL;
 
 create table content (
@@ -45,11 +44,9 @@ create table member(
 
 alter table member modify (nickname varchar2(20)); 
 select * from member;
-<<<<<<< HEAD
+
 update member set del='n' where mno=1;
-=======
 update MEMBER set del='n' where mno=4;
->>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 
 -- 컨텐츠 좋아요 테이블
 drop table likes cascade constraints;

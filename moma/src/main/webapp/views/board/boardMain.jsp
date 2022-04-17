@@ -50,7 +50,7 @@ function sessionChk() {
 
 							<div class="board_image">
 								<a href="#"> <img alt="썸네일" width=100% height=100%
-									src="../../img/boardimg/${board.image}"></a>
+									src="../../upload/${board.image}"></a>
 							</div>
 
 							<%-- <div class="board_bviews">조회수:${board.bviews }</div> --%>

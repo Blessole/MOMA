@@ -37,7 +37,6 @@
 				</li>
 				<li id="adBoard.bb" onclick="showCon(this.id)">
 					<span class="dot"></span><img src="/moma/img/adPage_image/board.png" >adBoard
-
 				</li>
 			</ul>
 		</li>
