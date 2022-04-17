@@ -30,14 +30,6 @@ $(document).ready(function () {
 		}
 	});
 	
-	// 댓글 수정 폼 show
-	$(".update_frm_show").click(function() {
-		$(this).parents(".reply_list").find(".reply_update_frm").css("display", "block");
-	});
-	// 댓글 수정 폼 hide
-	$(".update_frm_hide").click(function() {
-		$(this).parents(".reply_list").find(".reply_update_frm").css("display", "none");
-	});
 	// scroll top
 	$('.scroll_top').on('click', function(e) {
 		e.preventDefault();
@@ -66,7 +58,7 @@ $(document).ready(function () {
 <div class="container_middle">
 <!-- 상단내용 썸네일,타이틀,조회수 -->
 <div class="container_top">
-	<img alt="썸네일" src="../../img/boardimg/${board.image}">
+	<img alt="썸네일" src="../../upload/${board.image}">
 	<p class="blackBox"></p>
 	<h2>${board.bname }</h2>
 	<h5>조회수: ${board.bviews }</h5>
@@ -108,8 +100,8 @@ $(document).ready(function () {
 		<!-- 회원번호, 닉네임 -->
 		<div class="cmt_top">
 			<div>
-				<!-- 댓글의 mno와 세션의 mno가 같으면 수정/삭제 가능 추가됨 -->
-					<c:if test="${boardcmt.mno == mno}">
+				<!-- 댓글의 mno와 세션의 mno가 같으면 삭제 가능 추가됨 -->
+					<c:if test="${boardcmt.mno == mno || id == 'admin' }">
 								<span class="updatebtn_area">			
 									<span class="more_area">
 										<span class="more_area_txt" onclick="delComment(${boardcmt.bcno})">삭제</span>
@@ -120,7 +112,7 @@ $(document).ready(function () {
 		</div>
 		
 		<!-- 댓내용, 날짜 -->
-				<p class="cmt_date">${boardcmt.nickname}</p><!--  /*닉네임 부분 안보여서 수정 해야함*/ -->
+				<p class="cmt_date">${boardcmt.nickname}</p>
 				<p class="cmt_date">${boardcmt.bc_date }</p>
 				<pre class="cmt_con">${boardcmt.bc_content }</pre>
 		</div>

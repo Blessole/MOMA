@@ -57,7 +57,7 @@ public class Boardcmt {
 	public int getBoardcmtseq() {
 		return boardcmtseq;
 	}
-	public void setBoardcmt_eq(int boardcmt_seq) {
+	public void setBoardcmtseq(int boardcmt_seq) {
 		this.boardcmtseq = boardcmt_seq;
 	}
 	

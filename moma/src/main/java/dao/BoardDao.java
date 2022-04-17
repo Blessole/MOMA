@@ -31,7 +31,7 @@ public class BoardDao {
 		}
 	}
 
-	//게시판 전체 목록
+	// BoardMain.java 게시판 전체 목록
 	public List<Board> list(int startRow, int endRow){
 		HashMap<String, Integer> hm = new HashMap<>();
 	    hm.put("startRow", startRow);
@@ -39,23 +39,34 @@ public class BoardDao {
 		return session.selectList("boardns.selectList", hm);
 	}
 	
-	//조회수 증가
+	// BoardView.java 조회수 증가
 	public void readcountUpdate(int bno) {
 		session.update("boardns.readcountUpdate", bno);
 	}
 	
-	//게시글 조회
+	// BoardView.java 게시글 조회
 	public Board select(int bno) {
 		return (Board) session.selectOne("boardns.selectOne", bno);
 	}
 	
-	
+	// AdminBoard.java 총 게시글 수
 	public int getTotalB() {
 		return (int) session.selectOne("boardns.getTotalB");
 	}
 	
+	// BoardWriteResult.java 게시글 등록
 	public int insert(Board board) {
 		return session.insert("boardns.insert", board);
+	}
+	
+	// BoardUpdateResult.java 게시글 수정
+	public int update(Board board) {
+		return session.update("boardns.update", board);
+	}
+	
+	// BoardDelete.java 게시글 삭제
+	public int delete(int bno) {
+		return session.update("boardns.delete", bno);
 	}
 	}
 
