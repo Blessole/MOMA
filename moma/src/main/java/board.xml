@@ -31,4 +31,20 @@
 		</selectKey>
 		insert into board values(#{boardseq}, #{bname}, #{bo_content}, #{bviews}, #{image,jdbcType=VARCHAR}, 'n')
 	</insert>
+	
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType="board">
+		update board set 
+		bname = #{bname},
+		bo_content = #{bo_content}
+		<if test = "image != null and image !=''">
+		,image = #{image,jdbcType=VARCHAR}
+		</if>
+		where bno = #{bno}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<update id="delete" parameterType="integer">
+		update board set del = 'y' where bno = #{bno}
+	</update>
 </mapper>

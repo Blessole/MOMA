@@ -7,7 +7,15 @@ public class Board {
 	private int bviews;
 	private String image;
 	private String del;
+	private int boardseq;
 	
+	
+	public int getBoardseq() {
+		return boardseq;
+	}
+	public void setBoardseq(int boardseq) {
+		this.boardseq = boardseq;
+	}
 	public int getBno() {
 		return bno;
 	}
