@@ -21,6 +21,7 @@ public class AdMember implements CommandProcess {
 			String pageNum = request.getParameter("pageNum");		
 			if (pageNum == null || pageNum.equals("")) pageNum="1";
 			int currentPage = Integer.parseInt(pageNum);
+
 		
 			MemberDao md = MemberDao.getInstance();
 			

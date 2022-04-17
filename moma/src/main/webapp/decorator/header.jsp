@@ -14,7 +14,11 @@
 			var con = confirm("로그인 후 이용해 주시기 바랍니다.");
 			location.href = "/moma/views/member/loginForm.bb";
 		} else {
+<<<<<<< HEAD
 			location.href = "/moma/views/myPage/myMain.bb";
+=======
+			location.href = "/moma/views/myPage/myMain.bb"
+>>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 		}
 	}
 </script>

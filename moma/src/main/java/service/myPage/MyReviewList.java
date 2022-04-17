@@ -30,7 +30,7 @@ public class MyReviewList implements CommandProcess {
 				pageNum = "1";
 			int currentPage = Integer.parseInt(pageNum); // 현재 페이지
 
-			int total = rd.getTotalMy(mno); // 총 게시글 수
+			int total = rd.getTotalMy(mno); // 총 리뷰 수
 
 			int totalPage = (int) Math.ceil((double) total / ROW_PER_PAGE); // 총 페이지 수
 

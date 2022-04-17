@@ -9,7 +9,11 @@
 <c:if test="${result>0 }">
 	<script type="text/javascript">
 		alert("회원정보가 수정되었습니다.");
+<<<<<<< HEAD
 		location.href="/moma/views/member/updateForm.bb"
+=======
+		history.back();
+>>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 	</script>
 </c:if>
 

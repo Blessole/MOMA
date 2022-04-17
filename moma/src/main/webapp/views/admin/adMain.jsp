@@ -14,6 +14,7 @@
 	font-size:  15px;
 </style>
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
+<<<<<<< HEAD
 <%@ include file="../sessionChk.jsp"%>
 </head><body>
 
@@ -23,6 +24,18 @@
 	<!-- 내용 -->
 		<div class="content_myMain">
 		<b> 관리자님 환영합니다.</b>
+=======
+
+<%@ include file="../sessionChk.jsp"%>
+</head><body>
+
+		<div class="container_middle">
+		<!-- adMainMenu -->
+		<jsp:include page="adMainMenu.jsp"></jsp:include>
+	<!-- 내용 -->
+		<div class="content_myMain">
+		<b> 관리자님 환영합니다.</b>
+>>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 		</div>
 	</div>
 </body>

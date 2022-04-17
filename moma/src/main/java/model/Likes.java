@@ -6,16 +6,15 @@ public class Likes {
 	private int mno;
 	
 	//content cname 불러오기용
-	private String cname;
-			
-	public String getCname() {
-		return cname;
-	}
-	public void setCname(String cname) {
-		this.cname = cname;
-	}
-	//
-	
+		private String cname;
+		
+		public String getCname() {
+			return cname;
+		}
+		public void setCname(String cname) {
+			this.cname = cname;
+		}
+		
 	public int getLno() {
 		return lno;
 	}
@@ -36,3 +35,4 @@ public class Likes {
 	}
 
 }
+

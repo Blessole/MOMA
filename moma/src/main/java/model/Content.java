@@ -17,17 +17,30 @@ public class Content {
 	private String director;
 	private String actor;
 	private String reserve;
+
 	
 	// review에서 받아올 예정
-	private int rvno;
-	
-	public int getRvno() {
-		return rvno;
-	}
-	public void setRvno(int rvno) {
-		this.rvno = rvno;
-	}
-//
+		private int rvno;
+		
+		public int getRvno() {
+			return rvno;
+		}
+		public void setRvno(int rvno) {
+			this.rvno = rvno;
+		}
+	//
+
+	// likes에서 받아올 예정
+		private int lno;
+		
+		public int getLno() {
+			return lno;
+		}
+		public void setLno(int lno) {
+			this.lno = lno;
+		}
+	//	
+		
 	public int getCno() {
 		return cno;
 	}
@@ -123,7 +136,6 @@ public class Content {
 	}
 	public void setReserve(String reserve) {
 		this.reserve = reserve;
-	}
-	
-	
+	}	
 }
+

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.container_middle {
+	width: 50%;
+    margin: 0;
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+
+table{
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+th {
+	display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+    font-size: 15px;
+    border-bottom: 1px double var(--point-color);
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+td {
+	font-size: 14px;
+	text-align: center;
+	border-bottom: 1px dashed #d5d4d6;
+}
+
+.btn_dt {
+    background-color: none;
+    font-size: 14px;
+    color: var(--point-color);
+    cursor: pointer;
+    margin-top: 12px;
+    margin-bottom:12px;
+    text-align:center;
+}
+
+.paging{
+	margin-top : 20px;
+}

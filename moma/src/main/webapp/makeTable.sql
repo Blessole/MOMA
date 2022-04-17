@@ -1,6 +1,9 @@
 -- 컨텐츠 테이블
 drop table content cascade constraints;
 
+
+alter table content modify reserve  CHAR(1) NOT NULL;
+
 create table content (
        	cno NUMBER CONSTRAINT content_cno_pk PRIMARY KEY NOT NULL,
         cname VARCHAR2(100) NOT NULL,
@@ -20,6 +23,8 @@ create table content (
         reserve CHAR(1) default 'n' NOT NULL
 );
 
+alter table content modify reserve  CHAR(1)  NULL;
+update CONTENT set reserve='' where reserve='N';
 select * from content order by cno;
 
 -- 회원 테이블
@@ -40,7 +45,11 @@ create table member(
 
 alter table member modify (nickname varchar2(20)); 
 select * from member;
+<<<<<<< HEAD
 update member set del='n' where mno=1;
+=======
+update MEMBER set del='n' where mno=4;
+>>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 
 -- 컨텐츠 좋아요 테이블
 drop table likes cascade constraints;

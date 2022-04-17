@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import model.Member;
 import model.Review;
 
 public class ReviewDao {
@@ -89,4 +90,16 @@ public class ReviewDao {
 		return session.update("reviewns.update", review);
 	}
 	
+	// admin 전체 리뷰 조회
+	public List<Review> adList(int startRow, int endRow) {
+		HashMap<String, Integer> hm = new HashMap<>();
+		hm.put("startRow", startRow);
+		hm.put("endRow", endRow);
+		return (List<Review>)session.selectList("reviewns.adList",hm);
+	}
+	
+	// admin 총 리뷰 수
+	public int getTotal() {
+		return (int) session.selectOne("reviewns.getTotal");
+	}
 }

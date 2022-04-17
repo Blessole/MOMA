@@ -14,7 +14,6 @@ public class UpdateAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-	
 		
 		HttpSession session = request.getSession();
 		int mno = (int) session.getAttribute("mno");

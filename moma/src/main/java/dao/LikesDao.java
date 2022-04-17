@@ -73,4 +73,6 @@ public class LikesDao {
 	public int getTotalMy(int mno) {
 		return (int) session.selectOne("likesns.getTotalMy", mno);
 	}	
+
 }
+

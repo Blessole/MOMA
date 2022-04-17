@@ -15,9 +15,6 @@ public class ReserveDelete implements CommandProcess {
 		ReservationDao rd = ReservationDao.getInstance();
 		int result = rd.delete(rsno);
 		
-		//현정확인용
-		System.out.println(result);
-		
 		request.setAttribute("result", result);
 		
 		return "reserveDelete";

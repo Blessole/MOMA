@@ -27,7 +27,7 @@
 		select count(*) from review where cno = #{cno} and del = 'n'
 	</select>
 	
-	<!-- // 마이페이지 - 리뷰내역 -->
+	<!-- moma 마이페이지 - 리뷰내역 -->
 	<select id="myList" parameterType="hashmap" resultType="review">
        select *
        from (select rowNum rn, e.* 
@@ -47,6 +47,7 @@
 		update review set del='y' where rvno=#{rvno}	
 	</update>
 	
+	
 	<!-- // 마이페이지 리뷰 수정 : 해당 rvno의 * 조회 -->
 	<select id="selectRvno" parameterType="integer" resultType="review">
 		select * from review where rvno=#{rvno}
@@ -54,7 +55,19 @@
 	
 	<!-- // 마이페이지 리뷰 수정 -->
 	<update id="update" parameterType="review">
-		update review set star_rate=#{star_rate}, rv_date=sysdate, rv_content=#{rv_content} where rvno=#{rvno}
+		update review set star_rate=#{star_rate}, rv_content=#{rv_content} where rvno=#{rvno}
 	</update>
 	
+	<!-- admin 전체 리뷰 조회 -->
+	<select id="adList" parameterType="hashmap" resultType="review">
+		select * from (select rowNum rn, e.* from
+		(select r.*, m.nickname, c.cname from review r, member m, content c 
+		where r.mno=m.mno and r.cno=c.cno and r.del = 'n') e) 
+			where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 총 리뷰 수 조회 -->
+	<select id="getTotal" resultType="integer">
+		select count(*) from review
+	</select>
 </mapper>

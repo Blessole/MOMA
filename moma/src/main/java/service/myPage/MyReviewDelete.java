@@ -20,9 +20,6 @@ public class MyReviewDelete implements CommandProcess {
 		 */
 		
 		int rvno = Integer.parseInt(request.getParameter("rvno"));
-		
-		System.out.println(rvno);
-		
 		ReviewDao rd = ReviewDao.getInstance();
 		int result = rd.delete(rvno);
 		

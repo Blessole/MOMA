@@ -12,25 +12,28 @@ public class ContentLikesUpdate implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+
+		System.out.println("ContentLikesUpdate 자바파일 지나감");
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		HttpSession session = request.getSession();
 		int mno = (int) session.getAttribute("mno");
 		
 		// 회원이 해당 컨텐츠를 좋아요 했는지 체크
-		LikesDao lkd = LikesDao.getInstance();
-		Likes lk = lkd.select(cno, mno);
-		String color = "";
-		
+		LikesDao ld = LikesDao.getInstance();
+		Likes lk = ld.select(cno, mno);
+		String imgSrc = "";
+				
 		if (lk == null) { // 좋아요
-			lkd.insert(cno, mno);
-			color = "var(--point-color)";
+			ld.insert(cno, mno);
+			imgSrc = "/moma/img/icon/heart (1).png";
 		} else { // 좋아요 취소
-			lkd.delete(cno, mno);
-			color = "none";
+			ld.delete(cno, mno);
+			imgSrc = "/moma/img/icon/heart.png";
+
+		System.out.println("contentlikeupdate 자바 파일 지나감");
+		request.setAttribute("imgSrc", imgSrc);
+		
 		}
-		
-		request.setAttribute("color", color);
-		
 		return "contentLikesUpdate";
 	}
 

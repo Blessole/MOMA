@@ -6,6 +6,7 @@
 <%@ include file="/views/sessionChk.jsp"%>
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script type="text/javascript">
+<<<<<<< HEAD
 //페이징 현재페이지 설정
 $(function() {
    $('#page'+${currentPage}).css({
@@ -13,6 +14,15 @@ $(function() {
    "font-weight" : "600"
    });
 });
+=======
+	//페이징 현재페이지 설정
+	$(function() {
+		$('#page'+${currentPage}).css({
+		"color" : "var(--point-color)",
+		"font-weight" : "600"
+		});
+	});
+>>>>>>> branch 'main' of https://github.com/Blessole/MOMA.git
 </script></head><body>
 	<div class="container_middle">
 		<!-- myMainMenu -->

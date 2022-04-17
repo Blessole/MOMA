@@ -13,7 +13,8 @@ public class MovieMain implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("movieMain 자바파일 지나간당");
+
+		//System.out.println("movieMain 자바파일 지나간당");
 		
 		// ct 리스트 조회
 		ContentDao cd = ContentDao.getInstance();
