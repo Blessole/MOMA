@@ -23,7 +23,7 @@ public class MyLikesList implements CommandProcess {
 		LikesDao ld = LikesDao.getInstance();
 		
 		//페이징
-		final int ROW_PER_PAGE = 12; // 한 페이지에 게시글 6개 씩
+		final int ROW_PER_PAGE = 12; // 한 페이지에 게시글 12개 씩
 		final int PAGE_PER_BLOCK = 5; // 한 블럭에 5페이지 씩
 
 		String pageNum = request.getParameter("pageNum"); // 페이지 번호

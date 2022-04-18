@@ -44,20 +44,32 @@ public class LikesDao {
 		return (Likes) session.selectOne("likesns.select", hm);
 	}
 
+	
 	// 좋아요 하면 insert
-	public void insert(int cno, int mno) {
+	public int insert1(Likes likes) {			
+		return session.insert("likesns.insert1", likes);
+	}
+
+	// 좋아요 하면 insert
+	public int delete1(Likes likes) {			
+		return session.delete("likesns.delete1", likes);
+	}
+	
+	
+	// 좋아요 하면 insert
+	public int insert(int cno, int mno) {
 		HashMap<String, Integer> hm = new HashMap<String, Integer>();
 		hm.put("cno", cno);
 		hm.put("mno", mno);
-		session.insert("likesns.insert", hm);
+		return session.insert("likesns.insert", hm);
 	}
 
 	// 좋아요 취소
-	public void delete(int cno, int mno) {
+	public int delete(int cno, int mno) {
 		HashMap<String, Integer> hm = new HashMap<String, Integer>();
 		hm.put("cno", cno);
 		hm.put("mno", mno);
-		session.delete("likesns.delete", hm);
+		return session.delete("likesns.delete", hm);
 	}
 
 	// 마이페이지 좋아요 조회
@@ -72,7 +84,7 @@ public class LikesDao {
 	// 마이페이지 - 좋아요 한 수
 	public int getTotalMy(int mno) {
 		return (int) session.selectOne("likesns.getTotalMy", mno);
-	}	
+	}
 
 }
 

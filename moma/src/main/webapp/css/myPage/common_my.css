@@ -93,6 +93,28 @@
 	padding-top: 40px;
 }
 
+.content .likeslist {
+	width: 100%;
+	margin-top: 30px;
+	/* margin-left: 3%; */
+}
+
+.content ul #likeslist {
+	width: 22%;
+	margin-bottom: 5%;
+	display:inline-block;
+	align-content:center;
+}
+
+#likeslist>a>img {
+    width: 120%;
+    height: 15vw;
+    object-fit: cover;
+    vertical-align: middle;
+    cursor: pointer;
+    border: none;
+}
+
 .content ul {
 	width: 100%;
 	margin-top: 30px;

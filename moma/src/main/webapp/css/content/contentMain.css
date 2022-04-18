@@ -41,6 +41,7 @@
 
 .content_list .text_area img {
 	width: 20px;
+	object-fit: fill;
 }
 
 .content_list .text_area .location {

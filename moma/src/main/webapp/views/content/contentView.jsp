@@ -22,7 +22,7 @@
 			var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
 		    $(this).css('background-image',
 		                '-webkit-gradient(linear, left top, right top, '
-		                + 'color-stop(' + val + ', #ff5f06), '
+		                + 'color-stop(' + val + ', #6799FF), '
 		                + 'color-stop(' + val + ', #e4e4e4)'
 		                + ')'
            	);
@@ -77,7 +77,7 @@
 			}
 		} */
 		
-		function likes() {
+		/* function likes() {
 			if (${empty id}) {
 				var con = confirm("로그인이 필요합니다.");
 				if (con) {				
@@ -88,6 +88,7 @@
 					$('.like_img').attr(imgSrc);
 				});
 			}
+		} */
 		
 	// 리뷰 페이징 스크롤 높이
 	document.addEventListener("DOMContentLoaded", function() { // html load 이후
@@ -95,6 +96,22 @@
 			window.scrollTo(0, $('.scrollTop').position().top);
 		}
 	});
+		
+	function likes() {
+		$.post('contentLikesUpdate.do', 'cno=${content.cno}', function(data) {
+			if ('${result} == 1'){
+			$('#unlikesimg').attr('src', '/moma/img/icon/heart (1).png');
+			}
+		});
+	};
+
+	function unlikes() {
+		$.post('contentLikesUpdate.do', 'cno=${content.cno}', function(data) {
+			if ('${result} == 0'){
+			$('#likesimg').attr('src', '/moma/img/icon/heart.png');
+			}
+		});
+	};
 	
 </script>
 </head>
@@ -111,12 +128,25 @@
 		<div class="content_view_top">
 			<img src="../../img/poster/${content.poster }" alt="포스터">
 			<div class="text_area">
-			<div class="rate">
+			<div class="shape">
 				<!-- 평균 별점 -->
 				<div class="star_avg">★★★★★︎ &nbsp;
 					<span class="text">${star_rate }</span>
 				</div>
-				<!-- 좋아요 구현 -->					
+				
+				<!-- hj 좋아요 구현 -->		
+				<div class="like_box">
+					<c:if test="${empty id}">
+						<img src="/moma/img/icon/heart.png" alt="안좋아요" onclick="sChk()">
+					</c:if>
+					<c:if test="${!empty id}">
+						<c:choose> 
+						<c:when test="${result eq 'y'}"> <img id="likesimg" src="/moma/img/icon/heart (1).png" alt="좋아요" onclick="unlikes()"> </c:when> 
+						<c:otherwise> <img id="unlikesimg" src="/moma/img/icon/heart.png" alt="안좋아요" onclick="likes()"> </c:otherwise> </c:choose>
+					</c:if>
+				</div>			
+				
+				<%-- <!-- 좋아요 구현 -->					
 				<!-- <div>
 				  <span class="likes" onclick="likes()"></span>
 				</div> -->
@@ -130,7 +160,8 @@
 							</c:if>
 						</c:if>
 					</c:forEach>
-				</div>
+				</div> --%>
+
 				</div>
 				<table class="bottom">
 					<tr>

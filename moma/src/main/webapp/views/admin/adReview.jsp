@@ -25,9 +25,9 @@
 		<!-- adMainMenu -->
 		<jsp:include page="adMainMenu.jsp"></jsp:include>
 			<div class="content">
-			<h3>리뷰 목록</h3>
+			<div class="ad_title">리뷰 목록</div>
 			<table>
-				<tr><th>NO</th><th>제목</th><th>닉네임</th><th>별점</th><th>내용</th><th>작성 날짜</th><th>삭제</th></tr>
+				<tr><th>리뷰 번호</th><th>제목</th><th>닉네임</th><th>별점</th><th>내용</th><th>작성 날짜</th><th>삭제</th></tr>
 				<c:if test="${empty list}">
 					<ul class="noItems">
 						<li><span class="txt_title">작성한 리뷰가 없습니다.</span></li>
@@ -41,7 +41,7 @@
 							<td>${review.star_rate }</td>
 							<td>${review.rv_content }</td>
 							<td>${review.rv_date }</td>
-							<td><a href="/moma/views/admin/adReviewDelete.do?rvno=${review.rvno}" class="btn_rsv">삭제</a></td>
+							<td><a href="/moma/views/admin/adReviewDelete.do?rvno=${review.rvno}" class="rv_btn">삭제</a></td>
 					</c:forEach>
 				</c:if>
 			</table>
