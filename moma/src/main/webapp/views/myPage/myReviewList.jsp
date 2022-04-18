@@ -7,13 +7,13 @@
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-	//페이징 현재페이지 설정
-	$(function() {
-		$('#page'+${currentPage}).css({
-		"color" : "var(--point-color)",
-		"font-weight" : "600"
-		});
-	});
+//페이징 현재페이지 설정
+$(function() {
+   $('#page'+${currentPage}).css({
+   "color" : "var(--point-color)",
+   "font-weight" : "600"
+   });
+});
 </script></head><body>
 	<div class="container_middle">
 		<!-- myMainMenu -->
@@ -32,7 +32,8 @@
 					<c:forEach var="myReview" items="${list}">
 						<li class="rsv">
 							<a href="/moma/views/content/contentView.do?cno=${myReview.cno}">
-								<img style="background: url(/moma/img/poster/${myReview.cno}.jpg) no-repeat center; background-size: cover;">
+								<img alt="포스터" src="/moma/img/poster/${myReview.cno}.jpg">
+								<%-- <img style="background: url(/moma/img/poster/${myReview.cno}.jpg) no-repeat center; background-size: cover;"> --%>
 							</a>
 							<div class="txt_area2">
 								<p class="txt_date">작성일 ${myReview.rv_date }</p>
@@ -42,14 +43,13 @@
 								</a>
 					
 								<!-- pre 태그 안에 있는 css 요소 삭제 -->
-								<script type="text/javascript">
+								<!-- <script type="text/javascript">
 									$(".txt_pre").find("*").css({
 										"all" : "unset",
 										"color" : "#000"
 									});
 									$(".txt_pre").find("img").css("display","none");
-									
-								</script>
+								</script> -->
 								
 								<div class="txt_bottom2">
 									<div class="btn_area_rv">

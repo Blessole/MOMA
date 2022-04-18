@@ -14,12 +14,14 @@ public class UpdateAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-	
+		
+		HttpSession session = request.getSession();
+		int mno = (int) session.getAttribute("mno");
+		
 		Member member = new Member();
 		String prevUrl = request.getParameter("prevUrl");
 		
 		// 수정하려는 값 불러오기
-		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		String mname = request.getParameter("mname");
@@ -28,8 +30,16 @@ public class UpdateAction implements CommandProcess {
 		String sms_check = request.getParameter("sms_check");
 		String email_check = request.getParameter("email_check");
 		
+		System.out.println(password);
+		System.out.println(email);
+		System.out.println(mname);
+		System.out.println(nickname);
+		System.out.println(phone);
+		System.out.println(sms_check);
+		System.out.println(email_check);
+	
 		// member에 수정내용 세팅
-		member.setId(id);
+		member.setMno(mno);
 		member.setPassword(password);
 		member.setEmail(email);
 		member.setMname(mname);
@@ -41,11 +51,11 @@ public class UpdateAction implements CommandProcess {
 		// memberDao 생성 및 update
 		MemberDao md = MemberDao.getInstance();
 		int result = md.update(member);
-		request.setAttribute("id", id);
+		
 		request.setAttribute("result", result);
 		request.setAttribute("prevUrl", prevUrl);
 
 		return "updateAction";
+	
 	}
-
 }

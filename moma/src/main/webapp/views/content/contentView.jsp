@@ -10,7 +10,6 @@
 <c:set var="id" value='${sessionScope.id}'></c:set>
 <c:set var="mno" value='${sessionScope.mno}'></c:set>
 <script type="text/javascript">
-
 	$(function() {
 		// 페이징 현재페이지 설정
 		$('#page'+${currentPage}).css({
@@ -21,7 +20,6 @@
 		// input range rate 조절
 		$('input[type="range"]').on('change mousemove', function() {
 			var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
-
 		    $(this).css('background-image',
 		                '-webkit-gradient(linear, left top, right top, '
 		                + 'color-stop(' + val + ', #ff5f06), '

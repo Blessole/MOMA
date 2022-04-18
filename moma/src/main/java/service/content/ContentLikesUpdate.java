@@ -12,6 +12,7 @@ public class ContentLikesUpdate implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+
 		System.out.println("ContentLikesUpdate 자바파일 지나감");
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		HttpSession session = request.getSession();
@@ -35,4 +36,5 @@ public class ContentLikesUpdate implements CommandProcess {
 		}
 		return "contentLikesUpdate";
 	}
+
 }

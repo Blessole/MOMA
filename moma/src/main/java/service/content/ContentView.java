@@ -110,7 +110,6 @@ public class ContentView implements CommandProcess {
 		request.setAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
 		request.setAttribute("startPage", startPage); 
 		request.setAttribute("endPage", endPage); 
-		
 
 		return "contentView";
 	}

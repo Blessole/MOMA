@@ -7,13 +7,13 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <script type="text/javascript">
-	//페이징 현재페이지 설정
-	$(function() {
-		$('#page'+${currentPage}).css({
-		"color" : "var(--point-color)",
-		"font-weight" : "600"
-		});
-	});
+	 //페이징 현재페이지 설정
+	   $(function() {
+	      $('#page'+${currentPage}).css({
+	      "color" : "var(--point-color)",
+	      "font-weight" : "600"
+	      });
+	   });
 </script></head><body>
 
 	<div class="container_middle">

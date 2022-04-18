@@ -22,10 +22,6 @@
 	float: left;
 }
 
-.updateform {
-	margin-top:4%
-}
-
 .point-color {
 	color: var(--point-color);
 	font-weight: 600;
@@ -56,6 +52,12 @@
 	text-align: center;
 	cursor: pointer;
 	position: relative;
+}
+
+.write_pencil{
+      display: block;
+   width: 50px;
+   margin: 0 auto;
 }
 
 .dot {
@@ -154,6 +156,7 @@
 .content>ul>li>a {
 	display: inline-block;
 	width: 80%;
+	border:none;
 }
 
 /* 썸네일or포스터 */
@@ -163,6 +166,7 @@
 	object-fit: cover;
 	vertical-align: middle;
 	cursor: pointer;
+	border:none;
 }
 
 .content>ul>.likes>a>img {
@@ -189,9 +193,8 @@
 	width: 60%;
 	height: 12vw;
 	vertical-align: middle;
-	margin-left: 6%;
+	margin-left: 5%;
 	padding-top:1%;
-	
 }
 
 .txt_area_rv {
@@ -263,8 +266,9 @@ p.detail_txt pd_bottom {
 	font-weight: 600;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
-	margin-top:-1%
+	/* white-space: nowrap; */
+	margin-top:-1%;
+	white-space:normal;
 }
 
 .txt {
@@ -283,10 +287,11 @@ p.detail_txt pd_bottom {
 	font-weight: 400;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
+	/* white-space: nowrap; */
 	margin: 0;
     height: 59px;
-    margin-right: 5%;
+    /* margin-right: 5%; */
+    word-break: break-all;
 }
 
 .txt_star {
@@ -512,12 +517,24 @@ p.detail_txt pd_bottom {
 	margin-top: 30px;
 }
 
+.container_submit2 {
+    margin-top: 5%;
+}
+
+.updateform {
+	margin-top:7%
+}
+
 .up_title {
 	margin-top:5%
 }
 
 .checks .input {
 	align : right;
+}
+
+table {
+	width : 130%
 }
 
 /* 에러메세지 */
@@ -527,6 +544,24 @@ p.detail_txt pd_bottom {
 	margin:0;
 	color: red;
 	font-size: 10px;
+}
+
+.chk-msg1 { 
+	margin-top: 0px;
+    margin-left: 27%;
+    color: red;
+    font-size: 10px;
+    text-align: left;
+}
+
+.chk-msg2 { 
+	margin-top: 0px;
+    margin-left: 27%;
+    font-weight: bold;
+    color: black;
+    font-size: 10px;
+    text-align: left;
+
 }
 
 /* 내용(각 페이지 공통) 끝 ****************************** */

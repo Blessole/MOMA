@@ -50,10 +50,9 @@
 	
 	<!-- 전체회원정보 조회 -->
 	<select id="list" parameterType="hashmap" resultType="member">
-		select * from (select rowNum rn, e.* from (select * from member order by mno desc) e) 
+		select * from (select rowNum rn, e.* from (select * from member order by mno ) e) 
 			where rn between #{startRow} and #{endRow}
 	</select>
-	
 	
 	<!-- 총 회원수 조회 -->
 	<select id="getTotal" resultType="integer">
@@ -84,7 +83,7 @@
 	
 	<!-- moma 회원정보 수정 -->
 	<update id="update" parameterType="integer">
-		update member set password=#{password}, email=#{email}, mname=#{mname}, nickname=#{nickname}, phone=#{phone}, sms_check=#{sms_check}, email_check=#{email_check} where id=#{id}
+		update member set password=#{password}, email=#{email}, mname=#{mname}, nickname=#{nickname}, phone=#{phone}, sms_check=#{sms_check}, email_check=#{email_check} where mno=#{mno}
 	</update>
 	
 	<!-- 회원 탈퇴 -->

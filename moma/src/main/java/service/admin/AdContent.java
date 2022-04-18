@@ -13,10 +13,10 @@ public class AdContent implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+
 		//ct 리스트 조회
 		ContentDao cd = ContentDao.getInstance();
 		
-
 		//paging : start
 		final int ROW_PER_PAGE = 10;  //한 페이지 10개씩
 		final int PAGE_PER_BLOCK = 5;  // 한 블럭에 5페이지

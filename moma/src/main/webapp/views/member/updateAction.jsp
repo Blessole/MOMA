@@ -9,7 +9,7 @@
 <c:if test="${result>0 }">
 	<script type="text/javascript">
 		alert("회원정보가 수정되었습니다.");
-		history.back();
+		location.href="/moma/views/member/updateForm.bb"
 	</script>
 </c:if>
 

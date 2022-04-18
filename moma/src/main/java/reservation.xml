@@ -16,7 +16,7 @@
 		delete reservation where rsno = #{rsno}
 	</delete>
 	
-<!-- moma 마이페이지 - 예매내역 -->
+	<!-- moma 마이페이지 - 예매내역 -->
 	<!-- 예약모든정보 그리고 컨텐츠이름 컨텐츠포스터 조회. // del을 c.del도 'n'일때로 조회해야 하나?-->
     <select id="myList" parameterType="hashmap" resultType="reservation">
        select *
@@ -27,9 +27,9 @@
        where rn between #{startRow} and #{endRow}
     </select>
     
-	<!-- moma 마이페이지 - 전체 게시글 수 -->
+	<!-- moma 마이페이지 - 전체 예약 수 -->
 	<select id="getTotalMy" parameterType="integer" resultType="integer">
-		select count(*) from reservation where mno=#{mno}
+		select count(*) from reservation where mno=#{mno} and del='n'
 	</select>
 	
 	<!-- moma 마이페이지 - 내가 예약한 컨텐츠의 cno  -->

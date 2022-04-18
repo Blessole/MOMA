@@ -17,6 +17,7 @@ public class Content {
 	private String director;
 	private String actor;
 	private String reserve;
+
 	
 	// review에서 받아올 예정
 		private int rvno;
@@ -137,3 +138,4 @@ public class Content {
 		this.reserve = reserve;
 	}	
 }
+

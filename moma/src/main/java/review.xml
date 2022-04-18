@@ -27,7 +27,7 @@
 		select count(*) from review where cno = #{cno} and del = 'n'
 	</select>
 	
-		<!-- moma 마이페이지 - 리뷰내역 -->
+	<!-- moma 마이페이지 - 리뷰내역 -->
 	<select id="myList" parameterType="hashmap" resultType="review">
        select *
        from (select rowNum rn, e.* 
@@ -39,7 +39,7 @@
     
     <!-- // 마이페이지 : 나의 총 리뷰 수 -->
 	<select id="getTotalMy" parameterType="integer" resultType="integer">
-		select count(*) from review where mno=#{mno}
+		select count(*) from review where mno=#{mno} and del = 'n'
 	</select>
 	
 	<!-- // 마이페이지 : 리뷰 삭제 -->
@@ -53,7 +53,7 @@
 		select * from review where rvno=#{rvno}
 	</select>
 	
-	<!-- // 마이페이지 리뷰 수정 : star_rate update -->
+	<!-- // 마이페이지 리뷰 수정 -->
 	<update id="update" parameterType="review">
 		update review set star_rate=#{star_rate}, rv_content=#{rv_content} where rvno=#{rvno}
 	</update>
@@ -70,16 +70,4 @@
 	<select id="getTotal" resultType="integer">
 		select count(*) from review
 	</select>
-	
-		<!-- cno 별 별점 평균 ✔✔ required로 null이 없겠지만? null이 들어간다면 에러날 수 있음 주의 -->
-	<!-- <select id="star_rate_avg" parameterType="integer" resultType="float">
-		select avg(star_rate) from review where cno=#{cno}
-	   
-	   select *
-       from (select rowNum rn, e.* 
-       		   from ( select r.star_rate
-       		   			from review r, content c
-       		   			where r.cno = c.cno and r.mno = #{mno} and r.del = 'n' order by rvno desc) e)
-       where rn between #{startRow} and #{endRow}
-	</select> -->
 </mapper>
