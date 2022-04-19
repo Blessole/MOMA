@@ -101,6 +101,7 @@
 		$.post('contentLikesUpdate.do', 'cno=${content.cno}', function(data) {
 			if ('${result} == 1'){
 			$('#unlikesimg').attr('src', '/moma/img/icon/heart (1).png');
+				location.reload();
 			}
 		});
 	};
@@ -109,9 +110,23 @@
 		$.post('contentLikesUpdate.do', 'cno=${content.cno}', function(data) {
 			if ('${result} == 0'){
 			$('#likesimg').attr('src', '/moma/img/icon/heart.png');
+				location.reload();
 			}
 		});
 	};
+	
+	// 재생불가 OTT 이미지변경
+	document.addEventListener("DOMContentLoaded", function() { 
+		var conn = "${content.netflix}";
+		var conw = "${content.watcha}";
+		var cont = "${content.tving}";
+		if (! conn) {			
+			$('#netflix').attr('src', '/moma/img/icon/netflixnull.png'); }
+		if (! conw) {			
+			$('#watcha').attr('src', '/moma/img/icon/watchanull.png'); }
+		if (! cont) {			
+			$('#tving').attr('src', '/moma/img/icon/tvingnull.png'); }
+	});
 	
 </script>
 </head>
@@ -145,23 +160,6 @@
 						<c:otherwise> <img id="unlikesimg" src="/moma/img/icon/heart.png" alt="안좋아요" onclick="likes()"> </c:otherwise> </c:choose>
 					</c:if>
 				</div>			
-				
-				<%-- <!-- 좋아요 구현 -->					
-				<!-- <div>
-				  <span class="likes" onclick="likes()"></span>
-				</div> -->
-				<div class="like_box">
-				<img class="like_img${likes.mno }" alt="좋아요" src="../../img/icon/heart.png" onclick="likes(${likes.mno })">
-					<!-- 좋아요 한 회원일때 빨간하트로 세팅 -->
-					<c:forEach var="myList" items="${myList }">
-						<c:if test="${myList.cno == likes.cno }">
-							<c:if test="${myList.mno == mno }">
-								<script type="text/javascript">$('.like_img'+${likes.mno}).attr('src', '../../img/icon/heart (1).png');</script>
-							</c:if>
-						</c:if>
-					</c:forEach>
-				</div> --%>
-
 				</div>
 				<table class="bottom">
 					<tr>
@@ -193,9 +191,9 @@
 					<c:if test="${content.reserve == 'Y' }">
 						<button class="btn" onclick="sChk('reserve')">예매하기</button>
 					</c:if>
-					<button class="btn2" onclick="location.href='${content.netflix }'"><img alt="netflix" src="../../img/icon/netflix.png"></button>
-					<button class="btn2" onclick="location.href='${content.watcha }'"><img alt="watcha" src="../../img/icon/watcha.png"></button>
-					<button class="btn2" onclick="location.href='${content.tving }'"><img alt="tving" src="../../img/icon/tving.png"></button>
+					<button class="btn2" onclick="location.href='${content.netflix }'"><img id="netflix" alt="netflix" src="../../img/icon/netflix.png"></button>
+					<button class="btn2" onclick="location.href='${content.watcha }'"><img id="watcha" alt="watcha" src="../../img/icon/watcha.png"></button>
+					<button class="btn2" onclick="location.href='${content.tving }'"><img id="tving" alt="tving" src="../../img/icon/tving.png"></button>
 				</div>
 			</div>
 		</div>
