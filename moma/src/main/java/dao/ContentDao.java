@@ -89,30 +89,16 @@ public class ContentDao {
 		return (List<Content>)session.selectList("contentns.selectMList", hm);
 	}
 
-	// Drama Genre total
-	public int getTotalDGenre(String[] genre) {
-		return (int) session.selectOne("contentns.getTotalDGenre", genre);
-	}
-	
-	// Movie Genre total
-	public int getTotalMGenre(String[] genre) {
-		return (int) session.selectOne("contentns.getTotalMGenre", genre);
-	}
-	
 	// 장르태그로 드라마 리스트 조회
-	public List<Content> listDGenre(String[] genre, int startRow, int endRow) {
+	public List<Content> listDGenre(String[] genre) {
 		HashMap<String, Object> hm = new HashMap<>();
-		hm.put("startRow", startRow);
-		hm.put("endRow", endRow);
 		hm.put("genre", genre);
 		return session.selectList("contentns.selectDGenre", hm);
 	}
 	
 	// 장르태그로 영화 리스트 조회
-	public List<Content> listMGenre(String[] genre, int startRow, int endRow) {
+	public List<Content> listMGenre(String[] genre) {
 		HashMap<String, Object> hm = new HashMap<>();
-		hm.put("startRow", startRow);
-		hm.put("endRow", endRow);
 		hm.put("genre", genre);
 		return session.selectList("contentns.selectMGenre", hm);
 	}
@@ -178,5 +164,13 @@ public class ContentDao {
 	// 관리자페이지 - 컨텐츠 수정 업데이트 action
 	public int update(Content ct) {
 		return session.update("contentns.update", ct);
+	}
+	
+	// 관리자페이지 - 컨텐츠 검색
+	public List<Content> adSearch(String searchKey, String searchValue) {
+		HashMap<String, String> hm = new HashMap<>();
+		hm.put("searchKey", searchKey);
+		hm.put("searchValue", searchValue);
+		return session.selectList("contentns.adSearch", hm);
 	}
 }

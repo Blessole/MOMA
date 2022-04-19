@@ -54,6 +54,7 @@ public class ReviewDao {
 	
 	// 평균 별점 가져오기
 	public float selectStar(int cno) {
+	//	System.out.println("session = "+session);
 		return (float) session.selectOne("reviewns.selectStar", cno);
 	}
 	

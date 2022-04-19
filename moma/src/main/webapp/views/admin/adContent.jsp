@@ -19,6 +19,14 @@
 			"font-weight" : "600"
 		});
 	});
+	
+	function chk(){
+		if(!search.searchValue.value){
+			alert("검색어를 입력하세요");
+			search.searchValue.focus();
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
@@ -28,6 +36,16 @@
 <section class="ad_container_wide">
 		<div class="ad_title">컨텐츠 관리</div>
 			<div class="top_box">
+				<form class="searchForm" action="adFindContent.so" name="search" onsubmit="return chk()">
+					<select name="searchKey" class="search_key">
+						<option value="cname">컨텐츠명</option>
+						<option value="genre">장르</option>
+						<option value="director">감독</option>
+						<option value="actor">배우</option>
+					</select>
+					<input type="text" name="searchValue" class="search_value" placeholder="검색어를 입력해주세요">
+					<button type="submit" style="border:none; background-color: transparent;"><img class="search" id="search" alt="검색" src="/moma/img/icon/search.png" width="30px"></img></button>
+				</form>
 				<a class="adbtn" href="/moma/views/admin/adContentRegistForm.so">컨텐츠 등록</a>
 			</div>
 	<div class="container-table">	
@@ -40,8 +58,8 @@
 			</tr>
 			<c:forEach var="adcontent" items="${list }">
 				<tr>
-					<td><a href="../content/contentView.do?cno=${adcontent.cno}">${adcontent.cno }</a></td>
-					<td><a href="../content/contentView.do?cno=${adcontent.cno}">${adcontent.cname }</a></td>
+					<td><a class="content_hover" href="../content/contentView.do?cno=${adcontent.cno}">${adcontent.cno }</a></td>
+					<td><a class="content_hover" href="../content/contentView.do?cno=${adcontent.cno}">${adcontent.cname }</a></td>
 					<td><c:if test="${adcontent.sort == 'd' }">드라마</c:if><c:if test="${adcontent.sort == 'm'}">영화</c:if></td>
 					<td>${adcontent.clevel }</td>
 					<td>${adcontent.genre }</td>

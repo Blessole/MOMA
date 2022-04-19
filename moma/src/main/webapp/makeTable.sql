@@ -119,3 +119,5 @@ create table boardcmt(
 );
 
 select * from boardcmt;
+
+select round(avg(star_rate), 1) from review where cno = 60 and del = 'n';

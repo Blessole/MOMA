@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ContentDao;
+import dao.ReviewDao;
 import model.Content;
 import service.CommandProcess;
 
@@ -19,6 +20,7 @@ public class MovieMain implements CommandProcess {
 		// ct 리스트 조회
 		ContentDao cd = ContentDao.getInstance();
 		String genre[] = request.getParameterValues("genre"); // 태그별
+		ReviewDao rd = ReviewDao.getInstance();
 
 		//paging : start
 		final int ROW_PER_PAGE = 10;  //한 페이지 10개씩
@@ -39,14 +41,17 @@ public class MovieMain implements CommandProcess {
 		int startRow = (currentPage - 1) * ROW_PER_PAGE + 1;
 		// 끝번호 : 시작번호 + 페이지당 개수 -1
 		int endRow = startRow + ROW_PER_PAGE - 1;
-				
+		
+		float imsi_star = 0;
 		// 페이징 리스트로 기존 리스트 수정(전체 리스트)
 		List<Content> list = cd.Mlist(startRow, endRow);
-		// 태그만 조회하기
-		List<Content> listGenre = null;
-		if (genre != null) {
-			listGenre = cd.listMGenre(genre, startRow, endRow);
-			total = cd.getTotalMGenre(genre);
+		if (genre == null) {
+			for (Content ct : list) {
+			//System.out.println("ct.cno="+ct.getCno());
+			imsi_star = rd.selectStar(ct.getCno());
+			//System.out.println("imsi_star="+imsi_star);
+			ct.setStar_rate(imsi_star);
+			}
 		}
 		
 		 // Math.ceil : 현재 실수보다 큰 정수 
@@ -59,8 +64,6 @@ public class MovieMain implements CommandProcess {
 		if (endPage > totalPage) endPage = totalPage; 
 		// paging : end
 		
-		request.setAttribute("list", list);
-		request.setAttribute("listGenre", listGenre);
 		
 		// paging param 
 		request.setAttribute("pageNum", pageNum);
@@ -70,6 +73,23 @@ public class MovieMain implements CommandProcess {
 		request.setAttribute("endPage", endPage); 
 		request.setAttribute("totalPage", totalPage);
 		
+		
+		// 태그만 조회하기
+		List<Content> listGenre = null;
+		if (genre != null) {
+			listGenre = cd.listMGenre(genre);
+			
+			for (Content ct2 : listGenre) {
+				//System.out.println("ct2.cno="+ct2.getCno());
+				imsi_star = rd.selectStar(ct2.getCno());
+				//System.out.println("imsi_star2="+imsi_star);
+				ct2.setStar_rate(imsi_star);
+			}
+		}
+		
+		request.setAttribute("list", list);
+		request.setAttribute("listGenre", listGenre);
+
 		return "movieMain";
 	}
 

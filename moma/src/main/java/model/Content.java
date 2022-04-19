@@ -18,8 +18,16 @@ public class Content {
 	private String actor;
 	private String reserve;
 
-	
-	// review에서 받아올 예정
+	private float star_rate;
+
+	public float getStar_rate() {
+		return star_rate;
+	}
+	public void setStar_rate(float star_rate) {
+		this.star_rate = star_rate;
+	}
+
+		// review에서 받아올 예정
 		private int rvno;
 		
 		public int getRvno() {
