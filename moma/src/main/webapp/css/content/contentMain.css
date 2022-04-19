@@ -39,8 +39,17 @@
 	word-wrap: break-word;
 }
 
+.content_list .text_area .content_list_star {
+	font-size: 13px;
+	font-weight: 600;
+	padding-top: 6px;
+	float : right;
+	text-align: middle;
+}
+
+
 .content_list .text_area img {
-	width: 20px;
+	width: 14px;
 }
 
 .content_list .text_area .location {

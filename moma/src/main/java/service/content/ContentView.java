@@ -20,6 +20,7 @@ public class ContentView implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+	
 		HttpSession session = request.getSession();    //솔 수정
 		int cno = Integer.parseInt(request.getParameter("cno"));
 		
@@ -27,6 +28,20 @@ public class ContentView implements CommandProcess {
 		Content content = cd.select(cno);
 		
 		MemberDao md = MemberDao.getInstance();
+		
+		
+		// hj 좋아요부분추가
+		if (session.getAttribute("mno") != null) {
+			int mno = (int) session.getAttribute("mno"); // session mno
+		String result = "";
+		LikesDao ld = LikesDao.getInstance();
+		Likes likes = ld.select(cno, mno); 
+		if (likes == null) { result = "n"; }
+		else result = "y"; 
+		request.setAttribute("result", result);
+		}
+		//
+		
 		
 		// 조회수
 		cd.countUpdate(cno);
@@ -77,32 +92,25 @@ public class ContentView implements CommandProcess {
 		// 리뷰 갯수
 		int reviewCnt = total; // list.size();
 		
-		// 회원이 좋아요 했는지 체크
-		LikesDao lkd = LikesDao.getInstance();
-		String imgSrc = "";
-		
-		if (session.getAttribute("mno") != null) {  //로그인이 되어있으면
-			int mno = (int) session.getAttribute("mno"); // session mno      //솔 수정
-			Likes lk = lkd.select(cno, mno);
-			String nickname = md.selectNick(mno);         //솔 수정
-			//System.out.println("nickname=" + nickname);
-			request.setAttribute("nickname", nickname);       // 솔 수정
-			request.setAttribute("lk", lk);					//솔 수정
-			if (lk == null) {
-				imgSrc = "../../img/icon/heart.png";
-			} else {
-				imgSrc = "../../img/icon/heart (1).png";
-			}
-		} else {
-			imgSrc = "../../img/icon/heart.png";
-		}
+		/*
+		 * // 회원이 좋아요 했는지 체크 LikesDao lkd = LikesDao.getInstance(); String imgSrc = "";
+		 * 
+		 * if (session.getAttribute("mno") != null) { //로그인이 되어있으면 int mno = (int)
+		 * session.getAttribute("mno"); // session mno //솔 수정 Likes lk = lkd.select(cno,
+		 * mno); String nickname = md.selectNick(mno); //솔 수정
+		 * //System.out.println("nickname=" + nickname);
+		 * request.setAttribute("nickname", nickname); // 솔 수정
+		 * request.setAttribute("lk", lk); //솔 수정 if (lk == null) { imgSrc =
+		 * "../../img/icon/heart.png"; } else { imgSrc = "../../img/icon/heart (1).png";
+		 * } } else { imgSrc = "../../img/icon/heart.png"; }
+		 */
 				
 		request.setAttribute("cno", cno);
 		request.setAttribute("content", content);
 		request.setAttribute("list", list);
 		request.setAttribute("star_rate", star_rate);
 		request.setAttribute("reviewCnt", reviewCnt);
-		request.setAttribute("imgSrc", imgSrc);
+		/* request.setAttribute("imgSrc", imgSrc); */
 		
 		request.setAttribute("pageNum", pageNum);	
 		request.setAttribute("totalPage", totalPage);

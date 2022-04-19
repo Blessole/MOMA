@@ -4,13 +4,14 @@
 	width: 50%;
     margin: 0 auto;
     margin-bottom: 20px;
-    margin-top: 170px;
+    margin-top: 200px;
 }
 
 .line {
-	width: 50%;
+	width: 78%;
 	margin: 0 auto;
-	border-bottom : 1px dashed var(--point-color);
+	padding-top: 30px;
+	border-bottom : 1px solid #e4e4e4;
 }
 
 .ad_container_wide {
@@ -28,7 +29,7 @@
     margin-bottom: 15px;
 }
 
-table{
+.container-table table{
 	width: 100%;
 	border-collapse: collapse;
 	table-layout: fixed;
@@ -53,7 +54,9 @@ td {
 
 .top_box {
 	width:100%;
-	margin-bottom: 20px;
+	margin-top: 40px;
+	position: relative;
+	text-align: center;
 }
 
 .adbtn {
@@ -146,4 +149,29 @@ td {
 	margin:0;
 	color: red;
 	font-size: 10px;
+}
+
+.searchForm {
+	display: inline;
+}
+
+.search_key {
+    border: none;
+    width: 100px;
+    height: 48px;
+    font-size: 16px;
+    color : var(--point-color);
+    border-bottom: 1px solid var(--point-color);
+    margin-bottom: 16px;
+    outline: 0;
+}
+.search_value {
+    border: none;
+    width: 300px;
+    height: 48px;
+    font-size: 16px;
+    color : var(--point-color);
+    border-bottom: 1px solid var(--point-color);
+    margin-bottom: 16px;
+    outline: 0;
 }

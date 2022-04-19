@@ -134,11 +134,16 @@ function submit2(frm) {
 				<tr><th colspan="2"><a class="chk-msg1" id="err_phone"></a></th></tr>
 			</table>
 			
-			<div class="checks" >
+			<!-- <div class="checks" >
 				<li>sms 광고수신 &nbsp &nbsp &nbsp <label id="radio1"><input type="radio" name="sms_check" value="y" id="chk1" checked="checked">수신동의</label><label id="radio1"><input type="radio" id="chk1" name="sms_check" value="n" >수신거부</label></li>
 				<li>email 광고수신 &nbsp &nbsp <label id="radio1"><input type="radio" name="email_check" value="y" id="chk1" checked="checked">수신동의</label><label id="radio1"><input type="radio" id="chk1" name="email_check" value="n" >수신거부</label></li>
+    	 	</div> -->
+			
+			<div class="checks" >
+				<li>sms 광고수신 &nbsp &nbsp &nbsp <label id="radio1"><input type="radio" name="sms_check" value="y" id="chk1" <c:if test="${member.sms_check eq 'y'}">checked="checked"</c:if>>수신동의</label><label id="radio1"><input type="radio" id="chk1" name="sms_check" value="n" <c:if test="${member.sms_check eq 'n'}">checked="checked"</c:if>>수신거부</label></li>
+				<li>email 광고수신 &nbsp &nbsp <label id="radio1"><input type="radio" name="email_check" value="y" id="chk1" <c:if test="${member.email_check eq 'y'}">checked="checked"</c:if>>수신동의</label><label id="radio1"><input type="radio" id="chk1" name="email_check" value="n" <c:if test="${member.email_check eq 'n'}">checked="checked"</c:if>>수신거부</label></li>
     	 	</div>
-				
+			
 			<!-- button -->
 			<div class="container_submit2">
 				<input type="submit" class="btn_small_up1" value="수정하기" onclick="javascript: form.action='updateAction.bb';"/>

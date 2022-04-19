@@ -19,7 +19,7 @@
 	
 	<!-- 평균 별점 -->
 	<select id="selectStar" parameterType="integer" resultType="float">
-		select round(avg(star_rate), 1) from review where cno = #{cno} and del = 'n'
+		select nvl(round(avg(star_rate), 1),0) from review where cno = #{cno} and del = 'n'
 	</select>
 	
 	<!-- 각 컨텐츠의 총 리뷰 갯수 -->

@@ -72,13 +72,15 @@ $(function() {
             	<textarea name="rv_content" placeholder="클릭 후 새로운 내용을 작성해주세요. (이전 감상평 : ${review.rv_content})" style="color:gray;"  required="required"></textarea>
             </div>
             <p class="txt_star">별점을 선택해 주세요.</p>
+
             <!-- 별점 등록 -->
             <div class="star_rate_up">
-                <input type="range" name="star_rate" min="0" max="10" step="1" value="0" required="required">
+                <input type="range" name="star_rate" min="0" max="10" step="1"  required="required" value="${review.star_rate}">
                 <div class="star_rate_num">
-                <span class="text" id="input_span">0</span>
+                <span class="text" id="input_span">${review.star_rate}</span>
             	</div>
             </div>
+            
             <div class="submit_box">
                  <input type="submit" class="btn_small_rv1" value="수정하기">
             	 <input type="button" class="btn_small_rv2" onclick="history.go(-1)" value="취소">

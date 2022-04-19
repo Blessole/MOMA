@@ -76,13 +76,11 @@
 
 	<!-- 태그로 리스트 조회 -->
 	<select id="selectMGenre" resultType="content" parameterType="hashmap">
-		select * from (select rownum rn, e.* from (
 		select * from content where
 		<foreach collection="genre" item="item" open="(" close=")" separator="or">
 			genre like '%'||#{item}||'%' 
 		</foreach>
-		and sort='m' and del = 'n' order by cno desc) e)
-		where rn between #{startRow} and #{endRow}
+		and sort='m' and del = 'n' order by cno desc
 	</select>
 	
 	<!-- 드라마 genre 필터 total -->
@@ -177,4 +175,16 @@
 			poster=#{poster,jdbcType=VARCHAR} 
 		where cno=#{cno}
 	</update>
+	
+	<!-- 관리자페이지 컨텐츠 검색 -->
+	<select id="adSearch" parameterType="hashmap" resultType="content">
+		select * from content
+		<choose>
+			<when test="searchKey.equals('cname')">where cname like '%'||#{searchValue}||'%'</when>
+			<when test="searchKey.equals('genre')">where genre like '%'||#{searchValue}||'%'</when>
+			<when test="searchKey.equals('director')">where director like '%'||#{searchValue}||'%'</when>
+			<otherwise>where actor like '%'||#{searchValue}||'%'</otherwise>
+		</choose>
+			order by cno desc
+	</select>
 </mapper>

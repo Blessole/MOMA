@@ -69,10 +69,11 @@
 								<a href="contentView.do?cno=${content.cno }">
 										<!-- <img alt="heart" src="../../img/icon/heart.png"> -->
 									<img class="poster_img"  style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
-									<div class="text_area">
-										<p class="content_list_title">${content.cname }</p>
-										<p class="content_list_likes"></p>
-									</div>
+										<div class="text_area">
+											<!-- 평균 별점 -->
+											<div class="content_list_star"><img alt="star" src="../../img/icon/star.png">${content.star_rate }</div>
+											<p class="content_list_title">${content.cname }</p>
+										</div>
 								</a>
 							</li>
 						</c:forEach>
@@ -84,6 +85,8 @@
 									<a href="contentView.do?cno=${content.cno }"> 
 										<img class="poster_img" style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 										<div class="text_area">
+											<!-- 평균 별점 -->
+											<div class="content_list_star"><img alt="star" src="../../img/icon/star.png">${content.star_rate }</div>
 											<p class="content_list_title">${content.cname }</p>
 										</div>
 									</a>
@@ -92,7 +95,7 @@
 					</c:if>
 				</ul>
 			</div>
-
+		<c:if test="${empty listGenre }">
 			<!-- paging -->
 			<div class="paging">
 				<div class="items">
@@ -125,6 +128,7 @@
 					</div> <!-- next_btn -->
 				</div> <!-- number -->
 			</div> <!-- paging -->
+			</c:if>
 		</section>
 	</div>
 	

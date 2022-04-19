@@ -1,30 +1,29 @@
-package service.content;
+package service.admin;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.BoardDao;
 import dao.ContentDao;
-import model.Board;
 import model.Content;
 import service.CommandProcess;
 
-public class SearchAction implements CommandProcess {
+public class AdFindContent implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		//System.out.println("searchAction 자바파일 지나간당~");
+		System.out.println("AdFindContent 자바파일 지나감");
 		
-		String srch = request.getParameter("srch");
+		String searchKey = request.getParameter("searchKey");
+		String searchValue = request.getParameter("searchValue");
 		
 		ContentDao cd = ContentDao.getInstance();
-		List<Content> ctList = cd.search(srch);
+		List<Content> ctList = cd.adSearch(searchKey, searchValue);
 		
 		request.setAttribute("ctList", ctList);
-	
-		return "searchAction";
+		
+		return "adFindContent";
 	}
 
 }
