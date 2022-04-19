@@ -6,18 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:set var="id" value='${sessionScope.id}'></c:set>
 </head>
 <body>
 <c:if test="${result>0 }">
 	<script type="text/javascript">
 		alert("탈퇴처리 되었습니다");
-		
-		var preUrl = document.referrer.split("/")[6];
-		if (preUrl == "adMember.bb") {
+	</script>	
+	<c:if test="${id == 'admin'}">
+		<script type="text/javascript">
 			location.href="/moma/views/admin/adMember.bb";
-		}
-		else location.href="/moma/views/content/momaMain.so";
-	</script>
+		</script>
+	</c:if>
+	<c:if test="${id != 'admin'}">
+		<script type="text/javascript">
+			location.href="/moma/views/content/momaMain.so";
+			</script>
+	</c:if>
 </c:if>
 
 <c:if test="${result==0 }">
@@ -26,5 +31,6 @@
 		history.go(-1);
 	</script>
 </c:if>
+
 </body>
 </html>

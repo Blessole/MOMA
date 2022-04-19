@@ -62,7 +62,7 @@
 	<select id="adList" parameterType="hashmap" resultType="review">
 		select * from (select rowNum rn, e.* from
 		(select r.*, m.nickname, c.cname from review r, member m, content c 
-		where r.mno=m.mno and r.cno=c.cno and r.del = 'n') e) 
+		where r.mno=m.mno and r.cno=c.cno and r.del = 'n' order by rvno desc) e) 
 			where rn between #{startRow} and #{endRow}
 	</select>
 	

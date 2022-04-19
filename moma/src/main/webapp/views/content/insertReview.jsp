@@ -11,13 +11,13 @@
 
 	ReviewDao rd = ReviewDao.getInstance();
 	
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < 30; i++) {
 		Review review = new Review();
 		
 		review.setStar_rate(8);
 		review.setRv_content("리뷰 인서트 "+i);
 		review.setMno(1);
-		review.setCno(60);
+		review.setCno(6);
 		rd.insert(review);
 	}
 %>

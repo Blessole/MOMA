@@ -194,7 +194,7 @@
 		</ul>
 				<!-- 예매 가능한 영화 -->
 		<ul class="content_tab">
-			<li class="title" id="tab3">예매 가능한 영화</li>
+			<li class="content_title" id="tab3">예매 가능한 영화</li>
 				<ul class="content_list">
 					<c:forEach var="content" items="${list }">
 						<c:if test="${content.reserve == 'Y' }">

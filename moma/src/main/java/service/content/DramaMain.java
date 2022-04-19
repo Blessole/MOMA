@@ -54,7 +54,7 @@ public class DramaMain implements CommandProcess {
 		// 태그만 조회하기
 		List<Content> listGenre = null;
 		if (genre != null) {
-			listGenre = cd.listMGenre(genre);
+			listGenre = cd.listDGenre(genre);
 			
 			for (Content ct2 : listGenre) {
 				//System.out.println("ct2.cno="+ct2.getCno());

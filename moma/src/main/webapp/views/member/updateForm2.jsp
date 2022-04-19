@@ -89,11 +89,12 @@ function del() {
 
 /* form 경로 2개 */
 function submit2(frm) { 
-	if(con) {
+	if(con)
 	frm.action='delete.bb';
     frm.submit(); 
     return true;
-	} else { return false;}
+    
+    else return false;
   } 
 
 </script></head><body>

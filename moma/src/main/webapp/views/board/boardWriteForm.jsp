@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 // 글작성일 때 required 확인
 function insertChk() {
-	if ($("input[name=title]").val() == "" || $("input[name=title]").val() == null) {
+	if ($("input[name=bname]").val() == "" || $("input[name=bname]").val() == null) {
 		alert("제목 입력란을 작성하세요");
 		return false;
 	} else if ($("input[type=file]").val() == "" || $("input[type=file]").val() == null) {

@@ -59,6 +59,12 @@ td {
 	text-align: center;
 }
 
+.content_hover:hover{
+	color: var(--point-color);
+	text-decoration: underline;
+		
+}
+
 .adbtn {
 	width: 100px;
     background-color: var(--point-color);
@@ -106,41 +112,6 @@ td {
     text-align:center;
 }
 
-/* genre */
-
-.genre_box .label_box {
-	position: relative;
-	display: inline-block;
-	margin: 0 8px 10px 0;
-	padding-bottom: 12px;
-}
-
-.genre_box .genre {
-	color: #666;
-	border: 1px solid #e6e6e6;
-	padding: 6px 12px 4px 12px;
-	border-radius: 16px;
-	font-size: 14px;
-	cursor: pointer;
-	background: #fff;
-}
-
-.genre_box input {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: inherit;
-	height: inherit;
-	margin-bottom: 0;
-	z-index: -1;
-}
-
-.genre_box .genre.active {
-	color: var(--point-color);
-	border: 1px solid var(--point-color);
-}
-
 .paging{
 	margin-top : 20px;
 }
@@ -148,9 +119,10 @@ td {
 .adChk {
 	margin:0;
 	color: red;
-	font-size: 10px;
+	font-size: 15px;
 }
 
+/* adContent search*/
 .searchForm {
 	display: inline;
 }

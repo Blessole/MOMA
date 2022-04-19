@@ -3,10 +3,10 @@
 <mapper namespace="boardcmtns">
 	<!-- 댓글 입력 시작 -->	
 	<insert id="insert" parameterType="boardcmt">	
- 		<selectKey keyProperty="boardcmtseq" order="BEFORE" resultType="integer">
-			select boardcmt_seq.nextval from dual
+ 		<selectKey keyProperty="bcno" order="BEFORE" resultType="integer">
+			select nvl(max(bcno), 0) + 1 bcno from boardcmt
 		</selectKey>
-insert into boardcmt values(#{boardcmtseq},#{bc_content},sysdate,'n',#{bno},#{mno})
+insert into boardcmt values(#{bcno},#{bc_content},sysdate,'n',#{bno},#{mno})
 	</insert>
 
 	<!-- 댓글 조회 -->
