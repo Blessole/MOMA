@@ -8,94 +8,88 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
 
-/* 별명 중복체크 */
-function chkNickname(){
-	if(!frm.nickname.value) {
-		$('#err_nickname').html("별명을 입력하세요");
-		frm.nickname.focus();
-		return false;
+	/* 별명 중복체크 */
+	function chkNickname(){
+		$.post("confirmNickname.bb", "nickname="+frm.nickname.value, function(data){
+			$('#err_nickname').html(data);
+			const nkerr = document.getElementById('err_nickname');
+			if( nkerr.innerText != "" && frm.nickname2.value==frm.nickname.value){
+				$('#err_nickname').html("");
+			}
+			else if ( nkerr.innerText != "" ) {
+				frm.nickname.focus();
+				frm.nickname.value="";
+			} 
+		});
 	}
-	$.post("confirmNickname.bb", "nickname="+frm.nickname.value, function(data){
-	$('#err_nickname').html(data);
-	});
-}
-
-/* 비밀번호 형식 체크 (4글자이상) -> 영문섞어서로 바꿔보기? */
-function chkPass(){
-	var pw = $("#password").val();
-	if(pw.length<4) {
-		$('#err_pass').html("비밀번호를 4자리이상 입력해주세요");
-		frm.password.focus();
-		frm.password.value="";
-		return false;
-	} else {
-		$('#err_pass').html("");
-	}
-}
-
-/* 비밀번호 확인 일치여부 체크 */
-function chkPass2() {
-	if (!frm.password2.value){
-		$('#err_pass2').html("비밀번호 확인란을 입력하세요");
-		return false;
-	} if(frm.password2.value!=frm.password.value){
-		$('#err_pass2').html("비밀번호가 일치하지 않습니다");   /* .html("비밀번호가 일치하지 않습니다"); */
-		frm.password2.focus();
-		frm.password2.value="";
-		return false;
-	} else {
-		$('#err_pass2').html("");
-	}
-}
-
-/* 이메일 유효성 검사 */
-function chkEmail(){
-	var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-	if(!frm.email.value) {
-		$('#err_email').html("이메일을 입력하세요");
-		frm.email.focus();
-		return false; 
-	} if(!reg_email.test(frm.email.value)){
-			$('#err_email').html("올바른 이메일 형식이 아닙니다");
-			frm.email.focus();
+	
+	/* 비밀번호 형식 체크 (4글자이상) */
+	function chkPass(){
+		var pw = $("#password").val();
+		if(pw.length<4) {
+			$('#err_pass').html("비밀번호를 4자리이상 입력해주세요");
+			frm.password.focus();
+			frm.password.value="";
 			return false;
-	}else{
-		$('#err_email').html("");
+		} else {
+			$('#err_pass').html("");
+		}
 	}
-}
-
-/* 연락처 유효성 검사 */
-function chkPhone(){
-	var reg_phone = /^([0-9]){3}[-]([0-9]){4}[-]([0-9]){4}$/;
-	if(!frm.phone.value) {
-		$('#err_phone').html("연락처를 입력하세요");
-		frm.phone.focus();
-		return false;
-	} if(!reg_phone.test(frm.phone.value)){
-		$('#err_phone').html("올바른 연락처 형식이 아닙니다");
-		frm.phone.focus();
-		return false;
-	} else {
-		$('#err_phone').html("");
+	
+	/* 비밀번호 확인 일치여부 체크 */
+	function chkPass2() {
+		if (!frm.password2.value){
+			$('#err_pass2').html("비밀번호 확인란을 입력하세요");
+			return false;
+		} if(frm.password2.value!=frm.password.value){
+			$('#err_pass2').html("비밀번호가 일치하지 않습니다");  
+			frm.password2.focus();
+			frm.password2.value="";
+			return false;
+		} else {
+			$('#err_pass2').html("");
+		}
 	}
-}
-
-/* 회원탈퇴 */
-function del() {
-	var con = confirm("탈퇴 하시겠습니까?");
-/* 	if(con) location.href="delete.bb";
-	else alert("탈퇴가 취소 되었습니다."); */
+	
+	/* 이메일 유효성 검사 */
+	function chkEmail(){
+		var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+		 if(!reg_email.test(frm.email.value)){
+				$('#err_email').html("올바른 이메일 형식이 아닙니다");
+				frm.email.focus();
+				frm.email.value="";
+				return false;
+		}else{
+			$('#err_email').html("");
+		}
 	}
-
-/* form 경로 2개 */
-function submit2(frm) { 
-	if(con)
-	frm.action='delete.bb';
-    frm.submit(); 
-    return true;
-    
-    else return false;
-  } 
+	
+	/* 연락처 유효성 검사 */
+	function chkPhone(){
+		var reg_phone = /^([0-9]){3}[-]([0-9]){4}[-]([0-9]){4}$/;
+		 if(!reg_phone.test(frm.phone.value)){
+			$('#err_phone').html("올바른 연락처 형식이 아닙니다");
+			frm.phone.focus();
+			frm.phone.value="";
+			return false;
+		} else {
+			$('#err_phone').html("");
+		}
+	}
+	
+	/* 회원탈퇴 */
+	function del() {
+		var con = confirm("탈퇴 하시겠습니까?");
+	}
+	
+	/* form 경로 2개 */
+	function submit2(frm) { 
+		if(con) {
+		frm.action='delete.bb';
+	    frm.submit(); 
+	    return true;
+		} else { return false;}
+	} 
 
 </script></head><body>
 
@@ -110,7 +104,7 @@ function submit2(frm) {
 
 	<div class="updateform">
 	
-		<form method="post" name="frm" onsubmit="return chk()">  <!-- action="updateAction.bb" -->
+		<form method="post" name="frm" onsubmit="return chk()"> 
 	
 			<!-- 엔터키 전송 막기 -->
 			<div style="display:none">
@@ -134,11 +128,13 @@ function submit2(frm) {
 				<tr><th colspan="2"><a class="chk-msg1" id="err_phone"></a></th></tr>
 			</table>
 			
+			<input type="hidden" name="nickname2" id="nickname2" value="${member.nickname}">
+			
 			<div class="checks" >
-				<li>sms 광고수신 &nbsp &nbsp &nbsp <label id="radio1"><input type="radio" name="sms_check" value="y" id="chk1" checked="checked">수신동의</label><label id="radio1"><input type="radio" id="chk1" name="sms_check" value="n" >수신거부</label></li>
-				<li>email 광고수신 &nbsp &nbsp <label id="radio1"><input type="radio" name="email_check" value="y" id="chk1" checked="checked">수신동의</label><label id="radio1"><input type="radio" id="chk1" name="email_check" value="n" >수신거부</label></li>
+				<li>sms 광고수신 &nbsp &nbsp &nbsp <label id="radio1"><input type="radio" name="sms_check" value="y" id="chk1" <c:if test="${member.sms_check eq 'y'}">checked="checked"</c:if>>수신동의</label><label id="radio1"><input type="radio" id="chk1" name="sms_check" value="n" <c:if test="${member.sms_check eq 'n'}">checked="checked"</c:if>>수신거부</label></li>
+				<li>email 광고수신 &nbsp &nbsp <label id="radio1"><input type="radio" name="email_check" value="y" id="chk1" <c:if test="${member.email_check eq 'y'}">checked="checked"</c:if>>수신동의</label><label id="radio1"><input type="radio" id="chk1" name="email_check" value="n" <c:if test="${member.email_check eq 'n'}">checked="checked"</c:if>>수신거부</label></li>
     	 	</div>
-				
+			
 			<!-- button -->
 			<div class="container_submit2">
 				<input type="submit" class="btn_small_up1" value="수정하기" onclick="javascript: form.action='updateAction.bb';"/>

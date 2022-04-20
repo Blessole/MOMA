@@ -170,11 +170,14 @@
 }
 
 .content>ul>.likes>a>img {
-	width: 117%;
+	/* width: 117%;
     height: 0%;
 	object-fit: cover;
 	vertical-align: middle;
-	cursor: pointer;
+	cursor: pointer; */
+	width: 120px;
+    height: 170px;
+    object-fit: cover;
 }
 
 /* 텍스트 영역 */
@@ -222,6 +225,7 @@
     margin-top: 2%;
     margin-bottom: 1%;
     height: 78px;
+    font-family: 'Apple SD Gothic Neo', 'AppleSDGothicNeo';
 }
 
 p.detail_txt pd_bottom {

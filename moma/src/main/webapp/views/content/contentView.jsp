@@ -22,7 +22,7 @@
 			var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
 		    $(this).css('background-image',
 		                '-webkit-gradient(linear, left top, right top, '
-		                + 'color-stop(' + val + ', #ff5f06), '
+		                + 'color-stop(' + val + ', #6799FF), '
 		                + 'color-stop(' + val + ', #e4e4e4)'
 		                + ')'
            	);
@@ -77,7 +77,7 @@
 			}
 		} */
 		
-		function likes() {
+		/* function likes() {
 			if (${empty id}) {
 				var con = confirm("로그인이 필요합니다.");
 				if (con) {				
@@ -88,12 +88,44 @@
 					$('.like_img').attr(imgSrc);
 				});
 			}
+		} */
 		
 	// 리뷰 페이징 스크롤 높이
 	document.addEventListener("DOMContentLoaded", function() { // html load 이후
 		if ("${pageNum}" > 1) {			
 			window.scrollTo(0, $('.scrollTop').position().top);
 		}
+	});
+		
+	function likes() {
+		$.post('contentLikesUpdate.do', 'cno=${content.cno}', function(data) {
+			if ('${result} == 1'){
+			$('#unlikesimg').attr('src', '/moma/img/icon/heart (1).png');
+				location.reload();
+			}
+		});
+	};
+
+	function unlikes() {
+		$.post('contentLikesUpdate.do', 'cno=${content.cno}', function(data) {
+			if ('${result} == 0'){
+			$('#likesimg').attr('src', '/moma/img/icon/heart.png');
+				location.reload();
+			}
+		});
+	};
+	
+	// 재생불가 OTT 이미지변경
+	document.addEventListener("DOMContentLoaded", function() { 
+		var conn = "${content.netflix}";
+		var conw = "${content.watcha}";
+		var cont = "${content.tving}";
+		if (! conn) {			
+			$('#netflix').attr('src', '/moma/img/icon/netflixnull.png'); }
+		if (! conw) {			
+			$('#watcha').attr('src', '/moma/img/icon/watchanull.png'); }
+		if (! cont) {			
+			$('#tving').attr('src', '/moma/img/icon/tvingnull.png'); }
 	});
 	
 </script>
@@ -111,26 +143,23 @@
 		<div class="content_view_top">
 			<img src="../../img/poster/${content.poster }" alt="포스터">
 			<div class="text_area">
-			<div class="rate">
+			<div class="shape">
 				<!-- 평균 별점 -->
 				<div class="star_avg">★★★★★︎ &nbsp;
 					<span class="text">${star_rate }</span>
 				</div>
-				<!-- 좋아요 구현 -->					
-				<!-- <div>
-				  <span class="likes" onclick="likes()"></span>
-				</div> -->
+				
+				<!-- hj 좋아요 구현 -->		
 				<div class="like_box">
-				<img class="like_img${likes.mno }" alt="좋아요" src="../../img/icon/heart.png" onclick="likes(${likes.mno })">
-					<!-- 좋아요 한 회원일때 빨간하트로 세팅 -->
-					<c:forEach var="myList" items="${myList }">
-						<c:if test="${myList.cno == likes.cno }">
-							<c:if test="${myList.mno == mno }">
-								<script type="text/javascript">$('.like_img'+${likes.mno}).attr('src', '../../img/icon/heart (1).png');</script>
-							</c:if>
-						</c:if>
-					</c:forEach>
-				</div>
+					<c:if test="${empty id}">
+						<img src="/moma/img/icon/heart.png" alt="안좋아요" onclick="sChk()">
+					</c:if>
+					<c:if test="${!empty id}">
+						<c:choose> 
+						<c:when test="${result eq 'y'}"> <img id="likesimg" src="/moma/img/icon/heart (1).png" alt="좋아요" onclick="unlikes()"> </c:when> 
+						<c:otherwise> <img id="unlikesimg" src="/moma/img/icon/heart.png" alt="안좋아요" onclick="likes()"> </c:otherwise> </c:choose>
+					</c:if>
+				</div>			
 				</div>
 				<table class="bottom">
 					<tr>
@@ -162,9 +191,9 @@
 					<c:if test="${content.reserve == 'Y' }">
 						<button class="btn" onclick="sChk('reserve')">예매하기</button>
 					</c:if>
-					<button class="btn2" onclick="location.href='${content.netflix }'"><img alt="netflix" src="../../img/icon/netflix.png"></button>
-					<button class="btn2" onclick="location.href='${content.watcha }'"><img alt="watcha" src="../../img/icon/watcha.png"></button>
-					<button class="btn2" onclick="location.href='${content.tving }'"><img alt="tving" src="../../img/icon/tving.png"></button>
+					<button class="btn2" onclick="location.href='${content.netflix }'"><img id="netflix" alt="netflix" src="../../img/icon/netflix.png"></button>
+					<button class="btn2" onclick="location.href='${content.watcha }'"><img id="watcha" alt="watcha" src="../../img/icon/watcha.png"></button>
+					<button class="btn2" onclick="location.href='${content.tving }'"><img id="tving" alt="tving" src="../../img/icon/tving.png"></button>
 				</div>
 			</div>
 		</div>

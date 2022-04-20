@@ -59,14 +59,17 @@
   	display: inline-block;
 }
 
-.rate {
-	display: inline-block;	
+.shape {
+	display: inline;
+	
 }
 
 /* 좋아요 */
 
 .like_box {
 	position: relative;
+	float: right;
+	margin-right: 30px;
 }
 
 .like_box img {
@@ -76,38 +79,14 @@
 	cursor: pointer;
 }
 
-/* .likes {
-  display: inline-block;
-  cursor: pointer;
-  width: 80px;
-  height: 80px;
-  float: right;
-}
-.likes {
-  background: url('https://i.ibb.co/vw78mf3/heart.png') no-repeat 0% 50%;
-  background-size: 2900%;
-}
-.like-active {
-  animation-name: animate;
-  animation-duration: .8s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  animation-timing-function: steps(28);
-}
-@keyframes animate {
-  0%   { background-position: left;  }
-  50%  { background-position: right; }
-  100% { background-position: right; }
-} */
-
 /* 좋아요 끝 */
 
-.rate>img {
+/* .rate>img {
 	width: 25px;
 	height: 25px;
   	display: inline-block;
 }
-
+ */
 .content_view_top .star_avg {
 	padding-bottom: 8px;
 	padding-top: 0;
@@ -159,6 +138,8 @@
 	padding: 8px 0 24px 0;
 	font-size: 20px;
 	color: var(--point-color);
+	display: inline;
+	
 }
 
 .star_avg input[type="range"] {

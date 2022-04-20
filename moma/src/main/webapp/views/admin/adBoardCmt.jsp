@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <%@ include file="/views/sessionChk.jsp"%>
 <style type="text/css">
-@import url("/moma/css/myPage/common_my.css");
+@import url("/moma/css/admin/adBoardCmt.css");
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -31,14 +31,14 @@
 </head>
 <body>
 
-	<div class="container_middle">
-		<!-- adMainMenu -->
-		<jsp:include page="adMainMenu.jsp"></jsp:include>
+	<div class="ad_container_middle">
+	<!-- adMainMenu -->
+	<jsp:include page="adMainMenu.jsp"></jsp:include>
+	</div>
+		<div class="ad_container_wide">
 		<div class="content">
-		
-			<h3>저널 댓글 목록</h3>
-			<ul>
-				<table>
+		<div class="ad_title">저널 댓글 목록</div>
+			<table class="boardcmt_table">
 					<tr>
 						<th>댓글번호</th>
 						<th>저널번호</th>
@@ -60,15 +60,13 @@
 								<td>${boardcmt.bc_content}</td>
 								<td>${boardcmt.nickname}</td>
 								<td>${boardcmt.del}</td>
-								<td><a onclick="delComment(${boardcmt.bcno})" class="btn_rv"
+								<td><a onclick="delComment(${boardcmt.bcno})" class="bd_btn"
 									style="cursor: pointer">삭제</a></td>
 						</c:forEach>
 					</c:if>
-					
-					</table>
-				</ul>
-			</div>
-
+			</table>
+		</div>
+			
 				<!-- paging -->
 				<div class="paging">
 					<div class="items">
@@ -109,7 +107,6 @@
 					<!-- number -->
 				</div>
 				<!-- paging -->
-		</div>
 		</div>
 </body>
 </html>

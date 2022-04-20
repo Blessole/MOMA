@@ -113,4 +113,10 @@ public class MemberDao {
 			hm.put("endRow", endRow);
 			return (List<Member>)session.selectList("memberns.list",hm);
 		}
+
+		// id 중복확인용
+		public Member selectcf(String id) {
+			return (Member) session.selectOne("memberns.selectcf", id);
+		}
+		
 }

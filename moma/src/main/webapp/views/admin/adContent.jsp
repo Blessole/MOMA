@@ -10,21 +10,8 @@
 <style type="text/css">@import url("/moma/css/myPage/common_my.css");</style>
 <style type="text/css">@import url("/moma/css/admin/adContent.css");</style>
 <style>
-.category>ul>li {
-	float: left;
-	width: 25%;
-	font-size: 15px;
-	font-weight: 600;
-	text-align: center;
-	cursor: pointer;
-	position: relative;
-}
 </style>
 <script type="text/javascript">
-	function showCon(id) {
-		location.href = "/moma/views/admin/" + id ;
-	}
-
 	$(function() {
 		// 페이징 현재페이지 설정
 		$('#page'+${currentPage}).css({
@@ -32,45 +19,37 @@
 			"font-weight" : "600"
 		});
 	});
+	
+	function chk(){
+		if(!search.searchValue.value){
+			alert("검색어를 입력하세요");
+			search.searchValue.focus();
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
 <div class="ad_container_middle">
-	<!-- 프로필, 메뉴 -->
-	<div class="menu">
-		<ul>
-			<!-- 메뉴 영역 -->
-			<li class="category">
-				<ul>
-					<li id="adContent.so" onclick="showCon(this.id)">
-						<span class="dot"></span><img src="/moma/img/icon/multimedia.png" >adContent
-					</li>
-					<li id="adReview.do" onclick="showCon(this.id)">
-						<span class="dot"></span><img src="/moma/img/myPage_image/myReview.png" >adReview
-					</li>
-					<li id="adMember.bb" onclick="showCon(this.id)">
-						<span class="dot"></span><img src="/moma/img/myPage_image/myInfo.png" >adMember
-					</li>
-					<li id="adBoard.hy" onclick="showCon(this.id)">
-						<span class="dot"></span><img src="/moma/img/myPage_image/myInfo.png" >adBoard
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-</div>
+		<jsp:include page="adMainMenu.jsp"></jsp:include> </div>
 <div class="line"></div>
-
-
 <section class="ad_container_wide">
-	<div class="ad_content_top"></div>
 		<div class="ad_title">컨텐츠 관리</div>
 			<div class="top_box">
+				<form class="searchForm" action="adFindContent.so" name="search" onsubmit="return chk()">
+					<select name="searchKey" class="search_key">
+						<option value="cname">컨텐츠명</option>
+						<option value="genre">장르</option>
+						<option value="director">감독</option>
+						<option value="actor">배우</option>
+					</select>
+					<input type="text" name="searchValue" class="search_value" placeholder="검색어를 입력해주세요">
+					<button type="submit" style="border:none; background-color: transparent;"><img class="search" id="search" alt="검색" src="/moma/img/icon/search.png" width="30px"></img></button>
+				</form>
 				<a class="adbtn" href="/moma/views/admin/adContentRegistForm.so">컨텐츠 등록</a>
 			</div>
-	</div>
 	<div class="container-table">	
-		<table>
+		<table class="content_table">
 			<tr class="table_th">
 				<th>컨텐츠번호</th><th>컨텐츠명</th><th>구분</th><th>등급</th><th>장르</th>
 				<th>상영시간·회차수</th><th>개봉·방영일</th><th>조회수</th><th>넷플</th>
@@ -79,8 +58,8 @@
 			</tr>
 			<c:forEach var="adcontent" items="${list }">
 				<tr>
-					<td><a href="../content/contentView.do?cno=${adcontent.cno}">${adcontent.cno }</a></td>
-					<td><a href="../content/contentView.do?cno=${adcontent.cno}">${adcontent.cname }</a></td>
+					<td><a class="content_hover" href="../content/contentView.do?cno=${adcontent.cno}">${adcontent.cno }</a></td>
+					<td><a class="content_hover" href="../content/contentView.do?cno=${adcontent.cno}">${adcontent.cname }</a></td>
 					<td><c:if test="${adcontent.sort == 'd' }">드라마</c:if><c:if test="${adcontent.sort == 'm'}">영화</c:if></td>
 					<td>${adcontent.clevel }</td>
 					<td>${adcontent.genre }</td>

@@ -10,11 +10,37 @@
 	function chkId(){
 		$.post("confirmId.bb", "id="+frm.id.value, function(data){
 			$('#err_id').html(data);
-			frm.id.focus();
-			});
+			const iderr = document.getElementById('err_id');
+			if ( iderr.innerText != ""){
+				frm.id.focus();
+				frm.id.value="";
+			}
+		});
 	}
-
-	/* 비밀번호 형식 체크 (4글자이상) -> 영문섞어서로 바꿔보기? */
+	
+	/* 닉네임 중복체크 */
+	function chkNickname(){
+		$.post("confirmNickname.bb", "nickname="+frm.nickname.value, function(data){
+			$('#err_nickname').html(data);
+			const nkerr = document.getElementById('err_nickname');
+			if ( nkerr.innerText != ""){
+				frm.nickname.focus();
+				frm.nickname.value="";
+			}
+		});
+	}
+	
+	/* id,nickname 에러메세지 떠있으면 submit 못하게 */
+	/* function chk(){
+		const iderr = document.getElementById('err_id');
+		const nkerr = document.getElementById('err_nickname');
+		if ( iderr.innerText != "" || nkerr.innerText != "" ) {
+			alert ("작성한 내용을 확인해주세요.");
+			return false;
+		} else { return true; }
+	} */
+	
+	/* 비밀번호 형식 체크 (4글자이상) */
 	function chkPass(){
 		var pw = $("#password").val();
 		if(pw.length<4) {
@@ -29,10 +55,7 @@
 
 	/* 비밀번호 확인 일치여부 체크 */
 	function chkPass2() {
-		if (!frm.password2.value){
-			$('#err_pass2').html("비밀번호 확인란을 입력하세요");
-			return false;
-		} if(frm.password2.value!=frm.password.value){
+		if(frm.password2.value!=frm.password.value){
 			$('#err_pass2').html("비밀번호가 일치하지 않습니다");
 			frm.password2.focus();
 			frm.password2.value="";
@@ -45,41 +68,23 @@
 	/* 이메일 유효성 검사 */
 	function chkEmail(){
 		var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-		if(!frm.email.value) {
-			$('#err_email').html("이메일을 입력하세요");
-			frm.email.focus();
-			return false; 
-		} if(!reg_email.test(frm.email.value)){
+		if(!reg_email.test(frm.email.value)){
 				$('#err_email').html("올바른 이메일 형식이 아닙니다");
 				frm.email.focus();
+				frm.email.value="";
 				return false;
 		}else{
 			$('#err_email').html("");
 		}
 	}
 	
-	/* 별명 중복체크 */
-	function chkNickname(){
-		if(!frm.nickname.value) {
-			$('#err_nickname').html("별명을 입력하세요");
-			frm.nickname.focus();
-			return false;
-		}
-		$.post("confirmNickname.bb", "nickname="+frm.nickname.value, function(data){
-		$('#err_nickname').html(data);
-		});
-	}
-	
 	/* 연락처 유효성 검사 */
 	function chkPhone(){
 		var reg_phone = /^([0-9]){3}[-]([0-9]){4}[-]([0-9]){4}$/;
-		if(!frm.phone.value) {
-			$('#err_phone').html("연락처를 입력하세요");
-			frm.phone.focus();
-			return false;
-		} if(!reg_phone.test(frm.phone.value)){
+		if(!reg_phone.test(frm.phone.value)){
 			$('#err_phone').html("올바른 연락처 형식이 아닙니다");
 			frm.phone.focus();
+			frm.phone.value="";
 			return false;
 		} else {
 			$('#err_phone').html("");

@@ -14,9 +14,11 @@ public class ConfirmId implements CommandProcess {
 		String id = request.getParameter("id");
 		String msg="";
 		MemberDao md = MemberDao.getInstance();
-		Member member = md.select(id);
-		if(member==null) msg="";
-		else msg = "이미 사용중인 ID 입니다.";
+		Member member = md.selectcf(id);
+	
+		if (member != null) msg="이미 사용중인 ID입니다.";
+		else msg="";
+		
 		request.setAttribute("msg", msg);
 		return "confirmId";
 	}

@@ -32,11 +32,6 @@
 		select * from member where mno = #{mno}
 	</select>
 
-	<!-- moma 닉네임 중복확인 -->
-	<select id="confirmNickname" parameterType="string" resultType="member">
-		select * from member where nickname=#{nickname} and del='n'
-	</select>
-
 	<!-- moma joinAction 회원 가입 -->
 	<insert id="insert" parameterType="member">
 		<!-- 입력하기전에 특정키 값을 가져온 다음 그 값을 이용해서 처리하고 싶을 때!
@@ -90,5 +85,16 @@
 	<update id="delete" parameterType="integer">
 		update member set del='y' where mno=#{mno}	
 	</update> 
+	
+	<!-- 삭제한 회원과도 중복방지 -->
+	<!-- moma id 중복체크 (탈퇴 회원까지 함께 조회) -->
+	<select id="selectcf" parameterType="string" resultType="member">
+		select * from member where id=#{id}
+	</select>
+	<!-- moma 닉네임 중복확인 -->
+	<select id="confirmNickname" parameterType="string" resultType="member">
+		select * from member where nickname=#{nickname} 
+	</select>
+	<!--  -->
 
 </mapper>

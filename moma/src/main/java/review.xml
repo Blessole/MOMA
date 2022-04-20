@@ -19,7 +19,7 @@
 	
 	<!-- 평균 별점 -->
 	<select id="selectStar" parameterType="integer" resultType="float">
-		select round(avg(star_rate), 1) from review where cno = #{cno} and del = 'n'
+		select nvl(round(avg(star_rate), 1),0) from review where cno = #{cno} and del = 'n'
 	</select>
 	
 	<!-- 각 컨텐츠의 총 리뷰 갯수 -->
@@ -62,12 +62,12 @@
 	<select id="adList" parameterType="hashmap" resultType="review">
 		select * from (select rowNum rn, e.* from
 		(select r.*, m.nickname, c.cname from review r, member m, content c 
-		where r.mno=m.mno and r.cno=c.cno and r.del = 'n') e) 
+		where r.mno=m.mno and r.cno=c.cno and r.del = 'n' order by rvno desc) e) 
 			where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<!-- 총 리뷰 수 조회 -->
 	<select id="getTotal" resultType="integer">
-		select count(*) from review
+		select count(*) from review where del = 'n' order by rvno desc
 	</select>
 </mapper>

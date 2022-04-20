@@ -11,14 +11,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/board/boardView.css">
 <script type="text/javascript">
 $(document).ready(function () {
- 	// 로드될 때 댓글 textarea 속성 세팅
-	if (${empty id}) {
-		$("textarea").attr("placeholder", "댓글을 작성하려면 로그인해 주세요");
-		$("textarea").attr("readonly", true);
-	} else {
-		$("textarea").attr("placeholder", "댓글을 입력해주세요(주제와 무관한 댓글, 악플은 삭제될 수 있습니다)");
-		$("textarea").attr("readonly", false);
-	}
 	// 댓글 더보기 버튼 클릭
 	$(".more_btn").click(function() {
 		if ($(this).siblings(".more_area").css("display") == "none") {
@@ -45,6 +37,17 @@ $(document).ready(function () {
 		}
 	});
 });
+
+	//session check
+	function sChk(name) {
+	var chk = "${empty id}";
+	if (chk=="true") {
+		var con = confirm("로그인이 필요합니다.");
+		if (con) {				
+			location.href="/moma/views/member/loginForm.bb";
+		}
+	}
+}
 	//댓글 삭제
 	function delComment(bcno){
 		var con = confirm("삭제 하시겠습니까?");
@@ -121,11 +124,11 @@ $(document).ready(function () {
 
 	<!-- 댓글작성 -->
 <form action="boardCmtWrite.ha?bno=${board.bno }" method="post" class="cmt_insert_frm">
-	<pre><textarea name="bc_content"></textarea></pre>
-			<div class="submit_box">
-				<input type="submit" class="btn" value="등록하기">
-			</div>
-</form>	
+	<pre><textarea name="bc_content" placeholder="댓글을 작성해 주세요." required="required" onclick="sChk()"></textarea></pre>
+	<div class="submit_box">
+		<input type="submit" class="btn" value="등록하기">
+	</div>
+</form>
 
 </div>
 <div class="scroll_top"><div class="arrow"></div></div>

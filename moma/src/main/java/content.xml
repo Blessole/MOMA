@@ -65,48 +65,28 @@
 	
 	<!-- 태그로 리스트 조회 -->
 	<select id="selectDGenre" resultType="content" parameterType="hashmap">
-		select * from (select rownum rn, e.* from (
 		select * from content where 
 		<foreach collection="genre" item="item" open="(" close=")" separator="or">
 			genre like '%'||#{item}||'%' 
 		</foreach>
-		and sort='d' and del = 'n' order by cno desc) e)
-		where rn between #{startRow} and #{endRow}
+		and sort='d' and del = 'n' order by cno
 	</select>
 
 	<!-- 태그로 리스트 조회 -->
 	<select id="selectMGenre" resultType="content" parameterType="hashmap">
-		select * from (select rownum rn, e.* from (
 		select * from content where
 		<foreach collection="genre" item="item" open="(" close=")" separator="or">
 			genre like '%'||#{item}||'%' 
 		</foreach>
-		and sort='m' and del = 'n' order by cno desc) e)
-		where rn between #{startRow} and #{endRow}
-	</select>
-	
-	<!-- 드라마 genre 필터 total -->
-	<select id="getTotalDGenre" resultType="integer">
-		select count(*) from content where
-		<foreach collection="array" item="item" open="(">
-			genre like '%'||#{item}||'%' or
-		</foreach>
-		1 = 0) and sort='d' and del = 'n' order by cno desc
-	</select>
-	
-	<!-- 영화 genre 필터 total -->
-	<select id="getTotalMGenre" resultType="integer">
-		select count(*) from content where
-		<foreach collection="array" item="item" open="(">
-			genre like '%'||#{item}||'%' or
-		</foreach>
-		1 = 0) and sort='m' and del = 'n' order by cno desc
+		and sort='m' and del = 'n' order by cno
 	</select>
 	
 	<!-- 검색 -->
 	<select id="search" parameterType="string" resultType="content">
-	   select * from content where cname like '%'||#{srch}||'%' or genre like '%'||#{srch}||'%'
-	   or director like '%'||#{srch}||'%' or actor like '%'||#{srch}||'%'
+      select * from content a
+      where del = 'n' and cname IN
+      (select cname from content b where cname like '%'||#{srch}||'%' or genre like '%'||#{srch}||'%'
+      or director like '%'||#{srch}||'%' or actor like '%'||#{srch}||'%')
 	</select>
 	
 	<!-- moma 마이페이지 리뷰수정에서 쓸 cname -->
@@ -173,8 +153,22 @@
 			hours=#{hours,jdbcType=VARCHAR}, start_date=#{start_date,jdbcType=VARCHAR}, 
 			netflix=#{netflix,jdbcType=VARCHAR}, watcha=#{watcha,jdbcType=VARCHAR},
 			tving=#{tving,jdbcType=VARCHAR}, director=#{director,jdbcType=VARCHAR}, 
-			actor=#{actor,jdbcType=VARCHAR}, reserve=#{reserve,jdbcType=CHAR}, 
-			poster=#{poster,jdbcType=VARCHAR} 
+			actor=#{actor,jdbcType=VARCHAR}, reserve=#{reserve,jdbcType=CHAR}
+			<if test="poster != null and poster !=  '' ">
+				, poster=#{poster}
+			</if> 
 		where cno=#{cno}
 	</update>
+	
+	<!-- 관리자페이지 컨텐츠 검색 -->
+	<select id="adSearch" parameterType="hashmap" resultType="content">
+		select * from content
+		<choose>
+			<when test="searchKey.equals('cname')">where cname like '%'||#{searchValue}||'%'</when>
+			<when test="searchKey.equals('genre')">where genre like '%'||#{searchValue}||'%'</when>
+			<when test="searchKey.equals('director')">where director like '%'||#{searchValue}||'%'</when>
+			<otherwise>where actor like '%'||#{searchValue}||'%'</otherwise>
+		</choose>
+			order by cno desc
+	</select>
 </mapper>

@@ -1,7 +1,7 @@
 -- 컨텐츠 테이블
 drop table content cascade constraints;
 
-alter table content modify reserve  CHAR(1) NOT NULL;
+
 
 create table content (
        	cno NUMBER CONSTRAINT content_cno_pk PRIMARY KEY NOT NULL,
@@ -22,6 +22,7 @@ create table content (
         reserve CHAR(1) default 'n' NOT NULL
 );
 
+delete from content where cno > 112;
 alter table content modify reserve  CHAR(1)  NULL;
 update CONTENT set reserve='' where reserve='N';
 select * from content order by cno;
@@ -42,6 +43,7 @@ create table member(
         del CHAR(1) default 'n' NOT NULL
 );
 
+delete from member where mno > 1;
 alter table member modify (nickname varchar2(20)); 
 select * from member;
 
@@ -92,6 +94,7 @@ create table review(
 );
 
 select * from review;
+delete from review where rvno>=0;
 
 -- 저널게시판 테이블
 drop table board;
@@ -119,3 +122,5 @@ create table boardcmt(
 );
 
 select * from boardcmt;
+
+select round(avg(star_rate), 1) from review where cno = 60 and del = 'n';

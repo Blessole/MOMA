@@ -69,6 +69,11 @@ header {
     cursor: pointer;
 }
 
+.nav_main a:hover {
+	color: var(--point-color);
+	cursor: pointer;
+}
+
 .nav_main a.active {
 	color: var(--point-color);
 }

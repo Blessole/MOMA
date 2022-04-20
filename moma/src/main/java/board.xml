@@ -25,11 +25,10 @@
 	
 	<!-- 게시글 입력 -->
 	<insert id="insert" parameterType="board">
-		<selectKey keyProperty="boardseq" order="BEFORE"
-			resultType="integer">
-			select board_seq.nextval from dual
+		<selectKey keyProperty="bno" order="BEFORE" resultType="integer">
+			select nvl(max(bno), 0) + 1 bno from board
 		</selectKey>
-		insert into board values(#{boardseq}, #{bname}, #{bo_content}, #{bviews}, #{image,jdbcType=VARCHAR}, 'n')
+		insert into board values(#{bno}, #{bname}, #{bo_content}, #{bviews}, #{image,jdbcType=VARCHAR}, 'n')
 	</insert>
 	
 	<!-- 게시글 수정 -->
