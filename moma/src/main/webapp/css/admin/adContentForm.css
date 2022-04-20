@@ -86,6 +86,14 @@ input[name="file"] { /* input 사라지게 */
 	clip:rect(0,0,0,0);
 }
 
+.option_box {
+	border-bottom: 1px solid var(--point-color); 
+	padding : 10px;
+}
+
+.option_box_reserve {
+	padding : 10px;
+}
 
 /* genre */
 

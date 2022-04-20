@@ -67,8 +67,8 @@
 /* 하단 버튼 영역 */
 .container_bottom {
 	display: block;
-	margin-top: 60px;
-	padding: 0 0 50px;
+	margin-top: 40px;
+	padding: 0 0 40px;
 }
 
 .return_box>button{
@@ -83,6 +83,7 @@
 	border: none;
 	position:relative;
 	cursor:pointer;
+	font-family: 'Apple SD Gothic Neo', 'AppleSDGothicNeo';
 }
 
 .return_box>button:hover{
@@ -102,6 +103,14 @@
 /* 게시글 끝 댓글 시작 *********************************************/
 
 /* 댓글 폼 */
+
+.sub_title {
+	font-weight: 600;
+	font-size: 17px;
+	padding: 36px 0 24px 0;
+	font-weight: 700;
+}
+
 textarea {
 	display: block;
 	width: 100%;

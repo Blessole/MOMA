@@ -16,6 +16,7 @@ update content set sort = 'm' where sort='M';
 update content set reserve='Y' where reserve='y';
 update content set reserve='N' where reserve='n';
 
+update content set reserve='N' where reserve='';
 
 INSERT INTO CONTENT VALUES (1,'도깨비','D',15,'판타지/로맨스','16부작','2016',0,'https://www.netflix.com/search?q=%EB%8F%84%EA%B9%A8%EB%B9%84&jbv=81012510',NULL,'https://www.tving.com/contents/P000340362','1.jpg','N','이응복','공유,김고은','N');
 INSERT INTO CONTENT VALUES (2,'호텔델루나','D',15,'판타지/공포/로맨스/코미디','16부작','2019',0,'https://www.netflix.com/search?q=%ED%98%B8%ED%85%94%EB%8D%B8&jbv=81205849',NULL,'https://www.tving.com/contents/P000941062', '2.jpg','N','오충환','이지은,여진구','N');

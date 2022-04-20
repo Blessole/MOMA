@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <%@ include file="/views/sessionChk.jsp"%>
 <style type="text/css">@import url("/moma/css/admin/adMember.css");</style>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript"src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 	function del(delMno) {
 		var con = confirm("탈퇴 처리 하시겠습니까?");

@@ -93,7 +93,9 @@ $(document).ready(function () {
 
 <!-- 전체 댓글 보여주기(삭제된 댓글 제외) -->
 <div class="comments">
-<h4>댓글 ${cmt_cnt}</h4>
+
+<h4 class="sub_title">댓글 ${cmt_cnt}</h4>
+
 <c:if test="${empty list }">
 			<div>댓글이 없습니다</div>
 		</c:if>
