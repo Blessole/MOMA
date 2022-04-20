@@ -27,9 +27,9 @@ $(function() {
 			</c:if>
 			<c:if test="${list.size() != 0}">
 				<h3>좋아요 한 컨텐츠</h3>
-				<ul>
+				<ul class="likeslist">
 					<c:forEach var="likes" items="${list}">
-						<li class=likes>
+						<li id="likeslist">
 							<a href="/moma/views/content/contentView.do?cno=${likes.cno}" class="cursor">
 								<img src ="/moma/img/poster/${likes.cno}.jpg" style =" no-repeat center; background-size: cover;">
 								<div class="txt_likes">${likes.cname }</div>

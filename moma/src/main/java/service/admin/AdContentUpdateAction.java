@@ -35,6 +35,7 @@ public class AdContentUpdateAction implements CommandProcess {
 			String file = (String) files.nextElement();
 			fileName = mr.getFilesystemName(file);
 			
+			if (fileName != null) {
 			int dot = fileName.lastIndexOf("."); //파일 확장자 위치
 			String ext = fileName.substring(dot);
 			
@@ -58,6 +59,9 @@ public class AdContentUpdateAction implements CommandProcess {
 			
 			oldFile.renameTo(newFile);
 			
+			ct.setPoster(newFileName);
+			System.out.println("newFileName="+newFileName);
+			}
 			//System.out.println("rename oldFile="+oldFile);
 			//System.out.println("rename newFile="+newFile);
 			
@@ -76,7 +80,7 @@ public class AdContentUpdateAction implements CommandProcess {
 			// 장르 세팅
 			String[] genre = mr.getParameterValues("genre");
 			String genres="";
-			
+
 			for (int g=0; g<genre.length; g++) {
 				if(g== genre.length-1) {
 					genres += genre[g];
@@ -110,8 +114,7 @@ public class AdContentUpdateAction implements CommandProcess {
 			//System.out.println("actor="+actor);
 			ct.setReserve(reserve);
 			//System.out.println("reserve="+reserve);
-			ct.setPoster(newFileName);
-			//System.out.println("newFileName="+newFileName);
+
 
 		
 		} catch (IOException e) {

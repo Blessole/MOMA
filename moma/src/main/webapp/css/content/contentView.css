@@ -41,6 +41,7 @@
 	width: 100%;
 	text-align: center;
 	padding-left: 0;
+	display: inline;
 }
 
 .btn2 {
@@ -188,8 +189,13 @@ input[type="range"]::-webkit-slider-thumb {
 	color: var(- -point-color);
 }
 
+.sub_title {
+	padding-top: 40px;
+}
+
 /* 리뷰 리스트 */
 .review_list_box {
+	padding-top: 40px;
 	margin: 0 -20px 24px -20px;
 	font-size: 0;
 }

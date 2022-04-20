@@ -40,7 +40,7 @@
 	<div class="content">	
 	<div class="ad_title">저널 목록</div>
 	<table class="board_table">
-		<tr><th>저널 번호</th><th width="150px">제목</th><th>조회수</th><th>삭제 여부</th><th>수정</th><th>삭제</th></tr>
+		<tr><th>저널 번호</th><th width="180px">제목</th><th>조회수</th><th>삭제 여부</th><th>수정</th><th>삭제</th></tr>
 		<c:if test="${empty list}">
 			<ul class="noItems">
 				<li><span class="txt_title">작성한 저널이 없습니다.</span></li>
@@ -58,7 +58,10 @@
 		</c:if>
 	</table>
 	</div>
-	
+	<div class="adbtn_box">
+		<button class="adbtn" onclick="location.href='/moma/views/board/boardWriteForm.ha?action=insert'">저널 등록</button>
+		<button class="adbtn" onclick="location.href='/moma/views/admin/adBoardCmt.ha'">저널 댓글 관리</button>
+	</div>
 	<!-- paging -->
 		<div class="paging">
 			<div class="items">

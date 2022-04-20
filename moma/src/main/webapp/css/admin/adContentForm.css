@@ -3,7 +3,44 @@
 input {
 	margin-bottom: 16px;
 }
-/* 프로필 */
+
+.adCheck {
+	padding: 25px;
+}
+
+.adSubmit {
+	padding: 20px;
+}
+
+/* adContentRegistForm, adContentUpdateForm */
+.option_title, .file_label{
+	font-size :  18px;
+	font-weight:bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.sol {
+	font-size: 16px;
+	padding: 8px;
+}
+
+.url {
+	font-size: 16px;
+	padding: 8px;
+	display: flex;
+}
+
+input[type=text] {
+	width: 100%;
+}
+input[type=url] {
+	width: 60%;
+	margin-left: auto;
+
+}
+
+/* update 포스터 */
 #image_container {
 	width: 200px;
 	height: 300px;
@@ -39,7 +76,7 @@ input {
 	color: #fff;
 }
 
-input[type="file"] { /* input 사라지게 */
+input[name="file"] { /* input 사라지게 */
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -47,6 +84,15 @@ input[type="file"] { /* input 사라지게 */
 	margin: -1px;
 	overflow: hidden;
 	clip:rect(0,0,0,0);
+}
+
+.option_box {
+	border-bottom: 1px solid var(--point-color); 
+	padding : 10px;
+}
+
+.option_box_reserve {
+	padding : 10px;
 }
 
 /* genre */

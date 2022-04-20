@@ -82,7 +82,7 @@
 					<c:if test="${not empty listGenre }">
 						<c:forEach var="content" items="${listGenre }">
 								<li>
-									<a href="contentView.do?cno=${content.cno }"> 
+									<a href="contentView.do?cno=${content.cno }">
 										<img class="poster_img" style="background: url(/moma/img/poster/${content.poster }) no-repeat center; background-size: cover;">
 										<div class="text_area">
 											<!-- 평균 별점 -->

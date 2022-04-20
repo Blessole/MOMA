@@ -73,6 +73,7 @@ public class AdContentRegistAction implements CommandProcess {
 			String[] genre = mr.getParameterValues("genre");
 			String genres="";
 			
+			if(genre!=null) {
 			for (int g=0; g<genre.length; g++) {
 				if(g== genre.length-1) {
 					genres += genre[g];
@@ -81,7 +82,7 @@ public class AdContentRegistAction implements CommandProcess {
 				}
 			}
 			ct.setGenre(genres);
-			
+			}
 			// 입력받은 데이터 세팅
 			ct.setCname(cname);
 			ct.setSort(sort);

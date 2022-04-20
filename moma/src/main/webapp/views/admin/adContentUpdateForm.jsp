@@ -47,12 +47,25 @@
 		};
 		reader.readAsDataURL(event.target.files[0]);
 	};
+		function genreChk(){
+			var chk = false;
+			for(var i=0; i<frm.genre.length; i++){
+				if (frm.genre[i].checked){
+					chk = true;
+					break;
+				}
+			}
+			if (!chk){
+				alert("장르를 선택해주세요");
+				return false;
+			}
+		} 
 </script>
 </head>
 <body>
 <div class="container_middle">
 	<div class="title">컨텐츠 수정</div>
-	<form action="adContentUpdateAction.so?cno=${ct.cno }" method="post" name="frm" onsubmit="genreChk()" enctype="multipart/form-data">
+	<form action="adContentUpdateAction.so?cno=${ct.cno }" method="post" onsubmit="return genreChk()" name="frm" enctype="multipart/form-data">
 	
 		<!-- 포스터 -->
 		<div class="poster">
@@ -60,36 +73,36 @@
 				<img alt="포스터" src="/moma/img/poster/${ct.poster }">
 			</div>
 			<label for="f1" class="poster_file">포스터 사진 업로드</label>
-			<input type="file" id="f1" name="poster"  onchange="setPoster(event)" value="${ct.poster }">
+			<input type="file" id="f1" name="file"  onchange="setPoster(event)" value="${ct.poster }">
 		</div>
 		
 		<!-- 제목 -->
 		<div class="adCheck">
-			컨텐츠 제목 * : <input type="text" name="cname" value="${ct.cname }" required="required" autofocus="autofocus">
+			<div class="option_title">컨텐츠 제목 *</div>
+			<input type="text" name="cname" value="${ct.cname }" required="required" autofocus="autofocus">
 		</div>
-		
+
 		<!-- 분류 -->
 		<div class="adCheck">
 			<div class="option_title">분류 선택 *</div>
-				<input class="magic-radio" type="radio" name="sort" value="m" <c:if test="${ct.sort=='m' }">checked="checked"</c:if>  id="s1">
-				<label for="s1">영화</label>
-				<input class="magic-checkbox" type="checkbox" name="reserve" <c:if test="${ct.reserve=='Y' }"> checked="checked"</c:if>  id="c1">
-				<label for="c1">예매가능</label><br>
-				<input class="magic-radio" type="radio" name="sort" value="d" <c:if test="${ct.sort=='d' }">checked="checked</c:if> id="s2">
-				<label for="s2">드라마</label>
+				<div class="option_box">
+				<div class="sol"><input class="magic-radio" type="radio" name="sort" value="m" <c:if test="${ct.sort=='m' }">checked="checked"</c:if> id="s1"><label for="s1">영화</label></div>
+				<div class="sol"><input class="magic-radio" type="radio" name="sort" value="d" <c:if test="${ct.sort=='d' }">checked="checked</c:if> id="s2"><label for="s2">드라마</label></div>
+				</div>
+				<div class="option_box_reserve">
+				<div class="sol"><input class="magic-radio" type="radio" name="reserve"  value="Y"  id="c1" ><label for="c1">예매가능</label></div>
+				<div class="sol"><input class="magic-radio" type="radio" name="reserve"  value="N" id="c2" checked="checked"><label for="c2">예매불가</label></div>
+				</div>
 		</div>
 		
 		<!-- 연령등급 -->
 		<div class="adCheck">
 			<div class="option_title">연령 등급 선택 *</div>
-				<input class="magic-radio" type="radio" name="clevel" value="7" <c:if test="${ct.clevel == '7' }">checked="checked"</c:if>  id="l1"><label for="l1">7세 이상</label>
-				<input class="magic-radio" type="radio" name="clevel" value="12" <c:if test="${ct.clevel == '12' }">checked="checked"</c:if>  id="l2"><label for="l2">12세 이상</label>
-				<input class="magic-radio" type="radio" name="clevel" value="15" <c:if test="${ct.clevel == '15' }">checked="checked"</c:if>  id="l3"><label for="l3">15세 이상</label>
-				<input class="magic-radio" type="radio" name="clevel" value="18" <c:if test="${ct.clevel == '18' }">checked="checked"</c:if>  id="l4"><label for="l4">18세 이상</label>				
+				<div class="sol"><input class="magic-radio" type="radio" name="clevel" value="7" <c:if test="${ct.clevel == '7' }">checked="checked"</c:if>  id="l1"><label for="l1">7세 이상</label></div>
+				<div class="sol"><input class="magic-radio" type="radio" name="clevel" value="12" <c:if test="${ct.clevel == '12' }">checked="checked"</c:if>  id="l2"><label for="l2">12세 이상</label></div>
+				<div class="sol"><input class="magic-radio" type="radio" name="clevel" value="15" <c:if test="${ct.clevel == '15' }">checked="checked"</c:if>  id="l3"><label for="l3">15세 이상</label></div>
+				<div class="sol"><input class="magic-radio" type="radio" name="clevel" value="18" <c:if test="${ct.clevel == '18' }">checked="checked"</c:if>  id="l4"><label for="l4">18세 이상</label></div>	
 		</div>
-		
-		<%-- <p class="option_title">장르 수정</p>
-		<pre><textarea name="genre" required="required">${ct.genre }</textarea></pre> --%>
 			
 		<!-- 장르 -->
 		<div class="adCheck">
@@ -156,30 +169,34 @@
 		
 		<!-- 상영시간, 회차수 -->
 		<div class="adCheck">
-			상영시간/회차 수 * : <input type="text" name="hours" value="${ct.hours }" required="required">
+			<div class="option_title">상영시간 · 회차 수 *</div>
+			<input type="text" name="hours" value="${ct.hours }" required="required">
 		</div>	
 		
 		<!-- 개봉, 방영년도 -->
 		<div class="adCheck">
-			개봉·방영 연도 * : <input type="text" id="startdate" name="start_date" value="${ct.start_date }" required="required" onchange="adChk()">
+			<div class="option_title">개봉 · 방영 년도 *</div>
+			<input type="text" id="startdate" name="start_date" value="${ct.start_date }" required="required" onchange="adChk()">
 			<div class="adChk" id="err_start_date"></div>
 		</div>
 		
 		<!-- OTT URL -->
 		<div class="adCheck">
-			<div class="option_title">OTT URL 입력 </div>
-				<div>넷플릭스 : <input type="url" class="url" name="netflix" value="${ct.netflix }"></div>
-				<div>왓챠 : <input type="url" class="url" name="watcha" value="${ct.watcha }"></div>
-				<div>티빙 : <input type="url" class="url" name="tving" value="${ct.tving }"></div>
+			<div class="option_title">제공 OTT URL 정보 </div>
+				<div class="url"><img alt="넷플릭스" src="../../img/icon/netflix.png" height="30px" width="30px">&nbsp; 넷플릭스<input type="url" class="url" name="netflix" value="${ct.netflix }"></div>
+				<div class="url"><img alt="왓챠" src="../../img/icon/watcha.png" height="30px"  width="30px">&nbsp; 왓챠 <input type="url" class="url" name="watcha" value="${ct.watcha }"></div>
+				<div class="url"><img alt="티빙" src="../../img/icon/tving.png" height="30px"  width="30px">&nbsp; 티빙 <input type="url" class="url" name="tving" value="${ct.tving }"></div>
 		</div>
 		
 		<!-- 감독명, 배우명 입력 -->
 		<div class="adCheck">
-			감독명 * : <input type="text" name="director" value="${ct.director }" required="required"><br>
-			배우명 * : <input type="text" name="actor" value="${ct.actor }"  required="required">			
+			<div class="option_title">감독명 *</div>
+				<input type="text" name="director" value="${ct.director }" required="required">
+			<div class="option_title">배우명 *</div>
+				<input type="text" name="actor" value="${ct.actor }"  required="required">			
 		</div>
 		
-		<div class="adCheck">
+		<div class="adSubmit">
 			<input type="submit" class="btn" value="등록하기">
 			<input type="button" class="btn btn_stroke reset" onclick="history.go(-1)" value="취소">
 		</div>
